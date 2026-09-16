@@ -17,6 +17,30 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
+.auth-message {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 100;
+  max-width: min(360px, calc(100% - 2rem));
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(47, 215, 255, 0.45);
+  border-radius: 10px;
+  background: rgba(3, 11, 28, 0.94);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  color: #eafcff;
+  font-size: 1rem;
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.auth-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
   
   <style>
     :root {
@@ -1290,211 +1314,9 @@
 
    <div class="auth-message" id="auth-message" aria-live="polite"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <div class="auth-message" id="auth-message" aria-live="polite"></div>
 
-  <script>
-    (() => {
-      const SUPABASE_URL = "https://zfpokbqwewmvvhhfanwi.supabase.co";
-      const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_aTCbV_2R4lCnlJeZuJ555w_z3-yAJI3";
-
-      const loginButton = document.getElementById("google-login-button");
-      const logoutButton = document.getElementById("logout-button");
-      const authGuest = document.getElementById("auth-guest");
-      const authUser = document.getElementById("auth-user");
-      const userName = document.getElementById("auth-user-name");
-      const userAvatar = document.getElementById("auth-user-avatar");
-      const authMessage = document.getElementById("auth-message");
-      const themeToggle = document.getElementById("theme-toggle");
-
-      let messageTimer;
-
-      function showMessage(message, keepVisible = false) {
-        if (!authMessage) return;
-
-        authMessage.textContent = message;
-        authMessage.classList.add("show");
-
-        clearTimeout(messageTimer);
-
-        if (!keepVisible) {
-          messageTimer = setTimeout(() => {
-            authMessage.classList.remove("show");
-          }, 6000);
-        }
-      }
-
-      function setUserInterface(user) {
-        const signedIn = Boolean(user);
-
-        if (authGuest) authGuest.hidden = signedIn;
-        if (authUser) authUser.hidden = !signedIn;
-
-        if (!signedIn) return;
-
-        const metadata = user.user_metadata || {};
-        const displayName =
-          metadata.full_name ||
-          metadata.name ||
-          user.email ||
-          "Estudiante";
-
-        const avatarUrl = metadata.avatar_url || "";
-
-        if (userName) userName.textContent = displayName;
-
-        if (userAvatar) {
-          userAvatar.src = avatarUrl;
-          userAvatar.alt = avatarUrl ? `Foto de ${displayName}` : "";
-          userAvatar.hidden = !avatarUrl;
-        }
-      }
-
-      function setupCyberTheme() {
-        if (!themeToggle) return;
-
-        const flash = document.createElement("div");
-        flash.className = "theme-flash";
-        flash.setAttribute("aria-hidden", "true");
-        document.body.appendChild(flash);
-
-        function applyTheme(enabled, withFlash = false) {
-          document.body.classList.toggle("cyber-green-theme", enabled);
-
-          themeToggle.setAttribute("aria-pressed", String(enabled));
-          themeToggle.setAttribute(
-            "aria-label",
-            enabled
-              ? "Volver al tema azul original"
-              : "Activar tema verde cyber"
-          );
-
-          themeToggle.setAttribute(
-            "title",
-            enabled
-              ? "Volver al tema azul original"
-              : "Cambiar a modo verde cyber"
-          );
-
-          const label = themeToggle.querySelector(".theme-toggle-text");
-
-          if (label) {
-            label.textContent = enabled ? "AZUL" : "CYBER";
-          }
-
-          localStorage.setItem(
-            "506EnglishExpress.homeTheme",
-            enabled ? "green" : "blue"
-          );
-
-          if (withFlash) {
-            flash.classList.remove("play");
-            void flash.offsetWidth;
-            flash.classList.add("play");
-          }
-        }
-
-        applyTheme(
-          localStorage.getItem("506EnglishExpress.homeTheme") === "green"
-        );
-
-        themeToggle.addEventListener("click", () => {
-          applyTheme(
-            !document.body.classList.contains("cyber-green-theme"),
-            true
-          );
-        });
-      }
-
-      setupCyberTheme();
-
-      if (!window.supabase || !window.supabase.createClient) {
-        showMessage(
-          "No se pudo cargar Supabase. Presiona Ctrl + F5 e inténtalo otra vez.",
-          true
-        );
-        return;
-      }
-
-      const supabaseClient = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
-
-      async function loadCurrentUser() {
-        const {
-          data: { user },
-          error
-        } = await supabaseClient.auth.getUser();
-
-        if (error) {
-          setUserInterface(null);
-          return;
-        }
-
-        setUserInterface(user);
-      }
-
-      async function signInWithGoogle() {
-        showMessage("Conectando con Google...", true);
-
-        const redirectTo =
-          window.location.origin +
-          window.location.pathname;
-
-        const { data, error } = await supabaseClient.auth.signInWithOAuth({
-          provider: "google",
-          options: {
-            redirectTo,
-            skipBrowserRedirect: true
-          }
-        });
-
-        if (error) {
-          showMessage(`Error de Google: ${error.message}`, true);
-          return;
-        }
-
-        if (!data?.url) {
-          showMessage(
-            "No se obtuvo una URL de Google. Revisa que Google esté activado en Supabase.",
-            true
-          );
-          return;
-        }
-
-        window.location.assign(data.url);
-      }
-
-      async function signOut() {
-        const { error } = await supabaseClient.auth.signOut({
-          scope: "local"
-        });
-
-        if (error) {
-          showMessage(`No se pudo cerrar sesión: ${error.message}`, true);
-          return;
-        }
-
-        setUserInterface(null);
-        showMessage("Sesión cerrada correctamente.");
-      }
-
-      if (loginButton) {
-        loginButton.addEventListener("click", signInWithGoogle);
-      }
-
-      if (logoutButton) {
-        logoutButton.addEventListener("click", signOut);
-      }
-
-      supabaseClient.auth.onAuthStateChange((_event, session) => {
-        setUserInterface(session ? session.user : null);
-      });
-
-      loadCurrentUser();
-
-      window.supabaseClient = supabaseClient;
-    })();
-  </script>
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="./assets/js/supabase-auth.js?v=3"></script>
 </body>
 </html>
