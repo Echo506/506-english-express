@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <meta
+    name="description"
+    content="Unidad 2, Entrega 1: En el hotel."
+  >
+
+  <title>En el hotel | 506 English Express</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/lesson.css">
+</head>
+
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source
+        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
+        type="video/mp4"
+      >
+    </video>
+  </div>
+
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="container topbar-content">
+      <span>506 English Express</span>
+      <span>Unidad 2 · Entrega 1 · En el hotel</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container navbar" aria-label="Navegación principal">
+      <a href="../index.html" class="brand" aria-label="Volver al inicio">
+        <span class="brand-mark" aria-hidden="true"><span>⚡</span></span>
+        <span class="brand-text">English <strong>506</strong> Express</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="unit-2.html">Unidad 2</a>
+      </div>
+
+      <a href="unit-1.html" class="button button-outline button-small">
+        Unidad anterior
+      </a>
+    </nav>
+  </header>
+
+  <main class="lesson-page">
+    <div class="container">
+      <section class="lesson-banner">
+        <p class="kicker">Unidad 02 · Entrega 01</p>
+
+        <h1>En el hotel</h1>
+
+        <p>
+          Jane Saunders llega a Los Angeles y necesita una habitación y un coche
+          de alquiler. Aprende a reservar alojamiento, localizar servicios,
+          comparar opciones y hablar de precios, coches y transporte.
+        </p>
+
+        <div class="lesson-progress">
+          <div>
+            <div class="lesson-progress-label">
+              <span>Progreso de la entrega</span>
+              <span id="progress-text">0 de 10 secciones completadas</span>
+            </div>
+
+            <div
+              class="progress-track"
+              role="progressbar"
+              aria-label="Progreso de la entrega"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <button
+            class="button button-outline button-small"
+            id="reset-progress"
+            type="button"
+          >
+            Reiniciar
+          </button>
+        </div>
+      </section>
+
+      <section class="lesson-sections">
+
+        <article class="lesson-section activity-card" data-activity="1">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
+              <h2>Jane llega al hotel</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">🏨</span>
+          </div>
+
+          <p>
+            Lea el diálogo. Jane llega a recepción, confirma su reserva y después
+            intenta alquilar un coche. Tom necesita ayuda para llegar a otra agencia.
+          </p>
+
+          <div class="audio-placeholder">
+            <span aria-hidden="true">🔊</span>
+            <span>
+              Audio sugerido:
+              <strong>assets/audio/unit-2/at-the-hotel.mp3</strong>
+            </span>
+          </div>
+
+          <div class="dialogue-box">
+            <p>
+              <strong>Jane Saunders:</strong>
+              Hello, do you have a reservation in my name? Jane Saunders.
+            </p>
+
+            <p>
+              <strong>Receptionist:</strong>
+              Yes. Here we are... a single room with bath. Room 1707, 17th floor.
+            </p>
+
+            <p><strong>Jane:</strong> Thank you.</p>
+
+            <p>
+              <strong>Jane:</strong>
+              Oh, yes, and I'd also like to rent a car, please.
+            </p>
+
+            <p>
+              <strong>Receptionist:</strong>
+              Yes, Ms. Saunders, the car rental desk is on the left, next to the
+              newsstand.
+            </p>
+
+            <p><strong>Car rental clerk:</strong> May I help you? Who's first?</p>
+
+            <p>
+              <strong>Jane:</strong>
+              I'd like to rent a car, please, for five days.
+            </p>
+
+            <p>
+              <strong>Car rental clerk:</strong>
+              Yes, sure. We have a BMW for a flat fee of $70 per day, mileage
+              included, and a full gas tank. It's a really fast car. Or, there's
+              a Ford two-door convertible for $50 per day and, of course, we have
+              a special weekly rate.
+            </p>
+
+            <p>
+              <strong>Jane:</strong>
+              I'll take the Ford... with this lovely weather, the convertible sounds nice.
+            </p>
+
+            <p>
+              <strong>Car rental clerk:</strong>
+              You're in luck — it's our last one.
+            </p>
+
+            <p><strong>Tom:</strong> Oh, that's too bad!</p>
+
+            <p><strong>Jane:</strong> Oh, dear. I'm sorry. Um...</p>
+
+            <p>
+              <strong>Car rental clerk:</strong>
+              Don't worry. I know our agency on Hollywood Boulevard has several.
+              I can call and reserve one for you.
+            </p>
+
+            <p><strong>Tom:</strong> Thanks. I really appreciate that.</p>
+
+            <p><strong>Car rental clerk:</strong> Your name, please?</p>
+
+            <p>
+              <strong>Tom:</strong>
+              Tom Ryder. But how do I get there? I haven't got a car!
+            </p>
+
+            <p><strong>Jane:</strong> Oh, well... Can I give you a lift?</p>
+
+            <p><strong>Tom:</strong> Thanks. Is that O.K.?</p>
+
+            <p>
+              <strong>Jane:</strong>
+              Yes, that's fine. You can make sure I don't drive on the left!
+            </p>
+          </div>
+
+          <div class="translation-box">
+            <strong>Idea principal:</strong>
+            <span>
+              Jane tiene una habitación reservada y alquila el último Ford
+              descapotable. Tom no consigue coche, así que Jane le ofrece llevarlo
+              a la agencia de Hollywood Boulevard.
+            </span>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar diálogo como completado
+            </button>
+
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="2">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 02 · COMPRENSIÓN</p>
+              <h2>Compruebe su comprensión</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">🧠</span>
+          </div>
+
+          <div class="question-block">
+            <p><strong>1. ¿Qué habitación reserva Jane?</strong></p>
+
+            <label class="option-label">
+              <input type="radio" name="question-1" value="a">
+              A double room with shower
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="question-1" value="b">
+              A single room with bath
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="question-1" value="c">
+              A room with a balcony
+            </label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>2. ¿Cuál coche elige Jane?</strong></p>
+
+            <label class="option-label">
+              <input type="radio" name="question-2" value="a">
+              A BMW
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="question-2" value="b">
+              A Ford two-door convertible
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="question-2" value="c">
+              A red limousine
+            </label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>3. ¿Cómo ayuda Jane a Tom?</strong></p>
+
+            <label class="option-label">
+              <input type="radio" name="question-3" value="a">
+              She gives him a lift.
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="question-3" value="b">
+              She gives him a hotel room.
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="question-3" value="c">
+              She gives him a newspaper.
+            </label>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-comprehension" type="button">
+              Revisar respuestas
+            </button>
+
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="3">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 03 · VOCABULARIO</p>
+              <h2>Hotel y alquiler de coche</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">📚</span>
+          </div>
+
+          <div class="vocabulary-columns">
+            <section class="vocabulary-group">
+              <h3>Hotel y servicios</h3>
+
+              <dl class="vocabulary-list">
+                <div><dt>reservation</dt><dd>reserva</dd></div>
+                <div><dt>single room</dt><dd>habitación individual</dd></div>
+                <div><dt>double room</dt><dd>habitación doble</dd></div>
+                <div><dt>bath</dt><dd>baño, bañera</dd></div>
+                <div><dt>shower</dt><dd>ducha</dd></div>
+                <div><dt>floor</dt><dd>piso</dd></div>
+                <div><dt>desk</dt><dd>mostrador, escritorio</dd></div>
+                <div><dt>hotel</dt><dd>hotel</dd></div>
+                <div><dt>newsstand</dt><dd>kiosco de periódicos</dd></div>
+                <div><dt>newspaper</dt><dd>periódico</dd></div>
+                <div><dt>magazine</dt><dd>revista</dd></div>
+              </dl>
+            </section>
+
+            <section class="vocabulary-group">
+              <h3>Alquiler de automóvil</h3>
+
+              <dl class="vocabulary-list">
+                <div><dt>car rental</dt><dd>alquiler de coches</dd></div>
+                <div><dt>clerk</dt><dd>empleado/a</dd></div>
+                <div><dt>flat fee</dt><dd>precio global</dd></div>
+                <div><dt>mileage</dt><dd>kilometraje</dd></div>
+                <div><dt>two-door convertible</dt><dd>descapotable de dos puertas</dd></div>
+                <div><dt>gas tank</dt><dd>depósito de gasolina</dd></div>
+                <div><dt>weekly rate</dt><dd>tarifa semanal</dd></div>
+                <div><dt>agency</dt><dd>agencia</dd></div>
+                <div><dt>per day</dt><dd>por día</dd></div>
+                <div><dt>weekly</dt><dd>semanal</dd></div>
+                <div><dt>last one</dt><dd>el último</dd></div>
+                <div><dt>several</dt><dd>varios/as</dd></div>
+              </dl>
+            </section>
+
+            <section class="vocabulary-group">
+              <h3>Adjetivos, verbos y ubicación</h3>
+
+              <dl class="vocabulary-list">
+                <div><dt>full / empty</dt><dd>lleno / vacío</dd></div>
+                <div><dt>fast / slow</dt><dd>rápido / lento</dd></div>
+                <div><dt>lovely / nice</dt><dd>agradable</dd></div>
+                <div><dt>lucky / unlucky</dt><dd>con suerte / sin suerte</dd></div>
+                <div><dt>comfortable</dt><dd>cómodo/a</dd></div>
+                <div><dt>to rent</dt><dd>alquilar</dd></div>
+                <div><dt>to help</dt><dd>ayudar</dd></div>
+                <div><dt>to appreciate</dt><dd>apreciar, agradecer</dd></div>
+                <div><dt>to give a lift</dt><dd>llevar a alguien</dd></div>
+                <div><dt>to drive</dt><dd>conducir</dd></div>
+                <div><dt>to book / reserve</dt><dd>reservar</dd></div>
+                <div><dt>on the left / right</dt><dd>a la izquierda / derecha</dd></div>
+                <div><dt>next to / beside</dt><dd>al lado de</dd></div>
+                <div><dt>near</dt><dd>cerca de</dd></div>
+                <div><dt>behind</dt><dd>detrás de</dd></div>
+                <div><dt>under</dt><dd>debajo de</dd></div>
+                <div><dt>opposite</dt><dd>enfrente de</dd></div>
+                <div><dt>in front of</dt><dd>delante de</dd></div>
+                <div><dt>above / over</dt><dd>encima de</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <div class="question-block">
+            <label for="vocabulary-answer">
+              Complete: “Jane needs a __________ at the hotel.”
+            </label>
+
+            <input
+              id="vocabulary-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe una palabra en inglés"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-vocabulary" type="button">
+              Revisar respuesta
+            </button>
+
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="4">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 04 · CÓMO SE DICE</p>
+              <h2>Reservar, localizar y alquilar</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">💬</span>
+          </div>
+
+          <div class="phrase-groups">
+            <section class="phrase-group">
+              <h3>1. Hacer una reserva de hotel</h3>
+
+              <dl class="phrase-list">
+                <div><dt>I'd like to make a reservation for a single room with bath, please.</dt><dd>Quisiera reservar una habitación individual con baño.</dd></div>
+                <div><dt>I want to reserve a double room with shower.</dt><dd>Quiero reservar una habitación doble con ducha.</dd></div>
+                <div><dt>Can I have a room with a balcony, please?</dt><dd>¿Puede darme una habitación con balcón?</dd></div>
+                <div><dt>I'd like a room for two nights, please.</dt><dd>Quisiera una habitación para dos noches.</dd></div>
+              </dl>
+            </section>
+
+            <section class="phrase-group">
+              <h3>2. Localizar algo</h3>
+
+              <dl class="phrase-list">
+                <div><dt>It's on the left, next to the newsstand.</dt><dd>Está a la izquierda, al lado del kiosco.</dd></div>
+                <div><dt>It's on the right, near the reception.</dt><dd>Está a la derecha, cerca de recepción.</dd></div>
+                <div><dt>It's beside the door.</dt><dd>Está junto a la puerta.</dd></div>
+                <div><dt>It's opposite the elevator.</dt><dd>Está enfrente del ascensor.</dd></div>
+                <div><dt>It's in front of the hotel.</dt><dd>Está delante del hotel.</dd></div>
+              </dl>
+            </section>
+
+            <section class="phrase-group">
+              <h3>3. Alquilar un coche</h3>
+
+              <dl class="phrase-list">
+                <div><dt>I'd like to rent a car, please.</dt><dd>Quisiera alquilar un coche.</dd></div>
+                <div><dt>Is the mileage included?</dt><dd>¿Está incluido el kilometraje?</dd></div>
+                <div><dt>Do you have a special weekly rate?</dt><dd>¿Tiene una tarifa semanal especial?</dd></div>
+                <div><dt>Is there a flat fee?</dt><dd>¿Hay un precio global?</dd></div>
+                <div><dt>How much is it per day?</dt><dd>¿Cuánto cuesta al día?</dd></div>
+              </dl>
+            </section>
+
+            <section class="phrase-group">
+              <h3>4. Ofrecer ayuda</h3>
+
+              <dl class="phrase-list">
+                <div><dt>Can I give you a lift?</dt><dd>¿Puedo llevarte?</dd></div>
+                <div><dt>Would you like a lift?</dt><dd>¿Quieres que te lleve?</dd></div>
+                <div><dt>Can I help you?</dt><dd>¿Puedo ayudarte?</dd></div>
+                <div><dt>The convertible sounds nice.</dt><dd>El descapotable parece agradable.</dd></div>
+                <div><dt>The BMW must be fast.</dt><dd>El BMW debe ser rápido.</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <div class="sentence-practice">
+            <label for="hotel-answer">
+              Complete: “Quisiera reservar una habitación.” →
+              <strong>I'd like to __________ a room.</strong>
+            </label>
+
+            <input
+              id="hotel-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe el verbo que falta"
+            >
+          </div>
+
+          <div class="sentence-practice">
+            <label for="location-answer">
+              Complete: “Está enfrente del ascensor.” →
+              <strong>It's __________ the elevator.</strong>
+            </label>
+
+            <input
+              id="location-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe la preposición"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-expressions" type="button">
+              Revisar respuestas
+            </button>
+
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="5">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 05 · PRÁCTICA ORAL</p>
+              <h2>I'd like y have got</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">🎤</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>1. I'd like</h3>
+
+            <p class="example-box">
+              <strong>Ejemplo:</strong>
+              Rent a car. → I'd like to rent a car.
+            </p>
+
+            <p>
+              Transforme: Go to the movies. / Go to a restaurant. / Have a drink.
+              / Go for a walk. / Reserve a hotel room. / Drive to Los Angeles.
+            </p>
+          </section>
+
+          <section class="oral-practice-block">
+            <h3>2. Has / Have got</h3>
+
+            <p class="example-box">
+              <strong>Ejemplo:</strong>
+              John has a fast car. → John's got a fast car.
+            </p>
+
+            <p>
+              Transforme: We have a beautiful apartment. / She has a lovely little
+              daughter. / They have good jobs. / I have a red convertible. / You
+              have a black limousine.
+            </p>
+          </section>
+
+          <section class="oral-practice-block">
+            <h3>3. Hasn't / Haven't got</h3>
+
+            <p class="example-box">
+              <strong>Ejemplo:</strong>
+              She's got a brother in London, not a sister. →
+              She hasn't got a sister in London.
+            </p>
+
+            <p>
+              Practique: He's got a Volkswagen, not a BMW. / They've got three
+              daughters, not three sons. / She's got an apartment, not a house. /
+              He's got a single room, not a double one. / It's got a bath, not a shower.
+            </p>
+          </section>
+
+          <label for="have-got-answer">
+            Escriba tres oraciones: una con <strong>I'd like to</strong>, una con
+            <strong>has/have got</strong> y una negativa con
+            <strong>hasn't/haven't got</strong>.
+          </label>
+
+          <textarea
+            id="have-got-answer"
+            placeholder="I'd like to rent a car. Jane has got a room. Tom hasn't got a car."
+          ></textarea>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-have-got" type="button">
+              Guardar práctica oral
+            </button>
+
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="6">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 06 · GRAMÁTICA</p>
+              <h2>One y números ordinales</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">🔢</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>1. One</h3>
+
+            <p class="example-box">
+              <strong>Ejemplo:</strong>
+              You can have a single room or a double room. →
+              You can have a single room or a double one.
+            </p>
+
+            <p>
+              Sustituya el segundo sustantivo por <strong>one</strong>: You can
+              have a green car or a blue car. / You can take the weekly rate or
+              the monthly rate. / You can ask this doorman or that doorman. / You
+              can go to this gas station or that gas station. / You can take a
+              room with a shower or a room without a shower.
+            </p>
+          </section>
+
+          <section class="oral-practice-block">
+            <h3>2. Ordinales</h3>
+
+            <p class="example-box">
+              <strong>Repita:</strong>
+              first, second, third, fourth, fifth, sixth, seventh, eighth, ninth,
+              tenth, eleventh, twelfth, thirteenth, fourteenth, fifteenth,
+              sixteenth, seventeenth, eighteenth, nineteenth, twentieth, thirtieth,
+              fortieth, fiftieth, hundredth, thousandth, millionth.
+            </p>
+          </section>
+
+          <div class="question-block">
+            <label for="ordinal-answer">
+              Complete: “Room 1707, 17th floor.” →
+              <strong>Room 1707 is on the __________ floor.</strong>
+            </label>
+
+            <input
+              id="ordinal-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe el ordinal en inglés"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-ordinal" type="button">
+              Revisar respuesta
+            </button>
+
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="7">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 07 · PRONUNCIACIÓN</p>
+              <h2>Entonación en situaciones reales</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">🗣️</span>
+          </div>
+
+          <p>
+            Repita estas frases cuidando la entonación: disculpas, preguntas,
+            decisiones y ofertas de ayuda.
+          </p>
+
+          <div class="phrase-groups">
+            <section class="phrase-group">
+              <h3>Frases para repetir</h3>
+
+              <dl class="phrase-list">
+                <div><dt>Oh, dear, I'm sorry.</dt><dd>Disculpa y sorpresa.</dd></div>
+                <div><dt>Do you have a reservation in my name?</dt><dd>Pregunta de recepción.</dd></div>
+                <div><dt>I'll take the Ford.</dt><dd>Decisión.</dd></div>
+                <div><dt>The convertible sounds nice.</dt><dd>Opinión.</dd></div>
+                <div><dt>Oh, that's too bad.</dt><dd>Reacción negativa.</dd></div>
+                <div><dt>Don't worry.</dt><dd>Tranquilizar.</dd></div>
+                <div><dt>Can I give you a lift?</dt><dd>Oferta de ayuda.</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <label for="intonation-answer">
+            Escriba dos frases del listado que practicaría primero:
+          </label>
+
+          <textarea
+            id="intonation-answer"
+            placeholder="I'd like to rent a car. Can I give you a lift?"
+          ></textarea>
+
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar pronunciación como completada
+            </button>
+
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="8">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 08 · CULTURA</p>
+              <h2>Hoteles y alquiler de coches</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">🛣️</span>
+          </div>
+
+          <div class="reading-card">
+            <h3>Viajar y comparar opciones</h3>
+
+            <p>
+              La lectura presenta hoteles, moteles y agencias de alquiler de
+              automóviles como servicios comunes para quienes viajan por Estados
+              Unidos. Recomienda comparar precios y servicios antes de elegir un
+              alojamiento o un vehículo.
+            </p>
+
+            <p>
+              Las opciones pueden variar por ciudad, tipo de habitación, temporada,
+              kilometraje, seguros y categoría del automóvil. La expresión
+              <strong>shop around</strong> significa comparar distintas opciones
+              antes de comprar o reservar.
+            </p>
+
+            <p>
+              Para una persona viajera, un hotel puede ofrecer recepción, desayuno,
+              restaurante, información local y transporte. Una agencia de alquiler
+              puede tener tarifas diarias o semanales, y condiciones diferentes para
+              combustible y kilometraje.
+            </p>
+          </div>
+
+          <div class="question-block">
+            <label for="culture-answer">
+              Escriba una oración en inglés usando
+              <strong>hotel</strong>, <strong>car rental</strong>,
+              <strong>per day</strong> o <strong>weekly rate</strong>:
+            </label>
+
+            <input
+              id="culture-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Ejemplo: The hotel has a special weekly rate."
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar lectura como completada
+            </button>
+
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="9">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 09 · ADIVINANZA</p>
+              <h2>El ascensor del décimo piso</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">🛗</span>
+          </div>
+
+          <div class="reading-card">
+            <h3>Riddle</h3>
+
+            <p>
+              A man lives on the tenth floor of an apartment building. Every day
+              he takes the elevator from the tenth floor to the first floor and
+              goes to work. When he comes home in the evening, he takes the
+              elevator from the first floor to the ninth floor, and walks up from
+              the ninth to the tenth floor. Why?
+            </p>
+          </div>
+
+          <div class="question-block">
+            <label for="riddle-answer">
+              Escriba su respuesta en español o inglés:
+            </label>
+
+            <textarea
+              id="riddle-answer"
+              placeholder="He is short and cannot reach the button for the tenth floor."
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-riddle" type="button">
+              Revisar adivinanza
+            </button>
+
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="10">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 10 · REPASO VISUAL</p>
+              <h2>Partes del automóvil</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">🚗</span>
+          </div>
+
+          <p>
+            Observe los dibujos y encuentre las palabras en la sopa de letras.
+            Las palabras pueden aparecer horizontal, vertical, diagonalmente o al revés.
+          </p>
+
+          <figure class="map-figure">
+            <img
+              src="../assets/images/unit-2/car-parts-word-search.png"
+              alt="Dibujos de un automóvil y sopa de letras con vocabulario de partes del coche"
+            >
+            <figcaption>
+              Vocabulario del coche y sopa de letras.
+            </figcaption>
+          </figure>
+
+          <div class="vocabulary-columns">
+            <section class="vocabulary-group">
+              <h3>Palabras para encontrar</h3>
+
+              <dl class="vocabulary-list">
+                <div><dt>window</dt><dd>ventana</dd></div>
+                <div><dt>mirror</dt><dd>espejo</dd></div>
+                <div><dt>door</dt><dd>puerta</dd></div>
+                <div><dt>gas tank</dt><dd>tanque de gasolina</dd></div>
+                <div><dt>tire</dt><dd>llanta, neumático</dd></div>
+                <div><dt>engine</dt><dd>motor</dd></div>
+              </dl>
+            </section>
+
+            <section class="vocabulary-group">
+              <h3>Más partes</h3>
+
+              <dl class="vocabulary-list">
+                <div><dt>headlight</dt><dd>faro delantero</dd></div>
+                <div><dt>bumper</dt><dd>parachoques</dd></div>
+                <div><dt>accelerator</dt><dd>acelerador</dd></div>
+                <div><dt>brake</dt><dd>freno</dd></div>
+                <div><dt>dashboard</dt><dd>tablero</dd></div>
+                <div><dt>tail lights</dt><dd>luces traseras</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <div class="question-block">
+            <label for="car-answer">
+              Escriba al menos cinco partes del coche en inglés separadas por comas:
+            </label>
+
+            <textarea
+              id="car-answer"
+              placeholder="window, mirror, door, engine, tire"
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary finish-lesson" type="button">
+              Completar Entrega 2.1
+            </button>
+
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+      </section>
+
+      <section
+        class="lesson-complete-message"
+        id="lesson-complete-message"
+        aria-live="polite"
+      >
+        <p class="kicker">¡Entrega completada!</p>
+
+        <h2>Excelente trabajo</h2>
+
+        <p>
+          Completaste “En el hotel”. Ya puedes reservar una habitación, alquilar
+          un coche, localizar servicios y describir elementos básicos de un automóvil.
+        </p>
+
+        <a class="button button-primary" href="unit-2.html">
+          Volver a Unidad 2
+        </a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>Unidad 2 · Entrega 1 · En el hotel</span>
+      <a href="unit-2.html">Volver a Unidad 2</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/unit2-delivery1.js"></script>
+</body>
+</html>

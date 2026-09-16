@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+
+  <title>Unidad 2 | 506 English Express</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #07101f;
+      --panel: rgba(5, 16, 35, 0.76);
+      --blue: #2fd7ff;
+      --blue-soft: #8cecff;
+      --gold: #ffc43d;
+      --purple: #b690ff;
+      --green: #71ffc0;
+      --text: #effaff;
+      --muted: rgba(220, 240, 255, 0.76);
+      --border: rgba(118, 226, 255, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Rajdhani", Arial, sans-serif;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .video-bg {
+      position: fixed;
+      inset: -25px;
+      z-index: -10;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .video-bg video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.58;
+      filter: blur(7px) saturate(1.15) contrast(1.08) brightness(0.78);
+      transform: scale(1.08);
+    }
+
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -9;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2, 8, 22, 0.78) 0%,
+          rgba(4, 15, 36, 0.44) 50%,
+          rgba(2, 8, 22, 0.78) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(2, 8, 20, 0.28) 0%,
+          rgba(3, 11, 27, 0.58) 100%
+        );
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -8;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(80, 216, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(80, 216, 255, 0.06) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      z-index: -7;
+      pointer-events: none;
+      opacity: 0.14;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.035) 0,
+          rgba(255, 255, 255, 0.035) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+    }
+
+    .topbar {
+      border-bottom: 1px solid rgba(47, 215, 255, 0.17);
+      background: rgba(2, 9, 22, 0.65);
+      backdrop-filter: blur(12px);
+    }
+
+    .topbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 38px;
+      color: rgba(216, 244, 255, 0.72);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(47, 215, 255, 0.16);
+      background: rgba(3, 11, 28, 0.8);
+      backdrop-filter: blur(20px);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      min-height: 78px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid rgba(47, 215, 255, 0.72);
+      border-radius: 10px;
+      background: rgba(47, 215, 255, 0.12);
+      box-shadow: 0 0 18px rgba(47, 215, 255, 0.3);
+      color: var(--blue);
+      font-size: 1.15rem;
+    }
+
+    .brand-text {
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.93rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-text strong {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 0.5rem 0.7rem;
+      border-radius: 8px;
+      color: rgba(224, 244, 255, 0.8);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(47, 215, 255, 0.12);
+      color: var(--blue);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.7rem 1.05rem;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      box-shadow: 0 0 18px rgba(47, 215, 255, 0.32);
+      color: #061321;
+    }
+
+    .button-outline {
+      border-color: rgba(47, 215, 255, 0.62);
+      background: rgba(47, 215, 255, 0.08);
+      color: var(--blue-soft);
+    }
+
+    .button-small {
+      min-height: 36px;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.64rem;
+    }
+
+    .hero {
+      padding: clamp(3.8rem, 8vw, 6.2rem) 0 2.2rem;
+    }
+
+    .kicker {
+      margin: 0 0 0.7rem;
+      color: var(--gold);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      margin: 0;
+      color: #f6fcff;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.12;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--purple);
+      text-shadow: 0 0 22px rgba(182, 144, 255, 0.35);
+    }
+
+    .hero p {
+      max-width: 850px;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.55;
+    }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 1.8rem;
+      padding: 1.15rem 1.3rem;
+      border: 1px solid rgba(255, 196, 61, 0.38);
+      border-radius: 14px;
+      background: rgba(255, 196, 61, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .alert-icon {
+      display: grid;
+      width: 47px;
+      height: 47px;
+      place-items: center;
+      border: 1px solid rgba(255, 196, 61, 0.5);
+      border-radius: 12px;
+      color: var(--gold);
+      font-size: 1.35rem;
+    }
+
+    .alert h2 {
+      margin: 0;
+      color: #fff6d9;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.96rem;
+      text-transform: uppercase;
+    }
+
+    .alert p {
+      margin: 0.35rem 0 0;
+      color: rgba(255, 246, 220, 0.8);
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .material-section {
+      padding: 1.6rem 0 5rem;
+    }
+
+    .unit-progress {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.55rem 1rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid rgba(182, 144, 255, 0.3);
+      border-radius: 15px;
+      background: rgba(5, 16, 35, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .unit-progress strong {
+      color: #f3edff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .progress-value {
+      color: var(--purple);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .progress-track {
+      grid-column: 1 / -1;
+      height: 9px;
+      overflow: hidden;
+      border: 1px solid rgba(182, 144, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--purple), var(--blue));
+      box-shadow: 0 0 12px rgba(182, 144, 255, 0.65);
+    }
+
+    .delivery-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .delivery-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1.2rem;
+      align-items: center;
+      padding: 1.3rem;
+      border: 1px solid rgba(182, 144, 255, 0.3);
+      border-radius: 16px;
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .delivery-card.locked {
+      border-color: rgba(255, 255, 255, 0.13);
+      background: rgba(4, 12, 29, 0.6);
+      opacity: 0.72;
+    }
+
+    .delivery-icon {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      border: 1px solid rgba(182, 144, 255, 0.52);
+      border-radius: 14px;
+      background: rgba(182, 144, 255, 0.1);
+      color: var(--purple);
+      font-size: 1.55rem;
+    }
+
+    .delivery-card.locked .delivery-icon {
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(225, 240, 255, 0.58);
+    }
+
+    .delivery-number {
+      margin: 0;
+      color: var(--purple);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .delivery-card.locked .delivery-number {
+      color: rgba(225, 240, 255, 0.56);
+    }
+
+    .delivery-card h2 {
+      margin: 0.35rem 0 0;
+      color: #f7fcff;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.28rem);
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .delivery-card p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .locked-button {
+      pointer-events: none;
+      border-color: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: none;
+      color: rgba(239, 250, 255, 0.48);
+      cursor: not-allowed;
+      white-space: nowrap;
+    }
+
+    .preview-section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(47, 215, 255, 0.27);
+      border-radius: 16px;
+      background: rgba(5, 16, 35, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .preview-section h2 {
+      margin: 0;
+      color: #f5fbff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+    }
+
+    .preview-section > p {
+      margin: 0.75rem 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+      margin-top: 1.2rem;
+    }
+
+    .preview-card {
+      padding: 1rem;
+      border: 1px solid rgba(118, 226, 255, 0.17);
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.17);
+    }
+
+    .preview-card span {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--gold);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+    }
+
+    .preview-card h3 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .preview-card p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    footer {
+      margin-top: 2rem;
+      border-top: 1px solid rgba(47, 215, 255, 0.15);
+      background: rgba(1, 8, 20, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 75px;
+      color: rgba(218, 240, 255, 0.68);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 760px) {
+      .navbar {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 0.85rem 0;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+      }
+
+      .delivery-card {
+        grid-template-columns: auto 1fr;
+      }
+
+      .delivery-card > .button {
+        grid-column: 1 / -1;
+        width: fit-content;
+      }
+
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-content,
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.55rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .alert {
+        grid-template-columns: 1fr;
+      }
+
+      .delivery-card {
+        gap: 0.85rem;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source src="../assets/video/dame_otra.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="video-overlay" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="container topbar-content">
+      <span>506 English Express</span>
+      <span>Unidad 2 · Material y progreso</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container navbar" aria-label="Navegación principal">
+      <a href="../index.html" class="brand" aria-label="Volver al inicio">
+        <span class="brand-mark" aria-hidden="true">⚡</span>
+        <span class="brand-text">English <strong>506</strong> Express</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="units.html">Unidades</a>
+        <a href="unit-2.html" class="active">Unidad 2</a>
+      </div>
+
+      <a href="unit-1.html" class="button button-outline button-small">
+        Unidad anterior
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="kicker">Unidad 02 · Viajes y situaciones sociales</p>
+
+        <h1>
+          Aprende inglés para <span>viajar y comunicarte</span>
+        </h1>
+
+        <p>
+          En esta unidad practicarás conversaciones de hotel, alquiler de autos,
+          restaurantes, cantidades, comparaciones, cultura de Texas y repaso
+          final.
+        </p>
+
+        <aside class="alert">
+          <div class="alert-icon" aria-hidden="true">🔒</div>
+
+          <div>
+            <h2>Unidad con acceso progresivo</h2>
+            <p>
+              Debes completar la Unidad 1 y sus actividades anteriores para
+              desbloquear los ejercicios de esta unidad.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="material-section">
+      <div class="container">
+        <div class="unit-progress">
+          <strong>Progreso de Unidad 2</strong>
+          <span class="progress-value">Bloqueada · 0%</span>
+
+          <div class="progress-track" aria-label="Progreso de Unidad 2">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="delivery-list">
+          <article class="delivery-card locked">
+            <div class="delivery-icon" aria-hidden="true">🏨</div>
+
+            <div>
+              <p class="delivery-number">Entrega 2.1</p>
+              <h2>En el hotel</h2>
+              <p>
+                Reservas, tipos de habitaciones, pisos, ubicaciones y expresiones
+                para comunicarse en un hotel.
+              </p>
+            </div>
+
+            <span class="button locked-button">🔒 Requiere Unidad 1</span>
+          </article>
+
+          <article class="delivery-card locked">
+            <div class="delivery-icon" aria-hidden="true">🚗</div>
+
+            <div>
+              <p class="delivery-number">Entrega 2.2</p>
+              <h2>Alquiler de autos y viajes</h2>
+              <p>
+                Precios, kilometraje, tarifas por semana, vehículos y vocabulario
+                necesario para viajar por carretera.
+              </p>
+            </div>
+
+            <span class="button locked-button">🔒 Bloqueada</span>
+          </article>
+
+          <article class="delivery-card locked">
+            <div class="delivery-icon" aria-hidden="true">🛢️</div>
+
+            <div>
+              <p class="delivery-number">Entrega 2.3</p>
+              <h2>Negocios y comparaciones</h2>
+              <p>
+                Opiniones, cantidades, comparativos, superlativos, “how much”,
+                “how many”, “a few” y “a little”.
+              </p>
+            </div>
+
+            <span class="button locked-button">🔒 Bloqueada</span>
+          </article>
+
+          <article class="delivery-card locked">
+            <div class="delivery-icon" aria-hidden="true">🍽️</div>
+
+            <div>
+              <p class="delivery-number">Entrega 2.4</p>
+              <h2>En el restaurante</h2>
+              <p>
+                Pedir comida, solicitar recomendaciones, describir platos,
+                bebidas, carne, guarniciones y hacer un brindis.
+              </p>
+            </div>
+
+            <span class="button locked-button">🔒 Bloqueada</span>
+          </article>
+
+          <article class="delivery-card locked">
+            <div class="delivery-icon" aria-hidden="true">🤠</div>
+
+            <div>
+              <p class="delivery-number">Entrega 2.5</p>
+              <h2>Texas, cultura y repaso</h2>
+              <p>
+                Cultura de Texas, cuestionario, canción, pronunciación y
+                evaluación final de la unidad.
+              </p>
+            </div>
+
+            <span class="button locked-button">🔒 Bloqueada</span>
+          </article>
+        </div>
+
+        <section class="preview-section">
+          <h2>Vista preliminar del material</h2>
+
+          <p>
+            Aunque los ejercicios están bloqueados, puedes ver los temas que
+            estudiarás cuando completes la Unidad 1.
+          </p>
+
+          <div class="preview-grid">
+            <article class="preview-card">
+              <span>VOCABULARIO</span>
+              <h3>Hotel y transporte</h3>
+              <p>
+                Reservation, room, floor, key, car rental, mileage, highway y
+                directions.
+              </p>
+            </article>
+
+            <article class="preview-card">
+              <span>GRAMÁTICA</span>
+              <h3>Cantidades y comparación</h3>
+              <p>
+                Have got, one/ones, ordinal numbers, comparatives, as...as,
+                much, many, few y little.
+              </p>
+            </article>
+
+            <article class="preview-card">
+              <span>COMUNICACIÓN</span>
+              <h3>Situaciones reales</h3>
+              <p>
+                Reservar una habitación, alquilar un auto, ordenar comida y
+                hablar sobre negocios y viajes.
+              </p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>Unidad 2 · Viajes y situaciones sociales</span>
+
+      <a href="units.html" class="button button-outline button-small">
+        Ver unidades
+      </a>
+    </div>
+  </footer>
+</body>
+</html>

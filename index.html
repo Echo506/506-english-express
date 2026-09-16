@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <meta
+    name="description"
+    content="506 English Express: curso de inglés progresivo con diálogos, vocabulario, gramática, cultura y actividades interactivas."
+  >
+
+  <title>506 English Express | Aprende inglés paso a paso</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #07101f;
+      --panel: rgba(5, 16, 35, 0.72);
+      --panel-strong: rgba(3, 11, 27, 0.85);
+      --blue: #2fd7ff;
+      --blue-soft: #8cecff;
+      --gold: #ffc43d;
+      --purple: #b690ff;
+      --green: #71ffc0;
+      --text: #effaff;
+      --muted: rgba(220, 240, 255, 0.78);
+      --border: rgba(118, 226, 255, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Rajdhani", Arial, sans-serif;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .video-bg {
+      position: fixed;
+      inset: -25px;
+      z-index: -10;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .video-bg video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.58;
+      filter: blur(7px) saturate(1.15) contrast(1.08) brightness(0.78);
+      transform: scale(1.08);
+    }
+
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -9;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2, 8, 22, 0.78) 0%,
+          rgba(4, 15, 36, 0.44) 50%,
+          rgba(2, 8, 22, 0.78) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(2, 8, 20, 0.28) 0%,
+          rgba(3, 11, 27, 0.58) 100%
+        );
+      transition: background 0.4s ease;
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -8;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(80, 216, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(80, 216, 255, 0.06) 1px, transparent 1px);
+      background-size: 38px 38px;
+      transition: background-image 0.4s ease;
+    }
+
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      z-index: -7;
+      pointer-events: none;
+      opacity: 0.14;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.035) 0,
+          rgba(255, 255, 255, 0.035) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+    }
+
+    .topbar {
+      border-bottom: 1px solid rgba(47, 215, 255, 0.17);
+      background: rgba(2, 9, 22, 0.65);
+      backdrop-filter: blur(12px);
+    }
+
+    .topbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 38px;
+      color: rgba(216, 244, 255, 0.72);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(47, 215, 255, 0.16);
+      background: rgba(3, 11, 28, 0.78);
+      backdrop-filter: blur(20px);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      min-height: 78px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid rgba(47, 215, 255, 0.72);
+      border-radius: 10px;
+      background: rgba(47, 215, 255, 0.12);
+      box-shadow: 0 0 18px rgba(47, 215, 255, 0.3);
+      color: var(--blue);
+      font-size: 1.15rem;
+    }
+
+    .brand-text {
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.93rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-text strong {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 0.5rem 0.7rem;
+      border-radius: 8px;
+      color: rgba(224, 244, 255, 0.8);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(47, 215, 255, 0.12);
+      color: var(--blue);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.7rem 1.05rem;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      box-shadow: 0 0 18px rgba(47, 215, 255, 0.32);
+      color: #061321;
+    }
+
+    .button-primary:hover {
+      box-shadow: 0 0 30px rgba(47, 215, 255, 0.56);
+    }
+
+    .button-outline {
+      border-color: rgba(47, 215, 255, 0.62);
+      background: rgba(47, 215, 255, 0.08);
+      color: var(--blue-soft);
+    }
+
+    .button-small {
+      min-height: 36px;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.64rem;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.38rem;
+      min-height: 36px;
+      padding: 0.45rem 0.62rem;
+      border: 1px solid rgba(113, 255, 192, 0.55);
+      border-radius: 9px;
+      background: rgba(113, 255, 192, 0.08);
+      box-shadow: 0 0 12px rgba(113, 255, 192, 0.14);
+      color: #baffda;
+      cursor: pointer;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      background: rgba(113, 255, 192, 0.16);
+      box-shadow: 0 0 22px rgba(113, 255, 192, 0.36);
+    }
+
+    .theme-toggle-icon {
+      color: var(--green);
+      font-size: 0.85rem;
+      text-shadow: 0 0 10px rgba(113, 255, 192, 0.9);
+    }
+
+    .hero {
+      padding: clamp(4.6rem, 10vw, 8.2rem) 0 5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(290px, 0.75fr);
+      align-items: center;
+      gap: clamp(2rem, 5vw, 5rem);
+    }
+
+    .kicker {
+      margin: 0 0 0.7rem;
+      color: var(--gold);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 820px;
+      margin: 0;
+      color: #f6fcff;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2.25rem, 6vw, 5.6rem);
+      line-height: 1.06;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+      text-shadow: 0 0 24px rgba(47, 215, 255, 0.4);
+    }
+
+    .hero-text {
+      max-width: 760px;
+      margin: 1.45rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.8vw, 1.27rem);
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.75rem;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 365px;
+      padding: 1.8rem;
+      border: 1px solid rgba(47, 215, 255, 0.4);
+      border-radius: 20px;
+      background: linear-gradient(150deg, rgba(17, 48, 80, 0.72), rgba(4, 12, 31, 0.78));
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 35px rgba(47, 215, 255, 0.15);
+    }
+
+    .hero-card::before {
+      position: absolute;
+      top: -44%;
+      right: -28%;
+      width: 280px;
+      height: 280px;
+      border: 1px solid rgba(47, 215, 255, 0.28);
+      border-radius: 50%;
+      box-shadow: 0 0 0 28px rgba(47, 215, 255, 0.04), 0 0 0 58px rgba(47, 215, 255, 0.025);
+      content: "";
+    }
+
+    .hero-card::after {
+      position: absolute;
+      right: 1.4rem;
+      bottom: 1.1rem;
+      color: rgba(47, 215, 255, 0.22);
+      content: "ENGLISH";
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 5vw, 4.8rem);
+      font-weight: 800;
+      letter-spacing: 0.15em;
+    }
+
+    .hero-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-number {
+      display: block;
+      color: var(--gold);
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(4.2rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.9;
+      text-shadow: 0 0 25px rgba(255, 196, 61, 0.3);
+    }
+
+    .hero-card-title {
+      display: block;
+      margin-top: 0.5rem;
+      color: #e9fbff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.18rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-card p {
+      max-width: 260px;
+      margin: 1.4rem 0;
+      color: rgba(230, 246, 255, 0.8);
+      line-height: 1.45;
+    }
+
+    .course-ready {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid rgba(47, 215, 255, 0.3);
+      border-radius: 999px;
+      background: rgba(47, 215, 255, 0.09);
+      color: #c5f7ff;
+      font-size: 0.93rem;
+      font-weight: 700;
+    }
+
+    .ready-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4fffa3;
+      box-shadow: 0 0 12px rgba(79, 255, 163, 0.9);
+    }
+
+    .content-section,
+    .course-section,
+    .start-section {
+      padding: 5rem 0;
+    }
+
+    .course-section {
+      border-top: 1px solid rgba(47, 215, 255, 0.12);
+      border-bottom: 1px solid rgba(47, 215, 255, 0.12);
+      background: rgba(1, 8, 20, 0.34);
+      backdrop-filter: blur(3px);
+    }
+
+    .section-heading {
+      max-width: 850px;
+      margin-bottom: 2rem;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: #f5fbff;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.65rem, 4vw, 3rem);
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    .section-heading > p:last-child {
+      margin: 1rem 0 0;
+      color: var(--muted);
+      font-size: 1.12rem;
+      line-height: 1.55;
+    }
+
+    .features-grid,
+    .course-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .course-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-card,
+    .course-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-card {
+      padding: 1.4rem;
+    }
+
+    .feature-card::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
+      content: "";
+    }
+
+    .feature-number {
+      display: block;
+      margin-bottom: 0.7rem;
+      color: var(--gold);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+    }
+
+    .feature-card h3 {
+      margin: 0;
+      color: #f5fbff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .feature-card p {
+      margin: 0.65rem 0 0;
+      color: var(--muted);
+      line-height: 1.48;
+    }
+
+    .course-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+      padding: 1.55rem;
+      transition: transform 0.23s ease, border-color 0.23s ease, box-shadow 0.23s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(47, 215, 255, 0.7);
+      box-shadow: 0 16px 36px rgba(0, 12, 35, 0.5);
+    }
+
+    .course-card:nth-child(2) {
+      border-color: rgba(182, 144, 255, 0.38);
+    }
+
+    .course-card:nth-child(3) {
+      border-color: rgba(255, 196, 61, 0.38);
+    }
+
+    .course-card:nth-child(4) {
+      border-color: rgba(79, 255, 163, 0.38);
+    }
+
+    .course-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .unit-label {
+      color: var(--blue);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .course-card:nth-child(2) .unit-label {
+      color: var(--purple);
+    }
+
+    .course-card:nth-child(3) .unit-label {
+      color: var(--gold);
+    }
+
+    .course-card:nth-child(4) .unit-label {
+      color: var(--green);
+    }
+
+    .status {
+      padding: 0.32rem 0.55rem;
+      border: 1px solid rgba(79, 255, 163, 0.45);
+      border-radius: 999px;
+      background: rgba(79, 255, 163, 0.1);
+      color: #8affc7;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.57rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .course-card h3 {
+      margin: 1.25rem 0 0;
+      color: #f7fcff;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+      line-height: 1.26;
+      text-transform: uppercase;
+    }
+
+    .course-card p {
+      flex: 1;
+      margin: 0.9rem 0 1.4rem;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.45;
+    }
+
+    .course-card .button {
+      width: fit-content;
+    }
+
+    .start-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      border: 1px solid rgba(255, 196, 61, 0.44);
+      border-radius: 20px;
+      background: linear-gradient(125deg, rgba(255, 196, 61, 0.15), rgba(5, 18, 38, 0.7));
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 34px rgba(255, 196, 61, 0.11);
+    }
+
+    .start-card h2 {
+      margin: 0;
+      color: #fff9e8;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.3rem, 3vw, 2.1rem);
+      text-transform: uppercase;
+    }
+
+    .start-card p:last-child {
+      max-width: 780px;
+      margin: 0.8rem 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      border-top: 1px solid rgba(47, 215, 255, 0.15);
+      background: rgba(1, 8, 20, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 75px;
+      color: rgba(218, 240, 255, 0.68);
+      font-size: 0.95rem;
+    }
+
+    /* Tema verde cyber */
+    .cyber-green-theme {
+      --bg: #03150e;
+      --panel: rgba(3, 34, 22, 0.76);
+      --panel-strong: rgba(2, 24, 16, 0.88);
+      --blue: #52ffac;
+      --blue-soft: #baffdc;
+      --gold: #d8ff55;
+      --purple: #72ffbe;
+      --green: #52ffac;
+      --border: rgba(82, 255, 172, 0.36);
+    }
+
+    .cyber-green-theme .video-overlay {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(1, 16, 10, 0.84) 0%,
+          rgba(4, 44, 26, 0.42) 50%,
+          rgba(1, 16, 10, 0.84) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(2, 23, 13, 0.3) 0%,
+          rgba(1, 13, 9, 0.68) 100%
+        );
+    }
+
+    .cyber-green-theme .grid-overlay {
+      background-image:
+        linear-gradient(rgba(82, 255, 172, 0.075) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(82, 255, 172, 0.075) 1px, transparent 1px);
+    }
+
+    .cyber-green-theme .topbar,
+    .cyber-green-theme header {
+      border-color: rgba(82, 255, 172, 0.22);
+      background: rgba(1, 18, 11, 0.78);
+    }
+
+    .cyber-green-theme .brand-mark {
+      border-color: rgba(82, 255, 172, 0.72);
+      background: rgba(82, 255, 172, 0.1);
+      box-shadow: 0 0 18px rgba(82, 255, 172, 0.3);
+    }
+
+    .cyber-green-theme .nav-links a:hover {
+      background: rgba(82, 255, 172, 0.12);
+      color: #baffdc;
+    }
+
+    .cyber-green-theme .button-primary {
+      background: linear-gradient(135deg, #52ffac, #baffdc);
+      box-shadow: 0 0 20px rgba(82, 255, 172, 0.38);
+      color: #041b10;
+    }
+
+    .cyber-green-theme .button-primary:hover {
+      box-shadow: 0 0 32px rgba(82, 255, 172, 0.66);
+    }
+
+    .cyber-green-theme .button-outline {
+      border-color: rgba(82, 255, 172, 0.68);
+      background: rgba(82, 255, 172, 0.08);
+      color: #baffdc;
+    }
+
+    .cyber-green-theme .hero h1 span {
+      text-shadow: 0 0 24px rgba(82, 255, 172, 0.5);
+    }
+
+    .cyber-green-theme .hero-card {
+      border-color: rgba(82, 255, 172, 0.45);
+      background: linear-gradient(150deg, rgba(10, 75, 43, 0.72), rgba(3, 22, 14, 0.82));
+      box-shadow: 0 0 35px rgba(82, 255, 172, 0.18);
+    }
+
+    .cyber-green-theme .hero-card::before {
+      border-color: rgba(82, 255, 172, 0.28);
+      box-shadow: 0 0 0 28px rgba(82, 255, 172, 0.04), 0 0 0 58px rgba(82, 255, 172, 0.025);
+    }
+
+    .cyber-green-theme .hero-card::after {
+      color: rgba(82, 255, 172, 0.22);
+    }
+
+    .cyber-green-theme .course-ready {
+      border-color: rgba(82, 255, 172, 0.34);
+      background: rgba(82, 255, 172, 0.08);
+      color: #c9ffe3;
+    }
+
+    .cyber-green-theme .course-section {
+      border-color: rgba(82, 255, 172, 0.15);
+      background: rgba(1, 18, 11, 0.38);
+    }
+
+    .cyber-green-theme .course-card:hover {
+      border-color: rgba(82, 255, 172, 0.74);
+      box-shadow: 0 16px 36px rgba(0, 34, 19, 0.5);
+    }
+
+    .cyber-green-theme footer {
+      border-color: rgba(82, 255, 172, 0.18);
+      background: rgba(1, 16, 10, 0.76);
+    }
+
+    .cyber-green-theme .theme-toggle {
+      border-color: rgba(216, 255, 85, 0.8);
+      background: rgba(216, 255, 85, 0.12);
+      box-shadow: 0 0 22px rgba(216, 255, 85, 0.35);
+      color: #f2ffd1;
+    }
+
+    .cyber-green-theme .theme-toggle-icon {
+      color: #e7ff68;
+    }
+
+    .theme-flash {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        radial-gradient(circle at center, rgba(205, 255, 226, 0.78), rgba(82, 255, 172, 0.2) 28%, transparent 66%),
+        repeating-linear-gradient(
+          0deg,
+          rgba(82, 255, 172, 0.18) 0,
+          rgba(82, 255, 172, 0.18) 1px,
+          transparent 1px,
+          transparent 7px
+        );
+    }
+
+    .theme-flash.play {
+      animation: cyber-theme-flash 0.62s ease-out both;
+    }
+
+    @keyframes cyber-theme-flash {
+      0% {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+
+      16% {
+        opacity: 0.95;
+      }
+
+      42% {
+        opacity: 0.18;
+        transform: scale(1.03);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(1.08);
+      }
+    }
+
+    @media (max-width: 960px) {
+      .navbar {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 0.85rem 0;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .hero-grid,
+      .features-grid,
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 290px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .topbar-content,
+      .footer-content,
+      .start-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .topbar-content {
+        justify-content: center;
+        padding: 0.55rem 0;
+      }
+
+      .nav-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .nav-links a {
+        padding: 0.38rem 0.42rem;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      .hero-card {
+        min-height: 260px;
+      }
+
+      .content-section,
+      .course-section,
+      .start-section {
+        padding: 3.6rem 0;
+      }
+
+      .theme-toggle-text {
+        display: none;
+      }
+
+      .theme-toggle {
+        width: 38px;
+        padding: 0.35rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .theme-flash.play {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source
+        src="assets/video/dame_otra.mp4"
+        type="video/mp4"
+      >
+    </video>
+  </div>
+
+  <div class="video-overlay" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="container topbar-content">
+      <span>506 English Express</span>
+      <span>Unidades 1, 2, 3 y 4 · Aprendizaje progresivo</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container navbar" aria-label="Navegación principal">
+      <a href="#inicio" class="brand" aria-label="Ir al inicio">
+        <span class="brand-mark" aria-hidden="true">⚡</span>
+        <span class="brand-text">English <strong>506</strong> Express</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#bienvenida">Bienvenida</a>
+        <a href="#ruta">Ruta</a>
+        <a href="pages/units.html">Unidades</a>
+      </div>
+
+      <div class="nav-actions">
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Activar tema verde cyber"
+          aria-pressed="false"
+          title="Cambiar a modo verde cyber"
+        >
+          <span class="theme-toggle-icon" aria-hidden="true">⚡</span>
+          <span class="theme-toggle-text">CYBER</span>
+        </button>
+
+        <a href="pages/unit-1.html" class="button button-primary button-small">
+          Comenzar
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">English through real situations</p>
+
+          <h1>
+            ¡Bienvenido a<br>
+            <span>506 English Express!</span>
+          </h1>
+
+          <p class="hero-text">
+            Aprende inglés paso a paso mediante conversaciones reales,
+            vocabulario, gramática, pronunciación, cultura y actividades
+            interactivas.
+          </p>
+
+          <p class="hero-text">
+            Completa cada actividad para desbloquear la siguiente y construye
+            tu progreso desde las bases hasta situaciones cotidianas,
+            profesionales y de viaje.
+          </p>
+
+          <div class="hero-actions">
+            <a href="pages/units.html" class="button button-outline">
+              Explorar el curso
+            </a>
+
+            <a href="pages/unit-1.html" class="button button-primary">
+              Iniciar Unidad 1
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Resumen del curso">
+          <div class="hero-card-content">
+            <span class="hero-number">506</span>
+            <span class="hero-card-title">English Express</span>
+
+            <p>
+              Diálogos reales, práctica activa y avance guardado en tu
+              dispositivo.
+            </p>
+
+            <div class="course-ready">
+              <span class="ready-dot" aria-hidden="true"></span>
+              Curso disponible
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="content-section" id="bienvenida">
+      <div class="container">
+        <div class="section-heading">
+          <p class="kicker">Tu forma de aprender</p>
+          <h2>Inglés práctico para situaciones reales</h2>
+
+          <p>
+            El curso sigue una ruta progresiva: primero comprendes el contexto,
+            después practicas vocabulario y gramática, y finalmente aplicas lo
+            aprendido mediante escritura, comprensión y comunicación.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <span class="feature-number">01 · CONTEXTO</span>
+            <h3>Diálogos reales</h3>
+            <p>
+              Aprende con conversaciones sobre personas, trabajos, viajes,
+              hoteles, restaurantes, noticias, carreteras y celebraciones.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-number">02 · PRÁCTICA</span>
+            <h3>Aprendizaje activo</h3>
+            <p>
+              Completa actividades de vocabulario, gramática, pronunciación,
+              comprensión, traducción y escritura guiada.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-number">03 · PROGRESO</span>
+            <h3>Avance visible</h3>
+            <p>
+              Las actividades se desbloquean de forma progresiva y tus
+              respuestas pueden conservarse en el navegador.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="course-section" id="ruta">
+      <div class="container">
+        <div class="section-heading">
+          <p class="kicker">Mapa de aprendizaje</p>
+          <h2>Avanza por unidades</h2>
+
+          <p>
+            Cada unidad contiene sus propias entregas. Puedes entrar desde aquí
+            y continuar el proceso de aprendizaje en el orden recomendado.
+          </p>
+        </div>
+
+        <div class="course-grid" id="unidades">
+          <article class="course-card">
+            <div class="course-card-top">
+              <span class="unit-label">Unidad 01</span>
+              <span class="status">Disponible</span>
+            </div>
+
+            <h3>Contactos y comunicación</h3>
+
+            <p>
+              Saludos, presentaciones, profesiones, nacionalidades,
+              pronunciación, direcciones y situaciones iniciales en Nueva York.
+            </p>
+
+            <a class="button button-primary" href="pages/unit-1.html">
+              Abrir Unidad 1
+            </a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card-top">
+              <span class="unit-label">Unidad 02</span>
+              <span class="status">Disponible</span>
+            </div>
+
+            <h3>Viajes y situaciones sociales</h3>
+
+            <p>
+              Hoteles, alquiler de autos, restaurantes, comparaciones,
+              cantidades, cultura y comunicación para viajes.
+            </p>
+
+            <a class="button button-primary" href="pages/unit-2.html">
+              Abrir Unidad 2
+            </a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card-top">
+              <span class="unit-label">Unidad 03</span>
+              <span class="status">Disponible</span>
+            </div>
+
+            <h3>Experiencias y comunicación</h3>
+
+            <p>
+              Continúa con diálogos, situaciones cotidianas, práctica oral,
+              comprensión, vocabulario y estructuras para comunicarte mejor.
+            </p>
+
+            <a class="button button-primary" href="pages/unit-3.html">
+              Abrir Unidad 3
+            </a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card-top">
+              <span class="unit-label">Unidad 04</span>
+              <span class="status">Disponible</span>
+            </div>
+
+            <h3>Situaciones reales y cultura</h3>
+
+            <p>
+              Llamadas, viajes, noticias, carreteras, favores, publicidad,
+              celebraciones, condicionales y la historia de Annie Oakley.
+            </p>
+
+            <a class="button button-primary" href="pages/unit-4.html">
+              Abrir Unidad 4
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="start-section">
+      <div class="container start-card">
+        <div>
+          <p class="kicker">Comienza ahora</p>
+          <h2>Unidad 1 · Contactos</h2>
+
+          <p>
+            Inicia con presentaciones, saludos, nacionalidades y conversaciones
+            básicas. Completa las actividades para habilitar progresivamente las
+            siguientes lecciones.
+          </p>
+        </div>
+
+        <a class="button button-primary" href="pages/unit-1.html">
+          Empezar curso
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>Aprender · Practicar · Avanzar</span>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const toggle = document.getElementById("theme-toggle");
+
+      if (!toggle) {
+        return;
+      }
+
+      const flash = document.createElement("div");
+      flash.className = "theme-flash";
+      flash.setAttribute("aria-hidden", "true");
+      document.body.appendChild(flash);
+
+      function setTheme(enabled, withFlash = false) {
+        document.body.classList.toggle("cyber-green-theme", enabled);
+
+        toggle.setAttribute("aria-pressed", String(enabled));
+        toggle.setAttribute(
+          "aria-label",
+          enabled
+            ? "Volver al tema azul original"
+            : "Activar tema verde cyber"
+        );
+
+        toggle.setAttribute(
+          "title",
+          enabled
+            ? "Volver al tema azul original"
+            : "Cambiar a modo verde cyber"
+        );
+
+        const label = toggle.querySelector(".theme-toggle-text");
+
+        if (label) {
+          label.textContent = enabled ? "AZUL" : "CYBER";
+        }
+
+        localStorage.setItem(
+          "506EnglishExpress.homeTheme",
+          enabled ? "green" : "blue"
+        );
+
+        if (withFlash) {
+          flash.classList.remove("play");
+          void flash.offsetWidth;
+          flash.classList.add("play");
+        }
+      }
+
+      const savedTheme = localStorage.getItem("506EnglishExpress.homeTheme");
+      setTheme(savedTheme === "green");
+
+      toggle.addEventListener("click", () => {
+        const enableGreen = !document.body.classList.contains(
+          "cyber-green-theme"
+        );
+
+        setTheme(enableGreen, true);
+      });
+    })();
+  </script>
+</body>
+</html>

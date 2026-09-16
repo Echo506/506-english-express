@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <title>Mi progreso | 506 English Express</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #07101f;
+      --panel: rgba(5, 16, 35, 0.82);
+      --blue: #2fd7ff;
+      --gold: #ffc43d;
+      --purple: #b690ff;
+      --green: #71ffc0;
+      --text: #effaff;
+      --muted: rgba(220, 240, 255, 0.78);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(47, 215, 255, 0.12), transparent 34%),
+        radial-gradient(circle at bottom left, rgba(182, 144, 255, 0.1), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Rajdhani", Arial, sans-serif;
+    }
+
+    .container {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid rgba(47, 215, 255, 0.2);
+      background: rgba(3, 11, 28, 0.82);
+      backdrop-filter: blur(14px);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 76px;
+    }
+
+    .brand {
+      color: white;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand strong {
+      color: var(--gold);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.72rem 1rem;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .button-primary {
+      background: var(--blue);
+      color: #061321;
+    }
+
+    .button-outline {
+      border-color: rgba(47, 215, 255, 0.56);
+      background: rgba(47, 215, 255, 0.08);
+      color: #a9f1ff;
+    }
+
+    main {
+      padding: 4.5rem 0 5rem;
+    }
+
+    .kicker {
+      margin: 0 0 0.8rem;
+      color: var(--gold);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      text-transform: uppercase;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .intro {
+      max-width: 750px;
+      margin: 1rem 0 0;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.55;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border: 1px solid rgba(47, 215, 255, 0.38);
+      border-radius: 16px;
+      background: var(--panel);
+    }
+
+    .summary h2 {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .summary p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+    }
+
+    .total-percent {
+      color: var(--blue);
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2.6rem, 7vw, 4.5rem);
+      font-weight: 800;
+    }
+
+    .track {
+      height: 10px;
+      overflow: hidden;
+      margin-top: 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      box-shadow: 0 0 16px rgba(47, 215, 255, 0.45);
+      transition: width 0.35s ease;
+    }
+
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .unit-card {
+      padding: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 15px;
+      background: var(--panel);
+    }
+
+    .unit-card.is-locked {
+      opacity: 0.7;
+    }
+
+    .unit-card.is-unlocked {
+      border-color: rgba(113, 255, 192, 0.35);
+    }
+
+    .unit-label {
+      margin: 0;
+      color: var(--gold);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .unit-card h2 {
+      margin: 0.5rem 0 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .unit-card > p {
+      min-height: 48px;
+      margin: 0.7rem 0;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 0.65rem;
+      border: 1px solid rgba(255, 196, 61, 0.42);
+      border-radius: 8px;
+      background: rgba(255, 196, 61, 0.1);
+      color: #ffe29a;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .status.available {
+      border-color: rgba(113, 255, 192, 0.45);
+      background: rgba(113, 255, 192, 0.1);
+      color: #c7ffe5;
+    }
+
+    .unit-card .button {
+      margin-top: 1rem;
+    }
+
+    .reset {
+      margin-top: 2rem;
+      padding: 0.72rem 1rem;
+      border: 1px solid rgba(255, 106, 131, 0.5);
+      border-radius: 9px;
+      background: rgba(255, 106, 131, 0.1);
+      color: #ffc1ce;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 720px) {
+      nav,
+      .summary {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .units-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="../index.html">
+        English <strong>506</strong> Express
+      </a>
+
+      <a class="button button-outline" href="../index.html">
+        Volver al inicio
+      </a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <p class="kicker">Panel del estudiante</p>
+
+    <h1>Mi <span>progreso</span></h1>
+
+    <p class="intro">
+      Consulta tu avance en cada unidad. Las unidades siguientes se habilitan
+      cuando completas todo el material disponible de la unidad anterior.
+    </p>
+
+    <section class="summary">
+      <div>
+        <h2>Progreso general</h2>
+        <p id="total-description">
+          Completa las actividades para iniciar tu recorrido.
+        </p>
+
+        <div class="track">
+          <div class="fill" id="total-fill"></div>
+        </div>
+      </div>
+
+      <strong class="total-percent" id="total-percent">0%</strong>
+    </section>
+
+    <section class="units-grid">
+      <article class="unit-card is-unlocked" id="unit-1-card">
+        <p class="unit-label">Unidad 01</p>
+        <h2>Contactos</h2>
+        <p>Saludos, presentaciones, profesiones y comunicación en el trabajo.</p>
+
+        <div class="progress-label">
+          <span>Actividades completadas</span>
+          <span id="unit-1-progress">0 / 18</span>
+        </div>
+
+        <div class="track">
+          <div class="fill" id="unit-1-fill"></div>
+        </div>
+
+        <span class="status available" id="unit-1-status">Disponible</span>
+
+        <br>
+
+        <a href="unit-1.html" class="button button-primary">
+          Abrir Unidad 1
+        </a>
+      </article>
+
+      <article class="unit-card is-locked" id="unit-2-card">
+        <p class="unit-label">Unidad 02</p>
+        <h2>Viajes y sociedad</h2>
+        <p>Hotel, alquiler de autos, comparaciones, restaurante y cultura.</p>
+
+        <div class="progress-label">
+          <span>Actividades completadas</span>
+          <span id="unit-2-progress">—</span>
+        </div>
+
+        <div class="track">
+          <div class="fill" id="unit-2-fill"></div>
+        </div>
+
+        <span class="status" id="unit-2-status">
+          🔒 Completa Unidad 1
+        </span>
+
+        <br>
+
+        <a href="unit-2.html" class="button button-outline" id="unit-2-link">
+          Ver Unidad 2
+        </a>
+      </article>
+
+      <article class="unit-card is-locked" id="unit-3-card">
+        <p class="unit-label">Unidad 03</p>
+        <h2>Experiencias</h2>
+        <p>Vocabulario, comprensión, pronunciación y comunicación cotidiana.</p>
+
+        <div class="progress-label">
+          <span>Actividades completadas</span>
+          <span id="unit-3-progress">—</span>
+        </div>
+
+        <div class="track">
+          <div class="fill" id="unit-3-fill"></div>
+        </div>
+
+        <span class="status" id="unit-3-status">
+          🔒 Completa Unidad 2
+        </span>
+
+        <br>
+
+        <a href="unit-3.html" class="button button-outline" id="unit-3-link">
+          Ver Unidad 3
+        </a>
+      </article>
+
+      <article class="unit-card is-locked" id="unit-4-card">
+        <p class="unit-label">Unidad 04</p>
+        <h2>Situaciones reales</h2>
+        <p>Teléfono, viajes, noticias, vida diaria, cultura y repaso final.</p>
+
+        <div class="progress-label">
+          <span>Actividades completadas</span>
+          <span id="unit-4-progress">—</span>
+        </div>
+
+        <div class="track">
+          <div class="fill" id="unit-4-fill"></div>
+        </div>
+
+        <span class="status" id="unit-4-status">
+          🔒 Completa Unidad 3
+        </span>
+
+        <br>
+
+        <a href="unit-4.html" class="button button-outline" id="unit-4-link">
+          Ver Unidad 4
+        </a>
+      </article>
+    </section>
+
+    <button class="reset" type="button" id="reset-progress">
+      Reiniciar progreso de prueba
+    </button>
+  </main>
+
+  <script>
+    "use strict";
+
+    function readProgress(storageKey, total) {
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey));
+
+        if (!Array.isArray(saved)) {
+          return 0;
+        }
+
+        const valid = saved
+          .map(Number)
+          .filter(
+            (activity) =>
+              Number.isInteger(activity) &&
+              activity >= 1 &&
+              activity <= total
+          );
+
+        return new Set(valid).size;
+      } catch {
+        return 0;
+      }
+    }
+
+    function setUnitCard(unit, completed, total, unlocked) {
+      const percentage = total === 0 ? 0 : Math.round((completed / total) * 100);
+      const card = document.getElementById(`unit-${unit}-card`);
+      const progress = document.getElementById(`unit-${unit}-progress`);
+      const fill = document.getElementById(`unit-${unit}-fill`);
+      const status = document.getElementById(`unit-${unit}-status`);
+      const link = document.getElementById(`unit-${unit}-link`);
+
+      if (progress) {
+        progress.textContent = `${completed} / ${total}`;
+      }
+
+      if (fill) {
+        fill.style.width = `${percentage}%`;
+      }
+
+      if (!card || unit === 1) {
+        return percentage;
+      }
+
+      if (unlocked) {
+        card.classList.remove("is-locked");
+        card.classList.add("is-unlocked");
+        status.textContent = completed === total && total > 0
+          ? "✓ Completada"
+          : "Disponible";
+        status.classList.add("available");
+        link.classList.remove("button-outline");
+        link.classList.add("button-primary");
+        link.textContent = "Abrir Unidad " + unit;
+      }
+
+      return percentage;
+    }
+
+    const unit1Delivery1 = readProgress(
+      "506EnglishExpress.unit1.delivery1.progress",
+      9
+    );
+
+    const unit1Delivery2 = readProgress(
+      "506EnglishExpress.unit1.delivery2.progress",
+      9
+    );
+
+    const unit1Completed = unit1Delivery1 + unit1Delivery2;
+    const unit1Total = 18;
+    const unit1Complete = unit1Completed === unit1Total;
+
+    const unit1Percent = setUnitCard(1, unit1Completed, unit1Total, true);
+
+    const unit2Percent = setUnitCard(2, 0, 0, unit1Complete);
+    const unit3Percent = setUnitCard(3, 0, 0, false);
+    const unit4Percent = setUnitCard(4, 0, 0, false);
+
+    const totalPercent = Math.round(
+      (unit1Percent + unit2Percent + unit3Percent + unit4Percent) / 4
+    );
+
+    document.getElementById("total-percent").textContent = `${totalPercent}%`;
+    document.getElementById("total-fill").style.width = `${totalPercent}%`;
+
+    if (unit1Complete) {
+      document.getElementById("total-description").textContent =
+        "¡Unidad 1 completada! Ya puedes continuar a la Unidad 2.";
+    }
+
+    document.getElementById("reset-progress").addEventListener("click", () => {
+      const confirmReset = confirm(
+        "¿Deseas borrar el progreso de prueba guardado en este navegador?"
+      );
+
+      if (!confirmReset) {
+        return;
+      }
+
+      localStorage.removeItem("506EnglishExpress.unit1.delivery1.progress");
+      localStorage.removeItem("506EnglishExpress.unit1.delivery2.progress");
+
+      location.reload();
+    });
+  </script>
+</body>
+</html>

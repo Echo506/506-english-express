@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <meta
+    name="description"
+    content="Unidad 4, Entrega 2: Una agencia de viajes. Vacaciones, precios, condicionales y parques nacionales."
+  >
+
+  <title>Una agencia de viajes | 506 English Express</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/lesson.css">
+</head>
+
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source
+        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
+        type="video/mp4"
+      >
+    </video>
+  </div>
+
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="container topbar-content">
+      <span>506 English Express</span>
+      <span>Unidad 4 · Entrega 2 · Una agencia de viajes</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container navbar" aria-label="Navegación principal">
+      <a href="../index.html" class="brand" aria-label="Volver al inicio">
+        <span class="brand-mark" aria-hidden="true"><span>⚡</span></span>
+        <span class="brand-text">English <strong>506</strong> Express</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="unit-4.html">Unidad 4</a>
+      </div>
+
+      <a
+        href="unit-4-delivery-1.html"
+        class="button button-outline button-small"
+      >
+        Entrega anterior
+      </a>
+    </nav>
+  </header>
+
+  <main class="lesson-page">
+    <div class="container">
+
+      <section class="lesson-banner">
+        <p class="kicker">Unidad 04 · Entrega 02</p>
+        <h1>Una agencia de viajes</h1>
+
+        <p>
+          Jane quiere conocer Estados Unidos. Practicarás cómo pedir y ofrecer
+          información turística, hablar de precios, describir itinerarios,
+          expresar posibilidades y planificar vacaciones.
+        </p>
+
+        <div class="lesson-progress">
+          <div>
+            <div class="lesson-progress-label">
+              <span>Progreso de la entrega</span>
+              <span id="progress-text">0 de 10 secciones completadas</span>
+            </div>
+
+            <div
+              class="progress-track"
+              role="progressbar"
+              aria-label="Progreso de la entrega"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <button
+            class="button button-outline button-small"
+            id="reset-progress"
+            type="button"
+          >
+            Reiniciar
+          </button>
+        </div>
+      </section>
+
+      <section class="lesson-sections">
+
+        <!-- ACTIVIDAD 1 -->
+        <article class="lesson-section activity-card" data-activity="1">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
+              <h2>Jane visita una agencia de viajes</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🧳</span>
+          </div>
+
+          <p>
+            Jane está en una agencia de viajes de Los Ángeles. Quiere visitar
+            Estados Unidos, pero no sabe por dónde empezar.
+          </p>
+
+          <div class="audio-placeholder">
+            <span aria-hidden="true">🔊</span>
+            <span>
+              Audio sugerido:
+              <strong>assets/audio/unit-4/travel-agency-dialogue.mp3</strong>
+            </span>
+          </div>
+
+          <div class="dialogue-box">
+            <p><strong>Jane:</strong> Good morning. Can you help me?</p>
+
+            <p><strong>Travel agent:</strong> Yes, certainly.</p>
+
+            <p><strong>Jane:</strong> I'd like to get away for a while, and see different parts of the United States.</p>
+
+            <p><strong>Travel agent:</strong> What kind of vacation would you like to take?</p>
+
+            <p><strong>Jane:</strong> I'm not sure.</p>
+
+            <p><strong>Travel agent:</strong> We have a variety of trips in every price range. We have a two-week coast-to-coast package to ten cities. If you take that, you'll get to see Denver, Chicago, Nashville, Washington...</p>
+
+            <p><strong>Jane:</strong> Actually, I'd rather get away from cities.</p>
+
+            <p><strong>Travel agent:</strong> If you take our Western Wander Week, you'll visit an Indian reservation and you'll be able to watch a Navaho rain dance.</p>
+
+            <p><strong>Travel agent:</strong> Then, you'll drive on to the Grand Canyon where you'll spend a night in a log cabin. Afterwards, you can hike down the canyon with a qualified guide.</p>
+
+            <p><strong>Travel agent:</strong> After that, the tour bus will drive you back to Los Angeles, via a ghost town from Gold Rush days. There's an overnight stop in Las Vegas.</p>
+
+            <p><strong>Travel agent:</strong> The round trip, including accommodation, meals and tax, comes to $998.79.</p>
+
+            <p><strong>Jane:</strong> That sounds interesting, but do you have anything more... unusual?</p>
+
+            <p><strong>Travel agent:</strong> If you like outdoor life, you'll love our Alaskan Adventure. First, you'll fly to Anchorage, and then our local guides will take you on a ten-day rafting and camping trip. That's really getting away from it all!</p>
+
+            <p><strong>Jane:</strong> That's exactly what I want! How much is it?</p>
+
+            <p><strong>Travel agent:</strong> It's a bargain! It's great value for money at only $1865.</p>
+
+            <p><strong>Jane:</strong> That's a bit expensive. But it sounds wonderful! I'd like to go as soon as possible.</p>
+          </div>
+
+          <div class="translation-box">
+            <strong>Idea principal:</strong>
+            <span>
+              Jane prefiere unas vacaciones lejos de las ciudades. Finalmente se
+              interesa por una aventura de rafting y campamento en Alaska, aunque
+              considera elevado su precio.
+            </span>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar diálogo como completado
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <!-- ACTIVIDAD 2 -->
+        <article class="lesson-section activity-card is-locked" data-activity="2">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 02 · COMPRENSIÓN</p>
+              <h2>Elija el viaje de Jane</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🗺️</span>
+          </div>
+
+          <div class="question-block">
+            <p><strong>1. ¿Qué tipo de vacaciones prefiere Jane?</strong></p>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q1" value="a">
+              A vacation away from cities
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q1" value="b">
+              A city tour of ten museums
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q1" value="c">
+              A weekend at home
+            </label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>2. ¿Dónde se pasa una noche en el Western Wander Week?</strong></p>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q2" value="a">
+              In a log cabin at the Grand Canyon
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q2" value="b">
+              In a hotel in Chicago
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q2" value="c">
+              On a plane to Washington
+            </label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>3. ¿Cuál es la actividad principal de la Alaskan Adventure?</strong></p>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q3" value="a">
+              Rafting and camping
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q3" value="b">
+              Shopping in Las Vegas
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q3" value="c">
+              Visiting ten cities
+            </label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>4. ¿Cuánto cuesta la Alaskan Adventure?</strong></p>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q4" value="a">
+              $998.79
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q4" value="b">
+              $1865
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="travel-q4" value="c">
+              $100
+            </label>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-comprehension" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <!-- ACTIVIDAD 3 -->
+        <article class="lesson-section activity-card is-locked" data-activity="3">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 03 · VOCABULARIO</p>
+              <h2>Viajes, alojamientos y aventuras</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🏕️</span>
+          </div>
+
+          <div class="vocabulary-columns">
+            <section class="vocabulary-group">
+              <h3>Viajes y lugares</h3>
+
+              <dl class="vocabulary-list">
+                <div><dt>travel agent</dt><dd>agente de viajes</dd></div>
+                <div><dt>travel agency</dt><dd>agencia de viajes</dd></div>
+                <div><dt>vacation</dt><dd>vacaciones</dd></div>
+                <div><dt>trip</dt><dd>viaje, circuito</dd></div>
+                <div><dt>package tour</dt><dd>viaje organizado</dd></div>
+                <div><dt>coast-to-coast</dt><dd>de costa a costa</dd></div>
+                <div><dt>Indian reservation</dt><dd>reserva indígena</dd></div>
+                <div><dt>canyon</dt><dd>cañón</dd></div>
+                <div><dt>ghost town</dt><dd>ciudad fantasma</dd></div>
+                <div><dt>country</dt><dd>campo</dd></div>
+              </dl>
+            </section>
+
+            <section class="vocabulary-group">
+              <h3>Alojamiento y condiciones</h3>
+
+              <dl class="vocabulary-list">
+                <div><dt>price range</dt><dd>rango de precios</dd></div>
+                <div><dt>log cabin</dt><dd>cabaña de troncos</dd></div>
+                <div><dt>overnight stop</dt><dd>estancia de una noche</dd></div>
+                <div><dt>round trip</dt><dd>viaje de ida y vuelta</dd></div>
+                <div><dt>accommodation</dt><dd>alojamiento</dd></div>
+                <div><dt>tax</dt><dd>impuesto</dd></div>
+                <div><dt>bargain</dt><dd>ganga</dd></div>
+                <div><dt>value for money</dt><dd>buena relación calidad-precio</dd></div>
+                <div><dt>expensive</dt><dd>caro/a</dd></div>
+              </dl>
+            </section>
+
+            <section class="vocabulary-group">
+              <h3>Actividades y verbos</h3>
+
+              <dl class="vocabulary-list">
+                <div><dt>outdoor life</dt><dd>vida al aire libre</dd></div>
+                <div><dt>adventure</dt><dd>aventura</dd></div>
+                <div><dt>local guide</dt><dd>guía local</dd></div>
+                <div><dt>to get away</dt><dd>escaparse, irse</dd></div>
+                <div><dt>to take</dt><dd>tomar, elegir</dd></div>
+                <div><dt>to watch</dt><dd>observar</dd></div>
+                <div><dt>to spend</dt><dd>pasar tiempo, gastar</dd></div>
+                <div><dt>to hike</dt><dd>hacer senderismo</dd></div>
+                <div><dt>to fly</dt><dd>volar, viajar en avión</dd></div>
+                <div><dt>as soon as possible</dt><dd>tan pronto como sea posible</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <div class="question-block">
+            <label for="vocabulary-answer">
+              Complete: “Jane will spend a night in a __________ cabin.”
+            </label>
+
+            <input
+              id="vocabulary-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe una palabra en inglés"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-vocabulary" type="button">
+              Revisar respuesta
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <!-- ACTIVIDAD 4 -->
+        <article class="lesson-section activity-card is-locked" data-activity="4">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 04 · CÓMO SE DICE</p>
+              <h2>Preferencias, ofertas y precios</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">💬</span>
+          </div>
+
+          <div class="phrase-groups">
+            <section class="phrase-group">
+              <h3>Preguntar preferencias</h3>
+
+              <dl class="phrase-list">
+                <div><dt>What kind of vacation would you like?</dt><dd>¿Qué clase de vacaciones le gustaría?</dd></div>
+                <div><dt>What sort of trip do you want?</dt><dd>¿Qué tipo de viaje desea?</dd></div>
+                <div><dt>What would suit you best?</dt><dd>¿Qué le convendría más?</dd></div>
+                <div><dt>Do you have any special preference?</dt><dd>¿Tiene alguna preferencia especial?</dd></div>
+                <div><dt>I'd rather get away from cities.</dt><dd>Preferiría alejarme de las ciudades.</dd></div>
+              </dl>
+            </section>
+
+            <section class="phrase-group">
+              <h3>Describir ofertas y precios</h3>
+
+              <dl class="phrase-list">
+                <div><dt>We have a variety of trips.</dt><dd>Tenemos una variedad de viajes.</dd></div>
+                <div><dt>Our company offers a wide range of products.</dt><dd>Nuestra compañía ofrece una gran variedad de productos.</dd></div>
+                <div><dt>It comes to $5.34.</dt><dd>Cuesta 5 dólares con 34.</dd></div>
+                <div><dt>There's a wide price range.</dt><dd>Hay una amplia gama de precios.</dd></div>
+                <div><dt>It's a bargain.</dt><dd>Es una ganga.</dd></div>
+                <div><dt>It's great value for money.</dt><dd>Tiene una gran relación calidad-precio.</dd></div>
+                <div><dt>That's a bit expensive.</dt><dd>Eso es un poco caro.</dd></div>
+              </dl>
+            </section>
+
+            <section class="phrase-group">
+              <h3>Secuencia y posibilidades</h3>
+
+              <dl class="phrase-list">
+                <div><dt>First, you'll fly to Anchorage.</dt><dd>Primero, volará a Anchorage.</dd></div>
+                <div><dt>Then, you'll drive on to the Grand Canyon.</dt><dd>Luego, continuará hacia el Gran Cañón.</dd></div>
+                <div><dt>Afterwards, you can hike down the canyon.</dt><dd>Después, puede caminar por el cañón.</dd></div>
+                <div><dt>After that, the bus will drive you back.</dt><dd>Después de eso, el autobús lo llevará de regreso.</dd></div>
+                <div><dt>You'll be able to watch a rain dance.</dt><dd>Podrá observar un baile de la lluvia.</dd></div>
+                <div><dt>You could take our coast-to-coast package.</dt><dd>Podría elegir nuestro paquete de costa a costa.</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <div class="question-block">
+            <label for="phrases-answer">
+              Complete: “What kind of vacation would you __________?”
+            </label>
+
+            <input
+              id="phrases-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: like"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="phrases-writing">
+              Escribe una frase en inglés para preguntar por una preferencia de viaje:
+            </label>
+
+            <textarea
+              id="phrases-writing"
+              placeholder="What kind of vacation would you like to take?"
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-phrases" type="button">
+              Guardar práctica
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <!-- ACTIVIDAD 5 -->
+        <article class="lesson-section activity-card is-locked" data-activity="5">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 05 · GRAMÁTICA</p>
+              <h2>Condicional con if</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🔀</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>If she goes, she'll...</h3>
+
+            <p class="example-box">
+              When Jane went to the United States, she visited the Grand Canyon. →<br>
+              <strong>If Jane goes to the United States, she'll visit the Grand Canyon.</strong>
+            </p>
+          </section>
+
+          <section class="oral-practice-block">
+            <h3>If she doesn't go, she won't...</h3>
+
+            <p class="example-box">
+              If Jane goes to San Francisco, she'll see the Golden Gate Bridge. →<br>
+              <strong>If Jane doesn't go to San Francisco, she won't see the Golden Gate Bridge.</strong>
+            </p>
+          </section>
+
+          <div class="question-block">
+            <label for="if-answer-1">
+              Complete: “If Jane goes to the United States, she __________ visit the Grand Canyon.”
+            </label>
+
+            <input
+              id="if-answer-1"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: will"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="if-answer-2">
+              Complete: “If Jane doesn't go to San Francisco, she __________ see the Golden Gate Bridge.”
+            </label>
+
+            <input
+              id="if-answer-2"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: won't"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-if" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <!-- ACTIVIDAD 6 -->
+        <article class="lesson-section activity-card is-locked" data-activity="6">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 06 · GRAMÁTICA</p>
+              <h2>After y afterwards</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">➡️</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>Después de una actividad</h3>
+
+            <p class="example-box">
+              After the movies, we went to see Jeff.<br><br>
+              We went to the movies, and afterwards we went to see Jeff.<br><br>
+              After she finished reading her book, she made a cup of coffee.
+            </p>
+          </section>
+
+          <div class="question-block">
+            <label for="after-answer-1">
+              Complete: “__________ the movies, we went to see Jeff.”
+            </label>
+
+            <input
+              id="after-answer-1"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: After"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="after-answer-2">
+              Complete: “We went to the movies, and __________ we went to see Jeff.”
+            </label>
+
+            <input
+              id="after-answer-2"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: afterwards"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-after" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <!-- ACTIVIDAD 7 -->
+        <article class="lesson-section activity-card is-locked" data-activity="7">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 07 · GRAMÁTICA</p>
+              <h2>Get y can / will be able to</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🚀</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>Diferentes significados de get</h3>
+
+            <p class="example-box">
+              <strong>To get up:</strong> Peter gets up every morning as soon as he hears his alarm clock.<br>
+              <strong>To get away:</strong> She wanted to get away, so she went to Barbados for a week.<br>
+              <strong>To get along:</strong> Margie and her little sister don't get along.<br>
+              <strong>To get into:</strong> I really got into “Gone With the Wind”.<br>
+              <strong>To get bigger:</strong> My company has gotten bigger.
+            </p>
+          </section>
+
+          <section class="oral-practice-block">
+            <h3>Can, could y will be able to</h3>
+
+            <p class="example-box">
+              I can speak English. Next year. →<br>
+              <strong>I'll be able to speak English next year.</strong><br><br>
+
+              I can water-ski. Last year. →<br>
+              <strong>I could water-ski last year.</strong>
+            </p>
+          </section>
+
+          <div class="question-block">
+            <label for="ability-answer-1">
+              Complete: “Next year, I __________ speak English.”
+            </label>
+
+            <input
+              id="ability-answer-1"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: will be able to"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="ability-answer-2">
+              Complete: “Last year, I __________ water-ski.”
+            </label>
+
+            <input
+              id="ability-answer-2"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: could"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-ability" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <!-- ACTIVIDAD 8 -->
+        <article class="lesson-section activity-card is-locked" data-activity="8">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 08 · GRAMÁTICA</p>
+              <h2>Where para describir lugares</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">📍</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>Unir información sobre un lugar</h3>
+
+            <p class="example-box">
+              You'll spend the night in a log cabin. It's very nice. →<br>
+              <strong>The log cabin, where you'll spend the night, is very nice.</strong><br><br>
+
+              She'll have dinner in a restaurant. It has very good food. →<br>
+              <strong>The restaurant where she'll have dinner has very good food.</strong>
+            </p>
+          </section>
+
+          <div class="question-block">
+            <label for="where-answer">
+              Complete: “The log cabin, __________ you'll spend the night, is very nice.”
+            </label>
+
+            <input
+              id="where-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: where"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="where-writing">
+              Escribe una oración en inglés usando <strong>where</strong> y un lugar de vacaciones:
+            </label>
+
+            <textarea
+              id="where-writing"
+              placeholder="The national park where we camp is beautiful."
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-where" type="button">
+              Guardar práctica
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <!-- ACTIVIDAD 9 -->
+        <article class="lesson-section activity-card is-locked" data-activity="9">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 09 · CULTURA</p>
+              <h2>Vacaciones y parques nacionales</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🏞️</span>
+          </div>
+
+          <div class="reading-card">
+            <h3>Dos semanas de vacaciones</h3>
+
+            <p>
+              El estadounidense medio dispone de dos semanas de vacaciones al año.
+              Algunas personas viajan por el mundo, mientras otras prefieren conocer
+              su propio país. Entre esos dos extremos aparece una amplia clase media
+              que encuentra muchas posibilidades de viaje dentro de Estados Unidos.
+            </p>
+
+            <p>
+              Al planear vacaciones, muchas personas buscan tres elementos: mar,
+              campo o montaña, con una temperatura agradable. Esto ayuda a explicar
+              los viajes de invierno hacia Florida y los desplazamientos estivales
+              hacia Maine o Massachusetts.
+            </p>
+
+            <p>
+              Cada región ofrece paisajes distintos: las playas de las Carolinas,
+              California, Oregón y numerosas áreas naturales pueden atraer a turistas
+              y residentes.
+            </p>
+          </div>
+
+          <div class="reading-card">
+            <h3>National Parks</h3>
+
+            <p>
+              Theodore Roosevelt impulsó la protección de espacios naturales y
+              contribuyó a popularizar los parques nacionales. Entre los más
+              espectaculares se encuentran Yellowstone, Yosemite, Glacier y el
+              Grand Canyon.
+            </p>
+
+            <p>
+              Los visitantes pueden alojarse en moteles entre pinos o acampar en
+              tiendas. Sin embargo, deben respetar las zonas permitidas: el
+              <em>forest ranger</em> puede imponer multas a quienes acampen donde
+              está prohibido.
+            </p>
+
+            <p>
+              Los parques permiten disfrutar de montañas, bosques, ríos y fauna,
+              pero también exigen preparación, respeto por la naturaleza y
+              precaución ante animales como los osos.
+            </p>
+          </div>
+
+          <div class="question-block">
+            <label for="culture-writing">
+              Escribe una oración en inglés sobre unas vacaciones o un parque nacional:
+            </label>
+
+            <textarea
+              id="culture-writing"
+              placeholder="I would like to visit Yellowstone National Park."
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-culture" type="button">
+              Guardar respuesta
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <!-- ACTIVIDAD 10 -->
+        <article class="lesson-section activity-card is-locked" data-activity="10">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 10 · REPASO FINAL</p>
+              <h2>Planifica tu aventura</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">✨</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>De todo un poco</h3>
+
+            <p>
+              La entrega original incluye una canción tradicional en la sección
+              “De todo un poco”. Para el sitio, utiliza un audio con licencia o una
+              grabación propia y realiza una breve actividad de escucha sin
+              reproducir la letra completa.
+            </p>
+
+            <div class="audio-placeholder">
+              <span aria-hidden="true">🎵</span>
+              <span>
+                Audio sugerido:
+                <strong>assets/audio/unit-4/traditional-song-listening.mp3</strong>
+              </span>
+            </div>
+          </section>
+
+          <div class="question-block">
+            <label for="review-answer-1">
+              Complete: “If I go to Alaska, I __________ go rafting.”
+            </label>
+
+            <input
+              id="review-answer-1"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: will"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="review-answer-2">
+              Complete: “The Grand Canyon is a place __________ visitors can hike.”
+            </label>
+
+            <input
+              id="review-answer-2"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: where"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="final-writing">
+              Escribe un itinerario de al menos cuatro oraciones en inglés. Incluye
+              una preferencia, un precio, una oración con <strong>if</strong> y una
+              secuencia con <strong>first</strong>, <strong>then</strong>,
+              <strong>afterwards</strong> o <strong>after that</strong>.
+            </label>
+
+            <textarea
+              id="final-writing"
+              placeholder="I would like an outdoor vacation. First, I will fly to Anchorage. Then, I will go rafting with a local guide. If the weather is good, I will camp in a national park. The trip comes to $900."
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary finish-lesson" type="button">
+              Completar Entrega 4.2
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+      </section>
+
+      <section
+        class="lesson-complete-message"
+        id="lesson-complete-message"
+        aria-live="polite"
+      >
+        <p class="kicker">¡Entrega completada!</p>
+        <h2>Excelente trabajo</h2>
+
+        <p>
+          Completaste “Una agencia de viajes”. Ya puedes conversar sobre
+          vacaciones, precios, opciones turísticas, itinerarios y posibilidades
+          futuras.
+        </p>
+
+        <a class="button button-primary" href="unit-4.html">
+          Volver a Unidad 4
+        </a>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>Unidad 4 · Entrega 2 · Una agencia de viajes</span>
+      <a href="unit-4.html">Volver a Unidad 4</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/unit4-delivery2.js"></script>
+</body>
+</html>
