@@ -108,6 +108,90 @@ supabase.auth.onAuthStateChange((_event, session) => {
 refreshUserInterface();
 
 window.supabaseClient = supabase;
+window.saveStudentProgress = async function ({
+  unitNumber,
+  activityId,
+  activityTitle = "",
+  completed = true,
+  score = null
+}) {
+  const {
+    data: { user },
+    error: userError
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    alert("Inicia sesión con Google para guardar tu progreso.");
+
+    return {
+      success: false,
+      reason: "not_authenticated"
+    };
+  }
+
+  const metadata = user.user_metadata || {};
+  const studentName =
+    metadata.full_name ||
+    metadata.name ||
+    "Estudiante";
+
+  const { error } = await supabase
+    .from("student_progress")
+    .upsert(
+      {
+        user_id: user.id,
+        email: user.email,
+        student_name: studentName,
+        unit_number: unitNumber,
+        activity_id: activityId,
+        activity_title: activityTitle,
+        completed: completed,
+        score: score,
+        updated_at: new Date().toISOString()
+      },
+      {
+        onConflict: "user_id,unit_number,activity_id"
+      }
+    );
+
+  if (error) {
+    console.error("Error guardando progreso:", error);
+    alert("No se pudo guardar el progreso: " + error.message);
+
+    return {
+      success: false,
+      error
+    };
+  }
+
+  return {
+    success: true
+  };
+};
+
+window.getStudentProgress = async function () {
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return [];
+  }
+
+  const { data, error } = await supabase
+    .from("student_progress")
+    .select("*")
+    .eq("user_id", user.id)
+    .order("unit_number", { ascending: true })
+    .order("updated_at", { ascending: false });
+
+  if (error) {
+    console.error("Error leyendo progreso:", error);
+    return [];
+  }
+
+  return data || [];
+};
 window.getCurrentStudent = async () => {
   const {
     data: { user }
