@@ -26,15 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
         return [];
       }
 
-      return saved
-        .map(Number)
-        .filter(
-          (number) =>
-            Number.isInteger(number) &&
-            number >= 1 &&
-            number <= totalActivities
-        )
-        .sort((a, b) => a - b);
+      return [...new Set(
+        saved
+          .map(Number)
+          .filter(
+            (number) =>
+              Number.isInteger(number) &&
+              number >= 1 &&
+              number <= totalActivities
+          )
+      )].sort((a, b) => a - b);
     } catch {
       return [];
     }
@@ -58,6 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return activityNumber === 1 || completed.includes(activityNumber - 1);
   }
 
+  function getActivityCard(activityNumber) {
+    return document.querySelector(
+      `.activity-card[data-activity="${activityNumber}"]`
+    );
+  }
+
   function setFeedback(card, message, kind = "success") {
     const feedback = card.querySelector(".activity-feedback");
 
@@ -72,6 +79,59 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  function scrollToNextActivity(activityNumber) {
+    const nextCard = getActivityCard(activityNumber + 1);
+
+    if (!nextCard) {
+      if (completeMessage) {
+        completeMessage.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }
+
+      return;
+    }
+
+    nextCard.classList.add("just-unlocked");
+
+    window.setTimeout(() => {
+      nextCard.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }, 180);
+
+    window.setTimeout(() => {
+      nextCard.classList.remove("just-unlocked");
+    }, 1600);
+  }
+
+  function updateNextButtons() {
+    const completed = getProgress();
+
+    activityCards.forEach((card) => {
+      const activityNumber = Number(card.dataset.activity);
+      const nextButton = card.querySelector(".next-activity-button");
+
+      if (!nextButton) {
+        return;
+      }
+
+      const unlocked = isUnlocked(activityNumber, completed);
+      const complete = completed.includes(activityNumber);
+
+      nextButton.disabled = !unlocked;
+      nextButton.hidden = activityNumber === totalActivities;
+
+      if (complete) {
+        nextButton.textContent = "Siguiente actividad →";
+      } else {
+        nextButton.textContent = "Completar y continuar →";
+      }
+    });
+  }
+
   function updateInterface() {
     const completed = getProgress();
 
@@ -83,7 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
       card.classList.toggle("is-locked", !unlocked);
       card.classList.toggle("is-completed", complete);
 
-      const buttons = card.querySelectorAll("button");
+      const buttons = card.querySelectorAll(
+        "button:not(.next-activity-button)"
+      );
 
       buttons.forEach((button) => {
         button.disabled = !unlocked || complete;
@@ -124,9 +186,11 @@ document.addEventListener("DOMContentLoaded", () => {
         completedCount === totalActivities
       );
     }
+
+    updateNextButtons();
   }
 
-  function completeActivity(activityNumber, message) {
+  function completeActivity(activityNumber, message, goToNext = true) {
     const completed = getProgress();
 
     if (!isUnlocked(activityNumber, completed)) {
@@ -141,9 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateInterface();
 
-    const currentCard = document.querySelector(
-      `.activity-card[data-activity="${activityNumber}"]`
-    );
+    const currentCard = getActivityCard(activityNumber);
 
     if (currentCard) {
       setFeedback(
@@ -152,21 +214,56 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
-    const nextCard = document.querySelector(
-      `.activity-card[data-activity="${activityNumber + 1}"]`
-    );
-
-    if (nextCard) {
-      nextCard.classList.add("just-unlocked");
-
-      window.setTimeout(() => {
-        nextCard.classList.remove("just-unlocked");
-      }, 1200);
+    if (goToNext) {
+      scrollToNextActivity(activityNumber);
     }
   }
 
+  function addNextButtons() {
+    activityCards.forEach((card) => {
+      const activityNumber = Number(card.dataset.activity);
+
+      if (activityNumber === totalActivities) {
+        return;
+      }
+
+      const actions = card.querySelector(".activity-actions");
+
+      if (!actions || actions.querySelector(".next-activity-button")) {
+        return;
+      }
+
+      const nextButton = document.createElement("button");
+
+      nextButton.type = "button";
+      nextButton.className =
+        "button button-outline next-activity-button";
+      nextButton.textContent = "Completar y continuar →";
+
+      nextButton.addEventListener("click", () => {
+        const completed = getProgress();
+
+        if (!isUnlocked(activityNumber, completed)) {
+          return;
+        }
+
+        if (!completed.includes(activityNumber)) {
+          completeActivity(
+            activityNumber,
+            "¡Actividad completada! La siguiente actividad está disponible.",
+            false
+          );
+        }
+
+        scrollToNextActivity(activityNumber);
+      });
+
+      actions.appendChild(nextButton);
+    });
+  }
+
   function validateComprehension() {
-    const card = document.querySelector('.activity-card[data-activity="2"]');
+    const card = getActivityCard(2);
 
     const questionOne = document.querySelector(
       'input[name="question-1"]:checked'
@@ -201,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function validateVocabulary() {
-    const card = document.querySelector('.activity-card[data-activity="4"]');
+    const card = getActivityCard(4);
     const answerInput = document.getElementById("vocabulary-answer");
     const answer = normalize(answerInput ? answerInput.value : "");
 
@@ -228,7 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function validateExpressions() {
-    const card = document.querySelector('.activity-card[data-activity="5"]');
+    const card = getActivityCard(5);
     const greetingInput = document.getElementById("greeting-answer");
     const originInput = document.getElementById("origin-answer");
 
@@ -254,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function validateOralPractice() {
-    const card = document.querySelector('.activity-card[data-activity="7"]');
+    const card = getActivityCard(7);
 
     const inputs = [
       document.getElementById("to-be-answer"),
@@ -283,7 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function validateReview() {
-    const card = document.querySelector('.activity-card[data-activity="9"]');
+    const card = getActivityCard(9);
     const namesInput = document.getElementById("characters-answer");
     const reviewInput = document.getElementById("review-answer");
 
@@ -382,8 +479,14 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       updateInterface();
+
+      getActivityCard(1).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     });
   }
 
+  addNextButtons();
   updateInterface();
 });
