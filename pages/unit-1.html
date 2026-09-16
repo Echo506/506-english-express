@@ -970,122 +970,175 @@
 
   <script type="module" src="../assets/js/supabase-auth.js?v=7"></script>
 
-  <script>
-    "use strict";
+<script>
+  "use strict";
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const storageKey = "506EnglishExpress.unit1.delivery1.progress";
-      const totalActivities = 9;
+  document.addEventListener("DOMContentLoaded", () => {
+    const storageKey = "506EnglishExpress.unit1.delivery1.progress";
+    const totalActivities = 9;
 
-      const progressText = document.getElementById("lesson-progress-text");
-      const progressFill = document.getElementById("lesson-progress-fill");
-      const completionCard = document.getElementById("completion-card");
-      const progressTrack = document.querySelector(".lesson-progress-track");
+    const progressText = document.getElementById("lesson-progress-text");
+    const progressFill = document.getElementById("lesson-progress-fill");
+    const completionCard = document.getElementById("completion-card");
+    const progressTrack = document.querySelector(".lesson-progress-track");
 
-      function getCompletedActivities() {
-        try {
-          const saved = JSON.parse(localStorage.getItem(storageKey));
+    function getCompletedActivities() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey));
 
-          if (!Array.isArray(saved)) {
-            return [];
-          }
-
-          return [...new Set(
-            saved
-              .map(Number)
-              .filter(
-                (activity) =>
-                  Number.isInteger(activity) &&
-                  activity >= 1 &&
-                  activity <= totalActivities
-              )
-          )];
-        } catch {
+        if (!Array.isArray(saved)) {
           return [];
         }
+
+        return [...new Set(
+          saved
+            .map(Number)
+            .filter(
+              (activity) =>
+                Number.isInteger(activity) &&
+                activity >= 1 &&
+                activity <= totalActivities
+            )
+        )].sort((a, b) => a - b);
+      } catch {
+        return [];
       }
+    }
 
-      function saveCompletedActivities(completed) {
-        localStorage.setItem(storageKey, JSON.stringify(completed));
-      }
+    function saveCompletedActivities(completed) {
+      localStorage.setItem(storageKey, JSON.stringify(completed));
+    }
 
-      function updateInterface() {
-        const completed = getCompletedActivities();
-        const count = completed.length;
-        const percent = Math.round((count / totalActivities) * 100);
+    function getActivityCard(activity) {
+      return document.querySelector(
+        `.activity-card[data-activity="${activity}"]`
+      );
+    }
 
-        progressText.textContent =
-          `${count} de ${totalActivities} secciones completadas`;
+    function updateInterface() {
+      const completed = getCompletedActivities();
+      const count = completed.length;
+      const percent = Math.round((count / totalActivities) * 100);
 
-        progressFill.style.width = `${percent}%`;
-        progressTrack.setAttribute("aria-valuenow", String(percent));
+      progressText.textContent =
+        `${count} de ${totalActivities} secciones completadas`;
 
-        document.querySelectorAll("[data-activity]").forEach((card) => {
-          const activity = Number(card.dataset.activity);
-          const status = document.getElementById(`activity-status-${activity}`);
-          const button = card.querySelector("[data-complete]");
+      progressFill.style.width = `${percent}%`;
+      progressTrack.setAttribute("aria-valuenow", String(percent));
 
-          if (completed.includes(activity)) {
-            card.classList.add("is-complete");
+      document.querySelectorAll(".activity-card[data-activity]").forEach((card) => {
+        const activity = Number(card.dataset.activity);
+        const status = document.getElementById(`activity-status-${activity}`);
+        const button = card.querySelector("[data-complete]");
 
-            if (status) {
-              status.textContent = "✓ Actividad completada";
-            }
+        if (completed.includes(activity)) {
+          card.classList.add("is-complete");
 
-            if (button) {
-              button.textContent = "Actividad completada";
-            }
-          } else {
-            card.classList.remove("is-complete");
-
-            if (status) {
-              status.textContent = "";
-            }
+          if (status) {
+            status.textContent = "✓ Actividad completada";
           }
-        });
 
-        completionCard.hidden = count !== totalActivities;
-      }
-
-      async function markActivityComplete(activity) {
-        const completed = getCompletedActivities();
-
-        if (!completed.includes(activity)) {
-          completed.push(activity);
-          completed.sort((a, b) => a - b);
-          saveCompletedActivities(completed);
-        }
-
-        updateInterface();
-
-        if (
-          activity === totalActivities &&
-          typeof window.saveStudentProgress === "function"
-        ) {
-          const result = await window.saveStudentProgress({
-            unitNumber: 1,
-            activityId: "unit-1-delivery-1",
-            activityTitle: "Contactos: Un cóctel en Nueva York",
-            completed: true,
-            score: 100
-          });
-
-          if (!result.success) {
-            console.warn(
-              "El progreso local se guardó, pero Supabase no respondió.",
-              result
-            );
+          if (button) {
+            button.textContent = "Actividad completada";
           }
+        } else {
+          card.classList.remove("is-complete");
         }
-      }
-
-      document.querySelectorAll("[data-complete]").forEach((button) => {
-        button.addEventListener("click", () => {
-          markActivityComplete(Number(button.dataset.complete));
-        });
       });
 
-      document.getElementById("check-comprehension").addEventListener("click", () => {
+      completionCard.hidden = count !== totalActivities;
+    }
+
+    function goToNextActivity(activity) {
+      const nextActivity = getActivityCard(activity + 1);
+
+      if (!nextActivity) {
+        completionCard.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+        return;
+      }
+
+      nextActivity.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    async function markActivityComplete(activity, moveToNext = true) {
+      const completed = getCompletedActivities();
+
+      if (!completed.includes(activity)) {
+        completed.push(activity);
+        completed.sort((a, b) => a - b);
+        saveCompletedActivities(completed);
+      }
+
+      updateInterface();
+
+      if (
+        activity === totalActivities &&
+        typeof window.saveStudentProgress === "function"
+      ) {
+        await window.saveStudentProgress({
+          unitNumber: 1,
+          activityId: "unit-1-delivery-1",
+          activityTitle: "Contactos: Un cóctel en Nueva York",
+          completed: true,
+          score: 100
+        });
+      }
+
+      if (moveToNext) {
+        goToNextActivity(activity);
+      }
+    }
+
+    function addNextButtons() {
+      document
+        .querySelectorAll(".activity-card[data-activity]")
+        .forEach((card) => {
+          const activity = Number(card.dataset.activity);
+
+          if (activity === totalActivities) {
+            return;
+          }
+
+          const actions = card.querySelector(".activity-actions");
+
+          if (!actions || actions.querySelector(".next-activity-button")) {
+            return;
+          }
+
+          const nextButton = document.createElement("button");
+
+          nextButton.type = "button";
+          nextButton.className = "activity-button next-activity-button";
+          nextButton.textContent = "Siguiente actividad →";
+
+          nextButton.addEventListener("click", () => {
+            markActivityComplete(activity, false);
+            goToNextActivity(activity);
+          });
+
+          actions.insertBefore(
+            nextButton,
+            actions.querySelector(".activity-status")
+          );
+        });
+    }
+
+    document.querySelectorAll("[data-complete]").forEach((button) => {
+      button.addEventListener("click", () => {
+        markActivityComplete(Number(button.dataset.complete));
+      });
+    });
+
+    document
+      .getElementById("check-comprehension")
+      .addEventListener("click", () => {
         const answerOne = document.querySelector(
           'input[name="question-1"]:checked'
         )?.value;
@@ -1099,13 +1152,16 @@
         if (answerOne === "Jeff" && answerTwo === "California") {
           status.textContent =
             "✓ ¡Correcto! Jeff presenta a Tom y Tom es de California.";
+
           markActivityComplete(2);
         } else {
           status.textContent = "Revisa el diálogo e inténtalo otra vez.";
         }
       });
 
-      document.getElementById("check-vocabulary").addEventListener("click", () => {
+    document
+      .getElementById("check-vocabulary")
+      .addEventListener("click", () => {
         const answer = document
           .getElementById("vocabulary-answer")
           .value
@@ -1116,7 +1172,8 @@
 
         if (
           answer.includes("tom") &&
-          answer.includes("new cameraman")
+          answer.includes("new") &&
+          answer.includes("cameraman")
         ) {
           status.textContent = "✓ Correcto: Tom is the new cameraman.";
           markActivityComplete(4);
@@ -1125,7 +1182,9 @@
         }
       });
 
-      document.getElementById("check-expressions").addEventListener("click", () => {
+    document
+      .getElementById("check-expressions")
+      .addEventListener("click", () => {
         const greeting = document
           .getElementById("greeting-answer")
           .value
@@ -1140,9 +1199,13 @@
 
         const status = document.getElementById("activity-status-5");
 
-        if (greeting === "hello" && (country === "am" || country === "'m")) {
+        if (
+          (greeting === "hello" || greeting === "hi") &&
+          (country === "am" || country === "'m" || country === "come")
+        ) {
           status.textContent =
             "✓ ¡Muy bien! Hello, nice to meet you. / I am from Costa Rica.";
+
           markActivityComplete(5);
         } else {
           status.textContent =
@@ -1150,92 +1213,89 @@
         }
       });
 
-      const audio = document.getElementById("cocktail-audio");
-      const playButton = document.getElementById("audio-play-button");
-      const playIcon = document.getElementById("audio-play-icon");
-      const playText = document.getElementById("audio-play-text");
-      const audioProgress = document.getElementById("audio-progress");
-      const audioTime = document.getElementById("audio-time");
+    const audio = document.getElementById("cocktail-audio");
+    const playButton = document.getElementById("audio-play-button");
+    const playIcon = document.getElementById("audio-play-icon");
+    const playText = document.getElementById("audio-play-text");
+    const audioProgress = document.getElementById("audio-progress");
+    const audioTime = document.getElementById("audio-time");
 
-      function formatTime(seconds) {
-        if (!Number.isFinite(seconds)) {
-          return "0:00";
-        }
-
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = String(
-          Math.floor(seconds % 60)
-        ).padStart(2, "0");
-
-        return `${minutes}:${remainingSeconds}`;
+    function formatTime(seconds) {
+      if (!Number.isFinite(seconds)) {
+        return "0:00";
       }
 
-      function updateAudioPlayer() {
-        const currentTime = audio.currentTime || 0;
-        const duration = audio.duration || 0;
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = String(
+        Math.floor(seconds % 60)
+      ).padStart(2, "0");
 
-        audioTime.textContent =
-          `${formatTime(currentTime)} / ${formatTime(duration)}`;
+      return `${minutes}:${remainingSeconds}`;
+    }
 
-        if (duration > 0) {
-          audioProgress.value = String(
-            (currentTime / duration) * 100
-          );
-        }
-      }
+    function updateAudioPlayer() {
+      const currentTime = audio.currentTime || 0;
+      const duration = audio.duration || 0;
 
-      function setAudioButton(isPlaying) {
-        playIcon.textContent = isPlaying ? "❚❚" : "▶";
-        playText.textContent = isPlaying
-          ? "Pausar audio"
-          : "Reproducir audio";
+      audioTime.textContent =
+        `${formatTime(currentTime)} / ${formatTime(duration)}`;
 
-        playButton.setAttribute(
-          "aria-label",
-          isPlaying ? "Pausar audio" : "Reproducir audio"
+      if (duration > 0) {
+        audioProgress.value = String(
+          (currentTime / duration) * 100
         );
       }
+    }
 
-      playButton.addEventListener("click", async () => {
-        if (audio.paused) {
-          try {
-            await audio.play();
-          } catch (error) {
-            console.error("No se pudo reproducir el audio:", error);
-          }
-        } else {
-          audio.pause();
-        }
-      });
+    function setAudioButton(isPlaying) {
+      playIcon.textContent = isPlaying ? "❚❚" : "▶";
+      playText.textContent = isPlaying
+        ? "Pausar audio"
+        : "Reproducir audio";
 
-      audio.addEventListener("loadedmetadata", updateAudioPlayer);
-      audio.addEventListener("timeupdate", updateAudioPlayer);
+      playButton.setAttribute(
+        "aria-label",
+        isPlaying ? "Pausar audio" : "Reproducir audio"
+      );
+    }
 
-      audio.addEventListener("play", () => {
-        setAudioButton(true);
-      });
-
-      audio.addEventListener("pause", () => {
-        setAudioButton(false);
-      });
-
-      audio.addEventListener("ended", () => {
-        audio.currentTime = 0;
-        audioProgress.value = "0";
-        updateAudioPlayer();
-        setAudioButton(false);
-      });
-
-      audioProgress.addEventListener("input", () => {
-        if (audio.duration) {
-          audio.currentTime =
-            (Number(audioProgress.value) / 100) * audio.duration;
-        }
-      });
-
-      updateAudioPlayer();
-      updateInterface();
+    playButton.addEventListener("click", async () => {
+      if (audio.paused) {
+        await audio.play();
+      } else {
+        audio.pause();
+      }
     });
-  </script>
+
+    audio.addEventListener("loadedmetadata", updateAudioPlayer);
+    audio.addEventListener("timeupdate", updateAudioPlayer);
+
+    audio.addEventListener("play", () => {
+      setAudioButton(true);
+    });
+
+    audio.addEventListener("pause", () => {
+      setAudioButton(false);
+    });
+
+    audio.addEventListener("ended", () => {
+      audio.currentTime = 0;
+      audioProgress.value = "0";
+      updateAudioPlayer();
+      setAudioButton(false);
+    });
+
+    audioProgress.addEventListener("input", () => {
+      if (audio.duration) {
+        audio.currentTime =
+          (Number(audioProgress.value) / 100) * audio.duration;
+      }
+    });
+
+    addNextButtons();
+    updateAudioPlayer();
+    updateInterface();
+  });
+</script>
 </body>
 </html>
