@@ -505,7 +505,7 @@
 
           <audio id="cocktail-audio" preload="metadata">
             <source
-              src="../assets/audio/Un-Coctel-en-Nueva-York.mp3"
+              src="../assets/audio/unit-1/cocktail-new-york.mp3"
               type="audio/mpeg"
             >
             Tu navegador no admite la reproducción de audio.
@@ -968,7 +968,7 @@
     </div>
   </footer>
 
-  <script type="module" src="../assets/js/supabase-auth.js?v=6"></script>
+  <script type="module" src="../assets/js/supabase-auth.js?v=7"></script>
 
   <script>
     "use strict";
@@ -1058,7 +1058,10 @@
 
         updateInterface();
 
-        if (activity === totalActivities && typeof window.saveStudentProgress === "function") {
+        if (
+          activity === totalActivities &&
+          typeof window.saveStudentProgress === "function"
+        ) {
           const result = await window.saveStudentProgress({
             unitNumber: 1,
             activityId: "unit-1-delivery-1",
@@ -1068,7 +1071,10 @@
           });
 
           if (!result.success) {
-            console.warn("El progreso local se guardó, pero Supabase no respondió.", result);
+            console.warn(
+              "El progreso local se guardó, pero Supabase no respondió.",
+              result
+            );
           }
         }
       }
@@ -1080,12 +1086,19 @@
       });
 
       document.getElementById("check-comprehension").addEventListener("click", () => {
-        const answerOne = document.querySelector('input[name="question-1"]:checked')?.value;
-        const answerTwo = document.querySelector('input[name="question-2"]:checked')?.value;
+        const answerOne = document.querySelector(
+          'input[name="question-1"]:checked'
+        )?.value;
+
+        const answerTwo = document.querySelector(
+          'input[name="question-2"]:checked'
+        )?.value;
+
         const status = document.getElementById("activity-status-2");
 
         if (answerOne === "Jeff" && answerTwo === "California") {
-          status.textContent = "✓ ¡Correcto! Jeff presenta a Tom y Tom es de California.";
+          status.textContent =
+            "✓ ¡Correcto! Jeff presenta a Tom y Tom es de California.";
           markActivityComplete(2);
         } else {
           status.textContent = "Revisa el diálogo e inténtalo otra vez.";
@@ -1103,7 +1116,7 @@
 
         if (
           answer.includes("tom") &&
-          (answer.includes("new cameraman") || answer.includes("new cameraman"))
+          answer.includes("new cameraman")
         ) {
           status.textContent = "✓ Correcto: Tom is the new cameraman.";
           markActivityComplete(4);
@@ -1128,10 +1141,12 @@
         const status = document.getElementById("activity-status-5");
 
         if (greeting === "hello" && (country === "am" || country === "'m")) {
-          status.textContent = "✓ ¡Muy bien! Hello, nice to meet you. / I am from Costa Rica.";
+          status.textContent =
+            "✓ ¡Muy bien! Hello, nice to meet you. / I am from Costa Rica.";
           markActivityComplete(5);
         } else {
-          status.textContent = "Pista: Hello, nice to meet you. / I am from Costa Rica.";
+          status.textContent =
+            "Pista: Hello, nice to meet you. / I am from Costa Rica.";
         }
       });
 
@@ -1148,7 +1163,9 @@
         }
 
         const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = String(Math.floor(seconds % 60)).padStart(2, "0");
+        const remainingSeconds = String(
+          Math.floor(seconds % 60)
+        ).padStart(2, "0");
 
         return `${minutes}:${remainingSeconds}`;
       }
@@ -1157,16 +1174,22 @@
         const currentTime = audio.currentTime || 0;
         const duration = audio.duration || 0;
 
-        audioTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        audioTime.textContent =
+          `${formatTime(currentTime)} / ${formatTime(duration)}`;
 
         if (duration > 0) {
-          audioProgress.value = String((currentTime / duration) * 100);
+          audioProgress.value = String(
+            (currentTime / duration) * 100
+          );
         }
       }
 
       function setAudioButton(isPlaying) {
         playIcon.textContent = isPlaying ? "❚❚" : "▶";
-        playText.textContent = isPlaying ? "Pausar audio" : "Reproducir audio";
+        playText.textContent = isPlaying
+          ? "Pausar audio"
+          : "Reproducir audio";
+
         playButton.setAttribute(
           "aria-label",
           isPlaying ? "Pausar audio" : "Reproducir audio"
@@ -1205,7 +1228,8 @@
 
       audioProgress.addEventListener("input", () => {
         if (audio.duration) {
-          audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
+          audio.currentTime =
+            (Number(audioProgress.value) / 100) * audio.duration;
         }
       });
 
