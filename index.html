@@ -17,31 +17,7 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-.auth-message {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 100;
-  max-width: min(360px, calc(100% - 2rem));
-  padding: 0.8rem 1rem;
-  border: 1px solid rgba(47, 215, 255, 0.45);
-  border-radius: 10px;
-  background: rgba(3, 11, 28, 0.94);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  color: #eafcff;
-  font-size: 1rem;
-  line-height: 1.35;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(12px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
 
-.auth-message.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-  
   <style>
     :root {
       --bg: #07101f;
@@ -55,6 +31,31 @@
       --text: #effaff;
       --muted: rgba(220, 240, 255, 0.78);
       --border: rgba(118, 226, 255, 0.3);
+    }
+
+    .auth-message {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 100;
+      max-width: min(360px, calc(100% - 2rem));
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(47, 215, 255, 0.45);
+      border-radius: 10px;
+      background: rgba(3, 11, 28, 0.94);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      color: #eafcff;
+      font-size: 1rem;
+      line-height: 1.35;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .auth-message.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     * {
@@ -931,82 +932,82 @@
         animation: none;
       }
     }
-[hidden] {
-  display: none !important;
-}
 
-.auth-guest,
-.auth-user {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
+    [hidden] {
+      display: none !important;
+    }
 
-.google-login-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.48rem;
-  min-height: 36px;
-  padding: 0.55rem 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.44);
-  border-radius: 9px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  cursor: pointer;
-  font-family: "Rajdhani", Arial, sans-serif;
-  font-size: 0.97rem;
-  font-weight: 700;
-}
+    .auth-guest,
+    .auth-user {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
 
-.google-g {
-  display: grid;
-  width: 20px;
-  height: 20px;
-  place-items: center;
-  border-radius: 50%;
-  background: white;
-  color: #4285f4;
-  font-family: Arial, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 800;
-}
+    .google-login-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.48rem;
+      min-height: 36px;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.44);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      cursor: pointer;
+      font-family: "Rajdhani", Arial, sans-serif;
+      font-size: 0.97rem;
+      font-weight: 700;
+    }
 
-.auth-user {
-  padding: 0.34rem 0.42rem 0.34rem 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: rgba(4, 20, 39, 0.55);
-}
+    .google-g {
+      display: grid;
+      width: 20px;
+      height: 20px;
+      place-items: center;
+      border-radius: 50%;
+      background: white;
+      color: #4285f4;
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
 
-.auth-user-name {
-  max-width: 105px;
-  overflow: hidden;
-  color: var(--blue-soft);
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+    .auth-user {
+      padding: 0.34rem 0.42rem 0.34rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(4, 20, 39, 0.55);
+    }
 
-.auth-user-avatar {
-  width: 27px;
-  height: 27px;
-  border: 1px solid rgba(47, 215, 255, 0.65);
-  border-radius: 50%;
-  object-fit: cover;
-}
+    .auth-user-name {
+      max-width: 105px;
+      overflow: hidden;
+      color: var(--blue-soft);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
-.logout-button {
-  padding: 0.32rem 0.45rem;
-  border: 1px solid rgba(255, 118, 118, 0.42);
-  border-radius: 6px;
-  background: rgba(255, 89, 89, 0.09);
-  color: #ffc3c3;
-  cursor: pointer;
-}
+    .auth-user-avatar {
+      width: 27px;
+      height: 27px;
+      border: 1px solid rgba(47, 215, 255, 0.65);
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .logout-button {
+      padding: 0.32rem 0.45rem;
+      border: 1px solid rgba(255, 118, 118, 0.42);
+      border-radius: 6px;
+      background: rgba(255, 89, 89, 0.09);
+      color: #ffc3c3;
+      cursor: pointer;
+    }
   </style>
 </head>
-
 <body>
   <div class="video-bg" aria-hidden="true">
     <video autoplay muted loop playsinline>
@@ -1312,11 +1313,8 @@
     </div>
   </footer>
 
-   <div class="auth-message" id="auth-message" aria-live="polite"></div>
-
-    <div class="auth-message" id="auth-message" aria-live="polite"></div>
-
+  <div class="auth-message" id="auth-message" aria-live="polite"></div>
   <script src="./assets/js/script.js"></script>
-  <script type="module" src="./assets/js/supabase-auth.js?v=3"></script>
+  <script type="module" src="./assets/js/supabase-auth.js?v=6"></script>
 </body>
 </html>
