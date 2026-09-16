@@ -6,10 +6,10 @@
   <meta name="theme-color" content="#07101f">
   <meta
     name="description"
-    content="Unidad 4, Entrega 4: En la autopista. Noticias, publicidad, favores, permiso, hipótesis y voz pasiva."
+    content="Unidad 4, Entrega 3: En caso de apuro. Problemas, salud, acciones en progreso, remember y remind."
   >
 
-  <title>En la autopista | 506 English Express</title>
+  <title>En caso de apuro | 506 English Express</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,15 +20,26 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
 </head>
 
 <body>
   <div class="video-bg" aria-hidden="true">
     <video autoplay muted loop playsinline>
-      <source
-        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
-        type="video/mp4"
-      >
+      <source src="../assets/video/crea_una_animacion_donde_la_ca.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -38,7 +49,7 @@
   <div class="topbar">
     <div class="container topbar-content">
       <span>506 English Express</span>
-      <span>Unidad 4 · Entrega 4 · En la autopista</span>
+      <span>Unidad 4 · Entrega 3 · En caso de apuro</span>
     </div>
   </div>
 
@@ -54,10 +65,7 @@
         <a href="unit-4.html">Unidad 4</a>
       </div>
 
-      <a
-        href="unit-4-delivery-3.html"
-        class="button button-outline button-small"
-      >
+      <a href="unit-4-delivery-2.html" class="button button-outline button-small">
         Entrega anterior
       </a>
     </nav>
@@ -65,15 +73,14 @@
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
-        <p class="kicker">Unidad 04 · Entrega 04</p>
-        <h1>En la autopista</h1>
+        <p class="kicker">Unidad 04 · Entrega 03</p>
+        <h1>En caso de apuro…</h1>
 
         <p>
-          Tom y Mike conducen por una autopista de Los Ángeles. Practicarás
-          noticias, publicidad, favores, permisos, situaciones hipotéticas,
-          acciones repetitivas y voz pasiva.
+          Bárbara visita a su sicoterapeuta en Nueva York. Practicarás cómo
+          hablar de problemas, acciones interrumpidas, consejos, recuerdos,
+          salud física y salud mental.
         </p>
 
         <div class="lesson-progress">
@@ -95,769 +102,844 @@
             </div>
           </div>
 
-          <button
-            class="button button-outline button-small"
-            id="reset-progress"
-            type="button"
-          >
+          <button class="button button-outline button-small" id="reset-progress" type="button">
             Reiniciar
           </button>
         </div>
       </section>
 
       <section class="lesson-sections">
-
-        <!-- ACTIVIDAD 1 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
               <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
-              <h2>Noticias en la radio</h2>
+              <h2>Bárbara visita al Dr. Klein</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">📻</span>
+            <span class="activity-icon" aria-hidden="true">🛋️</span>
           </div>
 
-          <p>
-            Tom y Mike viajan por una autopista de Los Ángeles. Mike conduce y
-            la radio está encendida.
-          </p>
+          <p>Bárbara está en Nueva York y ha ido a ver a su sicoterapeuta.</p>
 
           <div class="audio-placeholder">
             <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-4/on-the-highway-part-1.mp3</strong>
-            </span>
+            <span>Audio sugerido: <strong>assets/audio/unit-4/in-case-of-emergency-part-1.mp3</strong></span>
           </div>
 
           <div class="dialogue-box">
-            <p><strong>Disc jockey:</strong> This is Radio WXQR bringing you the news headlines at one o'clock.</p>
-
-            <p><strong>Newscaster:</strong> The new defense budget has been rejected by Congress.</p>
-
-            <p><strong>Newscaster:</strong> One person was killed and six were injured when Hurricane Edie swept over Florida last night.</p>
-
-            <p><strong>Newscaster:</strong> The Oscar for Best Film was won by “Keep Smiling” directed by Robert Reelberg.</p>
-
-            <p><strong>Newscaster:</strong> And now, a word from our sponsor:</p>
-
-            <p><strong>Teenage girl:</strong> I don't know what's wrong with me. I keep losing my friends. I'm never asked for a second date...</p>
-
-            <p><strong>Man:</strong> If Debbie used Fresh 'n' Kleen underarm deodorant, she would be really popular. The phone would keep on ringing, and she'd never sit home alone!</p>
+            <p><strong>Dr. Klein:</strong> How are you this week?</p>
+            <p><strong>Barbara:</strong> Terrible! I've had an awful week.</p>
+            <p><strong>Dr. Klein:</strong> Do you want to talk about it?</p>
+            <p><strong>Barbara:</strong> Well, I don't know what's the matter with me. The other day I was taking a shower when the doorbell rang, and I answered the telephone.</p>
+            <p><strong>Dr. Klein:</strong> Yes. And...?</p>
+            <p><strong>Barbara:</strong> And another time I was walking down the street when my boss came up to me, and I couldn't even remember his name!</p>
+            <p><strong>Dr. Klein:</strong> That's not the way to get a promotion, huh?</p>
+            <p><strong>Barbara:</strong> You're not kidding!</p>
+            <p><strong>Barbara:</strong> And yesterday I was having dinner with a friend in a restaurant, and suddenly I got up and started clearing the table!</p>
+            <p><strong>Dr. Klein:</strong> I'm sure the waiter was pleased.</p>
+            <p><strong>Barbara:</strong> That's not the point, Doctor! What's the matter with me?</p>
           </div>
 
           <div class="translation-box">
             <strong>Idea principal:</strong>
-            <span>
-              Las noticias hablan de un presupuesto rechazado, daños provocados
-              por un huracán y un Oscar. Después comienza un anuncio de
-              desodorante que promete popularidad.
-            </span>
+            <span>Bárbara ha tenido una semana terrible y confunde situaciones: contesta el teléfono cuando suena el timbre, olvida el nombre de su jefe y limpia una mesa en un restaurante.</span>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
-            </button>
+            <button class="button button-primary complete-activity" type="button">Marcar diálogo como completado</button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
 
-        <!-- ACTIVIDAD 2 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
               <p class="activity-number">ACTIVIDAD 02 · DIÁLOGO</p>
-              <h2>Tom está harto de Los Ángeles</h2>
+              <h2>La tormenta de Nueva Orleans</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">🚗</span>
+            <span class="activity-icon" aria-hidden="true">⛈️</span>
           </div>
 
           <div class="audio-placeholder">
             <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-4/on-the-highway-part-2.mp3</strong>
-            </span>
+            <span>Audio sugerido: <strong>assets/audio/unit-4/in-case-of-emergency-part-2.mp3</strong></span>
           </div>
 
           <div class="dialogue-box">
-            <p><strong>Tom:</strong> Switch that thing off, Mike!</p>
-
-            <p><strong>Mike:</strong> What's the matter with you, Tom? You're very irritable these days.</p>
-
-            <p><strong>Tom:</strong> Oh, nothing.</p>
-
-            <p><strong>Mike:</strong> How's Jane?</p>
-
-            <p><strong>Tom:</strong> I don't know. She went away without saying goodbye.</p>
-
-            <p><strong>Mike:</strong> Oh, I see... How's work going?</p>
-
-            <p><strong>Tom:</strong> Not too well. I'm fed up with L.A. I might go somewhere else.</p>
-
-            <p><strong>Mike:</strong> Where would you go?</p>
-
-            <p><strong>Tom:</strong> Well, if I left L.A., I'd go to Chicago, or maybe New York.</p>
-
-            <p><strong>Mike:</strong> If I were you, I wouldn't go. If you moved back East, wouldn't you miss sunny California?</p>
-
-            <p><strong>Tom:</strong> Hey, Mike, cut it out. Will you do me a favor and stop asking me so many questions?</p>
-
-            <p><strong>Mike:</strong> Sure, Tom, sure. Do you mind if I switch the radio back on?</p>
-
-            <p><strong>Tom:</strong> Hey, Mike, would you do me a big favor, and drive me to the airport?</p>
-
-            <p><strong>Mike:</strong> The airport? What about the Fourth of July barbecue in Santa Monica? Tom, are you feeling O.K.?</p>
-
-            <p><strong>Tom:</strong> Just fine!</p>
+            <p><strong>Dr. Klein:</strong> How long has this been going on?</p>
+            <p><strong>Barbara:</strong> Well, I was O.K. until I went to New Orleans to work on a jazz documentary. I was staying in a house with the film crew.</p>
+            <p><strong>Barbara:</strong> Everything was going fine, then one night, while I was listening to some music, a terrible storm broke out.</p>
+            <p><strong>Barbara:</strong> Then the lights went out, and the cameraman walked in, and I got really angry with him, I don't know why...</p>
+            <p><strong>Dr. Klein:</strong> This is most interesting. Does this cameraman remind you of your father in any way...? And the music, can you remember exactly which piece it was?</p>
           </div>
 
           <div class="translation-box">
             <strong>Idea principal:</strong>
-            <span>
-              Tom está irritable porque Jane se fue sin despedirse y el trabajo
-              no va bien. Piensa irse de Los Ángeles, pero termina pidiéndole a
-              Mike que lo lleve al aeropuerto.
-            </span>
+            <span>Los problemas comenzaron después de que Bárbara viajó a Nueva Orleans para trabajar en un documental de jazz. Durante una tormenta se enfadó con el camarógrafo sin saber por qué.</span>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
-            </button>
+            <button class="button button-primary complete-activity" type="button">Marcar diálogo como completado</button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
 
-        <!-- ACTIVIDAD 3 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
               <p class="activity-number">ACTIVIDAD 03 · COMPRENSIÓN</p>
-              <h2>Compruebe su comprensión</h2>
+              <h2>¿Qué le pasa a Bárbara?</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">🧠</span>
           </div>
 
           <div class="question-block">
-            <p><strong>1. ¿Qué ocurrió con el nuevo presupuesto de defensa?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q1" value="a">
-              It was rejected by Congress
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q1" value="b">
-              It was accepted by Congress
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q1" value="c">
-              It was lost by the radio station
-            </label>
+            <p><strong>1. ¿Qué hizo Bárbara cuando sonó el timbre?</strong></p>
+            <label class="option-label"><input type="radio" name="emergency-q1" value="a"> She answered the telephone</label>
+            <label class="option-label"><input type="radio" name="emergency-q1" value="b"> She opened the front door</label>
+            <label class="option-label"><input type="radio" name="emergency-q1" value="c"> She went to the office</label>
           </div>
 
           <div class="question-block">
-            <p><strong>2. ¿Por qué Tom está irritado?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q2" value="a">
-              Because Jane went away without saying goodbye and work is not going well
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q2" value="b">
-              Because Mike won an Oscar
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q2" value="c">
-              Because he likes the radio advertisement
-            </label>
+            <p><strong>2. ¿Qué olvidó Bárbara al encontrarse con su jefe?</strong></p>
+            <label class="option-label"><input type="radio" name="emergency-q2" value="a"> His telephone number</label>
+            <label class="option-label"><input type="radio" name="emergency-q2" value="b"> His name</label>
+            <label class="option-label"><input type="radio" name="emergency-q2" value="c"> His address</label>
           </div>
 
           <div class="question-block">
-            <p><strong>3. ¿Adónde iría Tom si dejara Los Ángeles?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q3" value="a">
-              To Chicago or maybe New York
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q3" value="b">
-              To Florida
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q3" value="c">
-              To Santa Monica only
-            </label>
+            <p><strong>3. ¿Qué ocurrió mientras Bárbara escuchaba música?</strong></p>
+            <label class="option-label"><input type="radio" name="emergency-q3" value="a"> A terrible storm broke out</label>
+            <label class="option-label"><input type="radio" name="emergency-q3" value="b"> She received a promotion</label>
+            <label class="option-label"><input type="radio" name="emergency-q3" value="c"> She went hiking</label>
           </div>
 
           <div class="question-block">
-            <p><strong>4. ¿Qué le pide Tom a Mike al final?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q4" value="a">
-              To drive him to the airport
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q4" value="b">
-              To turn the radio on
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="highway-q4" value="c">
-              To organize a barbecue
-            </label>
+            <p><strong>4. ¿Con quién vivía Bárbara en Nueva Orleans?</strong></p>
+            <label class="option-label"><input type="radio" name="emergency-q4" value="a"> With her family</label>
+            <label class="option-label"><input type="radio" name="emergency-q4" value="b"> With the film crew</label>
+            <label class="option-label"><input type="radio" name="emergency-q4" value="c"> With Dr. Klein</label>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary check-comprehension" type="button">
-              Revisar respuestas
-            </button>
+            <button class="button button-primary check-comprehension" type="button">Revisar respuestas</button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
 
-        <!-- ACTIVIDAD 4 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
               <p class="activity-number">ACTIVIDAD 04 · VOCABULARIO</p>
-              <h2>Noticias, publicidad y carretera</h2>
+              <h2>Problemas, salud y acciones</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">📚</span>
           </div>
 
           <div class="vocabulary-columns">
             <section class="vocabulary-group">
-              <h3>Radio y noticias</h3>
-
+              <h3>Objetos y lugares</h3>
               <dl class="vocabulary-list">
-                <div><dt>disc jockey</dt><dd>disc jockey</dd></div>
-                <div><dt>radio</dt><dd>radio</dd></div>
-                <div><dt>news</dt><dd>noticias</dd></div>
-                <div><dt>headlines</dt><dd>titulares</dd></div>
-                <div><dt>newscaster</dt><dd>presentador/a de noticias</dd></div>
-                <div><dt>budget</dt><dd>presupuesto</dd></div>
-                <div><dt>Congress</dt><dd>Congreso</dd></div>
-                <div><dt>hurricane</dt><dd>huracán</dd></div>
-                <div><dt>sponsor</dt><dd>patrocinador</dd></div>
-                <div><dt>word</dt><dd>palabra</dd></div>
+                <div><dt>shower</dt><dd>ducha</dd></div>
+                <div><dt>bath</dt><dd>baño</dd></div>
+                <div><dt>bathtub</dt><dd>bañera</dd></div>
+                <div><dt>doorbell</dt><dd>timbre</dd></div>
+                <div><dt>front door</dt><dd>puerta de entrada</dd></div>
+                <div><dt>back door</dt><dd>puerta trasera</dd></div>
+                <div><dt>entrance</dt><dd>entrada</dd></div>
+                <div><dt>exit</dt><dd>salida</dd></div>
+                <div><dt>table</dt><dd>mesa</dd></div>
+                <div><dt>waiter</dt><dd>camarero</dd></div>
               </dl>
             </section>
 
             <section class="vocabulary-group">
-              <h3>Relaciones y acciones</h3>
-
+              <h3>Acciones</h3>
               <dl class="vocabulary-list">
-                <div><dt>date</dt><dd>cita</dd></div>
-                <div><dt>underarm deodorant</dt><dd>desodorante de axilas</dd></div>
-                <div><dt>thing</dt><dd>cosa</dd></div>
-                <div><dt>favor</dt><dd>favor</dd></div>
-                <div><dt>to ring</dt><dd>sonar, telefonear</dd></div>
-                <div><dt>to sit</dt><dd>estar sentado/a</dd></div>
-                <div><dt>to switch off</dt><dd>apagar</dd></div>
-                <div><dt>to switch on</dt><dd>encender</dd></div>
-                <div><dt>to leave</dt><dd>dejar, marcharse</dd></div>
-                <div><dt>to move</dt><dd>mudarse</dd></div>
-                <div><dt>to feel</dt><dd>sentirse</dd></div>
+                <div><dt>to take a shower</dt><dd>tomar una ducha</dd></div>
+                <div><dt>to ring a doorbell</dt><dd>tocar el timbre</dd></div>
+                <div><dt>to answer</dt><dd>contestar</dd></div>
+                <div><dt>to come up to someone</dt><dd>acercarse a alguien</dd></div>
+                <div><dt>to clear the table</dt><dd>quitar la mesa</dd></div>
+                <div><dt>to set the table</dt><dd>poner la mesa</dd></div>
+                <div><dt>to break out</dt><dd>estallar</dd></div>
+                <div><dt>to go out</dt><dd>apagarse</dd></div>
+                <div><dt>to remind</dt><dd>hacer recordar</dd></div>
               </dl>
             </section>
 
             <section class="vocabulary-group">
-              <h3>Verbos y expresiones</h3>
-
+              <h3>Emociones y expresiones</h3>
               <dl class="vocabulary-list">
-                <div><dt>to reject</dt><dd>rechazar</dd></div>
-                <div><dt>to kill</dt><dd>matar</dd></div>
-                <div><dt>to injure</dt><dd>herir</dd></div>
-                <div><dt>to sweep</dt><dd>arrasar, barrer</dd></div>
-                <div><dt>to win</dt><dd>ganar</dd></div>
-                <div><dt>to direct</dt><dd>dirigir una película</dd></div>
-                <div><dt>to lose</dt><dd>perder</dd></div>
-                <div><dt>popular</dt><dd>popular</dd></div>
-                <div><dt>alone</dt><dd>solo/a</dd></div>
-                <div><dt>irritable</dt><dd>irritable</dd></div>
-                <div><dt>fed up with</dt><dd>harto/a de</dd></div>
-                <div><dt>somewhere else</dt><dd>en otro sitio</dd></div>
-                <div><dt>cut it out</dt><dd>ya basta</dd></div>
+                <div><dt>promotion</dt><dd>promoción</dd></div>
+                <div><dt>awful</dt><dd>terrible</dd></div>
+                <div><dt>pleased</dt><dd>contento/a</dd></div>
+                <div><dt>angry</dt><dd>enfadado/a</dd></div>
+                <div><dt>furious</dt><dd>furioso/a</dd></div>
+                <div><dt>the other day</dt><dd>el otro día</dd></div>
+                <div><dt>suddenly</dt><dd>de repente</dd></div>
+                <div><dt>while</dt><dd>mientras</dd></div>
               </dl>
             </section>
           </div>
 
           <div class="question-block">
             <label for="vocabulary-answer">
-              Complete: “Tom is __________ up with L.A.”
+              Complete: “Barbara was taking a __________ when the doorbell rang.”
             </label>
-
-            <input
-              id="vocabulary-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe una palabra en inglés"
-            >
+            <input id="vocabulary-answer" type="text" autocomplete="off" placeholder="Escribe una palabra en inglés">
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary check-vocabulary" type="button">
-              Revisar respuesta
-            </button>
+            <button class="button button-primary check-vocabulary" type="button">Revisar respuesta</button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
 
-        <!-- ACTIVIDAD 5 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
               <p class="activity-number">ACTIVIDAD 05 · CÓMO SE DICE</p>
-              <h2>Favores, permisos e irritación</h2>
+              <h2>Problemas, acuerdo y convencimiento</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">💬</span>
           </div>
 
           <div class="phrase-groups">
             <section class="phrase-group">
-              <h3>Pedir favores y permiso</h3>
-
+              <h3>Preguntar qué ocurre</h3>
               <dl class="phrase-list">
-                <div><dt>Will you do me a favor?</dt><dd>¿Me haces un favor?</dd></div>
-                <div><dt>Would you do me a big favor?</dt><dd>¿Me harías un gran favor?</dd></div>
-                <div><dt>Would you mind driving me to the airport?</dt><dd>¿Te importaría llevarme al aeropuerto?</dd></div>
-                <div><dt>Do you mind if I smoke?</dt><dd>¿Te importa si fumo?</dd></div>
-                <div><dt>Is it all right with you if I open the window?</dt><dd>¿Está bien si abro la ventana?</dd></div>
-                <div><dt>Will it disturb you if I listen to music?</dt><dd>¿Te molestará si escucho música?</dd></div>
+                <div><dt>What's been happening?</dt><dd>¿Qué ha pasado?</dd></div>
+                <div><dt>What's been going on?</dt><dd>¿Qué está pasando?</dd></div>
+                <div><dt>What happened?</dt><dd>¿Qué pasó?</dd></div>
+                <div><dt>What's up?</dt><dd>¿Qué hay?</dd></div>
+                <div><dt>What's the matter?</dt><dd>¿Qué pasa?</dd></div>
+                <div><dt>What's wrong?</dt><dd>¿Qué está mal?</dd></div>
+                <div><dt>Are you feeling O.K.?</dt><dd>¿Te sientes bien?</dd></div>
               </dl>
             </section>
 
             <section class="phrase-group">
-              <h3>Hipótesis y desagrado</h3>
-
+              <h3>Hablar de problemas</h3>
               <dl class="phrase-list">
-                <div><dt>If I left L.A., I'd go to Chicago.</dt><dd>Si dejara L.A., iría a Chicago.</dd></div>
-                <div><dt>I might go somewhere else.</dt><dd>Podría ir a otro lugar.</dd></div>
-                <div><dt>I often dream about living in another city.</dt><dd>A menudo sueño con vivir en otra ciudad.</dd></div>
-                <div><dt>I'm fed up with L.A.</dt><dd>Estoy harto/a de L.A.</dd></div>
-                <div><dt>I've had enough of life in a big city.</dt><dd>He tenido suficiente de la vida en una gran ciudad.</dd></div>
-                <div><dt>I can't stand this life-style.</dt><dd>No soporto este estilo de vida.</dd></div>
+                <div><dt>I've had an awful week.</dt><dd>He tenido una semana horrible.</dd></div>
+                <div><dt>I feel terrible.</dt><dd>Me siento fatal.</dd></div>
+                <div><dt>I feel lousy.</dt><dd>Me siento muy mal.</dd></div>
+                <div><dt>I'm having a rough time.</dt><dd>Estoy pasando una mala racha.</dd></div>
+                <div><dt>You're not kidding!</dt><dd>¡Claro que sí!</dd></div>
+                <div><dt>Absolutely!</dt><dd>¡Absolutamente!</dd></div>
               </dl>
             </section>
 
             <section class="phrase-group">
-              <h3>Expresar irritación y repetición</h3>
-
+              <h3>Convencimiento y promoción</h3>
               <dl class="phrase-list">
-                <div><dt>Cut it out!</dt><dd>¡Ya basta!</dd></div>
-                <div><dt>You're getting on my nerves!</dt><dd>¡Me estás poniendo de los nervios!</dd></div>
-                <div><dt>Can you stop that?</dt><dd>¿Puedes parar eso?</dd></div>
-                <div><dt>That's really annoying me.</dt><dd>Eso realmente me está molestando.</dd></div>
-                <div><dt>That's really bugging me!</dt><dd>¡Eso me está fastidiando!</dd></div>
-                <div><dt>I keep losing my friends.</dt><dd>No paro de perder amigos.</dd></div>
-                <div><dt>That happens all the time.</dt><dd>Eso ocurre todo el tiempo.</dd></div>
+                <div><dt>I'm sure.</dt><dd>Estoy seguro/a.</dd></div>
+                <div><dt>I'm positive.</dt><dd>Estoy convencido/a.</dd></div>
+                <div><dt>That's not the point.</dt><dd>No se trata de eso.</dd></div>
+                <div><dt>You've missed the point.</dt><dd>No entendiste el punto.</dd></div>
+                <div><dt>That's not the way to get a promotion.</dt><dd>Así no se consigue una promoción.</dd></div>
               </dl>
             </section>
           </div>
 
           <div class="question-block">
             <label for="phrases-answer">
-              Complete: “Would you __________ driving me to the airport?”
+              Complete: “That's not the __________, Doctor!”
             </label>
-
-            <input
-              id="phrases-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: mind"
-            >
+            <input id="phrases-answer" type="text" autocomplete="off" placeholder="Escribe: point">
           </div>
 
           <div class="question-block">
             <label for="phrases-writing">
-              Escribe una petición de favor o permiso en inglés:
+              Escribe una oración en inglés para preguntar a alguien qué le pasa:
             </label>
-
-            <textarea
-              id="phrases-writing"
-              placeholder="Would you do me a favor and drive me to the airport?"
-            ></textarea>
+            <textarea id="phrases-writing" placeholder="What's the matter? Are you feeling O.K.?"></textarea>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary check-phrases" type="button">
-              Guardar práctica
-            </button>
+            <button class="button button-primary check-phrases" type="button">Guardar práctica</button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
 
-        <!-- ACTIVIDAD 6 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
               <p class="activity-number">ACTIVIDAD 06 · GRAMÁTICA</p>
-              <h2>Voz pasiva: was / were done</h2>
+              <h2>Was doing... when something happened</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">🔁</span>
+            <span class="activity-icon" aria-hidden="true">⏳</span>
           </div>
 
           <section class="oral-practice-block">
-            <h3>Del agente a la acción</h3>
-
+            <h3>Acción en progreso interrumpida</h3>
             <p class="example-box">
-              The hurricane killed one person. →<br>
-              <strong>One person was killed by the hurricane.</strong><br><br>
+              Take a shower. The phone rang. →<br>
+              <strong>I was taking a shower when the phone rang.</strong><br><br>
+              Walk down the street. My boss came up to me. →<br>
+              <strong>I was walking down the street when my boss came up to me.</strong>
+            </p>
+          </section>
 
-              Alfred Hitchcock directed the film. →<br>
-              <strong>The film was directed by Alfred Hitchcock.</strong>
+          <section class="oral-practice-block">
+            <h3>While</h3>
+            <p class="example-box">
+              We were listening to the radio. The phone rang. →<br>
+              <strong>While we were listening to the radio, the phone rang.</strong>
             </p>
           </section>
 
           <div class="question-block">
-            <label for="passive-past-answer-1">
-              Complete: “One person __________ killed by the hurricane.”
+            <label for="past-answer-1">
+              Complete: “Barbara was taking a shower when the doorbell __________.”
             </label>
-
-            <input
-              id="passive-past-answer-1"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: was"
-            >
+            <input id="past-answer-1" type="text" autocomplete="off" placeholder="Escribe: rang">
           </div>
 
           <div class="question-block">
-            <label for="passive-past-answer-2">
-              Complete: “The film was __________ by Alfred Hitchcock.”
+            <label for="past-answer-2">
+              Complete: “__________ Barbara was listening to music, a terrible storm broke out.”
             </label>
-
-            <input
-              id="passive-past-answer-2"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: directed"
-            >
+            <input id="past-answer-2" type="text" autocomplete="off" placeholder="Escribe: While">
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary check-passive-past" type="button">
-              Revisar respuestas
-            </button>
+            <button class="button button-primary check-past" type="button">Revisar respuestas</button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
 
-        <!-- ACTIVIDAD 7 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
               <p class="activity-number">ACTIVIDAD 07 · GRAMÁTICA</p>
-              <h2>Voz pasiva: have been done</h2>
+              <h2>Remember y remind</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">📰</span>
+            <span class="activity-icon" aria-hidden="true">💭</span>
           </div>
 
           <section class="oral-practice-block">
-            <h3>Presente perfecto pasivo</h3>
-
+            <h3>Recordar y hacer recordar</h3>
             <p class="example-box">
-              Congress has rejected the new budget. →<br>
-              <strong>The new budget has been rejected by Congress.</strong><br><br>
-
-              Volunteer doctors and nurses have helped many disaster victims. →<br>
-              <strong>Many disaster victims have been helped by volunteer doctors and nurses.</strong>
+              When I see you, I remember your brother. →<br>
+              <strong>You remind me of your brother.</strong><br><br>
+              When I listen to that song, I remember you. →<br>
+              <strong>That song reminds me of you.</strong>
             </p>
           </section>
 
           <div class="question-block">
-            <label for="passive-perfect-answer-1">
-              Complete: “The new budget has been __________ by Congress.”
+            <label for="remind-answer">
+              Complete: “That song __________ me of you.”
             </label>
-
-            <input
-              id="passive-perfect-answer-1"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: rejected"
-            >
+            <input id="remind-answer" type="text" autocomplete="off" placeholder="Escribe: reminds">
           </div>
 
           <div class="question-block">
-            <label for="passive-perfect-answer-2">
-              Complete: “Many victims have been __________ by volunteer doctors.”
+            <label for="remind-writing">
+              Escribe una oración en inglés con <strong>remind</strong>:
             </label>
-
-            <input
-              id="passive-perfect-answer-2"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: helped"
-            >
+            <textarea id="remind-writing" placeholder="This place reminds me of my family."></textarea>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary check-passive-perfect" type="button">
-              Revisar respuestas
-            </button>
+            <button class="button button-primary check-remind" type="button">Guardar práctica</button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
 
-        <!-- ACTIVIDAD 8 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
               <p class="activity-number">ACTIVIDAD 08 · GRAMÁTICA</p>
-              <h2>Keep, if y without</h2>
+              <h2>Los usos de go y get</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">🛣️</span>
+            <span class="activity-icon" aria-hidden="true">🚶</span>
           </div>
 
           <section class="oral-practice-block">
-            <h3>Acciones repetitivas con keep</h3>
-
+            <h3>Usos de go</h3>
             <p class="example-box">
-              I've lost many friends. →<br>
-              <strong>I keep losing my friends.</strong><br><br>
-
-              He's won a lot of prizes. →<br>
-              <strong>He keeps winning prizes.</strong>
+              <strong>go on:</strong> How long has this situation been going on?<br>
+              <strong>go away:</strong> I want to go away on vacation.<br>
+              <strong>go up to:</strong> I'll go up to that man and ask him the way.<br>
+              <strong>go out with:</strong> I'm going out with an interesting person tonight.<br>
+              <strong>go through:</strong> He's going through a very difficult time.
             </p>
           </section>
 
           <section class="oral-practice-block">
-            <h3>Situaciones hipotéticas</h3>
-
+            <h3>Usos de get</h3>
             <p class="example-box">
-              If I move to Chicago, I'll miss L.A. →<br>
-              <strong>If I moved to Chicago, I'd miss L.A.</strong>
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>Without doing</h3>
-
-            <p class="example-box">
-              She went away. She didn't say goodbye. →<br>
-              <strong>She went away without saying goodbye.</strong>
+              <strong>become:</strong> He's getting very thin.<br>
+              <strong>arrive:</strong> He gets home very late in the evenings.<br>
+              <strong>obtain:</strong> I'm getting my visa today.<br>
+              <strong>buy:</strong> Can you get me a coffee?<br>
+              <strong>receive:</strong> He gets a check from his father every month.
             </p>
           </section>
 
           <div class="question-block">
-            <label for="grammar-answer-1">
-              Complete: “I keep __________ my friends.”
+            <label for="go-get-answer">
+              Complete: “How long has this situation been __________ on?”
             </label>
-
-            <input
-              id="grammar-answer-1"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: losing"
-            >
+            <input id="go-get-answer" type="text" autocomplete="off" placeholder="Escribe: going">
           </div>
 
           <div class="question-block">
-            <label for="grammar-answer-2">
-              Complete: “If I __________ to Chicago, I'd miss L.A.”
+            <label for="go-get-writing">
+              Escribe una oración en inglés con <strong>go</strong> o <strong>get</strong>:
             </label>
-
-            <input
-              id="grammar-answer-2"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: moved"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="grammar-answer-3">
-              Complete: “Jane went away __________ saying goodbye.”
-            </label>
-
-            <input
-              id="grammar-answer-3"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: without"
-            >
+            <textarea id="go-get-writing" placeholder="I want to get away for a week."></textarea>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary check-grammar" type="button">
-              Revisar respuestas
-            </button>
+            <button class="button button-primary check-go-get" type="button">Guardar práctica</button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
 
-        <!-- ACTIVIDAD 9 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
               <p class="activity-number">ACTIVIDAD 09 · CULTURA</p>
-              <h2>Publicidad</h2>
+              <h2>Forma física y salud mental</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">📺</span>
+            <span class="activity-icon" aria-hidden="true">🏃</span>
           </div>
 
           <div class="reading-card">
-            <h3>Advertising made in U.S.A.</h3>
-
+            <h3>Keep in shape</h3>
             <p>
-              La publicidad forma una parte importante de la cultura
-              estadounidense. Los anuncios aparecen en radio, televisión,
-              periódicos, revistas, carteles y carreteras. Su objetivo principal
-              es atraer la atención y vender productos.
+              En Estados Unidos, el ejercicio físico ocupa un lugar importante.
+              La expresión <em>to keep in shape</em> significa mantenerse en
+              forma. Muchas personas van al gimnasio, a piscinas, a canchas de
+              tenis o realizan rutinas de musculación y aerobic.
             </p>
-
             <p>
-              Muchos periódicos y revistas dependen de los ingresos publicitarios.
-              En televisión, las pausas comerciales son frecuentes y algunos
-              espectadores las aprovechan para descansar, prepararse comida o
-              realizar otras actividades.
+              La alimentación saludable también recibe atención. Frutas, verduras
+              y ensaladas se consideran opciones importantes para el bienestar.
             </p>
+          </div>
 
+          <div class="reading-card">
+            <h3>Salud mental</h3>
             <p>
-              Los mensajes publicitarios suelen usar música, eslóganes breves,
-              imágenes de felicidad, referencias a Estados Unidos y símbolos como
-              la bandera. Algunos anuncios pueden ser simples, pero otros emplean
-              humor, creatividad e imágenes atractivas.
+              La figura del psicólogo o terapeuta es común en la cultura
+              estadounidense. Un terapeuta puede escuchar, aconsejar y ayudar a
+              una persona a afrontar un periodo difícil.
             </p>
           </div>
 
           <div class="question-block">
             <label for="culture-writing">
-              Escribe una oración en inglés sobre un anuncio o un producto:
+              Escribe una oración en inglés sobre ejercicio, comida saludable o bienestar:
             </label>
-
-            <textarea
-              id="culture-writing"
-              placeholder="This advertisement makes the product look popular."
-            ></textarea>
+            <textarea id="culture-writing" placeholder="I exercise to keep in shape and feel healthy."></textarea>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary check-culture" type="button">
-              Guardar respuesta
-            </button>
+            <button class="button button-primary check-culture" type="button">Guardar respuesta</button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
 
-        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 10 · REPASO FINAL</p>
-              <h2>Noticias y anuncios</h2>
+              <p class="activity-number">ACTIVIDAD 10 · DE TODO UN POCO</p>
+              <h2>¿Es usted ambicioso? Haga la prueba</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">✨</span>
+            <span class="activity-icon" aria-hidden="true">⭐</span>
           </div>
 
-          <section class="oral-practice-block">
-            <h3>De todo un poco</h3>
-
-            <p>
-              La sección original incluye una canción tradicional y una práctica
-              de relacionar seis productos con anuncios: reloj, helado, whisky,
-              desodorante, tinte para cabello y detergente. Para el sitio web,
-              puedes añadir posteriormente un audio autorizado y anuncios creados
-              específicamente para la plataforma.
-            </p>
-
-            <div class="audio-placeholder">
-              <span aria-hidden="true">🎵</span>
-              <span>
-                Audio sugerido:
-                <strong>assets/audio/unit-4/all-the-good-times-listening.mp3</strong>
-              </span>
-            </div>
-          </section>
+          <p>Responde el cuestionario y luego redacta un breve texto usando las estructuras de esta entrega.</p>
 
           <div class="question-block">
-            <label for="review-answer-1">
-              Complete: “The new defense budget has been __________ by Congress.”
-            </label>
-
-            <input
-              id="review-answer-1"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: rejected"
-            >
+            <p><strong>1. You often dream you are...</strong></p>
+            <label class="option-label"><input type="radio" name="ambition-q1" value="a"> Flying</label>
+            <label class="option-label"><input type="radio" name="ambition-q1" value="b"> Going up a mountain</label>
+            <label class="option-label"><input type="radio" name="ambition-q1" value="c"> Falling</label>
           </div>
 
           <div class="question-block">
-            <label for="review-answer-2">
-              Complete: “If I __________ L.A., I'd go to Chicago.”
-            </label>
+            <p><strong>2. You like to imagine you are...</strong></p>
+            <label class="option-label"><input type="radio" name="ambition-q2" value="a"> The president of your country</label>
+            <label class="option-label"><input type="radio" name="ambition-q2" value="b"> A pop star</label>
+            <label class="option-label"><input type="radio" name="ambition-q2" value="c"> Too busy doing things to imagine them</label>
+          </div>
 
-            <input
-              id="review-answer-2"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: left"
-            >
+          <div class="question-block">
+            <p><strong>3. In a few years, you think you will be...</strong></p>
+            <label class="option-label"><input type="radio" name="ambition-q3" value="a"> Doing the same job</label>
+            <label class="option-label"><input type="radio" name="ambition-q3" value="b"> Doing your boss's job</label>
+            <label class="option-label"><input type="radio" name="ambition-q3" value="c"> Living the life of a millionaire on an island</label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>4. Which would make you feel happiest?</strong></p>
+            <label class="option-label"><input type="radio" name="ambition-q4" value="a"> A promotion</label>
+            <label class="option-label"><input type="radio" name="ambition-q4" value="b"> Winning money in a horse race</label>
+            <label class="option-label"><input type="radio" name="ambition-q4" value="c"> Going away on vacation</label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>5. You are...</strong></p>
+            <label class="option-label"><input type="radio" name="ambition-q5" value="a"> The first or only child in your family</label>
+            <label class="option-label"><input type="radio" name="ambition-q5" value="b"> The youngest child in your family</label>
+            <label class="option-label"><input type="radio" name="ambition-q5" value="c"> A middle child</label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>6. Your favorite color is...</strong></p>
+            <label class="option-label"><input type="radio" name="ambition-q6" value="a"> Green</label>
+            <label class="option-label"><input type="radio" name="ambition-q6" value="b"> Blue</label>
+            <label class="option-label"><input type="radio" name="ambition-q6" value="c"> Red</label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>7. When you are on vacation, you...</strong></p>
+            <label class="option-label"><input type="radio" name="ambition-q7" value="a"> Never think about your work</label>
+            <label class="option-label"><input type="radio" name="ambition-q7" value="b"> Worry about work during your absence</label>
+            <label class="option-label"><input type="radio" name="ambition-q7" value="c"> Plan what you will do when you return</label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>8. In your opinion, the world would be a better place, if...</strong></p>
+            <label class="option-label"><input type="radio" name="ambition-q8" value="a"> People were friendlier</label>
+            <label class="option-label"><input type="radio" name="ambition-q8" value="b"> People worked harder</label>
+            <label class="option-label"><input type="radio" name="ambition-q8" value="c"> People knew more about each other</label>
           </div>
 
           <div class="question-block">
             <label for="final-writing">
-              Escribe al menos cuatro oraciones en inglés. Incluye una petición de
-              favor o permiso, una situación hipotética con <strong>if</strong>,
-              una estructura pasiva y una expresión de irritación.
+              Escribe tres o más oraciones en inglés: describe una situación difícil,
+              explica qué estabas haciendo cuando ocurrió y da un consejo usando
+              <strong>should</strong>.
             </label>
-
-            <textarea
-              id="final-writing"
-              placeholder="Would you do me a favor and drive me to the airport? If I left Los Angeles, I would go to Chicago. The budget was rejected by Congress. Please cut it out!"
-            ></textarea>
+            <textarea id="final-writing" placeholder="I had an awful week. I was walking home when it started to rain. I should take a break and talk to a friend."></textarea>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary finish-lesson" type="button">
-              Completar Entrega 4.4
-            </button>
+            <button class="button button-primary finish-lesson" type="button">Completar Entrega 4.3</button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
       </section>
 
-      <section
-        class="lesson-complete-message"
-        id="lesson-complete-message"
-        aria-live="polite"
-      >
+      <section class="lesson-complete-message" id="lesson-complete-message" aria-live="polite" hidden>
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
 
         <p>
-          Completaste “En la autopista”. Ya puedes comprender noticias sencillas,
-          pedir favores y permiso, expresar irritación, hablar de hipótesis y usar
-          la voz pasiva.
+          Completaste “En caso de apuro…”. Ya puedes describir problemas,
+          acciones interrumpidas, recuerdos, consejos, salud física y bienestar
+          emocional en inglés.
         </p>
 
-        <a class="button button-primary" href="unit-4.html">
-          Volver a Unidad 4
-        </a>
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-4-delivery-4.html">
+            Siguiente entrega →
+          </a>
+          <a class="button button-outline" href="unit-4.html">
+            Volver a Unidad 4
+          </a>
+        </div>
       </section>
-
     </div>
   </main>
 
   <footer>
     <div class="container footer-content">
       <span>506 English Express</span>
-      <span>Unidad 4 · Entrega 4 · En la autopista</span>
+      <span>Unidad 4 · Entrega 3 · En caso de apuro</span>
       <a href="unit-4.html">Volver a Unidad 4</a>
     </div>
   </footer>
 
-  <script src="../assets/js/unit4-delivery4.js"></script>
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit4.delivery3.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(saved)) {
+            return [];
+          }
+
+          return [...new Set(
+            saved
+              .map(Number)
+              .filter((activity) =>
+                Number.isInteger(activity) &&
+                activity >= 1 &&
+                activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const completedCount = completed.length;
+        const percentage = Math.round((completedCount / totalActivities) * 100);
+
+        progressText.textContent =
+          `${completedCount} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const button = card.querySelector(".complete-activity");
+
+          if (button) {
+            button.textContent = isComplete
+              ? "Actividad completada"
+              : "Marcar diálogo como completado";
+          }
+        });
+
+        completionMessage.hidden = completedCount !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document.querySelector(".check-comprehension").addEventListener("click", () => {
+        const answers = [
+          document.querySelector('input[name="emergency-q1"]:checked')?.value,
+          document.querySelector('input[name="emergency-q2"]:checked')?.value,
+          document.querySelector('input[name="emergency-q3"]:checked')?.value,
+          document.querySelector('input[name="emergency-q4"]:checked')?.value
+        ];
+
+        if (
+          answers[0] === "a" &&
+          answers[1] === "b" &&
+          answers[2] === "a" &&
+          answers[3] === "b"
+        ) {
+          completeActivity(3, "✓ ¡Correcto! Comprendiste los problemas de Bárbara.");
+        } else {
+          setFeedback(3, "Revisa los diálogos e inténtalo otra vez.");
+        }
+      });
+
+      document.querySelector(".check-vocabulary").addEventListener("click", () => {
+        const answer = normalize(
+          document.getElementById("vocabulary-answer").value
+        );
+
+        if (answer === "shower") {
+          completeActivity(4, "✓ Correcto: Barbara was taking a shower.");
+        } else {
+          setFeedback(4, "Pista: take a shower.");
+        }
+      });
+
+      document.querySelector(".check-phrases").addEventListener("click", () => {
+        const answer = normalize(document.getElementById("phrases-answer").value);
+        const writing = normalize(document.getElementById("phrases-writing").value);
+
+        const isQuestion =
+          writing.includes("whats the matter") ||
+          writing.includes("whats wrong") ||
+          writing.includes("whats up") ||
+          writing.includes("are you feeling") ||
+          writing.includes("what happened") ||
+          writing.includes("whats been");
+
+        if (answer === "point" && writing.length >= 12 && isQuestion) {
+          completeActivity(5, "✓ Práctica de expresiones guardada.");
+        } else {
+          setFeedback(5, "Completa point y escribe una pregunta sobre un problema.");
+        }
+      });
+
+      document.querySelector(".check-past").addEventListener("click", () => {
+        const answer1 = normalize(document.getElementById("past-answer-1").value);
+        const answer2 = normalize(document.getElementById("past-answer-2").value);
+
+        if (answer1 === "rang" && answer2 === "while") {
+          completeActivity(6, "✓ Correcto: rang / while.");
+        } else {
+          setFeedback(6, "Pista: rang / While.");
+        }
+      });
+
+      document.querySelector(".check-remind").addEventListener("click", () => {
+        const answer = normalize(document.getElementById("remind-answer").value);
+        const writing = normalize(document.getElementById("remind-writing").value);
+
+        if (
+          answer === "reminds" &&
+          writing.length >= 15 &&
+          writing.includes("remind")
+        ) {
+          completeActivity(7, "✓ Práctica con remind guardada.");
+        } else {
+          setFeedback(7, "Completa reminds y escribe una oración usando remind.");
+        }
+      });
+
+      document.querySelector(".check-go-get").addEventListener("click", () => {
+        const answer = normalize(document.getElementById("go-get-answer").value);
+        const writing = normalize(document.getElementById("go-get-writing").value);
+
+        const includesGoOrGet =
+          writing.includes("go ") ||
+          writing.includes("going") ||
+          writing.includes("get ") ||
+          writing.includes("getting");
+
+        if (answer === "going" && writing.length >= 12 && includesGoOrGet) {
+          completeActivity(8, "✓ Práctica con go / get guardada.");
+        } else {
+          setFeedback(8, "Completa going y escribe una oración con go o get.");
+        }
+      });
+
+      document.querySelector(".check-culture").addEventListener("click", () => {
+        const writing = document.getElementById("culture-writing").value.trim();
+
+        if (writing.length >= 12) {
+          completeActivity(9, "✓ Respuesta cultural guardada.");
+        } else {
+          setFeedback(9, "Escribe una oración completa en inglés.");
+        }
+      });
+
+      document.querySelector(".finish-lesson").addEventListener("click", () => {
+        const allQuestionsAnswered = [
+          "ambition-q1",
+          "ambition-q2",
+          "ambition-q3",
+          "ambition-q4",
+          "ambition-q5",
+          "ambition-q6",
+          "ambition-q7",
+          "ambition-q8"
+        ].every((name) => document.querySelector(`input[name="${name}"]:checked`));
+
+        const writing = normalize(document.getElementById("final-writing").value);
+        const sentences = writing
+          .split(/[.!?]+/)
+          .filter((sentence) => sentence.trim().length > 3);
+
+        const hasPastProgressive =
+          writing.includes("was ") ||
+          writing.includes("were ");
+
+        const hasWhen = writing.includes("when");
+        const hasAdvice = writing.includes("should");
+
+        if (
+          allQuestionsAnswered &&
+          sentences.length >= 3 &&
+          writing.length >= 75 &&
+          hasPastProgressive &&
+          hasWhen &&
+          hasAdvice
+        ) {
+          completeActivity(10, "✓ ¡Entrega 4.3 completada!");
+        } else {
+          setFeedback(
+            10,
+            "Responde las ocho preguntas y escribe tres oraciones con was/were, when y should."
+          );
+        }
+      });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
 </body>
 </html>

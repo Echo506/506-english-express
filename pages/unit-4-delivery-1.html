@@ -20,6 +20,20 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -54,15 +68,14 @@
         <a href="unit-4.html">Unidad 4</a>
       </div>
 
-      <a href="../index.html" class="button button-outline button-small">
-        Volver al inicio
+      <a href="unit-3-delivery-5.html" class="button button-outline button-small">
+        Entrega anterior
       </a>
     </nav>
   </header>
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
         <p class="kicker">Unidad 04 · Entrega 01</p>
         <h1>Mensajes telefónicos</h1>
@@ -103,8 +116,6 @@
       </section>
 
       <section class="lesson-sections">
-
-        <!-- ACTIVIDAD 1 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -129,13 +140,9 @@
 
           <div class="dialogue-box">
             <p><strong>Man:</strong> Hi, Tom. This is Bernie. I'm going away for two weeks, and I'll call you when I get back. Bye.</p>
-
             <p><strong>Woman:</strong> Hi, Tom. This is Sherry. John and I are giving a barbecue on Saturday. You must come. All the guests are bringing a bottle and something to eat. Can you bring the potato salad? Call me back and confirm. See you soon!</p>
-
             <p><strong>Tom:</strong> Boy! I'm glad I missed that!</p>
-
             <p><strong>Jane:</strong> Hello, Tom. Jane here. It's Friday afternoon. I suppose you're not back yet. I hope you had a good time in New Orleans. Give me a call soon. Bye.</p>
-
             <p><strong>Man:</strong> Hello. Um... this is Michael Cannon... um, Oh God! I hate these machines.</p>
           </div>
 
@@ -156,7 +163,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 2 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
@@ -176,11 +182,8 @@
 
           <div class="dialogue-box">
             <p><strong>Frenchman:</strong> Hello. I am a friend of Marie-Thérèse. She said I could telephone you. I have just arrived at the Greyhound bus station in Los Angeles.</p>
-
             <p><strong>Frenchman:</strong> Er... Marie-Thérèse said that you had a beautiful big house, and er... maybe I could stay with you...</p>
-
             <p><strong>Tom:</strong> Who the hell is Marie-Thérèse!?</p>
-
             <p><strong>Jane:</strong> Hello, Tom, this is Jane again. Where are you? It seems that you really like New Orleans! Bye.</p>
           </div>
 
@@ -201,7 +204,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 3 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
@@ -213,15 +215,10 @@
 
           <div class="dialogue-box">
             <p><strong>Tom's mother:</strong> Hello, Tom. Are you there?... No, I guess not. Annie has just called me: she's been seeing Ronnie for the last two weeks. Isn't that wonderful?</p>
-
             <p><strong>Tom's mother:</strong> I hope they stay together. You should call her sometime: she says she never hears from you and she is your sister, after all.</p>
-
             <p><strong>Tom's mother:</strong> Your father's fine, but he's been overworking as usual. Well, Tom, that's the news. I hope you're eating properly. Take care!</p>
-
             <p><strong>Tom:</strong> Yes, Mom!</p>
-
             <p><strong>Jane:</strong> Hello, Tom. This is Jane yet again. I'm going out and I don't have an answering machine!</p>
-
             <p><strong>Tom:</strong> Oh-oh.</p>
           </div>
 
@@ -242,7 +239,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 4 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
@@ -254,78 +250,30 @@
 
           <div class="question-block">
             <p><strong>1. ¿Qué le pide Sherry a Tom?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q1" value="a">
-              To bring the potato salad
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q1" value="b">
-              To bring a plane ticket
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q1" value="c">
-              To call Bernie
-            </label>
+            <label class="option-label"><input type="radio" name="phone-q1" value="a"> To bring the potato salad</label>
+            <label class="option-label"><input type="radio" name="phone-q1" value="b"> To bring a plane ticket</label>
+            <label class="option-label"><input type="radio" name="phone-q1" value="c"> To call Bernie</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. ¿Dónde acaba de llegar el amigo de Marie-Thérèse?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q2" value="a">
-              At the Greyhound bus station in Los Angeles
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q2" value="b">
-              At the airport in New York
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q2" value="c">
-              At Tom's office
-            </label>
+            <label class="option-label"><input type="radio" name="phone-q2" value="a"> At the Greyhound bus station in Los Angeles</label>
+            <label class="option-label"><input type="radio" name="phone-q2" value="b"> At the airport in New York</label>
+            <label class="option-label"><input type="radio" name="phone-q2" value="c"> At Tom's office</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. ¿Con quién ha estado saliendo Annie?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q3" value="a">
-              With Bernie
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q3" value="b">
-              With Ronnie
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q3" value="c">
-              With Michael Cannon
-            </label>
+            <label class="option-label"><input type="radio" name="phone-q3" value="a"> With Bernie</label>
+            <label class="option-label"><input type="radio" name="phone-q3" value="b"> With Ronnie</label>
+            <label class="option-label"><input type="radio" name="phone-q3" value="c"> With Michael Cannon</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. ¿Qué recomienda la mamá de Tom?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q4" value="a">
-              Tom should call Annie sometime
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q4" value="b">
-              Tom should go away for two weeks
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="phone-q4" value="c">
-              Tom should buy a machine
-            </label>
+            <label class="option-label"><input type="radio" name="phone-q4" value="a"> Tom should call Annie sometime</label>
+            <label class="option-label"><input type="radio" name="phone-q4" value="b"> Tom should go away for two weeks</label>
+            <label class="option-label"><input type="radio" name="phone-q4" value="c"> Tom should buy a machine</label>
           </div>
 
           <div class="activity-actions">
@@ -336,7 +284,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 5 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
@@ -349,7 +296,6 @@
           <div class="vocabulary-columns">
             <section class="vocabulary-group">
               <h3>Fiestas y objetos</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>barbecue</dt><dd>barbacoa</dd></div>
                 <div><dt>guest</dt><dd>invitado/a</dd></div>
@@ -368,7 +314,6 @@
 
             <section class="vocabulary-group">
               <h3>Familia y lugares</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>bus station</dt><dd>estación de autobuses</dd></div>
                 <div><dt>sister</dt><dd>hermana</dd></div>
@@ -385,7 +330,6 @@
 
             <section class="vocabulary-group">
               <h3>Acciones y expresiones</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>to go away</dt><dd>marcharse</dd></div>
                 <div><dt>to get back</dt><dd>regresar</dd></div>
@@ -408,7 +352,6 @@
             <label for="vocabulary-answer">
               Complete: “Can you bring the __________ salad?”
             </label>
-
             <input
               id="vocabulary-answer"
               type="text"
@@ -425,7 +368,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 6 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
@@ -438,7 +380,6 @@
           <div class="phrase-groups">
             <section class="phrase-group">
               <h3>Pedir a alguien que haga algo</h3>
-
               <dl class="phrase-list">
                 <div><dt>Can you bring the potato salad?</dt><dd>¿Puedes traer la ensalada de papa?</dd></div>
                 <div><dt>Could you open the wine?</dt><dd>¿Podrías abrir el vino?</dd></div>
@@ -449,7 +390,6 @@
 
             <section class="phrase-group">
               <h3>Satisfacción y consejos</h3>
-
               <dl class="phrase-list">
                 <div><dt>I'm glad that...</dt><dd>Me alegra que...</dd></div>
                 <div><dt>I'm pleased that...</dt><dd>Estoy complacido/a de que...</dd></div>
@@ -463,7 +403,6 @@
 
             <section class="phrase-group">
               <h3>Duda, despedidas y mensajes</h3>
-
               <dl class="phrase-list">
                 <div><dt>I suppose you're not back yet.</dt><dd>Supongo que todavía no has vuelto.</dd></div>
                 <div><dt>I guess...</dt><dd>Supongo...</dd></div>
@@ -483,7 +422,6 @@
             <label for="phrases-answer">
               Complete: “You __________ call your sister sometime.”
             </label>
-
             <input
               id="phrases-answer"
               type="text"
@@ -496,7 +434,6 @@
             <label for="phrases-writing">
               Escribe un mensaje telefónico breve en inglés:
             </label>
-
             <textarea
               id="phrases-writing"
               placeholder="Hi, this is Ana. Please call me back when you get home. Bye!"
@@ -511,7 +448,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 7 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
@@ -523,11 +459,9 @@
 
           <section class="oral-practice-block">
             <h3>Estilo indirecto con say that</h3>
-
             <p class="example-box">
               “I love L.A.,” Jane said. →<br>
               <strong>She said that she loved L.A.</strong><br><br>
-
               “People have lots of barbecues,” Jane said. →<br>
               <strong>She said that people had lots of barbecues.</strong>
             </p>
@@ -535,11 +469,9 @@
 
           <section class="oral-practice-block">
             <h3>Could y would en estilo indirecto</h3>
-
             <p class="example-box">
               Pat says she can come at 9 o'clock. →<br>
               <strong>Pat said she could come at 9 o'clock.</strong><br><br>
-
               Joe says he will visit me in London. →<br>
               <strong>Joe said he would visit me in London.</strong>
             </p>
@@ -549,7 +481,6 @@
             <label for="reported-answer-1">
               Complete: “Jane said that she __________ L.A.”
             </label>
-
             <input
               id="reported-answer-1"
               type="text"
@@ -562,7 +493,6 @@
             <label for="reported-answer-2">
               Complete: “Pat said she __________ come at 9 o'clock.”
             </label>
-
             <input
               id="reported-answer-2"
               type="text"
@@ -579,7 +509,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 8 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
@@ -591,7 +520,6 @@
 
           <section class="oral-practice-block">
             <h3>When</h3>
-
             <p class="example-box">
               I'm going to London in February. I'll see you then. →<br>
               <strong>I'll see you when I go to London.</strong>
@@ -600,7 +528,6 @@
 
           <section class="oral-practice-block">
             <h3>Acciones recién terminadas</h3>
-
             <p class="example-box">
               I arrived at the bus station a few moments ago. →<br>
               <strong>I've just arrived at the bus station.</strong>
@@ -609,7 +536,6 @@
 
           <section class="oral-practice-block">
             <h3>For y since</h3>
-
             <p class="example-box">
               She's been watching television <strong>for three hours</strong>.<br>
               He's been listening to the radio <strong>since 6 o'clock</strong>.
@@ -620,7 +546,6 @@
             <label for="time-answer-1">
               Complete: “I have __________ arrived at the bus station.”
             </label>
-
             <input
               id="time-answer-1"
               type="text"
@@ -633,7 +558,6 @@
             <label for="time-answer-2">
               Complete: “She has been watching television __________ three hours.”
             </label>
-
             <input
               id="time-answer-2"
               type="text"
@@ -646,7 +570,6 @@
             <label for="time-writing">
               Escribe una oración con <strong>when</strong>, <strong>just</strong>, <strong>for</strong> o <strong>since</strong>:
             </label>
-
             <textarea
               id="time-writing"
               placeholder="I will call you when I get back."
@@ -661,7 +584,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 9 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
@@ -673,20 +595,17 @@
 
           <div class="reading-card">
             <h3>Barbacoas o cook outs</h3>
-
             <p>
               Cuando desaparece el frío, los jardines de los suburbios se llenan
               de olor a comida. Llegó la época de las barbacoas o <em>cook outs</em>.
               Adultos, adolescentes y niños se reúnen frente a una parrilla para
               preparar hamburguesas, hot dogs y a veces pollo con barbecue sauce.
             </p>
-
             <p>
               Mostaza, mayonesa, ketchup, relish y buns acompañan la comida,
               junto con refrescos y bebidas frías. Familias, vecinos, compañeros
               de trabajo y equipos deportivos comparten comida al aire libre.
             </p>
-
             <p>
               La ropa típica puede incluir camisas floreadas, pantalones cortos y
               sneakers. Las barbacoas son frecuentes los fines de semana y forman
@@ -696,20 +615,17 @@
 
           <div class="reading-card">
             <h3>Fiestas y cocktail-parties</h3>
-
             <p>
               Durante la semana, especialmente los viernes por la noche, los
               adultos también se reúnen en cocktail-parties. La expresión
               “Thank God it's Friday” representa la alegría de terminar la semana
               de trabajo.
             </p>
-
             <p>
               Son populares las reuniones de vino y queso, donde puede haber vino
               blanco y dips para acompañar verduras como zanahoria, coliflor o
               brócoli. Algunas reuniones requieren ropa más formal.
             </p>
-
             <p>
               Las fiestas del sábado suelen realizarse en casas con jardín. Los
               invitados pueden llevar blue-jeans, camisetas deportivas y sneakers;
@@ -721,7 +637,6 @@
             <label for="culture-writing">
               Escribe una oración en inglés sobre una barbacoa, una fiesta o comida:
             </label>
-
             <textarea
               id="culture-writing"
               placeholder="At a barbecue, people eat hamburgers and hot dogs."
@@ -736,7 +651,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
@@ -752,164 +666,60 @@
 
           <div class="question-block">
             <p><strong>1. In Casablanca, Humphrey Bogart said the following words to the pianist in the bar:</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q1" value="a">
-              “Play it again, Sam.”
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q1" value="b">
-              “You played it for her, you can play it for me... Play it.”
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q1" value="c">
-              “Why don't you play As Time Goes By?”
-            </label>
+            <label class="option-label"><input type="radio" name="quiz-q1" value="a"> “Play it again, Sam.”</label>
+            <label class="option-label"><input type="radio" name="quiz-q1" value="b"> “You played it for her, you can play it for me... Play it.”</label>
+            <label class="option-label"><input type="radio" name="quiz-q1" value="c"> “Why don't you play As Time Goes By?”</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. Which famous child actress went into politics in the state of California?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q2" value="a">
-              Mary Pickford
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q2" value="b">
-              Nancy Reagan
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q2" value="c">
-              Shirley Temple
-            </label>
+            <label class="option-label"><input type="radio" name="quiz-q2" value="a"> Mary Pickford</label>
+            <label class="option-label"><input type="radio" name="quiz-q2" value="b"> Nancy Reagan</label>
+            <label class="option-label"><input type="radio" name="quiz-q2" value="c"> Shirley Temple</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. Which actor had to leave Hollywood in the 1950s because of his left wing political views?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q3" value="a">
-              Errol Flynn
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q3" value="b">
-              Frank Sinatra
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q3" value="c">
-              Charlie Chaplin
-            </label>
+            <label class="option-label"><input type="radio" name="quiz-q3" value="a"> Errol Flynn</label>
+            <label class="option-label"><input type="radio" name="quiz-q3" value="b"> Frank Sinatra</label>
+            <label class="option-label"><input type="radio" name="quiz-q3" value="c"> Charlie Chaplin</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. Which of the following actors never played Dracula?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q4" value="a">
-              Christopher Lee
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q4" value="b">
-              Bela Lugosi
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q4" value="c">
-              Boris Karloff
-            </label>
+            <label class="option-label"><input type="radio" name="quiz-q4" value="a"> Christopher Lee</label>
+            <label class="option-label"><input type="radio" name="quiz-q4" value="b"> Bela Lugosi</label>
+            <label class="option-label"><input type="radio" name="quiz-q4" value="c"> Boris Karloff</label>
           </div>
 
           <div class="question-block">
             <p><strong>5. Which actress was married eight times, twice to the same man?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q5" value="a">
-              Bette Davis
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q5" value="b">
-              Marilyn Monroe
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q5" value="c">
-              Elizabeth Taylor
-            </label>
+            <label class="option-label"><input type="radio" name="quiz-q5" value="a"> Bette Davis</label>
+            <label class="option-label"><input type="radio" name="quiz-q5" value="b"> Marilyn Monroe</label>
+            <label class="option-label"><input type="radio" name="quiz-q5" value="c"> Elizabeth Taylor</label>
           </div>
 
           <div class="question-block">
             <p><strong>6. Which actress played Scarlett O'Hara in Gone With the Wind?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q6" value="a">
-              Margaret Mitchell
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q6" value="b">
-              Vivien Leigh
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q6" value="c">
-              Elizabeth Taylor
-            </label>
+            <label class="option-label"><input type="radio" name="quiz-q6" value="a"> Margaret Mitchell</label>
+            <label class="option-label"><input type="radio" name="quiz-q6" value="b"> Vivien Leigh</label>
+            <label class="option-label"><input type="radio" name="quiz-q6" value="c"> Elizabeth Taylor</label>
           </div>
 
           <div class="question-block">
             <p><strong>7. Only one of the following actors never played James Bond. Can you name him?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q7" value="a">
-              David Niven
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q7" value="b">
-              Sean Connery
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q7" value="c">
-              Roger Moore
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q7" value="d">
-              Peter Sellers
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q7" value="e">
-              Cary Grant
-            </label>
+            <label class="option-label"><input type="radio" name="quiz-q7" value="a"> David Niven</label>
+            <label class="option-label"><input type="radio" name="quiz-q7" value="b"> Sean Connery</label>
+            <label class="option-label"><input type="radio" name="quiz-q7" value="c"> Roger Moore</label>
+            <label class="option-label"><input type="radio" name="quiz-q7" value="d"> Peter Sellers</label>
+            <label class="option-label"><input type="radio" name="quiz-q7" value="e"> Cary Grant</label>
           </div>
 
           <div class="question-block">
             <p><strong>8. The sign on the Hollywood Hills originally said:</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q8" value="a">
-              Hollywood Park
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q8" value="b">
-              Hollywood Land
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="quiz-q8" value="c">
-              Hollywood Farm
-            </label>
+            <label class="option-label"><input type="radio" name="quiz-q8" value="a"> Hollywood Park</label>
+            <label class="option-label"><input type="radio" name="quiz-q8" value="b"> Hollywood Land</label>
+            <label class="option-label"><input type="radio" name="quiz-q8" value="c"> Hollywood Farm</label>
           </div>
 
           <div class="activity-actions">
@@ -919,13 +729,13 @@
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
       </section>
 
       <section
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
@@ -936,11 +746,16 @@
           hablar sobre lo que otras personas dijeron.
         </p>
 
-        <a class="button button-primary" href="unit-4.html">
-          Volver a Unidad 4
-        </a>
-      </section>
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-4-delivery-2.html">
+            Siguiente entrega →
+          </a>
 
+          <a class="button button-outline" href="unit-4.html">
+            Volver a Unidad 4
+          </a>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -952,6 +767,328 @@
     </div>
   </footer>
 
-  <script src="../assets/js/unit4-delivery1.js"></script>
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit4.delivery1.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(stored)) {
+            return [];
+          }
+
+          return [...new Set(
+            stored
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        progressText.textContent =
+          `${completedCount} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const dialogueButton = card.querySelector(".complete-activity");
+
+          if (dialogueButton) {
+            dialogueButton.textContent = isComplete
+              ? "Actividad completada"
+              : "Marcar diálogo como completado";
+          }
+        });
+
+        completionMessage.hidden = completedCount !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="phone-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="phone-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="phone-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="phone-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "a" &&
+            answer3 === "b" &&
+            answer4 === "a"
+          ) {
+            completeActivity(
+              4,
+              "✓ ¡Correcto! Comprendiste los mensajes telefónicos."
+            );
+          } else {
+            setFeedback(4, "Revisa los diálogos e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "potato") {
+            completeActivity(
+              5,
+              "✓ Correcto: Can you bring the potato salad?"
+            );
+          } else {
+            setFeedback(5, "Pista: potato salad.");
+          }
+        });
+
+      document
+        .querySelector(".check-phrases")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("phrases-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("phrases-writing").value
+          );
+
+          const isPhoneMessage =
+            writing.includes("hi") ||
+            writing.includes("hello") ||
+            writing.includes("call") ||
+            writing.includes("bye");
+
+          if (answer === "should" && writing.length >= 15 && isPhoneMessage) {
+            completeActivity(6, "✓ Mensaje telefónico guardado.");
+          } else {
+            setFeedback(
+              6,
+              "Completa should y escribe un mensaje breve en inglés."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-reported")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("reported-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("reported-answer-2").value
+          );
+
+          if (answer1 === "loved" && answer2 === "could") {
+            completeActivity(
+              7,
+              "✓ Correcto: Jane said that she loved L.A. Pat said she could come."
+            );
+          } else {
+            setFeedback(7, "Pista: loved / could.");
+          }
+        });
+
+      document
+        .querySelector(".check-time")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("time-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("time-answer-2").value
+          );
+
+          const writing = normalize(
+            document.getElementById("time-writing").value
+          );
+
+          const hasTimeWord =
+            writing.includes("when") ||
+            writing.includes("just") ||
+            writing.includes("for") ||
+            writing.includes("since");
+
+          if (
+            answer1 === "just" &&
+            answer2 === "for" &&
+            writing.length >= 12 &&
+            hasTimeWord
+          ) {
+            completeActivity(8, "✓ Práctica de tiempo guardada.");
+          } else {
+            setFeedback(
+              8,
+              "Completa just y for, y escribe una oración con una expresión de tiempo."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-culture")
+        .addEventListener("click", () => {
+          const writing = document
+            .getElementById("culture-writing")
+            .value
+            .trim();
+
+          if (writing.length >= 12) {
+            completeActivity(9, "✓ Respuesta cultural guardada.");
+          } else {
+            setFeedback(9, "Escribe una oración completa en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const answers = {
+            q1: "b",
+            q2: "c",
+            q3: "c",
+            q4: "c",
+            q5: "c",
+            q6: "b",
+            q7: "e",
+            q8: "b"
+          };
+
+          const correct = Object.entries(answers).every(([question, answer]) => {
+            return document.querySelector(
+              `input[name="quiz-${question}"]:checked`
+            )?.value === answer;
+          });
+
+          if (correct) {
+            completeActivity(10, "✓ ¡Entrega 4.1 completada!");
+          } else {
+            setFeedback(
+              10,
+              "Revisa tus respuestas del Hollywood Trivial Quiz e inténtalo otra vez."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
 </body>
 </html>

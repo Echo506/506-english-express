@@ -6,10 +6,10 @@
   <meta name="theme-color" content="#07101f">
   <meta
     name="description"
-    content="Unidad 4, Entrega 5: El 4 de Julio. Fiestas, condicional perfecto, have something done y la historia de Annie Oakley."
+    content="Unidad 4, Entrega 5: Repaso final. Consolida vocabulario, gramática y comunicación práctica en inglés."
   >
 
-  <title>El 4 de Julio | 506 English Express</title>
+  <title>Repaso final | 506 English Express</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,225 +22,151 @@
   <link rel="stylesheet" href="../assets/css/lesson.css">
 
   <style>
-    .story-section {
-      margin-top: 3rem;
-      padding: clamp(1.4rem, 3vw, 3rem);
-      border: 1px solid rgba(47, 215, 255, 0.38);
-      border-radius: 22px;
-      background: linear-gradient(
-        145deg,
-        rgba(8, 23, 44, 0.94),
-        rgba(9, 15, 30, 0.96)
-      );
-      box-shadow: 0 0 32px rgba(0, 210, 255, 0.1);
+    .lesson-complete-message[hidden],
+    .celebration-overlay[hidden] {
+      display: none;
     }
 
-    .story-heading {
+    .completion-actions {
       display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding-bottom: 1.35rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .story-heading h2 {
-      margin: 0.35rem 0;
-      color: #f7fbff;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-    }
-
-    .story-subtitle {
-      max-width: 760px;
-      margin: 0;
-      color: rgba(231, 244, 255, 0.76);
-    }
-
-    .story-icon {
-      display: grid;
-      width: 64px;
-      height: 64px;
-      flex: 0 0 auto;
-      place-items: center;
-      border: 1px solid rgba(255, 196, 61, 0.55);
-      border-radius: 50%;
-      background: rgba(255, 196, 61, 0.1);
-      font-size: 2rem;
-    }
-
-    .story-intro {
-      margin: 1.5rem 0;
-      padding: 1rem 1.1rem;
-      border-left: 4px solid #2fd7ff;
-      border-radius: 0 10px 10px 0;
-      background: rgba(47, 215, 255, 0.08);
-      color: rgba(239, 248, 255, 0.9);
-    }
-
-    .story-content {
-      display: grid;
-      gap: 1.4rem;
-    }
-
-    .story-chapter {
-      padding: 1.35rem;
-      border: 1px solid rgba(255, 255, 255, 0.11);
-      border-radius: 16px;
-      background: rgba(1, 8, 20, 0.46);
-    }
-
-    .story-chapter h3 {
-      margin-top: 0;
-      color: #2fd7ff;
-      font-family: "Orbitron", sans-serif;
-      font-size: 1.05rem;
-      letter-spacing: 0.04em;
-    }
-
-    .story-chapter p {
-      line-height: 1.75;
-      color: rgba(240, 247, 255, 0.88);
-    }
-
-    .story-dialogue {
-      margin: 1.2rem 0;
-      padding: 1rem 1.1rem;
-      border-left: 3px solid #ffc43d;
-      border-radius: 0 12px 12px 0;
-      background: rgba(255, 196, 61, 0.07);
-    }
-
-    .story-dialogue p {
-      margin: 0.65rem 0;
-      color: #fff8e8;
-    }
-
-    .story-dialogue strong {
-      color: #ffe19a;
-    }
-
-    .letter-box {
-      margin: 1.2rem 0;
-      padding: 1.3rem;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.06);
-      color: #ffffff;
-      font-style: italic;
-    }
-
-    .announcement-box {
-      margin: 1.2rem 0;
-      padding: 1.3rem;
-      border: 1px solid rgba(255, 79, 117, 0.45);
-      border-radius: 14px;
-      background: rgba(255, 79, 117, 0.09);
-    }
-
-    .announcement-box strong {
-      color: #ffd5df;
-    }
-
-    .story-ending {
-      border-color: rgba(255, 196, 61, 0.42);
-      background: linear-gradient(
-        140deg,
-        rgba(255, 196, 61, 0.11),
-        rgba(5, 15, 30, 0.75)
-      );
-    }
-
-    .story-climax {
-      margin-top: 1.5rem;
-      color: #ffc43d !important;
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.2rem, 3vw, 1.7rem);
-      letter-spacing: 0.06em;
-      text-align: center;
-    }
-
-    .story-final-word {
-      margin-bottom: 0 !important;
-      color: #2fd7ff !important;
-      font-family: "Orbitron", sans-serif;
-      font-size: 1.25rem;
-      letter-spacing: 0.22em;
-      text-align: center;
-    }
-
-    .story-vocabulary {
-      margin-top: 1.7rem;
-      padding: 1.35rem;
-      border-radius: 16px;
-      background: rgba(47, 215, 255, 0.06);
-    }
-
-    .story-vocabulary h3 {
-      margin-top: 0;
-      color: #f7fbff;
-    }
-
-    .story-vocabulary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 0.75rem;
+      margin-top: 1.25rem;
     }
 
-    .story-vocabulary-grid > div {
-      padding: 0.85rem;
-      border: 1px solid rgba(47, 215, 255, 0.2);
-      border-radius: 10px;
-      background: rgba(0, 0, 0, 0.16);
+    .celebration-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: rgba(2, 7, 18, 0.82);
+      backdrop-filter: blur(6px);
     }
 
-    .story-vocabulary-grid strong,
-    .story-vocabulary-grid span {
-      display: block;
+    .celebration-panel {
+      position: relative;
+      z-index: 2;
+      width: min(92%, 680px);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(94, 234, 212, 0.75);
+      border-radius: 20px;
+      background: rgba(7, 16, 31, 0.94);
+      box-shadow: 0 0 45px rgba(34, 211, 238, 0.35);
     }
 
-    .story-vocabulary-grid strong {
-      color: #74e7ff;
+    .celebration-panel h2 {
+      margin: 0.5rem 0 1rem;
     }
 
-    .story-vocabulary-grid span {
-      margin-top: 0.25rem;
-      color: rgba(239, 247, 255, 0.72);
-      font-size: 0.93rem;
+    .celebration-panel p {
+      margin-bottom: 1.4rem;
     }
 
-    .story-note {
-      display: flex;
-      gap: 0.55rem;
-      margin-top: 1.35rem;
-      padding: 1rem;
-      border-radius: 10px;
-      background: rgba(255, 196, 61, 0.09);
-      color: rgba(255, 247, 224, 0.9);
+    .firework {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      opacity: 0;
+      animation: launch 4.5s ease-out infinite;
     }
 
-    .story-note strong {
-      color: #ffc43d;
-      white-space: nowrap;
+    .firework::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow:
+        0 -70px currentColor,
+        49px -49px currentColor,
+        70px 0 currentColor,
+        49px 49px currentColor,
+        0 70px currentColor,
+        -49px 49px currentColor,
+        -70px 0 currentColor,
+        -49px -49px currentColor,
+        27px -65px currentColor,
+        65px -27px currentColor,
+        65px 27px currentColor,
+        27px 65px currentColor,
+        -27px 65px currentColor,
+        -65px 27px currentColor,
+        -65px -27px currentColor,
+        -27px -65px currentColor;
     }
 
-    @media (max-width: 650px) {
-      .story-heading {
-        align-items: center;
+    .firework.one {
+      top: 25%;
+      left: 20%;
+      color: #fbbf24;
+      animation-delay: 0s;
+    }
+
+    .firework.two {
+      top: 20%;
+      left: 78%;
+      color: #22d3ee;
+      animation-delay: 1.2s;
+    }
+
+    .firework.three {
+      top: 68%;
+      left: 14%;
+      color: #f472b6;
+      animation-delay: 2.1s;
+    }
+
+    .firework.four {
+      top: 72%;
+      left: 83%;
+      color: #a78bfa;
+      animation-delay: 0.7s;
+    }
+
+    .firework.five {
+      top: 46%;
+      left: 50%;
+      color: #5eead4;
+      animation-delay: 2.8s;
+    }
+
+    @keyframes launch {
+      0%,
+      18% {
+        opacity: 0;
+        transform: scale(0.15);
       }
 
-      .story-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
+      25% {
+        opacity: 1;
+        transform: scale(0.35);
       }
 
-      .story-note {
-        display: block;
+      40%,
+      70% {
+        opacity: 0.95;
+        transform: scale(1);
       }
 
-      .story-note strong {
-        display: block;
-        margin-bottom: 0.35rem;
+      100% {
+        opacity: 0;
+        transform: scale(1.35);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .firework {
+        animation: none;
+        opacity: 0.55;
+        transform: scale(0.8);
       }
     }
   </style>
@@ -262,7 +188,7 @@
   <div class="topbar">
     <div class="container topbar-content">
       <span>506 English Express</span>
-      <span>Unidad 4 · Entrega 5 · El 4 de Julio</span>
+      <span>Unidad 4 · Entrega 5 · Repaso final</span>
     </div>
   </div>
 
@@ -289,15 +215,14 @@
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
         <p class="kicker">Unidad 04 · Entrega 05</p>
-        <h1>El 4 de Julio</h1>
+        <h1>Repaso final</h1>
 
         <p>
-          Jeff organiza una fiesta del Día de la Independencia. Practicarás
-          cumplidos, trabajos realizados por otras personas, condicional
-          perfecto, celebraciones estadounidenses y vocabulario de viaje.
+          Esta es la última entrega del curso. Repasarás conversaciones,
+          vocabulario, gramática y expresiones prácticas para demostrar todo lo
+          que has aprendido.
         </p>
 
         <div class="lesson-progress">
@@ -330,57 +255,31 @@
       </section>
 
       <section class="lesson-sections">
-
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
-              <h2>Una fiesta en el loft</h2>
+              <p class="activity-number">ACTIVIDAD 01 · REPASO</p>
+              <h2>Lo que ya puedes hacer</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">🎆</span>
+            <span class="activity-icon" aria-hidden="true">🚀</span>
           </div>
 
           <p>
-            Es el 4 de julio. Jeff está dando una fiesta en su casa.
+            Has practicado cómo presentarte, pedir ayuda, hablar de rutinas,
+            lugares, viajes, salud, situaciones cotidianas y planes futuros.
           </p>
 
-          <div class="audio-placeholder">
-            <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-4/fourth-of-july-part-1.mp3</strong>
-            </span>
-          </div>
-
-          <div class="dialogue-box">
-            <p><strong>Pete:</strong> Isn't this a beautiful loft?</p>
-            <p><strong>Martha:</strong> Yes, it's an old warehouse. Jeff had it done up. It cost $600,000!</p>
-            <p><strong>Pete:</strong> Oh, yeah?</p>
-            <p><strong>Jackie:</strong> Hey, Martha. You look terrific. You've had your hair dyed!</p>
-            <p><strong>Martha:</strong> Yes. I had it done at Tilda's.</p>
-            <p><strong>Jackie:</strong> It makes you look a lot younger. You don't look a day over 40.</p>
-            <p><strong>Martha:</strong> Actually, I'm only 35.</p>
-            <p><strong>Jackie:</strong> Oh, you don't say!...</p>
-            <p><strong>Jeff:</strong> Hi, Barbara! You look terrific! That's a great dress you're wearing.</p>
-            <p><strong>Barbara:</strong> Thanks.</p>
-            <p><strong>Jeff:</strong> If you'd worn that dress on “Thirty Minutes” last week, our audience would have doubled!</p>
-            <p><strong>Barbara:</strong> Very funny.</p>
-            <p><strong>Jeff:</strong> Um... What's the matter with you these days? Why are you in such a bad mood?</p>
-            <p><strong>Barbara:</strong> Oh, I don't know. I'm sorry, Jeff.</p>
-            <p><strong>Jeff:</strong> Look. I'll get you a scotch. I'll be right back.</p>
-          </div>
-
           <div class="translation-box">
-            <strong>Idea principal:</strong>
+            <strong>Meta final:</strong>
             <span>
-              La fiesta se celebra en un antiguo almacén renovado. Los invitados
-              se hacen cumplidos, mientras Bárbara continúa de mal humor.
+              Comunicarte con frases claras en inglés para resolver situaciones
+              reales, compartir ideas y comprender conversaciones básicas.
             </span>
           </div>
 
           <div class="activity-actions">
             <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
+              Marcar repaso como completado
             </button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
@@ -389,128 +288,38 @@
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 02 · DIÁLOGO</p>
-              <h2>Tom y Bárbara se encuentran</h2>
+              <p class="activity-number">ACTIVIDAD 02 · COMPRENSIÓN</p>
+              <h2>Comunicación cotidiana</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">🎷</span>
-          </div>
-
-          <div class="audio-placeholder">
-            <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-4/fourth-of-july-part-2.mp3</strong>
-            </span>
-          </div>
-
-          <div class="dialogue-box">
-            <p><strong>Nancy:</strong> Barbara! I haven't seen you in ages! How are you doing?</p>
-            <p><strong>Barbara:</strong> Fine, just fine. How are you?</p>
-            <p><strong>Nancy:</strong> Wonderful! We've just bought an $800,000 house in Maine. You should see it.</p>
-            <p><strong>Nancy:</strong> Wait. I think I have some photos here. Look, here's the garage, but that's nothing compared to the inside. Here, this is the bathroom... isn't it fabulous?</p>
-            <p><strong>Barbara:</strong> ... Uh-hu...</p>
-            <p><strong>Jeff:</strong> Here's your scotch.</p>
-            <p><strong>Barbara:</strong> Thanks... Jeff, rescue me!</p>
-            <p><strong>Jeff:</strong> Nancy, will you excuse Barbara a moment? There's someone who's looking for her.</p>
-            <p><strong>Barbara:</strong> Thanks, Jeff.</p>
-            <p><strong>Jeff:</strong> Here's someone who's been looking for you. I think you two already know each other.</p>
-            <p><strong>Tom:</strong> Hi, Barbara. Good to see you again.</p>
-            <p><strong>Barbara:</strong> Tom! What are you doing here?</p>
-            <p><strong>Martha:</strong> Come on, everyone! Let's go up on the roof. The fireworks are starting.</p>
-            <p><strong>Barbara:</strong> Oh, no. I hate fireworks. They remind me of...</p>
-            <p><strong>Tom:</strong> Storms?</p>
-            <p><strong>Barbara:</strong> That's right.</p>
-            <p><strong>Tom:</strong> Well, what do you suggest?</p>
-            <p><strong>Barbara:</strong> I know of a nice little jazz bar round the corner...</p>
-          </div>
-
-          <div class="translation-box">
-            <strong>Idea principal:</strong>
-            <span>
-              Bárbara quiere escapar de Nancy y sus fotografías. Jeff la ayuda,
-              la presenta de nuevo a Tom y ambos deciden ir a un bar de jazz.
-            </span>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="3">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 03 · COMPRENSIÓN</p>
-              <h2>Compruebe su comprensión</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🧠</span>
+            <span class="activity-icon" aria-hidden="true">💬</span>
           </div>
 
           <div class="question-block">
-            <p><strong>1. ¿Qué era el loft de Jeff originalmente?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="july-q1" value="a">
-              An old warehouse
-            </label>
-            <label class="option-label">
-              <input type="radio" name="july-q1" value="b">
-              A hotel
-            </label>
-            <label class="option-label">
-              <input type="radio" name="july-q1" value="c">
-              A jazz bar
-            </label>
+            <p><strong>1. ¿Cuál frase usas para pedir ayuda?</strong></p>
+            <label class="option-label"><input type="radio" name="review-q1" value="a"> Can you help me, please?</label>
+            <label class="option-label"><input type="radio" name="review-q1" value="b"> I am from Costa Rica.</label>
+            <label class="option-label"><input type="radio" name="review-q1" value="c"> It is five o'clock.</label>
           </div>
 
           <div class="question-block">
-            <p><strong>2. ¿Qué se hizo Martha en la peluquería de Tilda?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="july-q2" value="a">
-              She had her hair dyed
-            </label>
-            <label class="option-label">
-              <input type="radio" name="july-q2" value="b">
-              She bought a new loft
-            </label>
-            <label class="option-label">
-              <input type="radio" name="july-q2" value="c">
-              She repaired her car
-            </label>
+            <p><strong>2. ¿Cuál frase sirve para dejar un mensaje telefónico?</strong></p>
+            <label class="option-label"><input type="radio" name="review-q2" value="a"> Please call me back.</label>
+            <label class="option-label"><input type="radio" name="review-q2" value="b"> I was at the bus station.</label>
+            <label class="option-label"><input type="radio" name="review-q2" value="c"> The weather was sunny.</label>
           </div>
 
           <div class="question-block">
-            <p><strong>3. ¿Qué acaba de comprar Nancy?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="july-q3" value="a">
-              An $800,000 house in Maine
-            </label>
-            <label class="option-label">
-              <input type="radio" name="july-q3" value="b">
-              A new dress
-            </label>
-            <label class="option-label">
-              <input type="radio" name="july-q3" value="c">
-              A jazz club
-            </label>
+            <p><strong>3. ¿Cuál expresión da un consejo?</strong></p>
+            <label class="option-label"><input type="radio" name="review-q3" value="a"> You should take a break.</label>
+            <label class="option-label"><input type="radio" name="review-q3" value="b"> I am taking a shower.</label>
+            <label class="option-label"><input type="radio" name="review-q3" value="c"> She went to Alaska.</label>
           </div>
 
           <div class="question-block">
-            <p><strong>4. ¿Por qué Bárbara no quiere ver los fuegos artificiales?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="july-q4" value="a">
-              They remind her of storms
-            </label>
-            <label class="option-label">
-              <input type="radio" name="july-q4" value="b">
-              She wants to go home
-            </label>
-            <label class="option-label">
-              <input type="radio" name="july-q4" value="c">
-              She is afraid of heights
-            </label>
+            <p><strong>4. ¿Cuál frase expresa una preferencia?</strong></p>
+            <label class="option-label"><input type="radio" name="review-q4" value="a"> I'd rather get away from cities.</label>
+            <label class="option-label"><input type="radio" name="review-q4" value="b"> The doorbell rang.</label>
+            <label class="option-label"><input type="radio" name="review-q4" value="c"> He is my brother.</label>
           </div>
 
           <div class="activity-actions">
@@ -521,67 +330,55 @@
           </div>
         </article>
 
-        <article class="lesson-section activity-card is-locked" data-activity="4">
+        <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 04 · VOCABULARIO</p>
-              <h2>Fiestas, casas y apariencia</h2>
+              <p class="activity-number">ACTIVIDAD 03 · VOCABULARIO</p>
+              <h2>Palabras esenciales</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">📚</span>
           </div>
 
           <div class="vocabulary-columns">
             <section class="vocabulary-group">
-              <h3>Lugares y fiestas</h3>
+              <h3>Personas y lugares</h3>
               <dl class="vocabulary-list">
-                <div><dt>loft</dt><dd>loft, taller de artista</dd></div>
-                <div><dt>warehouse</dt><dd>almacén</dd></div>
-                <div><dt>inside</dt><dd>interior</dd></div>
-                <div><dt>outside</dt><dd>exterior</dd></div>
-                <div><dt>roof</dt><dd>tejado, azotea</dd></div>
-                <div><dt>garden</dt><dd>jardín</dd></div>
-                <div><dt>fireworks</dt><dd>fuegos artificiales</dd></div>
-                <div><dt>jazz bar</dt><dd>bar de jazz</dd></div>
-                <div><dt>round the corner</dt><dd>a la vuelta de la esquina</dd></div>
+                <div><dt>friend</dt><dd>amigo/a</dd></div>
+                <div><dt>family</dt><dd>familia</dd></div>
+                <div><dt>city</dt><dd>ciudad</dd></div>
+                <div><dt>restaurant</dt><dd>restaurante</dd></div>
+                <div><dt>travel agency</dt><dd>agencia de viajes</dd></div>
+                <div><dt>national park</dt><dd>parque nacional</dd></div>
               </dl>
             </section>
 
             <section class="vocabulary-group">
-              <h3>Aspecto y acciones</h3>
+              <h3>Acciones</h3>
               <dl class="vocabulary-list">
-                <div><dt>hair</dt><dd>pelo</dd></div>
-                <div><dt>to look</dt><dd>parecer, tener aspecto</dd></div>
-                <div><dt>to wear</dt><dd>llevar puesto</dd></div>
-                <div><dt>to dye</dt><dd>teñir</dd></div>
-                <div><dt>to do up</dt><dd>renovar</dd></div>
-                <div><dt>to have something done</dt><dd>hacer que otra persona haga algo</dd></div>
-                <div><dt>to double</dt><dd>doblar, aumentar al doble</dd></div>
-                <div><dt>to triple</dt><dd>triplicar</dd></div>
-                <div><dt>to quadruple</dt><dd>cuadruplicar</dd></div>
-                <div><dt>to rescue</dt><dd>rescatar, salvar</dd></div>
+                <div><dt>to call</dt><dd>llamar</dd></div>
+                <div><dt>to travel</dt><dd>viajar</dd></div>
+                <div><dt>to remember</dt><dd>recordar</dd></div>
+                <div><dt>to remind</dt><dd>hacer recordar</dd></div>
+                <div><dt>to learn</dt><dd>aprender</dd></div>
+                <div><dt>to practice</dt><dd>practicar</dd></div>
               </dl>
             </section>
 
             <section class="vocabulary-group">
-              <h3>Descripciones y expresiones</h3>
+              <h3>Expresiones útiles</h3>
               <dl class="vocabulary-list">
-                <div><dt>terrific</dt><dd>fantástico/a</dd></div>
-                <div><dt>fabulous</dt><dd>fabuloso/a</dd></div>
-                <div><dt>terrible</dt><dd>terrible, horrible</dd></div>
-                <div><dt>fat</dt><dd>gordo/a</dd></div>
-                <div><dt>thin</dt><dd>delgado/a</dd></div>
-                <div><dt>you don't say!</dt><dd>¡no me digas!</dd></div>
-                <div><dt>I'll be right back</dt><dd>vuelvo enseguida</dd></div>
-                <div><dt>that's nothing compared to...</dt><dd>eso no es nada comparado con...</dd></div>
-                <div><dt>in a good / bad mood</dt><dd>de buen / mal humor</dd></div>
-                <div><dt>each other</dt><dd>el uno al otro</dd></div>
+                <div><dt>good job</dt><dd>buen trabajo</dd></div>
+                <div><dt>take care</dt><dd>cuídate</dd></div>
+                <div><dt>as soon as possible</dt><dd>tan pronto como sea posible</dd></div>
+                <div><dt>great value for money</dt><dd>buena relación calidad-precio</dd></div>
+                <div><dt>keep in shape</dt><dd>mantenerse en forma</dd></div>
               </dl>
             </section>
           </div>
 
           <div class="question-block">
             <label for="vocabulary-answer">
-              Complete: “Martha had her hair __________ at Tilda's.”
+              Complete: “Please __________ me back when you get home.”
             </label>
             <input
               id="vocabulary-answer"
@@ -599,71 +396,203 @@
           </div>
         </article>
 
+        <article class="lesson-section activity-card is-locked" data-activity="4">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 04 · GRAMÁTICA</p>
+              <h2>Presente simple</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">⌚</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>Rutinas y hechos</h3>
+            <p class="example-box">
+              I study English every day.<br>
+              <strong>She works in an office.</strong><br><br>
+              We live in Costa Rica.<br>
+              <strong>He speaks English very well.</strong>
+            </p>
+          </section>
+
+          <div class="question-block">
+            <label for="present-answer-1">
+              Complete: “She __________ English every day.”
+            </label>
+            <input
+              id="present-answer-1"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: studies"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="present-answer-2">
+              Complete: “He __________ in San José.”
+            </label>
+            <input
+              id="present-answer-2"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: lives"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-present" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 05 · CÓMO SE DICE</p>
-              <h2>Cumplidos, preguntas y ayuda</h2>
+              <p class="activity-number">ACTIVIDAD 05 · GRAMÁTICA</p>
+              <h2>Pasado continuo</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">💬</span>
+            <span class="activity-icon" aria-hidden="true">⏳</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>Una acción interrumpida</h3>
+            <p class="example-box">
+              I was walking home when it started to rain.<br><br>
+              <strong>While she was studying, the phone rang.</strong>
+            </p>
+          </section>
+
+          <div class="question-block">
+            <label for="past-answer-1">
+              Complete: “I __________ walking home when it started to rain.”
+            </label>
+            <input
+              id="past-answer-1"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: was"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="past-answer-2">
+              Complete: “__________ she was studying, the phone rang.”
+            </label>
+            <input
+              id="past-answer-2"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: While"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-past" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="6">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 06 · GRAMÁTICA</p>
+              <h2>Futuro y condicional</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🔀</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>Planes y posibilidades</h3>
+            <p class="example-box">
+              If I go to Alaska, <strong>I will go rafting.</strong><br><br>
+              If the weather is good, <strong>we will visit the park.</strong>
+            </p>
+          </section>
+
+          <div class="question-block">
+            <label for="future-answer-1">
+              Complete: “If I go to Alaska, I __________ go rafting.”
+            </label>
+            <input
+              id="future-answer-1"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: will"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="future-answer-2">
+              Complete: “If she studies, she __________ pass the test.”
+            </label>
+            <input
+              id="future-answer-2"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: will"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-future" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="7">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 07 · EXPRESIONES</p>
+              <h2>Consejos y planes</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🗣️</span>
           </div>
 
           <div class="phrase-groups">
             <section class="phrase-group">
-              <h3>Apreciar y felicitar</h3>
+              <h3>Dar consejos</h3>
               <dl class="phrase-list">
-                <div><dt>Isn't this a beautiful place?</dt><dd>¿No es este un lugar hermoso?</dd></div>
-                <div><dt>What a great place!</dt><dd>¡Qué lugar tan estupendo!</dd></div>
-                <div><dt>You look terrific!</dt><dd>¡Te ves fantástico/a!</dd></div>
-                <div><dt>That dress really suits you.</dt><dd>Ese vestido te queda muy bien.</dd></div>
-                <div><dt>That suit looks great on you.</dt><dd>Ese traje te queda genial.</dd></div>
-                <div><dt>It does wonders for you.</dt><dd>Te favorece mucho.</dd></div>
+                <div><dt>You should practice every day.</dt><dd>Deberías practicar todos los días.</dd></div>
+                <div><dt>You ought to take a break.</dt><dd>Deberías tomar un descanso.</dd></div>
+                <div><dt>If I were you, I'd ask for help.</dt><dd>Si yo fuera tú, pediría ayuda.</dd></div>
               </dl>
             </section>
 
             <section class="phrase-group">
-              <h3>Trabajo realizado por otros</h3>
+              <h3>Hablar de planes</h3>
               <dl class="phrase-list">
-                <div><dt>I had my hair cut.</dt><dd>Me corté el pelo.</dd></div>
-                <div><dt>You've had your hair dyed.</dt><dd>Te has teñido el pelo.</dd></div>
-                <div><dt>They had the house repainted.</dt><dd>Hicieron pintar la casa.</dd></div>
-                <div><dt>He had his car fixed.</dt><dd>Le arreglaron el coche.</dd></div>
-                <div><dt>She had her apartment renovated.</dt><dd>Le renovaron el apartamento.</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>Preguntas y ayuda</h3>
-              <dl class="phrase-list">
-                <div><dt>Didn't you go there last year?</dt><dd>¿No fuiste allí el año pasado?</dd></div>
-                <div><dt>Haven't you got two cars?</dt><dd>¿No tienes dos coches?</dd></div>
-                <div><dt>Doesn't she work at Telepress?</dt><dd>¿No trabaja ella en Telepress?</dd></div>
-                <div><dt>Rescue me!</dt><dd>¡Rescátame!</dd></div>
-                <div><dt>Help!</dt><dd>¡Socorro!</dd></div>
-                <div><dt>Save me!</dt><dd>¡Sálvame!</dd></div>
+                <div><dt>I'm going to study tonight.</dt><dd>Voy a estudiar esta noche.</dd></div>
+                <div><dt>I'll call you when I get back.</dt><dd>Te llamaré cuando regrese.</dd></div>
+                <div><dt>I'd like to travel someday.</dt><dd>Me gustaría viajar algún día.</dd></div>
               </dl>
             </section>
           </div>
 
           <div class="question-block">
             <label for="phrases-answer">
-              Complete: “You look __________!”
+              Complete: “You __________ practice English every day.”
             </label>
             <input
               id="phrases-answer"
               type="text"
               autocomplete="off"
-              placeholder="Escribe: terrific"
+              placeholder="Escribe: should"
             >
           </div>
 
           <div class="question-block">
             <label for="phrases-writing">
-              Escribe un cumplido en inglés sobre la apariencia de alguien:
+              Escribe una oración en inglés con un consejo o un plan:
             </label>
             <textarea
               id="phrases-writing"
-              placeholder="You look terrific! That dress really suits you."
+              placeholder="You should practice English every day."
             ></textarea>
           </div>
 
@@ -675,166 +604,33 @@
           </div>
         </article>
 
-        <article class="lesson-section activity-card is-locked" data-activity="6">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 06 · GRAMÁTICA</p>
-              <h2>If ... would have done</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">⏪</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>Condicional perfecto afirmativo</h3>
-            <p class="example-box">
-              I didn't watch television, so I didn't see the news. →<br>
-              <strong>If I'd watched television, I'd have seen the news.</strong><br><br>
-              The weather wasn't good, so we didn't go to the beach. →<br>
-              <strong>If the weather had been good, we would have gone to the beach.</strong>
-            </p>
-          </section>
-
-          <div class="question-block">
-            <label for="conditional-positive-answer-1">
-              Complete: “If I'd watched television, I'd __________ seen the news.”
-            </label>
-            <input
-              id="conditional-positive-answer-1"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: have"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="conditional-positive-answer-2">
-              Complete: “If the weather had been good, we would have __________ to the beach.”
-            </label>
-            <input
-              id="conditional-positive-answer-2"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: gone"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-conditional-positive" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="7">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 07 · GRAMÁTICA</p>
-              <h2>If ... wouldn't have done</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🚫</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>Condicional perfecto negativo</h3>
-            <p class="example-box">
-              I went to the bar, and saw him. →<br>
-              <strong>If I hadn't gone to the bar, I wouldn't have seen him.</strong><br><br>
-              I drank a lot of whiskey, and felt terrible this morning. →<br>
-              <strong>If I hadn't drunk a lot of whiskey, I wouldn't have felt terrible.</strong>
-            </p>
-          </section>
-
-          <div class="question-block">
-            <label for="conditional-negative-answer-1">
-              Complete: “If I hadn't gone to the bar, I __________ have seen him.”
-            </label>
-            <input
-              id="conditional-negative-answer-1"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: wouldn't"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="conditional-negative-answer-2">
-              Complete: “If I hadn't drunk a lot of whiskey, I wouldn't have __________ terrible.”
-            </label>
-            <input
-              id="conditional-negative-answer-2"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: felt"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-conditional-negative" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 08 · GRAMÁTICA</p>
-              <h2>Have something done y cantidades</h2>
+              <p class="activity-number">ACTIVIDAD 08 · PRODUCCIÓN</p>
+              <h2>Un mensaje telefónico</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">🏠</span>
+            <span class="activity-icon" aria-hidden="true">☎️</span>
           </div>
 
-          <section class="oral-practice-block">
-            <h3>Have something done</h3>
-            <p class="example-box">
-              The car wouldn't start. Repair. →<br>
-              <strong>I had my car repaired.</strong><br><br>
-              I didn't like the color of the living room. Paint. →<br>
-              <strong>I had the living room painted.</strong><br><br>
-              The warehouse was in terrible condition. Do up. →<br>
-              <strong>Jeff had the warehouse done up.</strong>
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>Sustantivos compuestos de cantidad</h3>
-            <p class="example-box">
-              I bought a house for $800,000. →<br>
-              <strong>I bought an $800,000 house.</strong><br><br>
-              He has a car with two doors. →<br>
-              <strong>He has a two-door car.</strong>
-            </p>
-          </section>
+          <p>
+            Escribe un mensaje corto en inglés. Incluye tu nombre, el motivo de
+            la llamada y una despedida.
+          </p>
 
           <div class="question-block">
-            <label for="have-done-answer-1">
-              Complete: “I had my car __________.”
+            <label for="message-writing">
+              Tu mensaje telefónico:
             </label>
-            <input
-              id="have-done-answer-1"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: repaired"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="have-done-answer-2">
-              Complete: “Nancy bought an __________ house.”
-            </label>
-            <input
-              id="have-done-answer-2"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: $800,000"
-            >
+            <textarea
+              id="message-writing"
+              placeholder="Hi, this is Ana. I'm calling about the trip. Please call me back. Bye!"
+            ></textarea>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary check-have-done" type="button">
-              Revisar respuestas
+            <button class="button button-primary check-message" type="button">
+              Guardar mensaje
             </button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
@@ -843,47 +639,29 @@
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 09 · CULTURA</p>
-              <h2>Fiestas estadounidenses</h2>
+              <p class="activity-number">ACTIVIDAD 09 · PRODUCCIÓN</p>
+              <h2>Mi experiencia en inglés</h2>
             </div>
-            <span class="activity-icon" aria-hidden="true">🇺🇸</span>
+            <span class="activity-icon" aria-hidden="true">✍️</span>
           </div>
 
-          <div class="reading-card">
-            <h3>Celebraciones durante el año</h3>
-            <p>
-              Además de Navidad y Año Nuevo, el calendario estadounidense incluye
-              celebraciones como St. Valentine’s Day, St. Patrick’s Day,
-              Independence Day, Labor Day, Halloween y Thanksgiving.
-            </p>
-            <p>
-              El 4 de julio conmemora la independencia de 1776. Es habitual
-              encontrar desfiles, banderas, barbacoas y fuegos artificiales.
-            </p>
-          </div>
-
-          <div class="reading-card">
-            <h3>Otras fiestas</h3>
-            <p>
-              Halloween se celebra el 31 de octubre. Los niños se disfrazan y
-              llaman a las puertas para pedir <em>trick or treat</em>.
-              Thanksgiving reúne a muchas familias alrededor de una comida
-              tradicional con pavo.
-            </p>
-          </div>
+          <p>
+            Escribe al menos tres oraciones sobre algo que aprendiste o una
+            situación donde usarías inglés.
+          </p>
 
           <div class="question-block">
-            <label for="culture-writing">
-              Escribe una oración en inglés sobre una celebración o festividad:
+            <label for="experience-writing">
+              Tu respuesta:
             </label>
             <textarea
-              id="culture-writing"
-              placeholder="On the Fourth of July, people watch fireworks and have barbecues."
+              id="experience-writing"
+              placeholder="I can introduce myself in English. I can ask for help when I travel. I will continue practicing every day."
             ></textarea>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary check-culture" type="button">
+            <button class="button button-primary check-experience" type="button">
               Guardar respuesta
             </button>
             <span class="activity-feedback" aria-live="polite"></span>
@@ -893,447 +671,522 @@
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 10 · REPASO FINAL</p>
-              <h2>Viajes, modismos y Unidad 4</h2>
+              <p class="activity-number">ACTIVIDAD 10 · FINAL DEL CURSO</p>
+              <h2>¡Tu reto final!</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">🏆</span>
           </div>
 
-          <section class="oral-practice-block">
-            <h3>Maneras de hablar</h3>
-            <p class="example-box">
-              <strong>To make a splash:</strong> impresionar, causar sensación.<br>
-              <strong>To pull strings:</strong> mover influencias, tirar de los hilos.<br>
-              <strong>To paint the town red:</strong> divertirse mucho, salir de fiesta.<br>
-              <strong>Tongue-in-cheek:</strong> en broma, sin hablar completamente en serio.
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>Consulta: viajes y emergencias</h3>
-            <p>
-              Repasa vocabulario útil: <strong>passport, visa, itinerary,
-              accommodation, motel, highway, freeway, seat belt, flat tire,
-              gas tank, traffic lights, emergency, bandage, drugstore</strong> y
-              <strong>hospital</strong>.
-            </p>
-          </section>
+          <p>
+            Completa las oraciones y escribe un texto final para celebrar tu
+            progreso en 506 English Express.
+          </p>
 
           <div class="question-block">
-            <label for="review-answer-1">
-              Complete: “If I'd worn that dress, the audience would have __________.”
+            <label for="final-answer-1">
+              Complete: “This course __________ me of my goals.”
             </label>
             <input
-              id="review-answer-1"
+              id="final-answer-1"
               type="text"
               autocomplete="off"
-              placeholder="Escribe: doubled"
+              placeholder="Escribe: reminds"
             >
           </div>
 
           <div class="question-block">
-            <label for="review-answer-2">
-              Complete: “Barbara says: ‘Jeff, __________ me!’”
+            <label for="final-answer-2">
+              Complete: “I __________ able to communicate with more confidence now.”
             </label>
             <input
-              id="review-answer-2"
+              id="final-answer-2"
               type="text"
               autocomplete="off"
-              placeholder="Escribe: rescue"
+              placeholder="Escribe: am"
             >
           </div>
 
           <div class="question-block">
             <label for="final-writing">
-              Escribe al menos cuatro oraciones en inglés sobre una fiesta o
-              viaje. Incluye un cumplido, una oración con
-              <strong>if ... would have</strong>, una estructura con
-              <strong>have something done</strong> y una celebración.
+              Escribe cuatro o más oraciones en inglés. Incluye una rutina, un
+              plan futuro, un consejo usando <strong>should</strong> y una oración
+              con <strong>if</strong>.
             </label>
             <textarea
               id="final-writing"
-              placeholder="You look terrific at the Fourth of July party. If I had gone earlier, I would have seen the fireworks. I had my hair dyed before the celebration. We had a barbecue with our friends."
+              placeholder="I study English every day. I will practice more in the future. I should speak English whenever I can. If I travel, I will use English with confidence."
             ></textarea>
           </div>
 
           <div class="activity-actions">
-            <button class="button button-primary finish-lesson" type="button">
-              Completar Unidad 4
+            <button class="button button-primary finish-course" type="button">
+              Completar curso
             </button>
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
-      </section>
-
-      <section class="story-section" id="annie-oakley-story">
-        <div class="story-heading">
-          <div>
-            <p class="kicker">LECTURA ESPECIAL · HISTORIA FINAL</p>
-            <h2>En busca de Annie Oakley</h2>
-            <p class="story-subtitle">
-              Armand deja Nueva York rumbo a Denver y descubre el ambiente del
-              Oeste americano antes de encontrarse inesperadamente con Annie
-              Oakley.
-            </p>
-          </div>
-
-          <span class="story-icon" aria-hidden="true">🤠</span>
-        </div>
-
-        <div class="story-intro">
-          <p>
-            Esta lectura complementaria cierra la historia de la Unidad 4. Léela
-            para comprender la aventura de Armand y practicar vocabulario de
-            viajes, negocios, Colorado y el Oeste americano.
-          </p>
-        </div>
-
-        <div class="story-content">
-
-          <article class="story-chapter">
-            <h3>Una llamada inesperada</h3>
-
-            <p>
-              A la mañana siguiente, el teléfono sonó temprano mientras Armand
-              veía <em>Good Morning America</em> en la A.B.C.
-              (<em>American Broadcasting Corporation</em>).
-            </p>
-
-            <div class="story-dialogue">
-              <p><strong>—Hello, Armand Duchêne speaking.</strong></p>
-
-              <p>
-                <strong>
-                  —Oiga, Duchêne, veo que ya está en marcha su iniciación al
-                  American way of life.
-                </strong>
-              </p>
-
-              <p>
-                <strong>—Se hace lo que se puede, jefe</strong>, contestó
-                Armand, recordando la noche anterior.
-              </p>
-
-              <p>
-                <strong>
-                  —Bueno, hay un cambio en el programa. Charles Johnson, que
-                  debía usted ver hoy en el Empire State Building, ha tenido que
-                  regresar a Denver y le está esperando a las dos treinta, hora
-                  local. Salga en el primer avión; ya sabe qué asuntos están en
-                  juego. Cuento con usted.
-                </strong>
-              </p>
-
-              <p><strong>—O.K., boss.</strong></p>
-            </div>
-
-            <p>
-              ¿Cómo podía avisar a Miss Oakley? Ella tenía los datos de Armand,
-              pero él no conocía los de ella. Por si acaso, dejó un mensaje para
-              Annie en recepción.
-            </p>
-
-            <div class="letter-box">
-              <p><strong>Dear Annie,</strong></p>
-
-              <p>
-                My boss in Paris called this morning; I absolutely have to fly
-                out to Denver. I will be staying at the Sheraton. Please forgive
-                me, but I don't have your number. I hope you understand. Do keep
-                in touch.
-              </p>
-
-              <p>
-                <strong>Warmest regards,</strong><br>
-                Armand
-              </p>
-            </div>
-
-            <p>
-              Armand esperaba que Annie no le guardara rencor. Le habría gustado
-              explorar más <em>the Big Apple</em>, pero los negocios eran
-              primero: <em>business is business</em>.
-            </p>
-          </article>
-
-          <article class="story-chapter">
-            <h3>Rumbo a Denver</h3>
-
-            <p>
-              En Denver, un joven esperaba a Armand con un cartel que llevaba su
-              nombre. Vestía una chaqueta de pana y una corbata amarilla de
-              lunares, una <em>power necktie</em>, como le explicarían más tarde.
-            </p>
-
-            <div class="story-dialogue">
-              <p>
-                <strong>
-                  —Mr. Duchêne? Please follow me. Mr. Johnson is expecting you.
-                </strong>
-              </p>
-
-              <p><strong>—Thank you.</strong></p>
-            </div>
-
-            <p>
-              Armand siguió al joven hasta el estacionamiento, donde esperaba un
-              enorme Cadillac Eldorado negro con cristales ahumados.
-            </p>
-
-            <div class="story-dialogue">
-              <p><strong>—Mr. Johnson, I presume?</strong></p>
-
-              <p>
-                <strong>—Hi, call me Chuck. You're in Colorado; relax.</strong>
-              </p>
-            </div>
-
-            <p>
-              El aire era fresco y estimulante. Chuck era un hombre de negocios
-              muy rico y habló directamente del asunto. Mientras lo escuchaba,
-              Armand no podía dejar de admirar el cielo: era tan grande y azul
-              que parecía irreal.
-            </p>
-
-            <p>
-              Pronto dejaron la ciudad y tomaron una carretera sinuosa entre las
-              montañas. Armand habría preferido un Mustang o un Palomino a la
-              limusina, pues el exceso de comodidad lo separaba del paisaje. De
-              vez en cuando aparecían enormes rocas rojas.
-            </p>
-          </article>
-
-          <article class="story-chapter">
-            <h3>El país de los caballos</h3>
-
-            <div class="story-dialogue">
-              <p>
-                <strong>—I feel as though I am in a western</strong>, dijo
-                Armand.
-              </p>
-
-              <p>
-                <strong>
-                  —Yes, it sure is beautiful out here. By the way, do you like
-                  rodeos?
-                </strong>
-              </p>
-
-              <p><strong>—Are there any rodeos around here?</strong></p>
-
-              <p>
-                <strong>
-                  —You bet your boots! As a matter of fact, tonight there's a
-                  big one downtown. Would you like to go?
-                </strong>
-              </p>
-
-              <p>
-                <strong>
-                  —And how! I am glad you mentioned it. I was just thinking
-                  about horses.
-                </strong>
-              </p>
-
-              <p>
-                <strong>
-                  —This is horse country all right, isn't it, Jim?
-                </strong>
-              </p>
-
-              <p><strong>—Yes, sir!</strong>, contestó el chófer.</p>
-
-              <p>
-                <strong>
-                  —Say, Armand, you speak pretty good English for a Frenchman...
-                </strong>
-              </p>
-
-              <p><strong>—Thank you, but I have a good teacher.</strong></p>
-
-              <p>
-                <strong>
-                  —I'd like someone who could teach me French, but I'm no good
-                  with languages, although they say if you marry a local it helps.
-                </strong>
-              </p>
-            </div>
-
-            <p>
-              Chuck invitó a Armand a un gran rodeo que tendría lugar esa noche
-              en el centro de Denver. Armand aceptó inmediatamente: le
-              interesaban mucho los caballos y quería experimentar el ambiente
-              del Oeste americano.
-            </p>
-          </article>
-
-          <article class="story-chapter">
-            <h3>La noche del rodeo</h3>
-
-            <p>
-              Por la noche, después de comer deliciosos filetes de bisonte, Chuck
-              y Armand bajaron desde la casa de Chuck hasta el centro de Denver,
-              donde se celebraría el rodeo.
-            </p>
-
-            <p>
-              Aunque Denver no tenía el ambiente eléctrico de Nueva York, Armand
-              apreciaba que fuera una ciudad limpia, tranquila y amable. Las
-              conversaciones con Chuck habían sido positivas, y era agradable
-              estar rodeado de bosque y respirar el olor de los pinos.
-            </p>
-
-            <p>
-              Con una cerveza Coors, típica de Colorado, y un <em>hot dog</em>
-              en la mano, vieron a los <em>cowboys</em> demostrar su habilidad
-              para mantenerse sobre caballos y toros. Los animales llevaban una
-              correa especial bajo el vientre que los volvía más agresivos.
-            </p>
-          </article>
-
-          <article class="story-chapter story-ending">
-            <h3>La aparición de Annie Oakley</h3>
-
-            <p>
-              De repente, una voz grave y melodiosa se escuchó por el megáfono:
-            </p>
-
-            <div class="announcement-box">
-              <p>
-                <strong>
-                  “And now, ladies and gentlemen, here she is, Annie Oakley IV,
-                  great grand-daughter of the legendary queen of the Wild West,
-                  and just as great a sharpshooter!
-                </strong>
-              </p>
-
-              <p>
-                <strong>
-                  She claims that with her Winchester she can dislodge an apple
-                  from the top of any man's head. But we need a volunteer. Who
-                  is brave enough here to trust this beautiful young blonde with
-                  his life?”
-                </strong>
-              </p>
-            </div>
-
-            <p class="story-climax">
-              <strong>“I AM!”</strong> gritó Armand con todas sus fuerzas desde
-              las gradas.
-            </p>
-
-            <p class="story-final-word">FIN</p>
-          </article>
-
-        </div>
-
-        <div class="story-vocabulary">
-          <h3>Vocabulario de la historia</h3>
-
-          <div class="story-vocabulary-grid">
-            <div>
-              <strong>to fly out</strong>
-              <span>salir en avión</span>
-            </div>
-
-            <div>
-              <strong>to keep in touch</strong>
-              <span>mantenerse en contacto</span>
-            </div>
-
-            <div>
-              <strong>parking lot</strong>
-              <span>aparcamiento, estacionamiento</span>
-            </div>
-
-            <div>
-              <strong>power necktie</strong>
-              <span>corbata llamativa de ejecutivo</span>
-            </div>
-
-            <div>
-              <strong>businessman</strong>
-              <span>hombre de negocios</span>
-            </div>
-
-            <div>
-              <strong>winding road</strong>
-              <span>carretera sinuosa</span>
-            </div>
-
-            <div>
-              <strong>rodeo</strong>
-              <span>rodeo</span>
-            </div>
-
-            <div>
-              <strong>horse country</strong>
-              <span>región famosa por sus caballos</span>
-            </div>
-
-            <div>
-              <strong>cowboy</strong>
-              <span>vaquero</span>
-            </div>
-
-            <div>
-              <strong>sharpshooter</strong>
-              <span>tirador o tiradora de gran puntería</span>
-            </div>
-
-            <div>
-              <strong>megaphone</strong>
-              <span>megáfono</span>
-            </div>
-
-            <div>
-              <strong>volunteer</strong>
-              <span>voluntario/a</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="story-note">
-          <strong>Nota cultural:</strong>
-          <span>
-            Annie Oakley fue una famosa tiradora estadounidense vinculada a los
-            espectáculos del Salvaje Oeste. En esta historia aparece Annie Oakley
-            IV como una descendiente ficticia de la figura legendaria.
-          </span>
-        </div>
       </section>
 
       <section
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
-        <p class="kicker">¡Unidad 4 completada!</p>
-        <h2>Excelente trabajo</h2>
+        <p class="kicker">¡Curso completado!</p>
+        <h2>¡Felicitaciones!</h2>
 
         <p>
-          Completaste las cinco entregas de la Unidad 4. Ya puedes comunicarte
-          sobre llamadas, viajes, problemas, carreteras, noticias, favores,
-          publicidad, celebraciones y situaciones hipotéticas.
+          Completaste la Unidad 4 y terminaste el curso 506 English Express.
+          Sigue practicando: cada conversación es una oportunidad para mejorar.
         </p>
 
-        <a class="button button-primary" href="unit-4.html">
-          Volver a Unidad 4
-        </a>
-      </section>
+        <div class="completion-actions">
+          <button class="button button-primary" id="celebrate-button" type="button">
+            Celebrar final del curso 🎆
+          </button>
 
+          <a class="button button-outline" href="../index.html">
+            Volver al inicio
+          </a>
+        </div>
+      </section>
     </div>
   </main>
 
   <footer>
     <div class="container footer-content">
       <span>506 English Express</span>
-      <span>Unidad 4 · Entrega 5 · El 4 de Julio</span>
-      <a href="unit-4.html">Volver a Unidad 4</a>
+      <span>Unidad 4 · Entrega 5 · Repaso final</span>
+      <a href="../index.html">Volver al inicio</a>
     </div>
   </footer>
 
-  <script src="../assets/js/unit4-delivery5.js"></script>
+  <section
+    class="celebration-overlay"
+    id="celebration-overlay"
+    aria-modal="true"
+    aria-labelledby="celebration-title"
+    role="dialog"
+    hidden
+  >
+    <span class="firework one" aria-hidden="true"></span>
+    <span class="firework two" aria-hidden="true"></span>
+    <span class="firework three" aria-hidden="true"></span>
+    <span class="firework four" aria-hidden="true"></span>
+    <span class="firework five" aria-hidden="true"></span>
+
+    <div class="celebration-panel">
+      <p class="kicker">506 English Express</p>
+      <h2 id="celebration-title">¡Curso completado! 🎉</h2>
+      <p>
+        Has llegado al final del curso. ¡Celebra tu esfuerzo y continúa usando
+        el inglés con confianza!
+      </p>
+      <a class="button button-primary" href="../index.html">
+        Ir al inicio
+      </a>
+      <button class="button button-outline" id="close-celebration" type="button">
+        Cerrar celebración
+      </button>
+    </div>
+  </section>
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit4.delivery5.progress";
+      const courseKey = "506EnglishExpress.course.completed";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+      const celebrationButton = document.getElementById("celebrate-button");
+      const celebrationOverlay = document.getElementById("celebration-overlay");
+      const closeCelebrationButton = document.getElementById("close-celebration");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(stored)) {
+            return [];
+          }
+
+          return [...new Set(
+            stored
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        progressText.textContent =
+          `${completedCount} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const activityButton = card.querySelector(".complete-activity");
+
+          if (activityButton) {
+            activityButton.textContent = isComplete
+              ? "Actividad completada"
+              : "Marcar repaso como completado";
+          }
+        });
+
+        completionMessage.hidden = completedCount !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          localStorage.setItem(courseKey, "true");
+
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      function openCelebration() {
+        celebrationOverlay.hidden = false;
+        document.body.style.overflow = "hidden";
+        closeCelebrationButton.focus();
+      }
+
+      function closeCelebration() {
+        celebrationOverlay.hidden = true;
+        document.body.style.overflow = "";
+        celebrationButton.focus();
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity, "✓ Repaso completado.");
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="review-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="review-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="review-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="review-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "a" &&
+            answer3 === "a" &&
+            answer4 === "a"
+          ) {
+            completeActivity(2, "✓ ¡Excelente! Dominas estas expresiones.");
+          } else {
+            setFeedback(2, "Revisa las expresiones e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "call") {
+            completeActivity(3, "✓ Correcto: Please call me back.");
+          } else {
+            setFeedback(3, "Pista: una llamada telefónica.");
+          }
+        });
+
+      document
+        .querySelector(".check-present")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("present-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("present-answer-2").value
+          );
+
+          if (answer1 === "studies" && answer2 === "lives") {
+            completeActivity(4, "✓ Correcto: studies / lives.");
+          } else {
+            setFeedback(4, "Pista: studies / lives.");
+          }
+        });
+
+      document
+        .querySelector(".check-past")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("past-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("past-answer-2").value
+          );
+
+          if (answer1 === "was" && answer2 === "while") {
+            completeActivity(5, "✓ Correcto: was / while.");
+          } else {
+            setFeedback(5, "Pista: was / While.");
+          }
+        });
+
+      document
+        .querySelector(".check-future")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("future-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("future-answer-2").value
+          );
+
+          if (answer1 === "will" && answer2 === "will") {
+            completeActivity(6, "✓ Correcto: will / will.");
+          } else {
+            setFeedback(6, "Pista: will / will.");
+          }
+        });
+
+      document
+        .querySelector(".check-phrases")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("phrases-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("phrases-writing").value
+          );
+
+          const hasUsefulStructure =
+            writing.includes("should") ||
+            writing.includes("going to") ||
+            writing.includes("will") ||
+            writing.includes("would like");
+
+          if (answer === "should" && writing.length >= 12 && hasUsefulStructure) {
+            completeActivity(7, "✓ Práctica guardada.");
+          } else {
+            setFeedback(
+              7,
+              "Completa should y escribe una oración con un consejo o un plan."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-message")
+        .addEventListener("click", () => {
+          const writing = normalize(
+            document.getElementById("message-writing").value
+          );
+
+          const isMessage =
+            (writing.includes("hi") || writing.includes("hello")) &&
+            writing.includes("call") &&
+            (writing.includes("bye") || writing.includes("take care"));
+
+          if (writing.length >= 25 && isMessage) {
+            completeActivity(8, "✓ Mensaje telefónico guardado.");
+          } else {
+            setFeedback(
+              8,
+              "Incluye saludo, motivo de la llamada, call me back y despedida."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-experience")
+        .addEventListener("click", () => {
+          const writing = normalize(
+            document.getElementById("experience-writing").value
+          );
+
+          const sentences = writing
+            .split(/[.!?]+/)
+            .filter((sentence) => sentence.trim().length > 3);
+
+          if (sentences.length >= 3 && writing.length >= 60) {
+            completeActivity(9, "✓ Tu experiencia ha sido guardada.");
+          } else {
+            setFeedback(9, "Escribe al menos tres oraciones completas en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-course")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("final-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("final-answer-2").value
+          );
+
+          const writing = normalize(
+            document.getElementById("final-writing").value
+          );
+
+          const sentences = writing
+            .split(/[.!?]+/)
+            .filter((sentence) => sentence.trim().length > 3);
+
+          const hasRoutine =
+            writing.includes("every day") ||
+            writing.includes("usually") ||
+            writing.includes("always") ||
+            writing.includes("study");
+
+          const hasFuture =
+            writing.includes("will") ||
+            writing.includes("going to");
+
+          const hasAdvice = writing.includes("should");
+          const hasIf = writing.includes("if ");
+
+          if (
+            answer1 === "reminds" &&
+            answer2 === "am" &&
+            sentences.length >= 4 &&
+            writing.length >= 105 &&
+            hasRoutine &&
+            hasFuture &&
+            hasAdvice &&
+            hasIf
+          ) {
+            completeActivity(10, "✓ ¡Felicitaciones! Completaste el curso.");
+          } else {
+            setFeedback(
+              10,
+              "Completa reminds y am, y escribe cuatro oraciones con rutina, futuro, should e if."
+            );
+          }
+        });
+
+      celebrationButton.addEventListener("click", openCelebration);
+      closeCelebrationButton.addEventListener("click", closeCelebration);
+
+      celebrationOverlay.addEventListener("click", (event) => {
+        if (event.target === celebrationOverlay) {
+          closeCelebration();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !celebrationOverlay.hidden) {
+          closeCelebration();
+        }
+      });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+        localStorage.removeItem(courseKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        celebrationOverlay.hidden = true;
+        document.body.style.overflow = "";
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
 </body>
 </html>

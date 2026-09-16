@@ -20,6 +20,20 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -65,7 +79,6 @@
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
         <p class="kicker">Unidad 04 · Entrega 02</p>
         <h1>Una agencia de viajes</h1>
@@ -106,8 +119,6 @@
       </section>
 
       <section class="lesson-sections">
-
-        <!-- ACTIVIDAD 1 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -132,35 +143,20 @@
 
           <div class="dialogue-box">
             <p><strong>Jane:</strong> Good morning. Can you help me?</p>
-
             <p><strong>Travel agent:</strong> Yes, certainly.</p>
-
             <p><strong>Jane:</strong> I'd like to get away for a while, and see different parts of the United States.</p>
-
             <p><strong>Travel agent:</strong> What kind of vacation would you like to take?</p>
-
             <p><strong>Jane:</strong> I'm not sure.</p>
-
             <p><strong>Travel agent:</strong> We have a variety of trips in every price range. We have a two-week coast-to-coast package to ten cities. If you take that, you'll get to see Denver, Chicago, Nashville, Washington...</p>
-
             <p><strong>Jane:</strong> Actually, I'd rather get away from cities.</p>
-
             <p><strong>Travel agent:</strong> If you take our Western Wander Week, you'll visit an Indian reservation and you'll be able to watch a Navaho rain dance.</p>
-
             <p><strong>Travel agent:</strong> Then, you'll drive on to the Grand Canyon where you'll spend a night in a log cabin. Afterwards, you can hike down the canyon with a qualified guide.</p>
-
             <p><strong>Travel agent:</strong> After that, the tour bus will drive you back to Los Angeles, via a ghost town from Gold Rush days. There's an overnight stop in Las Vegas.</p>
-
             <p><strong>Travel agent:</strong> The round trip, including accommodation, meals and tax, comes to $998.79.</p>
-
             <p><strong>Jane:</strong> That sounds interesting, but do you have anything more... unusual?</p>
-
             <p><strong>Travel agent:</strong> If you like outdoor life, you'll love our Alaskan Adventure. First, you'll fly to Anchorage, and then our local guides will take you on a ten-day rafting and camping trip. That's really getting away from it all!</p>
-
             <p><strong>Jane:</strong> That's exactly what I want! How much is it?</p>
-
             <p><strong>Travel agent:</strong> It's a bargain! It's great value for money at only $1865.</p>
-
             <p><strong>Jane:</strong> That's a bit expensive. But it sounds wonderful! I'd like to go as soon as possible.</p>
           </div>
 
@@ -181,7 +177,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 2 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
@@ -193,78 +188,30 @@
 
           <div class="question-block">
             <p><strong>1. ¿Qué tipo de vacaciones prefiere Jane?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q1" value="a">
-              A vacation away from cities
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q1" value="b">
-              A city tour of ten museums
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q1" value="c">
-              A weekend at home
-            </label>
+            <label class="option-label"><input type="radio" name="travel-q1" value="a"> A vacation away from cities</label>
+            <label class="option-label"><input type="radio" name="travel-q1" value="b"> A city tour of ten museums</label>
+            <label class="option-label"><input type="radio" name="travel-q1" value="c"> A weekend at home</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. ¿Dónde se pasa una noche en el Western Wander Week?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q2" value="a">
-              In a log cabin at the Grand Canyon
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q2" value="b">
-              In a hotel in Chicago
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q2" value="c">
-              On a plane to Washington
-            </label>
+            <label class="option-label"><input type="radio" name="travel-q2" value="a"> In a log cabin at the Grand Canyon</label>
+            <label class="option-label"><input type="radio" name="travel-q2" value="b"> In a hotel in Chicago</label>
+            <label class="option-label"><input type="radio" name="travel-q2" value="c"> On a plane to Washington</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. ¿Cuál es la actividad principal de la Alaskan Adventure?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q3" value="a">
-              Rafting and camping
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q3" value="b">
-              Shopping in Las Vegas
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q3" value="c">
-              Visiting ten cities
-            </label>
+            <label class="option-label"><input type="radio" name="travel-q3" value="a"> Rafting and camping</label>
+            <label class="option-label"><input type="radio" name="travel-q3" value="b"> Shopping in Las Vegas</label>
+            <label class="option-label"><input type="radio" name="travel-q3" value="c"> Visiting ten cities</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. ¿Cuánto cuesta la Alaskan Adventure?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q4" value="a">
-              $998.79
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q4" value="b">
-              $1865
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="travel-q4" value="c">
-              $100
-            </label>
+            <label class="option-label"><input type="radio" name="travel-q4" value="a"> $998.79</label>
+            <label class="option-label"><input type="radio" name="travel-q4" value="b"> $1865</label>
+            <label class="option-label"><input type="radio" name="travel-q4" value="c"> $100</label>
           </div>
 
           <div class="activity-actions">
@@ -275,7 +222,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 3 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
@@ -288,7 +234,6 @@
           <div class="vocabulary-columns">
             <section class="vocabulary-group">
               <h3>Viajes y lugares</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>travel agent</dt><dd>agente de viajes</dd></div>
                 <div><dt>travel agency</dt><dd>agencia de viajes</dd></div>
@@ -305,7 +250,6 @@
 
             <section class="vocabulary-group">
               <h3>Alojamiento y condiciones</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>price range</dt><dd>rango de precios</dd></div>
                 <div><dt>log cabin</dt><dd>cabaña de troncos</dd></div>
@@ -321,7 +265,6 @@
 
             <section class="vocabulary-group">
               <h3>Actividades y verbos</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>outdoor life</dt><dd>vida al aire libre</dd></div>
                 <div><dt>adventure</dt><dd>aventura</dd></div>
@@ -358,7 +301,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 4 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
@@ -371,7 +313,6 @@
           <div class="phrase-groups">
             <section class="phrase-group">
               <h3>Preguntar preferencias</h3>
-
               <dl class="phrase-list">
                 <div><dt>What kind of vacation would you like?</dt><dd>¿Qué clase de vacaciones le gustaría?</dd></div>
                 <div><dt>What sort of trip do you want?</dt><dd>¿Qué tipo de viaje desea?</dd></div>
@@ -383,7 +324,6 @@
 
             <section class="phrase-group">
               <h3>Describir ofertas y precios</h3>
-
               <dl class="phrase-list">
                 <div><dt>We have a variety of trips.</dt><dd>Tenemos una variedad de viajes.</dd></div>
                 <div><dt>Our company offers a wide range of products.</dt><dd>Nuestra compañía ofrece una gran variedad de productos.</dd></div>
@@ -397,7 +337,6 @@
 
             <section class="phrase-group">
               <h3>Secuencia y posibilidades</h3>
-
               <dl class="phrase-list">
                 <div><dt>First, you'll fly to Anchorage.</dt><dd>Primero, volará a Anchorage.</dd></div>
                 <div><dt>Then, you'll drive on to the Grand Canyon.</dt><dd>Luego, continuará hacia el Gran Cañón.</dd></div>
@@ -441,7 +380,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 5 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
@@ -453,7 +391,6 @@
 
           <section class="oral-practice-block">
             <h3>If she goes, she'll...</h3>
-
             <p class="example-box">
               When Jane went to the United States, she visited the Grand Canyon. →<br>
               <strong>If Jane goes to the United States, she'll visit the Grand Canyon.</strong>
@@ -462,7 +399,6 @@
 
           <section class="oral-practice-block">
             <h3>If she doesn't go, she won't...</h3>
-
             <p class="example-box">
               If Jane goes to San Francisco, she'll see the Golden Gate Bridge. →<br>
               <strong>If Jane doesn't go to San Francisco, she won't see the Golden Gate Bridge.</strong>
@@ -503,7 +439,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 6 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
@@ -515,7 +450,6 @@
 
           <section class="oral-practice-block">
             <h3>Después de una actividad</h3>
-
             <p class="example-box">
               After the movies, we went to see Jeff.<br><br>
               We went to the movies, and afterwards we went to see Jeff.<br><br>
@@ -557,7 +491,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 7 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
@@ -569,7 +502,6 @@
 
           <section class="oral-practice-block">
             <h3>Diferentes significados de get</h3>
-
             <p class="example-box">
               <strong>To get up:</strong> Peter gets up every morning as soon as he hears his alarm clock.<br>
               <strong>To get away:</strong> She wanted to get away, so she went to Barbados for a week.<br>
@@ -581,11 +513,9 @@
 
           <section class="oral-practice-block">
             <h3>Can, could y will be able to</h3>
-
             <p class="example-box">
               I can speak English. Next year. →<br>
               <strong>I'll be able to speak English next year.</strong><br><br>
-
               I can water-ski. Last year. →<br>
               <strong>I could water-ski last year.</strong>
             </p>
@@ -625,7 +555,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 8 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
@@ -637,11 +566,9 @@
 
           <section class="oral-practice-block">
             <h3>Unir información sobre un lugar</h3>
-
             <p class="example-box">
               You'll spend the night in a log cabin. It's very nice. →<br>
               <strong>The log cabin, where you'll spend the night, is very nice.</strong><br><br>
-
               She'll have dinner in a restaurant. It has very good food. →<br>
               <strong>The restaurant where she'll have dinner has very good food.</strong>
             </p>
@@ -679,7 +606,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 9 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
@@ -691,21 +617,18 @@
 
           <div class="reading-card">
             <h3>Dos semanas de vacaciones</h3>
-
             <p>
               El estadounidense medio dispone de dos semanas de vacaciones al año.
               Algunas personas viajan por el mundo, mientras otras prefieren conocer
               su propio país. Entre esos dos extremos aparece una amplia clase media
               que encuentra muchas posibilidades de viaje dentro de Estados Unidos.
             </p>
-
             <p>
               Al planear vacaciones, muchas personas buscan tres elementos: mar,
               campo o montaña, con una temperatura agradable. Esto ayuda a explicar
               los viajes de invierno hacia Florida y los desplazamientos estivales
               hacia Maine o Massachusetts.
             </p>
-
             <p>
               Cada región ofrece paisajes distintos: las playas de las Carolinas,
               California, Oregón y numerosas áreas naturales pueden atraer a turistas
@@ -715,21 +638,18 @@
 
           <div class="reading-card">
             <h3>National Parks</h3>
-
             <p>
               Theodore Roosevelt impulsó la protección de espacios naturales y
               contribuyó a popularizar los parques nacionales. Entre los más
               espectaculares se encuentran Yellowstone, Yosemite, Glacier y el
               Grand Canyon.
             </p>
-
             <p>
               Los visitantes pueden alojarse en moteles entre pinos o acampar en
               tiendas. Sin embargo, deben respetar las zonas permitidas: el
               <em>forest ranger</em> puede imponer multas a quienes acampen donde
               está prohibido.
             </p>
-
             <p>
               Los parques permiten disfrutar de montañas, bosques, ríos y fauna,
               pero también exigen preparación, respeto por la naturaleza y
@@ -756,7 +676,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
@@ -768,7 +687,6 @@
 
           <section class="oral-practice-block">
             <h3>De todo un poco</h3>
-
             <p>
               La entrega original incluye una canción tradicional en la sección
               “De todo un poco”. Para el sitio, utiliza un audio con licencia o una
@@ -832,13 +750,13 @@
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
       </section>
 
       <section
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
@@ -849,11 +767,16 @@
           futuras.
         </p>
 
-        <a class="button button-primary" href="unit-4.html">
-          Volver a Unidad 4
-        </a>
-      </section>
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-4-delivery-3.html">
+            Siguiente entrega →
+          </a>
 
+          <a class="button button-outline" href="unit-4.html">
+            Volver a Unidad 4
+          </a>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -865,6 +788,375 @@
     </div>
   </footer>
 
-  <script src="../assets/js/unit4-delivery2.js"></script>
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit4.delivery2.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(stored)) {
+            return [];
+          }
+
+          return [...new Set(
+            stored
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        progressText.textContent =
+          `${completedCount} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const dialogueButton = card.querySelector(".complete-activity");
+
+          if (dialogueButton) {
+            dialogueButton.textContent = isComplete
+              ? "Actividad completada"
+              : "Marcar diálogo como completado";
+          }
+        });
+
+        completionMessage.hidden = completedCount !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="travel-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="travel-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="travel-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="travel-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "a" &&
+            answer3 === "a" &&
+            answer4 === "b"
+          ) {
+            completeActivity(
+              2,
+              "✓ ¡Correcto! Comprendiste el viaje que busca Jane."
+            );
+          } else {
+            setFeedback(2, "Revisa el diálogo e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "log") {
+            completeActivity(
+              3,
+              "✓ Correcto: Jane will spend a night in a log cabin."
+            );
+          } else {
+            setFeedback(3, "Pista: log cabin.");
+          }
+        });
+
+      document
+        .querySelector(".check-phrases")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("phrases-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("phrases-writing").value
+          );
+
+          const hasQuestion =
+            writing.includes("what kind") ||
+            writing.includes("what sort") ||
+            writing.includes("would you like") ||
+            writing.includes("do you have");
+
+          if (answer === "like" && writing.length >= 15 && hasQuestion) {
+            completeActivity(4, "✓ Práctica de preferencias guardada.");
+          } else {
+            setFeedback(
+              4,
+              "Completa like y escribe una pregunta sobre preferencias de viaje."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-if")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("if-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("if-answer-2").value
+          );
+
+          if (answer1 === "will" && answer2 === "wont") {
+            completeActivity(
+              5,
+              "✓ Correcto: If Jane goes, she will visit. If she doesn't go, she won't see it."
+            );
+          } else {
+            setFeedback(5, "Pista: will / won't.");
+          }
+        });
+
+      document
+        .querySelector(".check-after")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("after-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("after-answer-2").value
+          );
+
+          if (answer1 === "after" && answer2 === "afterwards") {
+            completeActivity(6, "✓ Correcto: After / afterwards.");
+          } else {
+            setFeedback(6, "Pista: After / afterwards.");
+          }
+        });
+
+      document
+        .querySelector(".check-ability")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("ability-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("ability-answer-2").value
+          );
+
+          if (answer1 === "will be able to" && answer2 === "could") {
+            completeActivity(7, "✓ Correcto: will be able to / could.");
+          } else {
+            setFeedback(7, "Pista: will be able to / could.");
+          }
+        });
+
+      document
+        .querySelector(".check-where")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("where-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("where-writing").value
+          );
+
+          if (
+            answer === "where" &&
+            writing.length >= 15 &&
+            writing.includes("where")
+          ) {
+            completeActivity(8, "✓ Práctica con where guardada.");
+          } else {
+            setFeedback(
+              8,
+              "Completa where y escribe una oración sobre un lugar de vacaciones."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-culture")
+        .addEventListener("click", () => {
+          const writing = document
+            .getElementById("culture-writing")
+            .value
+            .trim();
+
+          if (writing.length >= 12) {
+            completeActivity(9, "✓ Respuesta cultural guardada.");
+          } else {
+            setFeedback(9, "Escribe una oración completa en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("review-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("review-answer-2").value
+          );
+
+          const writing = normalize(
+            document.getElementById("final-writing").value
+          );
+
+          const hasPreference =
+            writing.includes("would like") ||
+            writing.includes("prefer") ||
+            writing.includes("rather");
+
+          const hasPrice =
+            writing.includes("$") ||
+            writing.includes("dollars") ||
+            writing.includes("comes to") ||
+            writing.includes("cost");
+
+          const hasIf = writing.includes("if ");
+
+          const hasSequence =
+            writing.includes("first") ||
+            writing.includes("then") ||
+            writing.includes("afterwards") ||
+            writing.includes("after that");
+
+          if (
+            answer1 === "will" &&
+            answer2 === "where" &&
+            writing.length >= 120 &&
+            hasPreference &&
+            hasPrice &&
+            hasIf &&
+            hasSequence
+          ) {
+            completeActivity(10, "✓ ¡Entrega 4.2 completada!");
+          } else {
+            setFeedback(
+              10,
+              "Completa will y where, y redacta un itinerario con todos los elementos solicitados."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
 </body>
 </html>

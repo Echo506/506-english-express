@@ -20,6 +20,20 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -65,7 +79,6 @@
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
         <p class="kicker">Unidad 04 · Entrega 03</p>
         <h1>En caso de apuro…</h1>
@@ -106,8 +119,6 @@
       </section>
 
       <section class="lesson-sections">
-
-        <!-- ACTIVIDAD 1 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -131,25 +142,15 @@
 
           <div class="dialogue-box">
             <p><strong>Dr. Klein:</strong> How are you this week?</p>
-
             <p><strong>Barbara:</strong> Terrible! I've had an awful week.</p>
-
             <p><strong>Dr. Klein:</strong> Do you want to talk about it?</p>
-
             <p><strong>Barbara:</strong> Well, I don't know what's the matter with me. The other day I was taking a shower when the doorbell rang, and I answered the telephone.</p>
-
             <p><strong>Dr. Klein:</strong> Yes. And...?</p>
-
             <p><strong>Barbara:</strong> And another time I was walking down the street when my boss came up to me, and I couldn't even remember his name!</p>
-
             <p><strong>Dr. Klein:</strong> That's not the way to get a promotion, huh?</p>
-
             <p><strong>Barbara:</strong> You're not kidding!</p>
-
             <p><strong>Barbara:</strong> And yesterday I was having dinner with a friend in a restaurant, and suddenly I got up and started clearing the table!</p>
-
             <p><strong>Dr. Klein:</strong> I'm sure the waiter was pleased.</p>
-
             <p><strong>Barbara:</strong> That's not the point, Doctor! What's the matter with me?</p>
           </div>
 
@@ -170,7 +171,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 2 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
@@ -190,13 +190,9 @@
 
           <div class="dialogue-box">
             <p><strong>Dr. Klein:</strong> How long has this been going on?</p>
-
             <p><strong>Barbara:</strong> Well, I was O.K. until I went to New Orleans to work on a jazz documentary. I was staying in a house with the film crew.</p>
-
             <p><strong>Barbara:</strong> Everything was going fine, then one night, while I was listening to some music, a terrible storm broke out.</p>
-
             <p><strong>Barbara:</strong> Then the lights went out, and the cameraman walked in, and I got really angry with him, I don't know why...</p>
-
             <p><strong>Dr. Klein:</strong> This is most interesting. Does this cameraman remind you of your father in any way...? And the music, can you remember exactly which piece it was?</p>
           </div>
 
@@ -217,7 +213,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 3 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
@@ -229,78 +224,30 @@
 
           <div class="question-block">
             <p><strong>1. ¿Qué hizo Bárbara cuando sonó el timbre?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q1" value="a">
-              She answered the telephone
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q1" value="b">
-              She opened the front door
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q1" value="c">
-              She went to the office
-            </label>
+            <label class="option-label"><input type="radio" name="emergency-q1" value="a"> She answered the telephone</label>
+            <label class="option-label"><input type="radio" name="emergency-q1" value="b"> She opened the front door</label>
+            <label class="option-label"><input type="radio" name="emergency-q1" value="c"> She went to the office</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. ¿Qué olvidó Bárbara al encontrarse con su jefe?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q2" value="a">
-              His telephone number
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q2" value="b">
-              His name
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q2" value="c">
-              His address
-            </label>
+            <label class="option-label"><input type="radio" name="emergency-q2" value="a"> His telephone number</label>
+            <label class="option-label"><input type="radio" name="emergency-q2" value="b"> His name</label>
+            <label class="option-label"><input type="radio" name="emergency-q2" value="c"> His address</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. ¿Qué ocurrió mientras Bárbara escuchaba música?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q3" value="a">
-              A terrible storm broke out
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q3" value="b">
-              She received a promotion
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q3" value="c">
-              She went hiking
-            </label>
+            <label class="option-label"><input type="radio" name="emergency-q3" value="a"> A terrible storm broke out</label>
+            <label class="option-label"><input type="radio" name="emergency-q3" value="b"> She received a promotion</label>
+            <label class="option-label"><input type="radio" name="emergency-q3" value="c"> She went hiking</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. ¿Con quién vivía Bárbara en Nueva Orleans?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q4" value="a">
-              With her family
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q4" value="b">
-              With the film crew
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="emergency-q4" value="c">
-              With Dr. Klein
-            </label>
+            <label class="option-label"><input type="radio" name="emergency-q4" value="a"> With her family</label>
+            <label class="option-label"><input type="radio" name="emergency-q4" value="b"> With the film crew</label>
+            <label class="option-label"><input type="radio" name="emergency-q4" value="c"> With Dr. Klein</label>
           </div>
 
           <div class="activity-actions">
@@ -311,7 +258,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 4 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
@@ -324,7 +270,6 @@
           <div class="vocabulary-columns">
             <section class="vocabulary-group">
               <h3>Objetos y lugares</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>shower</dt><dd>ducha</dd></div>
                 <div><dt>bath</dt><dd>baño</dd></div>
@@ -342,7 +287,6 @@
 
             <section class="vocabulary-group">
               <h3>Acciones</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>to take a shower / bath</dt><dd>tomar una ducha / baño</dd></div>
                 <div><dt>to ring a doorbell</dt><dd>tocar el timbre</dd></div>
@@ -361,7 +305,6 @@
 
             <section class="vocabulary-group">
               <h3>Emociones y expresiones</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>promotion</dt><dd>promoción</dd></div>
                 <div><dt>awful</dt><dd>terrible</dd></div>
@@ -401,7 +344,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 5 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
@@ -414,7 +356,6 @@
           <div class="phrase-groups">
             <section class="phrase-group">
               <h3>Preguntar qué ocurre</h3>
-
               <dl class="phrase-list">
                 <div><dt>What's been happening?</dt><dd>¿Qué ha pasado?</dd></div>
                 <div><dt>What's been going on?</dt><dd>¿Qué está pasando?</dd></div>
@@ -428,7 +369,6 @@
 
             <section class="phrase-group">
               <h3>Hablar de problemas</h3>
-
               <dl class="phrase-list">
                 <div><dt>I've had an awful week.</dt><dd>He tenido una semana horrible.</dd></div>
                 <div><dt>I feel terrible.</dt><dd>Me siento fatal.</dd></div>
@@ -442,7 +382,6 @@
 
             <section class="phrase-group">
               <h3>Convencimiento y promoción</h3>
-
               <dl class="phrase-list">
                 <div><dt>I'm sure.</dt><dd>Estoy seguro/a.</dd></div>
                 <div><dt>I'm positive.</dt><dd>Estoy convencido/a.</dd></div>
@@ -488,7 +427,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 6 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
@@ -500,11 +438,9 @@
 
           <section class="oral-practice-block">
             <h3>Acción en progreso interrumpida</h3>
-
             <p class="example-box">
               Take a shower. The phone rang. →<br>
               <strong>I was taking a shower when the phone rang.</strong><br><br>
-
               Walk down the street. My boss came up to me. →<br>
               <strong>I was walking down the street when my boss came up to me.</strong>
             </p>
@@ -512,7 +448,6 @@
 
           <section class="oral-practice-block">
             <h3>While</h3>
-
             <p class="example-box">
               We were listening to the radio. The phone rang. →<br>
               <strong>While we were listening to the radio, the phone rang.</strong>
@@ -553,7 +488,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 7 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
@@ -565,11 +499,9 @@
 
           <section class="oral-practice-block">
             <h3>Recordar y hacer recordar</h3>
-
             <p class="example-box">
               When I see you, I remember your brother. →<br>
               <strong>You remind me of your brother.</strong><br><br>
-
               When I listen to that song, I remember you. →<br>
               <strong>That song reminds me of you.</strong>
             </p>
@@ -607,7 +539,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 8 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
@@ -619,7 +550,6 @@
 
           <section class="oral-practice-block">
             <h3>Usos de go</h3>
-
             <p class="example-box">
               <strong>go on:</strong> How long has this situation been going on?<br>
               <strong>go away:</strong> I want to go away on vacation.<br>
@@ -632,7 +562,6 @@
 
           <section class="oral-practice-block">
             <h3>Usos de get</h3>
-
             <p class="example-box">
               <strong>become:</strong> He's getting very thin.<br>
               <strong>arrive:</strong> He gets home very late in the evenings.<br>
@@ -675,7 +604,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 9 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
@@ -687,14 +615,12 @@
 
           <div class="reading-card">
             <h3>Keep in shape</h3>
-
             <p>
               En Estados Unidos, el ejercicio físico ocupa un lugar importante.
               La expresión <em>to keep in shape</em> significa mantenerse en
               forma. Muchas personas van al gimnasio, a piscinas, a canchas de
               tenis o squash, o realizan rutinas de musculación y aerobic.
             </p>
-
             <p>
               La alimentación saludable también recibe atención. Frutas, verduras
               y ensaladas se consideran opciones importantes, incluso en cadenas
@@ -704,13 +630,11 @@
 
           <div class="reading-card">
             <h3>Salud mental</h3>
-
             <p>
               La figura del psicólogo o terapeuta es común en la cultura
               estadounidense. Expresiones informales como <em>head shrink</em> o
               <em>shrink</em> pueden usarse para referirse a un psicólogo.
             </p>
-
             <p>
               Un terapeuta puede escuchar, aconsejar y ayudar a una persona a
               afrontar un periodo difícil. La lectura también muestra que, para
@@ -739,7 +663,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
@@ -750,161 +673,64 @@
           </div>
 
           <p>
-            Responde el cuestionario con la información disponible en el material.
-            La última pregunta está presentada hasta donde llega el texto original
-            proporcionado.
+            Responde el cuestionario y luego redacta un breve texto aplicando las
+            estructuras principales de esta entrega.
           </p>
 
           <div class="question-block">
             <p><strong>1. You often dream you are...</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q1" value="a">
-              Flying
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q1" value="b">
-              Going up a mountain
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q1" value="c">
-              Falling
-            </label>
+            <label class="option-label"><input type="radio" name="ambition-q1" value="a"> Flying</label>
+            <label class="option-label"><input type="radio" name="ambition-q1" value="b"> Going up a mountain</label>
+            <label class="option-label"><input type="radio" name="ambition-q1" value="c"> Falling</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. You like to imagine you are...</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q2" value="a">
-              The president of your country
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q2" value="b">
-              A pop star
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q2" value="c">
-              You don't spend much time imagining things; you're too busy doing them
-            </label>
+            <label class="option-label"><input type="radio" name="ambition-q2" value="a"> The president of your country</label>
+            <label class="option-label"><input type="radio" name="ambition-q2" value="b"> A pop star</label>
+            <label class="option-label"><input type="radio" name="ambition-q2" value="c"> You don't spend much time imagining things; you're too busy doing them</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. In a few years, you think you will be...</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q3" value="a">
-              Doing the same job
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q3" value="b">
-              Doing your boss's job
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q3" value="c">
-              Living the life of a millionaire on an island in the Caribbean
-            </label>
+            <label class="option-label"><input type="radio" name="ambition-q3" value="a"> Doing the same job</label>
+            <label class="option-label"><input type="radio" name="ambition-q3" value="b"> Doing your boss's job</label>
+            <label class="option-label"><input type="radio" name="ambition-q3" value="c"> Living the life of a millionaire on an island in the Caribbean</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. Which of the following would make you feel happiest?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q4" value="a">
-              A promotion
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q4" value="b">
-              Winning $2,000 in a horse race
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q4" value="c">
-              Going away on your summer vacation
-            </label>
+            <label class="option-label"><input type="radio" name="ambition-q4" value="a"> A promotion</label>
+            <label class="option-label"><input type="radio" name="ambition-q4" value="b"> Winning $2,000 in a horse race</label>
+            <label class="option-label"><input type="radio" name="ambition-q4" value="c"> Going away on your summer vacation</label>
           </div>
 
           <div class="question-block">
             <p><strong>5. You are...</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q5" value="a">
-              The first or only child in your family
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q5" value="b">
-              The youngest child in your family
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q5" value="c">
-              A middle child
-            </label>
+            <label class="option-label"><input type="radio" name="ambition-q5" value="a"> The first or only child in your family</label>
+            <label class="option-label"><input type="radio" name="ambition-q5" value="b"> The youngest child in your family</label>
+            <label class="option-label"><input type="radio" name="ambition-q5" value="c"> A middle child</label>
           </div>
 
           <div class="question-block">
             <p><strong>6. Your favorite color is...</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q6" value="a">
-              Green
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q6" value="b">
-              Blue
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q6" value="c">
-              Red
-            </label>
+            <label class="option-label"><input type="radio" name="ambition-q6" value="a"> Green</label>
+            <label class="option-label"><input type="radio" name="ambition-q6" value="b"> Blue</label>
+            <label class="option-label"><input type="radio" name="ambition-q6" value="c"> Red</label>
           </div>
 
           <div class="question-block">
             <p><strong>7. When you are on vacation, you...</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q7" value="a">
-              Never think about your work
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q7" value="b">
-              Worry about what's happening at work during your absence
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q7" value="c">
-              Plan what you will do when you get back to work
-            </label>
+            <label class="option-label"><input type="radio" name="ambition-q7" value="a"> Never think about your work</label>
+            <label class="option-label"><input type="radio" name="ambition-q7" value="b"> Worry about what's happening at work during your absence</label>
+            <label class="option-label"><input type="radio" name="ambition-q7" value="c"> Plan what you will do when you get back to work</label>
           </div>
 
           <div class="question-block">
             <p><strong>8. In your opinion, the world would be a better place, if...</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q8" value="a">
-              People were friendlier
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q8" value="b">
-              People worked harder
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="ambition-q8" value="c">
-              People knew...
-            </label>
+            <label class="option-label"><input type="radio" name="ambition-q8" value="a"> People were friendlier</label>
+            <label class="option-label"><input type="radio" name="ambition-q8" value="b"> People worked harder</label>
+            <label class="option-label"><input type="radio" name="ambition-q8" value="c"> People knew more about each other</label>
           </div>
 
           <div class="question-block">
@@ -927,13 +753,13 @@
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
       </section>
 
       <section
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
@@ -944,11 +770,16 @@
           emocional en inglés.
         </p>
 
-        <a class="button button-primary" href="unit-4.html">
-          Volver a Unidad 4
-        </a>
-      </section>
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-4-delivery-4.html">
+            Siguiente entrega →
+          </a>
 
+          <a class="button button-outline" href="unit-4.html">
+            Volver a Unidad 4
+          </a>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -960,6 +791,363 @@
     </div>
   </footer>
 
-  <script src="../assets/js/unit4-delivery3.js"></script>
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit4.delivery3.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(stored)) {
+            return [];
+          }
+
+          return [...new Set(
+            stored
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        progressText.textContent =
+          `${completedCount} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const dialogueButton = card.querySelector(".complete-activity");
+
+          if (dialogueButton) {
+            dialogueButton.textContent = isComplete
+              ? "Actividad completada"
+              : "Marcar diálogo como completado";
+          }
+        });
+
+        completionMessage.hidden = completedCount !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="emergency-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="emergency-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="emergency-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="emergency-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "b" &&
+            answer3 === "a" &&
+            answer4 === "b"
+          ) {
+            completeActivity(
+              3,
+              "✓ ¡Correcto! Comprendiste los problemas de Bárbara."
+            );
+          } else {
+            setFeedback(3, "Revisa los diálogos e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "shower") {
+            completeActivity(
+              4,
+              "✓ Correcto: Barbara was taking a shower."
+            );
+          } else {
+            setFeedback(4, "Pista: take a shower.");
+          }
+        });
+
+      document
+        .querySelector(".check-phrases")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("phrases-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("phrases-writing").value
+          );
+
+          const isQuestion =
+            writing.includes("whats the matter") ||
+            writing.includes("whats wrong") ||
+            writing.includes("whats up") ||
+            writing.includes("are you feeling") ||
+            writing.includes("what happened") ||
+            writing.includes("whats been");
+
+          if (answer === "point" && writing.length >= 12 && isQuestion) {
+            completeActivity(5, "✓ Práctica de expresiones guardada.");
+          } else {
+            setFeedback(
+              5,
+              "Completa point y escribe una pregunta sobre un problema."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-past")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("past-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("past-answer-2").value
+          );
+
+          if (answer1 === "rang" && answer2 === "while") {
+            completeActivity(
+              6,
+              "✓ Correcto: the doorbell rang / While Barbara was listening."
+            );
+          } else {
+            setFeedback(6, "Pista: rang / While.");
+          }
+        });
+
+      document
+        .querySelector(".check-remind")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("remind-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("remind-writing").value
+          );
+
+          if (
+            answer === "reminds" &&
+            writing.length >= 15 &&
+            writing.includes("remind")
+          ) {
+            completeActivity(7, "✓ Práctica con remind guardada.");
+          } else {
+            setFeedback(
+              7,
+              "Completa reminds y escribe una oración usando remind."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-go-get")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("go-get-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("go-get-writing").value
+          );
+
+          const hasGoOrGet =
+            writing.includes("go ") ||
+            writing.includes("going") ||
+            writing.includes("get ") ||
+            writing.includes("getting");
+
+          if (answer === "going" && writing.length >= 12 && hasGoOrGet) {
+            completeActivity(8, "✓ Práctica con go / get guardada.");
+          } else {
+            setFeedback(
+              8,
+              "Completa going y escribe una oración con go o get."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-culture")
+        .addEventListener("click", () => {
+          const writing = document
+            .getElementById("culture-writing")
+            .value
+            .trim();
+
+          if (writing.length >= 12) {
+            completeActivity(9, "✓ Respuesta cultural guardada.");
+          } else {
+            setFeedback(9, "Escribe una oración completa en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const selectedAnswers = [
+            "ambition-q1",
+            "ambition-q2",
+            "ambition-q3",
+            "ambition-q4",
+            "ambition-q5",
+            "ambition-q6",
+            "ambition-q7",
+            "ambition-q8"
+          ].every((name) => document.querySelector(
+            `input[name="${name}"]:checked`
+          ));
+
+          const writing = normalize(
+            document.getElementById("final-writing").value
+          );
+
+          const hasPastProgressive =
+            writing.includes("was ") ||
+            writing.includes("were ");
+
+          const hasWhen = writing.includes("when");
+          const hasAdvice = writing.includes("should");
+          const sentences = writing
+            .split(/[.!?]+/)
+            .filter((sentence) => sentence.trim().length > 3);
+
+          if (
+            selectedAnswers &&
+            sentences.length >= 3 &&
+            writing.length >= 75 &&
+            hasPastProgressive &&
+            hasWhen &&
+            hasAdvice
+          ) {
+            completeActivity(10, "✓ ¡Entrega 4.3 completada!");
+          } else {
+            setFeedback(
+              10,
+              "Responde las ocho preguntas y escribe al menos tres oraciones con was/were, when y should."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
 </body>
 </html>
