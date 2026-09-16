@@ -16,10 +16,19 @@ const userName = document.getElementById("auth-user-name");
 const userAvatar = document.getElementById("auth-user-avatar");
 const authMessage = document.getElementById("auth-message");
 
+let messageTimer;
+
 function showMessage(message) {
-  if (authMessage) {
-    authMessage.textContent = message;
-  }
+  if (!authMessage) return;
+
+  authMessage.textContent = message;
+  authMessage.classList.add("show");
+
+  clearTimeout(messageTimer);
+
+  messageTimer = setTimeout(() => {
+    authMessage.classList.remove("show");
+  }, 5000);
 }
 
 function setUserInterface(user) {
@@ -38,7 +47,13 @@ function setUserInterface(user) {
   }
 
   const metadata = user.user_metadata || {};
-  const name = metadata.full_name || metadata.name || user.email || "Estudiante";
+
+  const name =
+    metadata.full_name ||
+    metadata.name ||
+    user.email ||
+    "Estudiante";
+
   const avatar = metadata.avatar_url || "";
 
   if (userName) {
@@ -47,7 +62,7 @@ function setUserInterface(user) {
 
   if (userAvatar) {
     userAvatar.src = avatar;
-    userAvatar.alt = `Foto de ${name}`;
+    userAvatar.alt = avatar ? `Foto de ${name}` : "";
     userAvatar.hidden = !avatar;
   }
 }
@@ -69,45 +84,41 @@ async function refreshUserInterface() {
 async function signInWithGoogle() {
   showMessage("Abriendo inicio de sesión con Google...");
 
-  const { error } = await supabase.auth.signInWithOAuth({
+  const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: window.location.origin + window.location.pathname
+      redirectTo: window.location.origin + window.location.pathname,
+      skipBrowserRedirect: true
     }
   });
 
   if (error) {
     showMessage(`No se pudo abrir Google: ${error.message}`);
+    return;
   }
+
+  if (!data?.url) {
+    showMessage("No se obtuvo la ruta de inicio de sesión de Google.");
+    return;
+  }
+
+  window.location.assign(data.url);
 }
 
 async function signOut() {
-  const { error } = await supabase.auth.signOut({ scope: "local" });
+  const { error } = await supabase.auth.signOut({
+    scope: "local"
+  });
 
   if (error) {
     showMessage(`No se pudo cerrar sesión: ${error.message}`);
     return;
   }
 
-  showMessage("Sesión cerrada.");
   setUserInterface(null);
+  showMessage("Sesión cerrada.");
 }
 
-if (loginButton) {
-  loginButton.addEventListener("click", signInWithGoogle);
-}
-
-if (logoutButton) {
-  logoutButton.addEventListener("click", signOut);
-}
-
-supabase.auth.onAuthStateChange((_event, session) => {
-  setUserInterface(session?.user || null);
-});
-
-refreshUserInterface();
-
-window.supabaseClient = supabase;
 window.saveStudentProgress = async function ({
   unitNumber,
   activityId,
@@ -130,9 +141,11 @@ window.saveStudentProgress = async function ({
   }
 
   const metadata = user.user_metadata || {};
+
   const studentName =
     metadata.full_name ||
     metadata.name ||
+    user.email ||
     "Estudiante";
 
   const { error } = await supabase
@@ -142,11 +155,11 @@ window.saveStudentProgress = async function ({
         user_id: user.id,
         email: user.email,
         student_name: studentName,
-        unit_number: unitNumber,
-        activity_id: activityId,
-        activity_title: activityTitle,
-        completed: completed,
-        score: score,
+        unit_number: Number(unitNumber),
+        activity_id: String(activityId),
+        activity_title: String(activityTitle),
+        completed: Boolean(completed),
+        score: score === null || score === "" ? null : Number(score),
         updated_at: new Date().toISOString()
       },
       {
@@ -156,7 +169,7 @@ window.saveStudentProgress = async function ({
 
   if (error) {
     console.error("Error guardando progreso:", error);
-    alert("No se pudo guardar el progreso: " + error.message);
+    alert(`No se pudo guardar el progreso: ${error.message}`);
 
     return {
       success: false,
@@ -171,10 +184,11 @@ window.saveStudentProgress = async function ({
 
 window.getStudentProgress = async function () {
   const {
-    data: { user }
+    data: { user },
+    error: userError
   } = await supabase.auth.getUser();
 
-  if (!user) {
+  if (userError || !user) {
     return [];
   }
 
@@ -192,10 +206,27 @@ window.getStudentProgress = async function () {
 
   return data || [];
 };
-window.getCurrentStudent = async () => {
+
+window.getCurrentStudent = async function () {
   const {
     data: { user }
   } = await supabase.auth.getUser();
 
   return user;
 };
+
+if (loginButton) {
+  loginButton.addEventListener("click", signInWithGoogle);
+}
+
+if (logoutButton) {
+  logoutButton.addEventListener("click", signOut);
+}
+
+supabase.auth.onAuthStateChange((_event, session) => {
+  setUserInterface(session?.user || null);
+});
+
+refreshUserInterface();
+
+window.supabaseClient = supabase;
