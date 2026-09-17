@@ -20,6 +20,120 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .audio-player-card {
+      margin: 1.25rem 0;
+      padding: 1.25rem;
+      border: 1px solid rgba(47, 215, 255, 0.35);
+      border-radius: 14px;
+      background: rgba(4, 20, 39, 0.72);
+      box-shadow: 0 0 24px rgba(47, 215, 255, 0.08);
+    }
+
+    .audio-player-info,
+    .audio-player-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .audio-player-info {
+      align-items: flex-start;
+    }
+
+    .audio-player-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      place-items: center;
+      border: 1px solid rgba(47, 215, 255, 0.58);
+      border-radius: 50%;
+      background: rgba(47, 215, 255, 0.1);
+      font-size: 1.25rem;
+    }
+
+    .audio-player-label {
+      margin: 0 0 0.25rem;
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .audio-player-info h3 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .audio-player-info p:last-child {
+      margin: 0.35rem 0 0;
+      color: rgba(220, 240, 255, 0.78);
+    }
+
+    .audio-player-controls {
+      margin-top: 1rem;
+    }
+
+    .audio-play-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid rgba(47, 215, 255, 0.65);
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      color: #061321;
+      cursor: pointer;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .audio-play-button:hover {
+      background: rgba(47, 215, 255, 0.25);
+      color: #b7f5ff;
+    }
+
+    .audio-time {
+      color: #71ffc0;
+      font-weight: 700;
+    }
+
+    .audio-progress {
+      width: 100%;
+      margin-top: 1rem;
+      accent-color: #2fd7ff;
+    }
+
+    @media (max-width: 650px) {
+      .audio-player-controls {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -70,7 +184,8 @@
         <p>
           Barbara entrevista a Van der Wildt sobre sus presuntas conexiones con
           la Mafia. Practica preguntas detalladas, fechas, posesivos, acciones
-          actuales, vocabulario de profesiones y una evaluación final de la Unidad 1.
+          actuales, vocabulario de profesiones y una evaluación final de la
+          Unidad 1.
         </p>
 
         <div class="lesson-progress">
@@ -103,7 +218,6 @@
       </section>
 
       <section class="lesson-sections">
-
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -119,72 +233,62 @@
             directas, solicita explicaciones y presenta evidencia en vídeo.
           </p>
 
-          <div class="audio-placeholder">
-            <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-1/an-interview.mp3</strong>
-            </span>
-          </div>
+          <section class="audio-player-card" aria-label="Audio del diálogo">
+            <div class="audio-player-info">
+              <span class="audio-player-icon" aria-hidden="true">🔊</span>
+
+              <div>
+                <p class="audio-player-label">Audio del diálogo</p>
+                <h3>La entrevista de Barbara Rivers</h3>
+                <p>Escucha el diálogo y practica la pronunciación.</p>
+              </div>
+            </div>
+
+            <audio id="work-audio" preload="metadata">
+              <source
+                src="../assets/audio/unit-1/an-interview.mp3"
+                type="audio/mpeg"
+              >
+              Tu navegador no admite la reproducción de audio.
+            </audio>
+
+            <div class="audio-player-controls">
+              <button
+                id="audio-play-button"
+                class="audio-play-button"
+                type="button"
+                aria-label="Reproducir audio"
+              >
+                <span id="audio-play-icon" aria-hidden="true">▶</span>
+                <span id="audio-play-text">Reproducir audio</span>
+              </button>
+
+              <span id="audio-time" class="audio-time">0:00 / 0:00</span>
+            </div>
+
+            <input
+              id="audio-progress"
+              class="audio-progress"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+              aria-label="Progreso del audio"
+            >
+          </section>
 
           <div class="dialogue-box">
-            <p>
-              <strong>Barbara:</strong>
-              Mr. Van der Wildt, what are your group's connections with the Mafia?
-            </p>
-
-            <p>
-              <strong>Mr. Van der Wildt:</strong>
-              I don't know what you mean... My group, E.G.I., has no connections
-              with the Mafia. That's a lie.
-            </p>
-
-            <p>
-              <strong>Barbara:</strong>
-              Are you sure about that? How do you explain your meeting with Mafia
-              boss Pete Maresca on Monday, April 4, 1988, in Jamaica?
-            </p>
-
-            <p>
-              <strong>Mr. Van der Wildt:</strong>
-              What are you talking about? I don't know that man.
-            </p>
-
-            <p>
-              <strong>Barbara:</strong>
-              Unfortunately, Mr. Van der Wildt, we have a video film of your
-              meeting with Mafia boss Pete Maresca at the Grand Hotel in Kingston,
-              Jamaica. Please watch this, Mr. Van der Wildt.
-            </p>
-
-            <p>
-              <strong>Barbara:</strong>
-              Here, Mr. Maresca is arriving at the hotel in his red limousine.
-              Here you are arriving at the hotel in your black Mercedes. It is
-              your car, isn't it?
-            </p>
-
-            <p>
-              <strong>Mr. Van der Wildt:</strong>
-              Yeah, it's mine.
-            </p>
-
-            <p>
-              <strong>Barbara:</strong>
-              Here, you are talking to Mr. Maresca in the hotel lobby, and there
-              you are getting into his limousine. Can you explain this?
-            </p>
-
-            <p>
-              <strong>Mr. Van der Wildt:</strong>
-              I want to talk to my lawyer.
-            </p>
-
-            <p>
-              <strong>Barbara:</strong>
-              And I'd like to thank you, Mr. Van der Wildt, for a very interesting
-              interview. This is Barbara Rivers reporting for “Thirty Minutes”.
-            </p>
+            <p><strong>Barbara:</strong> Mr. Van der Wildt, what are your group's connections with the Mafia?</p>
+            <p><strong>Mr. Van der Wildt:</strong> I don't know what you mean... My group, E.G.I., has no connections with the Mafia. That's a lie.</p>
+            <p><strong>Barbara:</strong> Are you sure about that? How do you explain your meeting with Mafia boss Pete Maresca on Monday, April 4, 1988, in Jamaica?</p>
+            <p><strong>Mr. Van der Wildt:</strong> What are you talking about? I don't know that man.</p>
+            <p><strong>Barbara:</strong> Unfortunately, Mr. Van der Wildt, we have a video film of your meeting with Mafia boss Pete Maresca at the Grand Hotel in Kingston, Jamaica. Please watch this, Mr. Van der Wildt.</p>
+            <p><strong>Barbara:</strong> Here, Mr. Maresca is arriving at the hotel in his red limousine. Here you are arriving at the hotel in your black Mercedes. It is your car, isn't it?</p>
+            <p><strong>Mr. Van der Wildt:</strong> Yeah, it's mine.</p>
+            <p><strong>Barbara:</strong> Here, you are talking to Mr. Maresca in the hotel lobby, and there you are getting into his limousine. Can you explain this?</p>
+            <p><strong>Mr. Van der Wildt:</strong> I want to talk to my lawyer.</p>
+            <p><strong>Barbara:</strong> And I'd like to thank you, Mr. Van der Wildt, for a very interesting interview. This is Barbara Rivers reporting for Thirty Minutes.</p>
           </div>
 
           <div class="translation-box">
@@ -292,7 +396,6 @@
           <div class="vocabulary-columns">
             <section class="vocabulary-group">
               <h3>Nombres</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>connection</dt><dd>relación, conexión</dd></div>
                 <div><dt>lie</dt><dd>mentira</dd></div>
@@ -306,7 +409,6 @@
 
             <section class="vocabulary-group">
               <h3>Días, meses y colores</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>Monday</dt><dd>lunes</dd></div>
                 <div><dt>Tuesday</dt><dd>martes</dd></div>
@@ -316,15 +418,14 @@
                 <div><dt>Saturday</dt><dd>sábado</dd></div>
                 <div><dt>Sunday</dt><dd>domingo</dd></div>
                 <div><dt>January to December</dt><dd>enero a diciembre</dd></div>
-                <div><dt>red / black / blue</dt><dd>rojo / negro / azul</dd></div>
-                <div><dt>green / yellow / white</dt><dd>verde / amarillo / blanco</dd></div>
-                <div><dt>gray / brown</dt><dd>gris / marrón</dd></div>
+                <div><dt>red, black, blue</dt><dd>rojo, negro, azul</dd></div>
+                <div><dt>green, yellow, white</dt><dd>verde, amarillo, blanco</dd></div>
+                <div><dt>gray, brown</dt><dd>gris, marrón</dd></div>
               </dl>
             </section>
 
             <section class="vocabulary-group">
               <h3>Verbos y además</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>to know</dt><dd>saber, conocer</dd></div>
                 <div><dt>to mean</dt><dd>significar</dd></div>
@@ -338,7 +439,7 @@
                 <div><dt>unfortunately</dt><dd>desgraciadamente</dd></div>
                 <div><dt>fortunately</dt><dd>por suerte</dd></div>
                 <div><dt>here / there</dt><dd>aquí / allí</dd></div>
-                <div><dt>Mr. / Mrs. / Miss / Ms.</dt><dd>Señor / Señora / Señorita / Sra. o Srta.</dd></div>
+                <div><dt>Mr., Mrs., Miss, Ms.</dt><dd>Señor, Señora, Señorita, Sra. o Srta.</dd></div>
               </dl>
             </section>
           </div>
@@ -378,9 +479,8 @@
           <div class="phrase-groups">
             <section class="phrase-group">
               <h3>1. Pedir información o explicaciones</h3>
-
               <dl class="phrase-list">
-                <div><dt>What is...? / What are...?</dt><dd>¿Qué es...? / ¿Qué son...?</dd></div>
+                <div><dt>What is...? What are...?</dt><dd>¿Qué es...? ¿Qué son...?</dd></div>
                 <div><dt>What are you talking about?</dt><dd>¿De qué está hablando?</dd></div>
                 <div><dt>How do you explain...?</dt><dd>¿Cómo explica usted...?</dd></div>
               </dl>
@@ -388,7 +488,6 @@
 
             <section class="phrase-group">
               <h3>2. Expresar fechas</h3>
-
               <dl class="phrase-list">
                 <div><dt>On Monday, April 4, 1988.</dt><dd>El lunes 4 de abril de 1988.</dd></div>
                 <div><dt>Next Monday.</dt><dd>El próximo lunes.</dd></div>
@@ -400,7 +499,6 @@
 
             <section class="phrase-group">
               <h3>3. Decir que no entiende</h3>
-
               <dl class="phrase-list">
                 <div><dt>I don't understand.</dt><dd>No entiendo.</dd></div>
                 <div><dt>I don't know what you mean.</dt><dd>No sé lo que quiere decir.</dd></div>
@@ -410,7 +508,6 @@
 
             <section class="phrase-group">
               <h3>4. Pedir y expresar deseos</h3>
-
               <dl class="phrase-list">
                 <div><dt>Please watch this.</dt><dd>Mire esto, por favor.</dd></div>
                 <div><dt>Please come here.</dt><dd>Venga aquí, por favor.</dd></div>
@@ -424,30 +521,17 @@
 
           <div class="sentence-practice">
             <label for="date-answer">
-              Complete: “El próximo lunes.” →
-              <strong>Next __________.</strong>
+              Complete: “El próximo lunes.” → <strong>Next __________.</strong>
             </label>
-
-            <input
-              id="date-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe el día en inglés"
-            >
+            <input id="date-answer" type="text" autocomplete="off" placeholder="Escribe el día en inglés">
           </div>
 
           <div class="sentence-practice">
             <label for="request-answer">
-              Complete: “¿Puede repetirlo, por favor?” →
+              Complete: “Puede repetirlo, por favor?” →
               <strong>Can you __________ that, please?</strong>
             </label>
-
-            <input
-              id="request-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe la palabra que falta"
-            >
+            <input id="request-answer" type="text" autocomplete="off" placeholder="Escribe la palabra que falta">
           </div>
 
           <div class="activity-actions">
@@ -465,41 +549,28 @@
               <h2>Fechas y tratamiento profesional</h2>
             </div>
 
-            <span class="activity-icon" aria-hidden="true">💡</span>
+            <span class="activity-icon" aria-hidden="true">📅</span>
           </div>
 
           <div class="remember-grid">
             <article class="remember-card">
               <span>DATE</span>
-              <p>
-                En inglés, los días y meses se escriben con mayúscula:
-                <strong>Tuesday</strong>, <strong>July</strong>.
-              </p>
+              <p>En inglés, los días y meses se escriben con mayúscula: <strong>Tuesday</strong>, <strong>July</strong>.</p>
             </article>
 
             <article class="remember-card">
               <span>U.S.</span>
-              <p>
-                En Estados Unidos, una fecha suele escribirse en orden
-                <strong>mes-día-año</strong>: <strong>May 16, 1989</strong> o
-                <strong>5/16/89</strong>.
-              </p>
+              <p>En Estados Unidos, una fecha suele escribirse en orden <strong>mes-día-año</strong>: <strong>May 16, 1989</strong>.</p>
             </article>
 
             <article class="remember-card">
               <span>MS.</span>
-              <p>
-                <strong>Ms.</strong> se utiliza para una mujer sin indicar si
-                está casada o no, especialmente en contextos profesionales.
-              </p>
+              <p><strong>Ms.</strong> se utiliza para una mujer sin indicar si está casada o no, especialmente en contextos profesionales.</p>
             </article>
 
             <article class="remember-card">
               <span>'S</span>
-              <p>
-                El posesivo inglés se forma con <strong>'s</strong>:
-                <strong>Mary's car</strong>, <strong>the company's profits</strong>.
-              </p>
+              <p>El posesivo inglés se forma con <strong>'s</strong>: <strong>Mary's car</strong>, <strong>the company's profits</strong>.</p>
             </article>
           </div>
 
@@ -523,66 +594,20 @@
 
           <section class="oral-practice-block">
             <h3>1. La forma posesiva</h3>
-
-            <p class="example-box">
-              <strong>Ejemplo:</strong>
-              Mary. This is her car. → This is Mary's car.
-            </p>
-
-            <p>
-              Transforme: Mr. Smith. This is his limousine. / The company. These
-              are its profits. / Jane. These are her books. / Barbara Rivers.
-              These are her interviews. / Mr. and Mrs. Porter. These are their
-              children.
-            </p>
+            <p class="example-box"><strong>Ejemplo:</strong> Mary. This is her car. → This is Mary's car.</p>
+            <p>Transforme: Mr. Smith. This is his limousine. / The company. These are its profits. / Jane. These are her books. / Barbara Rivers. These are her interviews. / Mr. and Mrs. Porter. These are their children.</p>
           </section>
 
           <section class="oral-practice-block">
             <h3>2. Acción habitual y acción actual</h3>
-
-            <p class="example-box">
-              <strong>Ejemplo:</strong>
-              I often think about Mary. Now. →
-              I'm thinking about Mary now.
-            </p>
-
-            <p>
-              Transforme: He always talks about his invention. Now. / We often
-              have meetings with the engineers. Now. / Profits always fall in
-              April. Now. / You often talk to Barbara. Now. / She always
-              introduces her friends. Now.
-            </p>
+            <p class="example-box"><strong>Ejemplo:</strong> I often think about Mary. Now. → I'm thinking about Mary now.</p>
+            <p>Transforme: He always talks about his invention. Now. / We often have meetings with the engineers. Now. / Profits always fall in April. Now. / You often talk to Barbara. Now. / She always introduces her friends. Now.</p>
           </section>
 
           <section class="oral-practice-block">
-            <h3>3. Responder preguntas</h3>
-
-            <p class="example-box">
-              <strong>Ejemplo:</strong>
-              Does Phil always talk about films? →
-              No, he doesn't, but he's talking about a film now.
-            </p>
-
-            <p>
-              Practique: Do you always explain your new inventions? / Do we
-              always have long meetings? / Does Diane always take taxis? /
-              Does Sam always prepare his interviews?
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>4. Mine and yours</h3>
-
-            <p class="example-box">
-              <strong>Ejemplo:</strong>
-              This is our book. → This book is ours.
-            </p>
-
-            <p>
-              Transforme: This is my invention. / This is Mr. and Ms. Smith's
-              car. / This is Bob's house. / This is Jenny's dress. / This is
-              your interview.
-            </p>
+            <h3>3. Mine y yours</h3>
+            <p class="example-box"><strong>Ejemplo:</strong> This is our book. → This book is ours.</p>
+            <p>Transforme: This is my invention. / This is Mr. and Ms. Smith's car. / This is Bob's house. / This is Jenny's dress. / This is your interview.</p>
           </section>
 
           <label for="oral-answer">
@@ -611,38 +636,20 @@
               <h2>Televisión y prensa</h2>
             </div>
 
-            <span class="activity-icon" aria-hidden="true">📺</span>
+            <span class="activity-icon" aria-hidden="true">📰</span>
           </div>
 
           <div class="reading-card">
             <h3>Medios de comunicación</h3>
-
-            <p>
-              Esta lectura analiza el papel de la televisión y la prensa en la
-              cultura estadounidense. Describe cómo la televisión, las noticias,
-              los anuncios, los deportes y las series forman parte de la vida
-              cotidiana de muchas personas.
-            </p>
-
-            <p>
-              También destaca que los medios pueden influir en la política y la
-              opinión pública. Los periódicos nacionales, las noticias locales,
-              las finanzas y los deportes reciben una atención importante en
-              diferentes audiencias.
-            </p>
-
-            <p>
-              La lectura propone observar los medios de manera crítica: distinguir
-              información, entretenimiento, publicidad y opiniones ayuda a ser un
-              lector y espectador más consciente.
-            </p>
+            <p>Esta lectura analiza el papel de la televisión y la prensa en la cultura estadounidense. Describe cómo la televisión, las noticias, los anuncios, los deportes y las series forman parte de la vida cotidiana de muchas personas.</p>
+            <p>También destaca que los medios pueden influir en la política y la opinión pública. Los periódicos nacionales, las noticias locales, las finanzas y los deportes reciben atención importante en diferentes audiencias.</p>
+            <p>La lectura propone observar los medios de manera crítica: distinguir información, entretenimiento, publicidad y opiniones ayuda a ser un lector y espectador más consciente.</p>
           </div>
 
           <div class="question-block">
             <label for="culture-answer">
               Escriba una oración en inglés sobre televisión, prensa o deportes:
             </label>
-
             <input
               id="culture-answer"
               type="text"
@@ -666,18 +673,12 @@
               <h2>Anuncios y expresiones idiomáticas</h2>
             </div>
 
-            <span class="activity-icon" aria-hidden="true">🗓️</span>
+            <span class="activity-icon" aria-hidden="true">📣</span>
           </div>
 
           <section class="review-block">
             <h3>1. Anuncios e invitaciones</h3>
-
-            <p>
-              Escuche los anuncios del audio y relacione cada actividad con su
-              fecha. Usa las fechas disponibles: September 26th, May 9th,
-              September 25th to January 17th, October 19th y August 22nd to
-              September 11th.
-            </p>
+            <p>Escuche los anuncios del audio y relacione cada actividad con su fecha. Usa las fechas disponibles: September 26th, May 9th, September 25th to January 17th, October 19th y August 22nd to September 11th.</p>
 
             <div class="audio-placeholder">
               <span aria-hidden="true">🔊</span>
@@ -701,8 +702,8 @@
             <h3>2. Maneras de hablar</h3>
 
             <dl class="phrase-list">
-              <div><dt>To let off steam</dt><dd>desahogarse; liberar frustración</dd></div>
-              <div><dt>To get the axe</dt><dd>ser despedido/a</dd></div>
+              <div><dt>To let off steam</dt><dd>desahogarse, liberar frustración</dd></div>
+              <div><dt>To get the ax</dt><dd>ser despedido/a</dd></div>
               <div><dt>To drive someone up the wall</dt><dd>exasperar a alguien</dd></div>
               <div><dt>To scratch someone's back</dt><dd>hacer un favor esperando reciprocidad</dd></div>
             </dl>
@@ -728,79 +729,32 @@
 
           <section class="oral-practice-block">
             <h3>1.1 Complete y traduzca</h3>
-
-            <p>
-              Complete: I ___ Australian. / ___ they German? / ___ he sad? No,
-              he ___. He's happy. / ___ you American? No, I'm ___ American, I'm
-              Canadian.
-            </p>
-
-            <p>
-              Traduzca: Soy feliz. / Es músico. / Son francesas. / Se llama Tom.
-              / Me llamo Bárbara. / Ella es ingeniero.
-            </p>
+            <p>Complete: I ___ Australian. ___ they German? ___ he sad? No, he ___. He's happy. ___ you American? No, I'm ___ American, I'm Canadian.</p>
+            <p>Traduzca: Soy feliz. Es músico. Son francesas. Se llama Tom. Me llamo Bárbara. Ella es ingeniero.</p>
           </section>
 
           <section class="oral-practice-block">
             <h3>1.2 Complete y traduzca</h3>
-
-            <p>
-              Complete: Profits ___ falling. / I ___ working. / Tom's ___
-              watching TV. / It's ___ raining. / ___ you staying in London? /
-              They're ___ coming to the World Trade Convention.
-            </p>
-
-            <p>
-              Traduzca: Let's go to the movies. / Who is he? / He's a powerful
-              man. / She's a rich woman. / They're watching a film.
-            </p>
+            <p>Complete: Profits ___ falling. I ___ working. Tom's watching TV. It's raining. ___ you staying in London? They're coming to the World Trade Convention.</p>
+            <p>Traduzca: Let's go to the movies. Who is he? He's a powerful man. She's a rich woman. They're watching a film.</p>
           </section>
 
           <section class="oral-practice-block">
             <h3>1.3 Complete y traduzca</h3>
-
-            <p>
-              Complete: She ___ in Chicago. / They ___ French, but she ___
-              Spanish. / I leave work ___ six o'clock.
-            </p>
-
-            <p>
-              Traduzca: Take the second left. / It's five o'clock. / It's three
-              p.m. / Is it far? / How do I get to Central Park? / Keep the
-              change.
-            </p>
+            <p>Complete: She ___ in Chicago. They ___ French, but she ___ Spanish. I leave work ___ six o'clock.</p>
+            <p>Traduzca: Take the second left. It's five o'clock. It's three p.m. Is it far? How do I get to Central Park? Keep the change.</p>
           </section>
 
           <section class="oral-practice-block">
             <h3>1.4 Complete y traduzca</h3>
-
-            <p>
-              Complete: ___ Mr. and Mrs. Smith coming in their car? No, ___. /
-              ___ Sandy like New York? Yes, ___. / ___ I late? No, ___. /
-              ___ Jack playing tennis? Yes, ___. / ___ you play golf? No, ___.
-            </p>
-
-            <p>
-              Traduzca: It's for you, Margaret. / Who is it? / I'm sorry I'm
-              late. / We're waiting for our friends. / Jane is often early.
-            </p>
+            <p>Complete: Mr. and Mrs. Smith ___ coming in their car? No, ___. Sandy ___ like New York? Yes, ___. ___ I late? No, ___. Jack ___ playing tennis? Yes, ___. ___ you play golf? No, ___.</p>
+            <p>Traduzca: It's for you, Margaret. Who is it? I'm sorry I'm late. We're waiting for our friends. Jane is often early.</p>
           </section>
 
           <section class="oral-practice-block">
             <h3>1.5 Complete y traduzca</h3>
-
-            <p>
-              Complete: What are you talking ___? / They're getting ___ their
-              car. / I'd like to talk ___ Cindy. / She's ___ the hotel lobby
-              ___ her husband. / Thank you ___ a very interesting interview. /
-              I don't know what you mean.
-            </p>
-
-            <p>
-              Traduzca: Can you repeat that, please? / I don't know his wife. /
-              Please come here. / I don't understand what he's saying. / Are you
-              sure about that?
-            </p>
+            <p>Complete: What are you talking ___? They're getting ___ their car. I'd like to talk ___ Cindy. She's ___ the hotel lobby ___ her husband. Thank you ___ a very interesting interview.</p>
+            <p>Traduzca: Can you repeat that, please? I don't know his wife. Please come here. I don't understand what he's saying. Are you sure about that?</p>
           </section>
 
           <label for="written-answer">
@@ -827,13 +781,12 @@
               <h2>Profesiones, teléfono y casa</h2>
             </div>
 
-            <span class="activity-icon" aria-hidden="true">🧰</span>
+            <span class="activity-icon" aria-hidden="true">🏠</span>
           </div>
 
           <div class="vocabulary-columns">
             <section class="vocabulary-group">
               <h3>Profesiones</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>accountant</dt><dd>contable</dd></div>
                 <div><dt>architect</dt><dd>arquitecto/a</dd></div>
@@ -865,7 +818,6 @@
 
             <section class="vocabulary-group">
               <h3>Teléfono</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>telephone number</dt><dd>número de teléfono</dd></div>
                 <div><dt>switchboard</dt><dd>centralita</dd></div>
@@ -882,7 +834,6 @@
 
             <section class="vocabulary-group">
               <h3>Casa y muebles</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>armchair</dt><dd>sillón</dd></div>
                 <div><dt>bathroom</dt><dd>baño</dd></div>
@@ -893,7 +844,7 @@
                 <div><dt>closet</dt><dd>armario empotrado</dd></div>
                 <div><dt>desk</dt><dd>escritorio</dd></div>
                 <div><dt>dining room</dt><dd>comedor</dd></div>
-                <div><dt>doorman</dt><dd>portero/a</dd></div>
+                <div><dt>doorman</dt><dd>portero</dd></div>
                 <div><dt>elevator</dt><dd>ascensor</dd></div>
                 <div><dt>home / house</dt><dd>hogar / casa</dd></div>
                 <div><dt>kitchen</dt><dd>cocina</dd></div>
@@ -909,7 +860,7 @@
 
           <div class="question-block">
             <label for="extra-vocabulary-answer">
-              Complete: “Barbara is a reporter.” Una profesión equivalente es:
+              Complete: Barbara is a reporter. Una profesión equivalente es:
               <strong>Barbara is a __________.</strong>
             </label>
 
@@ -932,18 +883,18 @@
         <article class="lesson-section activity-card is-locked" data-activity="11">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 11 · ¿CUÁNTO SABE?</p>
+              <p class="activity-number">ACTIVIDAD 11 · CUÁNTO SABE</p>
               <h2>Evaluación de la Unidad 1</h2>
             </div>
 
-            <span class="activity-icon" aria-hidden="true">🏆</span>
+            <span class="activity-icon" aria-hidden="true">✅</span>
           </div>
 
           <section class="review-block">
             <h3>1. Elija la forma correcta</h3>
 
             <div class="question-block">
-              <label for="test-1">He is ________.</label>
+              <label for="test-1">He is __________.</label>
               <select id="test-1">
                 <option value="">Seleccione una opción</option>
                 <option value="a">lawyer</option>
@@ -952,7 +903,7 @@
             </div>
 
             <div class="question-block">
-              <label for="test-2">She ________ in Washington.</label>
+              <label for="test-2">She __________ in Washington.</label>
               <select id="test-2">
                 <option value="">Seleccione una opción</option>
                 <option value="a">live</option>
@@ -961,7 +912,7 @@
             </div>
 
             <div class="question-block">
-              <label for="test-3">________ father lives in Texas.</label>
+              <label for="test-3">__________ father lives in Texas.</label>
               <select id="test-3">
                 <option value="">Seleccione una opción</option>
                 <option value="a">Their</option>
@@ -970,7 +921,7 @@
             </div>
 
             <div class="question-block">
-              <label for="test-4">Can you spell ________ name?</label>
+              <label for="test-4">Can you spell __________ name?</label>
               <select id="test-4">
                 <option value="">Seleccione una opción</option>
                 <option value="a">your</option>
@@ -979,7 +930,7 @@
             </div>
 
             <div class="question-block">
-              <label for="test-5">________ company has an office in Houston.</label>
+              <label for="test-5">__________ company has an office in Houston.</label>
               <select id="test-5">
                 <option value="">Seleccione una opción</option>
                 <option value="a">He's</option>
@@ -988,7 +939,7 @@
             </div>
 
             <div class="question-block">
-              <label for="test-6">I'm ________ Ohio.</label>
+              <label for="test-6">I'm __________ Ohio.</label>
               <select id="test-6">
                 <option value="">Seleccione una opción</option>
                 <option value="a">from</option>
@@ -997,7 +948,7 @@
             </div>
 
             <div class="question-block">
-              <label for="test-7">What are you talking ________?</label>
+              <label for="test-7">What are you talking __________?</label>
               <select id="test-7">
                 <option value="">Seleccione una opción</option>
                 <option value="a">about</option>
@@ -1008,44 +959,18 @@
 
           <section class="review-block">
             <h3>2. Presente simple o progresivo</h3>
+            <p>Complete las frases con la forma correcta: She often <strong>to go</strong> to the movies. He <strong>to talk</strong> to his boss now. We often <strong>to think</strong> about our friends in Australia. You never <strong>to have</strong> meetings on Fridays. They <strong>to like</strong> New York.</p>
 
-            <p>
-              Complete las frases con la forma correcta: She often
-              <strong>(to go)</strong> to the movies. / He
-              <strong>(to talk)</strong> to his boss now. / We often
-              <strong>(to think)</strong> about our friends in Australia. / You
-              never <strong>(to have)</strong> meetings on Fridays. / They
-              <strong>(to like)</strong> New York.
-            </p>
-
-            <label for="test-written">
-              Escriba sus respuestas:
-            </label>
-
-            <textarea
-              id="test-written"
-              placeholder="goes, is talking, think, have, like..."
-            ></textarea>
+            <label for="test-written">Escriba sus respuestas:</label>
+            <textarea id="test-written" placeholder="goes, is talking, think, have, like..."></textarea>
           </section>
 
           <section class="review-block">
             <h3>3. Preguntas, posesivos y fechas</h3>
+            <p>Practique: Are they English? Can you speak English? Can I help you? Does she work very hard? Is it raining? Luego escriba fechas completas en formato estadounidense, por ejemplo <strong>May 6, 1988</strong>.</p>
 
-            <p>
-              Practique: Are they English? / Can you speak English? / Can I help
-              you? / Does she work very hard? / Is it raining? Luego escriba
-              fechas completas en formato estadounidense, por ejemplo:
-              <strong>May 6, 1988</strong>.
-            </p>
-
-            <label for="test-dates">
-              Escriba dos fechas completas:
-            </label>
-
-            <textarea
-              id="test-dates"
-              placeholder="November 2, 1963. January 8, 1990."
-            ></textarea>
+            <label for="test-dates">Escriba dos fechas completas:</label>
+            <textarea id="test-dates" placeholder="November 2, 1963. January 8, 1990."></textarea>
           </section>
 
           <div class="activity-actions">
@@ -1068,30 +993,13 @@
 
           <div class="reading-card">
             <h3>Una historia de viaje e inglés</h3>
-
-            <p>
-              El narrador encuentra un libro antiguo sobre Annie Oakley mientras
-              pasea por París. La imagen de Annie parece cobrar vida y le habla en
-              inglés, lo que despierta sus dudas sobre su propio nivel de idioma.
-            </p>
-
-            <p>
-              Poco después recibe una llamada: debe viajar a Nueva York porque un
-              compañero se ha enfermado. Aunque teme no hablar bien inglés, decide
-              afrontar la situación y practicar.
-            </p>
-
-            <p>
-              En un restaurante conoce a un estudiante estadounidense. La
-              conversación se desarrolla mejor de lo esperado y el narrador gana
-              confianza. Al final pide una bebida: <strong>a double bourbon, on
-              the rocks</strong>.
-            </p>
+            <p>El narrador encuentra un libro antiguo sobre Annie Oakley mientras pasea por París. La imagen de Annie parece cobrar vida y le habla en inglés, lo que despierta sus dudas sobre su propio nivel de idioma.</p>
+            <p>Poco después recibe una llamada: debe viajar a Nueva York porque un compañero se ha enfermado. Aunque teme no hablar bien inglés, decide afrontar la situación y practicar.</p>
+            <p>En un restaurante conoce a un estudiante estadounidense. La conversación se desarrolla mejor de lo esperado y el narrador gana confianza. Al final pide una bebida: <strong>a double bourbon, on the rocks</strong>.</p>
           </div>
 
           <section class="oral-practice-block">
             <h3>Vocabulario de la lectura</h3>
-
             <dl class="phrase-list">
               <div><dt>book seller</dt><dd>vendedor de libros</dd></div>
               <div><dt>loft</dt><dd>apartamento tipo estudio</dd></div>
@@ -1105,8 +1013,8 @@
 
           <div class="question-block">
             <label for="reading-answer">
-              Escriba dos oraciones en inglés: una sobre Annie Oakley y una sobre
-              el narrador:
+              Escriba dos oraciones en inglés: una sobre Annie Oakley y una
+              sobre el narrador:
             </label>
 
             <textarea
@@ -1128,19 +1036,25 @@
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
         <p class="kicker">¡Entrega completada!</p>
-
         <h2>Unidad 1 finalizada</h2>
 
         <p>
           Completaste la Entrega 1.5 y el recorrido disponible de la Unidad 1.
-          Repasa las actividades cuando quieras para fortalecer tu inglés.
+          Ya puedes continuar con la primera entrega de la Unidad 2.
         </p>
 
-        <a class="button button-primary" href="unit-1.html">
-          Volver a Unidad 1
-        </a>
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-2-delivery-1.html">
+            Continuar a Unidad 2 →
+          </a>
+
+          <a class="button button-outline" href="unit-1.html">
+            Volver a Unidad 1
+          </a>
+        </div>
       </section>
     </div>
   </main>
@@ -1153,6 +1067,406 @@
     </div>
   </footer>
 
-  <script src="../assets/js/unit1-delivery5.js"></script>
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit1.delivery5.progress";
+      const totalActivities = 12;
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+      const activityCards = [...document.querySelectorAll("[data-activity]")];
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(stored)) {
+            return [];
+          }
+
+          return [...new Set(
+            stored
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function getFeedback(activity) {
+        return document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = getFeedback(activity);
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateProgress() {
+        const completed = getProgress();
+        const count = completed.length;
+        const percentage = Math.round((count / totalActivities) * 100);
+
+        progressText.textContent =
+          `${count} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        activityCards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const completeButton = card.querySelector(".complete-activity");
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          if (isComplete && completeButton) {
+            completeButton.textContent = "Actividad completada";
+          }
+        });
+
+        completionMessage.hidden = count !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateProgress();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="question-1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="question-2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="question-3"]:checked'
+          )?.value;
+
+          if (answer1 === "b" && answer2 === "a" && answer3 === "b") {
+            completeActivity(
+              2,
+              "✓ ¡Correcto! Excelente comprensión del diálogo."
+            );
+          } else {
+            setFeedback(2, "Revisa el diálogo e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "lawyer") {
+            completeActivity(3, "✓ Correcto: I want to talk to my lawyer.");
+          } else {
+            setFeedback(3, "Pista: Lawyer significa abogado/a.");
+          }
+        });
+
+      document
+        .querySelector(".check-expressions")
+        .addEventListener("click", () => {
+          const dateAnswer = normalize(
+            document.getElementById("date-answer").value
+          );
+
+          const requestAnswer = normalize(
+            document.getElementById("request-answer").value
+          );
+
+          if (dateAnswer === "monday" && requestAnswer === "repeat") {
+            completeActivity(
+              4,
+              "✓ ¡Muy bien! Next Monday / Can you repeat that, please?"
+            );
+          } else {
+            setFeedback(
+              4,
+              "Pista: Next Monday / Can you repeat that, please?"
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-written-practice")
+        .addEventListener("click", () => {
+          const answer = document.getElementById("written-answer").value.trim();
+
+          if (answer.length >= 40) {
+            completeActivity(9, "✓ Práctica escrita guardada.");
+          } else {
+            setFeedback(
+              9,
+              "Escribe al menos cuatro respuestas o traducciones del repaso."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-extra-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("extra-vocabulary-answer").value
+          );
+
+          const validAnswers = [
+            "journalist",
+            "reporter",
+            "writer"
+          ];
+
+          if (validAnswers.includes(answer)) {
+            completeActivity(
+              10,
+              "✓ Correcto. Journalist, reporter o writer son profesiones relacionadas."
+            );
+          } else {
+            setFeedback(
+              10,
+              "Pista: Una reportera también puede ser journalist."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-final-test")
+        .addEventListener("click", () => {
+          const answers = [
+            ["test-1", "b"],
+            ["test-2", "b"],
+            ["test-3", "a"],
+            ["test-4", "a"],
+            ["test-5", "b"],
+            ["test-6", "a"],
+            ["test-7", "a"]
+          ];
+
+          const selectsCorrect = answers.every(([id, expected]) => {
+            return document.getElementById(id).value === expected;
+          });
+
+          const written = document.getElementById("test-written").value.trim();
+          const dates = document.getElementById("test-dates").value.trim();
+
+          if (selectsCorrect && written.length >= 10 && dates.length >= 12) {
+            completeActivity(
+              11,
+              "✓ Evaluación completada. ¡Excelente trabajo!"
+            );
+          } else {
+            setFeedback(
+              11,
+              "Completa las siete selecciones y escribe las respuestas y dos fechas."
+            );
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const answer = document.getElementById("reading-answer").value.trim();
+
+          if (answer.length >= 25) {
+            completeActivity(
+              12,
+              "✓ ¡Entrega y Unidad 1 completadas!"
+            );
+          } else {
+            setFeedback(
+              12,
+              "Escribe dos oraciones: una sobre Annie Oakley y una sobre el narrador."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateProgress();
+      });
+
+      const audio = document.getElementById("work-audio");
+      const playButton = document.getElementById("audio-play-button");
+      const playIcon = document.getElementById("audio-play-icon");
+      const playText = document.getElementById("audio-play-text");
+      const audioProgress = document.getElementById("audio-progress");
+      const audioTime = document.getElementById("audio-time");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) {
+          return "0:00";
+        }
+
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = String(
+          Math.floor(seconds % 60)
+        ).padStart(2, "0");
+
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      function updateAudioPlayer() {
+        if (!audio || !audioProgress || !audioTime) {
+          return;
+        }
+
+        const currentTime = audio.currentTime || 0;
+        const duration = audio.duration || 0;
+
+        audioTime.textContent =
+          `${formatTime(currentTime)} / ${formatTime(duration)}`;
+
+        if (duration > 0) {
+          audioProgress.value = String((currentTime / duration) * 100);
+        }
+      }
+
+      function setAudioButton(isPlaying) {
+        if (!playButton || !playIcon || !playText) {
+          return;
+        }
+
+        playIcon.textContent = isPlaying ? "❚❚" : "▶";
+        playText.textContent = isPlaying
+          ? "Pausar audio"
+          : "Reproducir audio";
+
+        playButton.setAttribute(
+          "aria-label",
+          isPlaying ? "Pausar audio" : "Reproducir audio"
+        );
+      }
+
+      if (audio && playButton) {
+        playButton.addEventListener("click", async () => {
+          if (audio.paused) {
+            try {
+              await audio.play();
+            } catch (error) {
+              console.warn("No se pudo reproducir el audio.", error);
+            }
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("loadedmetadata", updateAudioPlayer);
+        audio.addEventListener("durationchange", updateAudioPlayer);
+        audio.addEventListener("timeupdate", updateAudioPlayer);
+
+        audio.addEventListener("play", () => {
+          setAudioButton(true);
+        });
+
+        audio.addEventListener("pause", () => {
+          setAudioButton(false);
+        });
+
+        audio.addEventListener("ended", () => {
+          audio.currentTime = 0;
+
+          if (audioProgress) {
+            audioProgress.value = "0";
+          }
+
+          updateAudioPlayer();
+          setAudioButton(false);
+        });
+
+        audio.addEventListener("error", () => {
+          if (audioTime) {
+            audioTime.textContent = "Audio no disponible";
+          }
+        });
+      }
+
+      if (audio && audioProgress) {
+        audioProgress.addEventListener("input", () => {
+          if (audio.duration) {
+            audio.currentTime =
+              (Number(audioProgress.value) / 100) * audio.duration;
+          }
+        });
+      }
+
+      updateAudioPlayer();
+      updateProgress();
+    });
+  </script>
 </body>
 </html>

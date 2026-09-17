@@ -20,6 +20,20 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -62,7 +76,6 @@
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
         <p class="kicker">Unidad 03 · Entrega 05</p>
         <h1>En el aeropuerto</h1>
@@ -103,8 +116,6 @@
       </section>
 
       <section class="lesson-sections">
-
-        <!-- ACTIVIDAD 1 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -129,15 +140,10 @@
 
           <div class="dialogue-box">
             <p><strong>Announcement:</strong> Flight number 503 to Miami is now boarding. Passengers are kindly requested to proceed to Gate Number Six.</p>
-
             <p><strong>Check-in clerk:</strong> Are you both on the Alpha Airlines flight to New York?</p>
-
             <p><strong>Tom:</strong> The lady is; I'm on the L.A. flight. I've already checked in.</p>
-
             <p><strong>Clerk:</strong> That flight's been delayed. It's now leaving at 11:30. Can I have your ticket, Miss? Would you prefer a seat in the smoking or the non-smoking section?</p>
-
             <p><strong>Barbara:</strong> Smoking, please, and a window seat, if that's possible.</p>
-
             <p><strong>Clerk:</strong> Yes. Here's your boarding card. You have to be at Gate Fourteen twenty minutes before departure. Have a good flight!</p>
           </div>
 
@@ -158,7 +164,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 2 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
@@ -183,27 +188,16 @@
 
           <div class="dialogue-box">
             <p><strong>Tom:</strong> Well, Barbara, you're on your way back to the Big Apple. You know something, I didn't really like you when I first met you.</p>
-
             <p><strong>Barbara:</strong> I didn't like you either.</p>
-
             <p><strong>Tom:</strong> I hope you've changed your mind!</p>
-
             <p><strong>Barbara:</strong> Mmmm... maybe. I hope we work together again sometime, and then I'll tell you.</p>
-
             <p><strong>Tom:</strong> Well, the last two weeks have been a lot of fun.</p>
-
             <p><strong>Barbara:</strong> Do you remember the night at The Blue Lagoon?</p>
-
             <p><strong>Tom:</strong> Your friend Jack was so funny. I've never laughed so much in my life.</p>
-
             <p><strong>Barbara:</strong> I think we were all a bit drunk.</p>
-
             <p><strong>Tom:</strong> And remember the storm?</p>
-
             <p><strong>Barbara:</strong> Do you know, I really believed that story about the crocodile!</p>
-
             <p><strong>Tom:</strong> I swear it was true! It was right there in front of you.</p>
-
             <p><strong>Barbara:</strong> Don't start again!</p>
           </div>
 
@@ -224,7 +218,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 3 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
@@ -236,13 +229,9 @@
 
           <div class="dialogue-box">
             <p><strong>Announcement:</strong> Flight Number 352 to New York is now boarding. Passengers are kindly requested to proceed to Gate Fourteen.</p>
-
             <p><strong>Barbara:</strong> Oh, God! That's my flight. I've got to go... I hate saying goodbye.</p>
-
             <p><strong>Tom:</strong> So do I...</p>
-
             <p><strong>Barbara:</strong> See you sometime. Bye, Tom.</p>
-
             <p><strong>Tom:</strong> Hey, wait a minute! I haven't heard you sing yet! Call me in L.A. and leave a song on my answering machine.</p>
           </div>
 
@@ -262,7 +251,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 4 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
@@ -274,66 +262,30 @@
 
           <div class="question-block">
             <p><strong>1. ¿A qué puerta debe ir Barbara?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="airport-q1" value="a">
-              Gate Fourteen
-            </label>
-            <label class="option-label">
-              <input type="radio" name="airport-q1" value="b">
-              Gate Six
-            </label>
-            <label class="option-label">
-              <input type="radio" name="airport-q1" value="c">
-              Gate Twenty
-            </label>
+            <label class="option-label"><input type="radio" name="airport-q1" value="a"> Gate Fourteen</label>
+            <label class="option-label"><input type="radio" name="airport-q1" value="b"> Gate Six</label>
+            <label class="option-label"><input type="radio" name="airport-q1" value="c"> Gate Twenty</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. ¿A qué hora sale el vuelo de Tom?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="airport-q2" value="a">
-              At 10:30
-            </label>
-            <label class="option-label">
-              <input type="radio" name="airport-q2" value="b">
-              At 11:30
-            </label>
-            <label class="option-label">
-              <input type="radio" name="airport-q2" value="c">
-              At 12:30
-            </label>
+            <label class="option-label"><input type="radio" name="airport-q2" value="a"> At 10:30</label>
+            <label class="option-label"><input type="radio" name="airport-q2" value="b"> At 11:30</label>
+            <label class="option-label"><input type="radio" name="airport-q2" value="c"> At 12:30</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. ¿Qué tipo de asiento prefiere Barbara?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="airport-q3" value="a">
-              A window seat
-            </label>
-            <label class="option-label">
-              <input type="radio" name="airport-q3" value="b">
-              An aisle seat
-            </label>
-            <label class="option-label">
-              <input type="radio" name="airport-q3" value="c">
-              No seat
-            </label>
+            <label class="option-label"><input type="radio" name="airport-q3" value="a"> A window seat</label>
+            <label class="option-label"><input type="radio" name="airport-q3" value="b"> An aisle seat</label>
+            <label class="option-label"><input type="radio" name="airport-q3" value="c"> No seat</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. ¿Qué le pide Tom a Barbara antes de que se vaya?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="airport-q4" value="a">
-              To leave a song on his answering machine
-            </label>
-            <label class="option-label">
-              <input type="radio" name="airport-q4" value="b">
-              To buy him a ticket
-            </label>
-            <label class="option-label">
-              <input type="radio" name="airport-q4" value="c">
-              To visit the zoo
-            </label>
+            <label class="option-label"><input type="radio" name="airport-q4" value="a"> To leave a song on his answering machine</label>
+            <label class="option-label"><input type="radio" name="airport-q4" value="b"> To buy him a ticket</label>
+            <label class="option-label"><input type="radio" name="airport-q4" value="c"> To visit the zoo</label>
           </div>
 
           <div class="activity-actions">
@@ -344,7 +296,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 5 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
@@ -423,7 +374,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 6 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
@@ -497,7 +447,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 7 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
@@ -557,7 +506,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 8 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
@@ -616,7 +564,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 9 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
@@ -664,7 +611,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
@@ -726,26 +672,33 @@
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
       </section>
 
       <section
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
+
         <p>
           Completaste “En el aeropuerto”. Ya puedes desenvolverte en un aeropuerto,
           expresar preferencias, describir acciones terminadas y hablar de planes
           de viaje.
         </p>
-        <a class="button button-primary" href="unit-3.html">
-          Volver a Unidad 3
-        </a>
-      </section>
 
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-4-delivery-1.html">
+            Ir a Unidad 4 →
+          </a>
+
+          <a class="button button-outline" href="unit-3.html">
+            Volver a Unidad 3
+          </a>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -757,6 +710,339 @@
     </div>
   </footer>
 
-  <script src="../assets/js/unit3-delivery5.js"></script>
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit3.delivery5.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(stored)) {
+            return [];
+          }
+
+          return [...new Set(
+            stored
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        progressText.textContent =
+          `${completedCount} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const dialogueButton = card.querySelector(".complete-activity");
+
+          if (dialogueButton) {
+            dialogueButton.textContent = isComplete
+              ? "Actividad completada"
+              : "Marcar diálogo como completado";
+          }
+        });
+
+        completionMessage.hidden = completedCount !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="airport-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="airport-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="airport-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="airport-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "b" &&
+            answer3 === "a" &&
+            answer4 === "a"
+          ) {
+            completeActivity(
+              4,
+              "✓ ¡Correcto! Comprendiste el diálogo del aeropuerto."
+            );
+          } else {
+            setFeedback(4, "Revisa los diálogos e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "boarding") {
+            completeActivity(
+              5,
+              "✓ Correcto: Here is your boarding card."
+            );
+          } else {
+            setFeedback(5, "Pista: boarding card.");
+          }
+        });
+
+      document
+        .querySelector(".check-phrases")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("phrases-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("phrases-writing").value
+          );
+
+          const hasPreference =
+            writing.includes("prefer") ||
+            writing.includes("rather") ||
+            writing.includes("would like");
+
+          if (answer === "or" && writing.length >= 12 && hasPreference) {
+            completeActivity(6, "✓ Práctica de preferencias guardada.");
+          } else {
+            setFeedback(
+              6,
+              "Completa or y escribe una oración de preferencia en inglés."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-already-yet")
+        .addEventListener("click", () => {
+          const already = normalize(
+            document.getElementById("already-answer").value
+          );
+
+          const yet = normalize(
+            document.getElementById("yet-answer").value
+          );
+
+          if (already === "already" && yet === "yet") {
+            completeActivity(
+              7,
+              "✓ Correcto: Tom has already checked in. Barbara hasn't boarded yet."
+            );
+          } else {
+            setFeedback(7, "Pista: already / yet.");
+          }
+        });
+
+      document
+        .querySelector(".check-future")
+        .addEventListener("click", () => {
+          const future = normalize(
+            document.getElementById("future-answer").value
+          );
+
+          const irregular = normalize(
+            document.getElementById("irregular-answer").value
+          );
+
+          if (future === "is leaving" && irregular === "meet") {
+            completeActivity(
+              8,
+              "✓ Correcto: The flight is leaving at 11:30. Did Barbara meet Tom?"
+            );
+          } else {
+            setFeedback(8, "Pista: is leaving / meet.");
+          }
+        });
+
+      document
+        .querySelector(".check-culture")
+        .addEventListener("click", () => {
+          const writing = document
+            .getElementById("culture-writing")
+            .value
+            .trim();
+
+          if (writing.length >= 12) {
+            completeActivity(9, "✓ Respuesta cultural guardada.");
+          } else {
+            setFeedback(9, "Escribe una oración completa en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("review-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("review-answer-2").value
+          );
+
+          const writing = normalize(
+            document.getElementById("final-writing").value
+          );
+
+          const hasCheckIn =
+            writing.includes("check in") ||
+            writing.includes("checked in");
+
+          const hasPreference =
+            writing.includes("prefer") ||
+            writing.includes("window seat") ||
+            writing.includes("aisle seat");
+
+          const hasAlreadyOrYet =
+            writing.includes("already") ||
+            writing.includes("yet");
+
+          const hasObligation =
+            writing.includes("must") ||
+            writing.includes("have to") ||
+            writing.includes("got to");
+
+          const hasGoodbye =
+            writing.includes("goodbye") ||
+            writing.includes("bye") ||
+            writing.includes("see you");
+
+          if (
+            answer1 === "already" &&
+            answer2 === "must" &&
+            writing.length >= 100 &&
+            hasCheckIn &&
+            hasPreference &&
+            hasAlreadyOrYet &&
+            hasObligation &&
+            hasGoodbye
+          ) {
+            completeActivity(10, "✓ ¡Entrega 3.5 completada!");
+          } else {
+            setFeedback(
+              10,
+              "Completa already y must, y redacta el diálogo con todos los elementos solicitados."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
 </body>
 </html>

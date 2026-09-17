@@ -20,6 +20,20 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -62,7 +76,6 @@
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
         <p class="kicker">Unidad 03 · Entrega 01</p>
         <h1>Una cita</h1>
@@ -103,8 +116,6 @@
       </section>
 
       <section class="lesson-sections">
-
-        <!-- ACTIVIDAD 1 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -129,11 +140,8 @@
 
           <div class="dialogue-box">
             <p><strong>Barbara:</strong> Hi, everyone!</p>
-
             <p><strong>Various voices:</strong> Hi, Barbara! How was Houston? What was Ronald Jordan like?</p>
-
             <p><strong>Barbara:</strong> Houston was fine, but Ronald Jordan was a real bore... Any important messages, Jean?</p>
-
             <p><strong>Jean:</strong> Yes. There were several calls from the New Orleans office. You have to call Ruth Goldstein, the head researcher there, about the jazz documentary. The number's on your desk.</p>
           </div>
 
@@ -153,7 +161,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 2 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
@@ -177,29 +184,17 @@
 
           <div class="dialogue-box">
             <p><strong>Switchboard operator:</strong> L.T.V., good morning!</p>
-
             <p><strong>Barbara:</strong> I'd like to speak to Ruth Goldstein, extension 428, please.</p>
-
             <p><strong>Switchboard operator:</strong> I'll put you through... I'm sorry, she's on the line. Can I put you on hold?</p>
-
             <p><strong>Barbara:</strong> Uh, no. Can I speak to her assistant?</p>
-
             <p><strong>Switchboard operator:</strong> Yes. I'll put you through to Kevin Ryan.</p>
-
             <p><strong>Kevin:</strong> Kevin Ryan.</p>
-
             <p><strong>Barbara:</strong> Hello, Kevin. This is Barbara Rivers speaking. I'm returning Ruth Goldstein's call. She phoned while I was out.</p>
-
             <p><strong>Kevin:</strong> Oh, hi, Barbara. Ruth wanted to make an appointment to discuss the jazz documentary. Can you come to our New Orleans office tomorrow at 3 p.m.?</p>
-
             <p><strong>Barbara:</strong> Tomorrow?</p>
-
             <p><strong>Kevin:</strong> Yes, the cameraman is already here.</p>
-
             <p><strong>Barbara:</strong> O.K. Tomorrow at three. See you then. Bye!</p>
-
             <p><strong>Kevin:</strong> Goodbye, Barbara. Have a good flight!</p>
-
             <p><strong>Barbara:</strong> Thanks.</p>
           </div>
 
@@ -219,7 +214,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 3 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
@@ -235,19 +229,12 @@
 
           <div class="dialogue-box">
             <p><strong>Jeff:</strong> Hi, Barbara! There's an urgent message...</p>
-
             <p><strong>Barbara:</strong> I know. I called back. The meeting's tomorrow afternoon.</p>
-
             <p><strong>Jeff:</strong> Yeah. I'm sorry. We changed the schedule.</p>
-
             <p><strong>Barbara:</strong> Oh, well. But I wanted to stay in New York at least for a couple of days.</p>
-
             <p><strong>Jeff:</strong> Oh! And Barbara... There's something else. We won't stay in a hotel this time. We have a big house for the whole crew.</p>
-
             <p><strong>Barbara:</strong> Who's on the crew?</p>
-
             <p><strong>Jeff:</strong> There's the cameraman who worked with us on the Van der Wildt interview — Tom Ryder, and...</p>
-
             <p><strong>Barbara:</strong> Oh... great!</p>
           </div>
 
@@ -268,7 +255,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 4 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
@@ -280,78 +266,30 @@
 
           <div class="question-block">
             <p><strong>1. ¿Por qué debe llamar Barbara a Ruth Goldstein?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q1" value="a">
-              To discuss the jazz documentary
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q1" value="b">
-              To reserve a hotel room
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q1" value="c">
-              To discuss Houston
-            </label>
+            <label class="option-label"><input type="radio" name="appointment-q1" value="a"> To discuss the jazz documentary</label>
+            <label class="option-label"><input type="radio" name="appointment-q1" value="b"> To reserve a hotel room</label>
+            <label class="option-label"><input type="radio" name="appointment-q1" value="c"> To discuss Houston</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. ¿Por qué Barbara no puede hablar con Ruth?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q2" value="a">
-              Ruth is on the line
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q2" value="b">
-              Ruth is in Houston
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q2" value="c">
-              Ruth is on vacation
-            </label>
+            <label class="option-label"><input type="radio" name="appointment-q2" value="a"> Ruth is on the line</label>
+            <label class="option-label"><input type="radio" name="appointment-q2" value="b"> Ruth is in Houston</label>
+            <label class="option-label"><input type="radio" name="appointment-q2" value="c"> Ruth is on vacation</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. ¿Cuándo es la cita?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q3" value="a">
-              Tomorrow at 3 p.m.
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q3" value="b">
-              Today at 3 p.m.
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q3" value="c">
-              Next week at 5 p.m.
-            </label>
+            <label class="option-label"><input type="radio" name="appointment-q3" value="a"> Tomorrow at 3 p.m.</label>
+            <label class="option-label"><input type="radio" name="appointment-q3" value="b"> Today at 3 p.m.</label>
+            <label class="option-label"><input type="radio" name="appointment-q3" value="c"> Next week at 5 p.m.</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. ¿Dónde se hospedará el equipo?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q4" value="a">
-              In a hotel
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q4" value="b">
-              In a big house
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="appointment-q4" value="c">
-              At the airport
-            </label>
+            <label class="option-label"><input type="radio" name="appointment-q4" value="a"> In a hotel</label>
+            <label class="option-label"><input type="radio" name="appointment-q4" value="b"> In a big house</label>
+            <label class="option-label"><input type="radio" name="appointment-q4" value="c"> At the airport</label>
           </div>
 
           <div class="activity-actions">
@@ -362,7 +300,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 5 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
@@ -425,7 +362,6 @@
             <label for="vocabulary-answer">
               Complete: “Can I put you on __________?”
             </label>
-
             <input
               id="vocabulary-answer"
               type="text"
@@ -442,7 +378,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 6 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
@@ -489,7 +424,6 @@
             <label for="phone-answer">
               Complete: “Hello. This is Maria Torres __________.”
             </label>
-
             <input
               id="phone-answer"
               type="text"
@@ -502,7 +436,6 @@
             <label for="phone-writing">
               Escribe una frase para pedir una cita por teléfono:
             </label>
-
             <textarea
               id="phone-writing"
               placeholder="I'd like to make an appointment, please."
@@ -517,7 +450,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 7 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
@@ -552,7 +484,6 @@
             <label for="was-answer-1">
               Complete: “Houston __________ fine.”
             </label>
-
             <input
               id="was-answer-1"
               type="text"
@@ -565,7 +496,6 @@
             <label for="was-answer-2">
               Complete: “There __________ several calls from the New Orleans office.”
             </label>
-
             <input
               id="was-answer-2"
               type="text"
@@ -582,7 +512,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 8 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
@@ -620,7 +549,6 @@
             <label for="past-answer-1">
               Complete: “Barbara __________ Ruth Goldstein's call.”
             </label>
-
             <input
               id="past-answer-1"
               type="text"
@@ -633,7 +561,6 @@
             <label for="past-answer-2">
               Complete: “She phoned __________ Barbara was out.”
             </label>
-
             <input
               id="past-answer-2"
               type="text"
@@ -650,7 +577,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 9 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
@@ -689,7 +615,6 @@
             <label for="culture-writing">
               Escribe una oración en inglés usando una expresión telefónica:
             </label>
-
             <textarea
               id="culture-writing"
               placeholder="Can I put you on hold for a moment?"
@@ -704,7 +629,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
@@ -727,7 +651,6 @@
             <label for="review-answer-1">
               Complete: “I'd like to __________ an appointment.”
             </label>
-
             <input
               id="review-answer-1"
               type="text"
@@ -740,7 +663,6 @@
             <label for="review-answer-2">
               Complete: “Can I put you on __________?”
             </label>
-
             <input
               id="review-answer-2"
               type="text"
@@ -755,7 +677,6 @@
               Debe incluir: una presentación telefónica, una cita, una expresión de
               teléfono y una oración en pasado.
             </label>
-
             <textarea
               id="final-writing"
               placeholder="Hello, this is Ana speaking. I'm calling about the project. I'd like to make an appointment for tomorrow. I called yesterday, but you were in a meeting."
@@ -769,13 +690,13 @@
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
       </section>
 
       <section
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
@@ -785,11 +706,16 @@
           devolver mensajes, organizar una cita y usar estructuras básicas del pasado.
         </p>
 
-        <a class="button button-primary" href="unit-3.html">
-          Volver a Unidad 3
-        </a>
-      </section>
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-3-delivery-2.html">
+            Siguiente entrega →
+          </a>
 
+          <a class="button button-outline" href="unit-3.html">
+            Volver a Unidad 3
+          </a>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -801,6 +727,301 @@
     </div>
   </footer>
 
-  <script src="../assets/js/unit3-delivery1.js"></script>
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit3.delivery1.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(saved)) {
+            return [];
+          }
+
+          return [...new Set(
+            saved
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const count = completed.length;
+        const percentage = Math.round((count / totalActivities) * 100);
+
+        progressText.textContent =
+          `${count} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const completeButton = card.querySelector(".complete-activity");
+
+          if (completeButton && isComplete) {
+            completeButton.textContent = "Actividad completada";
+          }
+        });
+
+        completionMessage.hidden = count !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="appointment-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="appointment-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="appointment-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="appointment-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "a" &&
+            answer3 === "a" &&
+            answer4 === "b"
+          ) {
+            completeActivity(4, "✓ ¡Correcto! Comprendiste los diálogos.");
+          } else {
+            setFeedback(4, "Revisa los diálogos e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "hold") {
+            completeActivity(
+              5,
+              "✓ Correcto: Can I put you on hold?"
+            );
+          } else {
+            setFeedback(5, "Pista: Can I put you on hold?");
+          }
+        });
+
+      document
+        .querySelector(".check-phone")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("phone-answer").value
+          );
+
+          const writing = document
+            .getElementById("phone-writing")
+            .value
+            .trim();
+
+          if (answer === "speaking" && writing.length >= 12) {
+            completeActivity(6, "✓ Práctica telefónica guardada.");
+          } else {
+            setFeedback(
+              6,
+              "Completa speaking y escribe una frase completa para pedir una cita."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-was-were")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("was-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("was-answer-2").value
+          );
+
+          if (answer1 === "was" && answer2 === "were") {
+            completeActivity(
+              7,
+              "✓ Correcto: Houston was fine. There were several calls."
+            );
+          } else {
+            setFeedback(7, "Pista: was / were.");
+          }
+        });
+
+      document
+        .querySelector(".check-past")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("past-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("past-answer-2").value
+          );
+
+          if (answer1 === "returned" && answer2 === "while") {
+            completeActivity(
+              8,
+              "✓ Correcto: Barbara returned the call while she was out."
+            );
+          } else {
+            setFeedback(8, "Pista: returned / while.");
+          }
+        });
+
+      document
+        .querySelector(".check-culture")
+        .addEventListener("click", () => {
+          const writing = document
+            .getElementById("culture-writing")
+            .value
+            .trim();
+
+          if (writing.length >= 12) {
+            completeActivity(9, "✓ Respuesta cultural guardada.");
+          } else {
+            setFeedback(9, "Escribe una oración completa en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("review-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("review-answer-2").value
+          );
+
+          const writing = document
+            .getElementById("final-writing")
+            .value
+            .trim();
+
+          if (
+            answer1 === "make" &&
+            answer2 === "hold" &&
+            writing.length >= 100
+          ) {
+            completeActivity(10, "✓ ¡Entrega 3.1 completada!");
+          } else {
+            setFeedback(
+              10,
+              "Completa make, hold y escribe al menos cuatro oraciones en inglés."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
 </body>
 </html>

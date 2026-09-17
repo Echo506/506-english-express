@@ -20,6 +20,20 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -62,7 +76,6 @@
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
         <p class="kicker">Unidad 03 · Entrega 03</p>
         <h1>Una tormenta en Nueva Orleans</h1>
@@ -104,8 +117,6 @@
       </section>
 
       <section class="lesson-sections">
-
-        <!-- ACTIVIDAD 1 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -130,23 +141,14 @@
 
           <div class="dialogue-box">
             <p><strong>Barbara:</strong> Oh, no! Oh, hell! Where's the flashlight? I can't see anything... Hello? Who's there?</p>
-
             <p><strong>Tom:</strong> Is anyone home?</p>
-
             <p><strong>Barbara:</strong> Who's that? Who is it?</p>
-
             <p><strong>Tom:</strong> It's only me, Tom. Wow! What a storm! I'm all wet! What happened to the lights?</p>
-
             <p><strong>Barbara:</strong> There's no electricity.</p>
-
             <p><strong>Tom:</strong> It's because of the storm.</p>
-
             <p><strong>Barbara:</strong> I figured that out, Einstein. I can't find the flashlight. Do you have a lighter?</p>
-
             <p><strong>Tom:</strong> No. I don't smoke.</p>
-
             <p><strong>Barbara:</strong> Well, don't just stand there! Help me look for the flashlight.</p>
-
             <p><strong>Tom:</strong> I think I saw it in the kitchen.</p>
           </div>
 
@@ -166,7 +168,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 2 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
@@ -191,25 +192,15 @@
 
           <div class="dialogue-box">
             <p><strong>Barbara:</strong> What's that? Ugh! Something just touched me!</p>
-
             <p><strong>Tom:</strong> Didn't you hear? A crocodile escaped from the zoo this morning...</p>
-
             <p><strong>Barbara:</strong> Oh, shut up!</p>
-
             <p><strong>Tom:</strong> I'm only kidding!</p>
-
             <p><strong>Barbara:</strong> God! I hate storms! Maybe the flashlight's in this cupboard. Oh, damn!</p>
-
             <p><strong>Tom:</strong> Did you hurt yourself?</p>
-
             <p><strong>Barbara:</strong> No! But why don't you come here and do something?</p>
-
             <p><strong>Tom:</strong> Stop shouting at me, and calm down!</p>
-
             <p><strong>Barbara:</strong> I AM CALM! AND I'M NOT SHOUTING AT YOU!</p>
-
             <p><strong>Barbara:</strong> Oh... What a relief! Now we can see what we're doing! Oh, God! Do I need a drink!</p>
-
             <p><strong>Tom:</strong> Yeah! So do I!</p>
           </div>
 
@@ -230,7 +221,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 3 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
@@ -242,9 +232,7 @@
 
           <div class="dialogue-box">
             <p><strong>Barbara:</strong> I'm sorry I lost my temper. Storms make me nervous.</p>
-
             <p><strong>Tom:</strong> That's O.K. Let's go out and find a bar.</p>
-
             <p><strong>Barbara:</strong> I know of a nice little jazz bar in the French Quarter. It's called “The Blue Lagoon”.</p>
           </div>
 
@@ -264,7 +252,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 4 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
@@ -276,78 +263,30 @@
 
           <div class="question-block">
             <p><strong>1. ¿Por qué se apagaron las luces?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q1" value="a">
-              Because of the storm
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q1" value="b">
-              Because Tom turned them off
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q1" value="c">
-              Because Barbara broke the lamp
-            </label>
+            <label class="option-label"><input type="radio" name="storm-q1" value="a"> Because of the storm</label>
+            <label class="option-label"><input type="radio" name="storm-q1" value="b"> Because Tom turned them off</label>
+            <label class="option-label"><input type="radio" name="storm-q1" value="c"> Because Barbara broke the lamp</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. ¿Qué está buscando Barbara?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q2" value="a">
-              A candle
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q2" value="b">
-              A flashlight
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q2" value="c">
-              A record
-            </label>
+            <label class="option-label"><input type="radio" name="storm-q2" value="a"> A candle</label>
+            <label class="option-label"><input type="radio" name="storm-q2" value="b"> A flashlight</label>
+            <label class="option-label"><input type="radio" name="storm-q2" value="c"> A record</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. ¿Qué animal menciona Tom como broma?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q3" value="a">
-              A dog
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q3" value="b">
-              A crocodile
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q3" value="c">
-              A snake
-            </label>
+            <label class="option-label"><input type="radio" name="storm-q3" value="a"> A dog</label>
+            <label class="option-label"><input type="radio" name="storm-q3" value="b"> A crocodile</label>
+            <label class="option-label"><input type="radio" name="storm-q3" value="c"> A snake</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. ¿A dónde deciden ir Barbara y Tom?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q4" value="a">
-              To The Blue Lagoon
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q4" value="b">
-              To the zoo
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="storm-q4" value="c">
-              To the airport
-            </label>
+            <label class="option-label"><input type="radio" name="storm-q4" value="a"> To The Blue Lagoon</label>
+            <label class="option-label"><input type="radio" name="storm-q4" value="b"> To the zoo</label>
+            <label class="option-label"><input type="radio" name="storm-q4" value="c"> To the airport</label>
           </div>
 
           <div class="activity-actions">
@@ -358,7 +297,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 5 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
@@ -371,7 +309,6 @@
           <div class="vocabulary-columns">
             <section class="vocabulary-group">
               <h3>Clima y luz</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>storm</dt><dd>tormenta</dd></div>
                 <div><dt>light</dt><dd>luz</dd></div>
@@ -389,7 +326,6 @@
 
             <section class="vocabulary-group">
               <h3>Casa y animales</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>kitchen</dt><dd>cocina</dd></div>
                 <div><dt>cupboard</dt><dd>armario</dd></div>
@@ -401,7 +337,6 @@
 
             <section class="vocabulary-group">
               <h3>Acciones y estados</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>to happen</dt><dd>ocurrir</dd></div>
                 <div><dt>to find</dt><dd>encontrar</dd></div>
@@ -424,7 +359,6 @@
             <label for="vocabulary-answer">
               Complete: “Barbara cannot see anything, so she needs a __________.”
             </label>
-
             <input
               id="vocabulary-answer"
               type="text"
@@ -441,7 +375,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 6 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
@@ -454,7 +387,6 @@
           <div class="phrase-groups">
             <section class="phrase-group">
               <h3>Expresar sorpresa y alivio</h3>
-
               <dl class="phrase-list">
                 <div><dt>What a storm!</dt><dd>¡Qué tormenta!</dd></div>
                 <div><dt>What a relief!</dt><dd>¡Qué alivio!</dd></div>
@@ -464,7 +396,6 @@
 
             <section class="phrase-group">
               <h3>Preguntar por personas y objetos</h3>
-
               <dl class="phrase-list">
                 <div><dt>Where's the flashlight?</dt><dd>¿Dónde está la linterna?</dd></div>
                 <div><dt>Who's there?</dt><dd>¿Quién está ahí?</dd></div>
@@ -476,7 +407,6 @@
 
             <section class="phrase-group">
               <h3>Explicar y ordenar</h3>
-
               <dl class="phrase-list">
                 <div><dt>It's because of the storm.</dt><dd>Es por la tormenta.</dd></div>
                 <div><dt>Storms make me nervous.</dt><dd>Las tormentas me ponen nervioso/a.</dd></div>
@@ -493,7 +423,6 @@
             <label for="phrases-answer">
               Complete: “__________ down! Everything is O.K.”
             </label>
-
             <input
               id="phrases-answer"
               type="text"
@@ -506,7 +435,6 @@
             <label for="phrases-writing">
               Escribe una pregunta para saber si alguien está presente:
             </label>
-
             <textarea
               id="phrases-writing"
               placeholder="Is anyone there?"
@@ -521,7 +449,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 7 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
@@ -533,15 +460,12 @@
 
           <section class="oral-practice-block">
             <h3>Ideas principales</h3>
-
             <p class="example-box">
               I don't know anyone. →
               <strong>I know someone.</strong><br><br>
-
               I can see something. →
               <strong>I can't see anything.</strong>
             </p>
-
             <p>
               Usa normalmente <strong>some-</strong> en frases afirmativas:
               <em>someone, something</em>. Usa normalmente <strong>any-</strong>
@@ -553,7 +477,6 @@
             <label for="some-any-answer-1">
               Complete: “I can't see __________ in the dark.”
             </label>
-
             <input
               id="some-any-answer-1"
               type="text"
@@ -566,7 +489,6 @@
             <label for="some-any-answer-2">
               Complete: “Is __________ home?”
             </label>
-
             <input
               id="some-any-answer-2"
               type="text"
@@ -583,7 +505,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 8 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
@@ -595,7 +516,6 @@
 
           <section class="oral-practice-block">
             <h3>Reflexivos con by yourself</h3>
-
             <p class="example-box">
               I like working by myself.<br>
               He likes working by himself.<br>
@@ -606,15 +526,12 @@
 
           <section class="oral-practice-block">
             <h3>Formar preguntas</h3>
-
             <p class="example-box">
               The restaurant closes at 1:00 a.m. →
               <strong>When does the restaurant close?</strong><br><br>
-
               She cooks chili con carne slowly. →
               <strong>How does she cook chili con carne?</strong>
             </p>
-
             <p>
               Usa palabras interrogativas como
               <strong>when, what, why, who, where, how</strong> y
@@ -626,7 +543,6 @@
             <label for="yourself-answer">
               Complete: “Barbara is alone. She is by __________.”
             </label>
-
             <input
               id="yourself-answer"
               type="text"
@@ -639,7 +555,6 @@
             <label for="question-writing">
               Convierte en pregunta: “The restaurant closes at 1:00 a.m.”
             </label>
-
             <textarea
               id="question-writing"
               placeholder="When does the restaurant close?"
@@ -654,7 +569,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 9 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
@@ -666,21 +580,18 @@
 
           <div class="reading-card">
             <h3>Un país de muchos climas</h3>
-
             <p>
               Estados Unidos tiene climas muy diversos. En el noreste, incluyendo
               Nueva Inglaterra, las cuatro estaciones son bien diferenciadas.
               Nueva York y Washington pueden tener veranos calurosos y húmedos,
               e inviernos fríos.
             </p>
-
             <p>
               Florida suele tener un clima cálido durante gran parte del año, pero
               puede verse afectada por huracanes. El sur de California tiene un
               clima más mediterráneo, mientras que regiones como Arizona, Nevada
               y Texas pueden experimentar calor intenso.
             </p>
-
             <p>
               Seattle es conocida por sus lluvias y Alaska tiene inviernos largos
               y fríos. Esta diversidad climática explica por qué una tormenta puede
@@ -692,7 +603,6 @@
             <label for="culture-writing">
               Escribe una oración en inglés sobre el clima de un lugar:
             </label>
-
             <textarea
               id="culture-writing"
               placeholder="Florida is warm, but it can have hurricanes."
@@ -707,7 +617,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
@@ -719,7 +628,6 @@
 
           <section class="oral-practice-block">
             <h3>Tu misión</h3>
-
             <p>
               Escribe un diálogo breve o una historia sobre una tormenta. Incluye
               una pregunta sobre una persona u objeto, vocabulario del clima,
@@ -732,7 +640,6 @@
             <label for="review-answer-1">
               Complete: “What a __________! The wind is very strong.”
             </label>
-
             <input
               id="review-answer-1"
               type="text"
@@ -745,7 +652,6 @@
             <label for="review-answer-2">
               Complete: “I can't find __________ in the cupboard.”
             </label>
-
             <input
               id="review-answer-2"
               type="text"
@@ -759,7 +665,6 @@
               Escribe al menos cuatro oraciones en inglés. Incluye tormenta,
               oscuridad o electricidad, una pregunta, una orden y una emoción.
             </label>
-
             <textarea
               id="final-writing"
               placeholder="There is a storm tonight. I can't see anything because there is no electricity. Where is the flashlight? Calm down! What a relief, I found a candle."
@@ -773,13 +678,13 @@
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
       </section>
 
       <section
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
@@ -790,11 +695,16 @@
           formular preguntas con precisión.
         </p>
 
-        <a class="button button-primary" href="unit-3.html">
-          Volver a Unidad 3
-        </a>
-      </section>
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-3-delivery-4.html">
+            Siguiente entrega →
+          </a>
 
+          <a class="button button-outline" href="unit-3.html">
+            Volver a Unidad 3
+          </a>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -806,6 +716,319 @@
     </div>
   </footer>
 
-  <script src="../assets/js/unit3-delivery3.js"></script>
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit3.delivery3.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const savedProgress = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(savedProgress)) {
+            return [];
+          }
+
+          return [...new Set(
+            savedProgress
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        progressText.textContent =
+          `${completedCount} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const completeButton = card.querySelector(".complete-activity");
+
+          if (completeButton) {
+            completeButton.textContent = isComplete
+              ? "Actividad completada"
+              : "Marcar diálogo como completado";
+          }
+        });
+
+        completionMessage.hidden = completedCount !== totalActivities;
+      }
+
+      function completeActivity(
+        activity,
+        message = "✓ Actividad completada."
+      ) {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="storm-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="storm-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="storm-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="storm-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "b" &&
+            answer3 === "b" &&
+            answer4 === "a"
+          ) {
+            completeActivity(
+              4,
+              "✓ ¡Correcto! Comprendiste lo que ocurrió durante la tormenta."
+            );
+          } else {
+            setFeedback(4, "Revisa los diálogos e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "flashlight") {
+            completeActivity(
+              5,
+              "✓ Correcto: Barbara needs a flashlight."
+            );
+          } else {
+            setFeedback(5, "Pista: es una linterna.");
+          }
+        });
+
+      document
+        .querySelector(".check-phrases")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("phrases-answer").value
+          );
+
+          const writing = document
+            .getElementById("phrases-writing")
+            .value
+            .trim();
+
+          if (
+            answer === "calm" &&
+            writing.length >= 8 &&
+            writing.includes("?")
+          ) {
+            completeActivity(6, "✓ Práctica de expresiones guardada.");
+          } else {
+            setFeedback(
+              6,
+              "Completa Calm y escribe una pregunta completa en inglés."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-some-any")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("some-any-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("some-any-answer-2").value
+          );
+
+          if (answer1 === "anything" && answer2 === "anyone") {
+            completeActivity(
+              7,
+              "✓ Correcto: I can't see anything. Is anyone home?"
+            );
+          } else {
+            setFeedback(7, "Pista: anything / anyone.");
+          }
+        });
+
+      document
+        .querySelector(".check-questions")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("yourself-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("question-writing").value
+          );
+
+          const hasCorrectQuestion =
+            writing.includes("when does the restaurant close") ||
+            writing.includes("what time does the restaurant close");
+
+          if (answer === "herself" && hasCorrectQuestion) {
+            completeActivity(8, "✓ Práctica gramatical guardada.");
+          } else {
+            setFeedback(
+              8,
+              "Completa herself y formula la pregunta sobre el restaurante."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-culture")
+        .addEventListener("click", () => {
+          const writing = document
+            .getElementById("culture-writing")
+            .value
+            .trim();
+
+          if (writing.length >= 12) {
+            completeActivity(9, "✓ Respuesta cultural guardada.");
+          } else {
+            setFeedback(9, "Escribe una oración completa en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("review-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("review-answer-2").value
+          );
+
+          const writing = document
+            .getElementById("final-writing")
+            .value
+            .trim();
+
+          if (
+            answer1 === "storm" &&
+            answer2 === "anything" &&
+            writing.length >= 100
+          ) {
+            completeActivity(10, "✓ ¡Entrega 3.3 completada!");
+          } else {
+            setFeedback(
+              10,
+              "Completa storm, anything y escribe al menos cuatro oraciones en inglés."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
 </body>
 </html>

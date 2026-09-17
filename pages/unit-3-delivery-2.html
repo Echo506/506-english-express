@@ -20,6 +20,20 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -62,7 +76,6 @@
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
         <p class="kicker">Unidad 03 · Entrega 02</p>
         <h1>Una vida</h1>
@@ -104,8 +117,6 @@
       </section>
 
       <section class="lesson-sections">
-
-        <!-- ACTIVIDAD 1 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -130,17 +141,11 @@
 
           <div class="dialogue-box">
             <p><strong>Kevin:</strong> O.K., Barbara. Where do you want to begin?</p>
-
             <p><strong>Barbara:</strong> With Marcus Jackson. He was brilliant. I heard him play the saxophone in Chicago. I'll never forget it.</p>
-
             <p><strong>Kevin:</strong> O.K. Let's see... I have his biography here...</p>
-
             <p><strong>Kevin:</strong> Marcus Jackson. He was born in a small town in southern Georgia. He came from a poor family: his father was a farm worker, and Marcus was the youngest of ten children.</p>
-
             <p><strong>Kevin:</strong> He had very little schooling, and left home when he was fifteen. Later he went to San Francisco, where he joined the navy.</p>
-
             <p><strong>Barbara:</strong> When did he start playing jazz?</p>
-
             <p><strong>Kevin:</strong> In the early fifties. He traveled to Japan and lived in Yokohama for four years. He played in a small bar there, and became quite well known.</p>
           </div>
 
@@ -161,7 +166,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 2 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
@@ -186,21 +190,13 @@
 
           <div class="dialogue-box">
             <p><strong>Kevin:</strong> He came back to the States in 1954 and met up with Boots Robinson. They made their first record in 1955, which was a big hit.</p>
-
             <p><strong>Barbara:</strong> Didn't he also play with Bobby Lee for a while?</p>
-
             <p><strong>Kevin:</strong> Yes, and they got married in 1960. They didn't have any children. They settled here in New Orleans, and then moved to New York, where they lived until Marcus' death in 1963.</p>
-
             <p><strong>Barbara:</strong> Where did he play in New Orleans?</p>
-
             <p><strong>Kevin:</strong> In a little bar in the French Quarter. It's got a great atmosphere. It's just like it was forty years ago.</p>
-
             <p><strong>Barbara:</strong> Good. I'll go there tomorrow night. Where is it?</p>
-
             <p><strong>Kevin:</strong> It's in a small alley off Bourbon Street. It's called “The Blue Lagoon”.</p>
-
             <p><strong>Barbara:</strong> Great.</p>
-
             <p><strong>Kevin:</strong> Before you go, take these records. Listen to them. I think you'll like them.</p>
           </div>
 
@@ -221,7 +217,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 3 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
@@ -233,78 +228,30 @@
 
           <div class="question-block">
             <p><strong>1. ¿Dónde nació Marcus Jackson?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="life-q1" value="a">
-              In southern Georgia
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="life-q1" value="b">
-              In New York
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="life-q1" value="c">
-              In Japan
-            </label>
+            <label class="option-label"><input type="radio" name="life-q1" value="a"> In southern Georgia</label>
+            <label class="option-label"><input type="radio" name="life-q1" value="b"> In New York</label>
+            <label class="option-label"><input type="radio" name="life-q1" value="c"> In Japan</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. ¿Cuánto tiempo vivió Marcus en Yokohama?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="life-q2" value="a">
-              For one year
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="life-q2" value="b">
-              For four years
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="life-q2" value="c">
-              For ten years
-            </label>
+            <label class="option-label"><input type="radio" name="life-q2" value="a"> For one year</label>
+            <label class="option-label"><input type="radio" name="life-q2" value="b"> For four years</label>
+            <label class="option-label"><input type="radio" name="life-q2" value="c"> For ten years</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. ¿Cuándo hicieron Marcus y Boots Robinson su primer disco?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="life-q3" value="a">
-              In 1954
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="life-q3" value="b">
-              In 1955
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="life-q3" value="c">
-              In 1960
-            </label>
+            <label class="option-label"><input type="radio" name="life-q3" value="a"> In 1954</label>
+            <label class="option-label"><input type="radio" name="life-q3" value="b"> In 1955</label>
+            <label class="option-label"><input type="radio" name="life-q3" value="c"> In 1960</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. ¿Cómo se llama el bar del French Quarter?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="life-q4" value="a">
-              The Blue Lagoon
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="life-q4" value="b">
-              The Jazz House
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="life-q4" value="c">
-              The Golden Record
-            </label>
+            <label class="option-label"><input type="radio" name="life-q4" value="a"> The Blue Lagoon</label>
+            <label class="option-label"><input type="radio" name="life-q4" value="b"> The Jazz House</label>
+            <label class="option-label"><input type="radio" name="life-q4" value="c"> The Golden Record</label>
           </div>
 
           <div class="activity-actions">
@@ -315,7 +262,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 4 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
@@ -328,7 +274,6 @@
           <div class="vocabulary-columns">
             <section class="vocabulary-group">
               <h3>La vida de una persona</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>biography</dt><dd>biografía</dd></div>
                 <div><dt>birth</dt><dd>nacimiento</dd></div>
@@ -346,7 +291,6 @@
 
             <section class="vocabulary-group">
               <h3>Lugares y cultura</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>quarter</dt><dd>barrio</dd></div>
                 <div><dt>French Quarter</dt><dd>Barrio Francés</dd></div>
@@ -364,7 +308,6 @@
 
             <section class="vocabulary-group">
               <h3>Acciones importantes</h3>
-
               <dl class="vocabulary-list">
                 <div><dt>to begin</dt><dd>empezar</dd></div>
                 <div><dt>to be born</dt><dd>nacer</dd></div>
@@ -386,7 +329,6 @@
             <label for="vocabulary-answer">
               Complete: “Marcus Jackson played the __________.”
             </label>
-
             <input
               id="vocabulary-answer"
               type="text"
@@ -403,7 +345,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 5 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
@@ -416,7 +357,6 @@
           <div class="phrase-groups">
             <section class="phrase-group">
               <h3>Pedir información</h3>
-
               <dl class="phrase-list">
                 <div><dt>Tell me about her.</dt><dd>Háblame de ella.</dd></div>
                 <div><dt>What do you know about her?</dt><dd>¿Qué sabes de ella?</dd></div>
@@ -429,7 +369,6 @@
 
             <section class="phrase-group">
               <h3>Dar detalles biográficos</h3>
-
               <dl class="phrase-list">
                 <div><dt>He was born in Georgia.</dt><dd>Nació en Georgia.</dd></div>
                 <div><dt>He grew up in New York.</dt><dd>Creció en Nueva York.</dd></div>
@@ -442,7 +381,6 @@
 
             <section class="phrase-group">
               <h3>Tiempo y apreciación</h3>
-
               <dl class="phrase-list">
                 <div><dt>I lived in London for five years.</dt><dd>Viví en Londres durante cinco años.</dd></div>
                 <div><dt>I traveled to Japan a long time ago.</dt><dd>Viajé a Japón hace mucho tiempo.</dd></div>
@@ -457,7 +395,6 @@
             <label for="biography-answer">
               Complete: “Marcus __________ born in Georgia.”
             </label>
-
             <input
               id="biography-answer"
               type="text"
@@ -470,7 +407,6 @@
             <label for="biography-writing">
               Escribe una pregunta en inglés sobre la vida pasada de una persona:
             </label>
-
             <textarea
               id="biography-writing"
               placeholder="Where did he live?"
@@ -485,7 +421,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 6 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
@@ -497,14 +432,11 @@
 
           <section class="oral-practice-block">
             <h3>Algunos verbos irregulares</h3>
-
             <p class="example-box">
               They are making a record. →
               <strong>They made a record.</strong><br><br>
-
               He comes from Georgia. →
               <strong>He came from Georgia.</strong><br><br>
-
               I am getting married. →
               <strong>I got married.</strong>
             </p>
@@ -512,12 +444,10 @@
 
           <section class="oral-practice-block">
             <h3>Preguntas con did</h3>
-
             <p class="example-box">
               He traveled to Japan. →
               <strong>Did he travel to Japan?</strong>
             </p>
-
             <p>
               Después de <strong>did</strong>, el verbo vuelve a su forma base:
               <em>Did he travel?</em>, no <em>Did he traveled?</em>.
@@ -528,7 +458,6 @@
             <label for="irregular-answer-1">
               Complete: “They __________ their first record in 1955.”
             </label>
-
             <input
               id="irregular-answer-1"
               type="text"
@@ -541,7 +470,6 @@
             <label for="irregular-answer-2">
               Complete: “Did Marcus __________ to Japan?”
             </label>
-
             <input
               id="irregular-answer-2"
               type="text"
@@ -558,7 +486,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 7 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
@@ -570,12 +497,10 @@
 
           <section class="oral-practice-block">
             <h3>Oraciones negativas en pasado</h3>
-
             <p class="example-box">
               I heard him play the saxophone, not the violin. →
               <strong>I didn't hear him play the violin.</strong>
             </p>
-
             <p>
               Con <strong>didn't</strong>, usamos el verbo base:
               <em>didn't hear</em>, <em>didn't have</em>, <em>didn't travel</em>.
@@ -584,22 +509,17 @@
 
           <section class="oral-practice-block">
             <h3>Duración con for</h3>
-
             <p class="example-box">
               She lived in the States from 1986 to 1988. →
               <strong>She lived in the States for two years.</strong>
             </p>
-
-            <p>
-              Marcus lived in Yokohama <strong>for four years</strong>.
-            </p>
+            <p>Marcus lived in Yokohama <strong>for four years</strong>.</p>
           </section>
 
           <div class="question-block">
             <label for="didnt-answer">
               Complete: “Marcus and Bobby Lee __________ have any children.”
             </label>
-
             <input
               id="didnt-answer"
               type="text"
@@ -612,7 +532,6 @@
             <label for="for-answer">
               Complete: “Marcus lived in Yokohama __________ four years.”
             </label>
-
             <input
               id="for-answer"
               type="text"
@@ -629,7 +548,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 8 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
@@ -641,7 +559,6 @@
 
           <section class="oral-practice-block">
             <h3>Tiempo con ago</h3>
-
             <p class="example-box">
               I went there at 3:00 p.m. Two hours. →
               <strong>I was there two hours ago.</strong>
@@ -650,12 +567,10 @@
 
           <section class="oral-practice-block">
             <h3>Unir ideas con which</h3>
-
             <p class="example-box">
               They made a record. It was a big hit. →
               <strong>They made a record which was a big hit.</strong>
             </p>
-
             <p>
               En este tipo de oración, <strong>that</strong> puede sustituir a
               <strong>which</strong>.
@@ -666,7 +581,6 @@
             <label for="ago-answer">
               Complete: “I traveled to Japan two years __________.”
             </label>
-
             <input
               id="ago-answer"
               type="text"
@@ -679,7 +593,6 @@
             <label for="which-answer">
               Complete: “They made a record __________ was a big hit.”
             </label>
-
             <input
               id="which-answer"
               type="text"
@@ -696,7 +609,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 9 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
@@ -708,20 +620,17 @@
 
           <div class="reading-card">
             <h3>Una tradición musical</h3>
-
             <p>
               Nueva Orleans se asocia estrechamente con la historia del jazz.
               Su ubicación junto al río Mississippi, la mezcla de comunidades y
               las tradiciones musicales locales contribuyeron al desarrollo de
               estilos que influyeron en músicos de todo Estados Unidos.
             </p>
-
             <p>
               El French Quarter es una de las zonas más conocidas de la ciudad.
               Sus calles, arquitectura, música y festividades, como Mardi Gras,
               forman parte de la imagen cultural de Nueva Orleans.
             </p>
-
             <p>
               El jazz se caracteriza por la improvisación, la exploración musical
               y la interacción entre músicos. Su evolución se relaciona con
@@ -734,7 +643,6 @@
               Escribe una oración en inglés sobre jazz, Nueva Orleans, música o
               The Blue Lagoon:
             </label>
-
             <textarea
               id="culture-writing"
               placeholder="New Orleans is famous for jazz music."
@@ -749,7 +657,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
@@ -761,7 +668,6 @@
 
           <section class="oral-practice-block">
             <h3>Tu misión</h3>
-
             <p>
               Escribe una breve biografía de una persona real o inventada. Incluye
               lugar de nacimiento, una actividad pasada, duración de una etapa de
@@ -773,7 +679,6 @@
             <label for="review-answer-1">
               Complete: “He __________ born in Georgia.”
             </label>
-
             <input
               id="review-answer-1"
               type="text"
@@ -786,7 +691,6 @@
             <label for="review-answer-2">
               Complete: “She lived in London __________ five years.”
             </label>
-
             <input
               id="review-answer-2"
               type="text"
@@ -803,7 +707,6 @@
               <strong>brilliant</strong>, <strong>famous</strong> o
               <strong>well known</strong>.
             </label>
-
             <textarea
               id="final-writing"
               placeholder="She was born in San José. She studied music and played the piano. She lived in Costa Rica for ten years. She was a brilliant musician."
@@ -817,13 +720,13 @@
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
       </section>
 
       <section
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
@@ -834,11 +737,16 @@
           tiempo transcurrido.
         </p>
 
-        <a class="button button-primary" href="unit-3.html">
-          Volver a Unidad 3
-        </a>
-      </section>
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-3-delivery-3.html">
+            Siguiente entrega →
+          </a>
 
+          <a class="button button-outline" href="unit-3.html">
+            Volver a Unidad 3
+          </a>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -850,6 +758,326 @@
     </div>
   </footer>
 
-  <script src="../assets/js/unit3-delivery2.js"></script>
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit3.delivery2.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(saved)) {
+            return [];
+          }
+
+          return [...new Set(
+            saved
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const count = completed.length;
+        const percentage = Math.round((count / totalActivities) * 100);
+
+        progressText.textContent =
+          `${count} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const completeButton = card.querySelector(".complete-activity");
+
+          if (completeButton && isComplete) {
+            completeButton.textContent = "Actividad completada";
+          }
+        });
+
+        completionMessage.hidden = count !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="life-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="life-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="life-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="life-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "b" &&
+            answer3 === "b" &&
+            answer4 === "a"
+          ) {
+            completeActivity(3, "✓ ¡Correcto! Comprendiste la biografía.");
+          } else {
+            setFeedback(3, "Revisa los diálogos e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "saxophone") {
+            completeActivity(
+              4,
+              "✓ Correcto: Marcus Jackson played the saxophone."
+            );
+          } else {
+            setFeedback(4, "Pista: es un instrumento de jazz.");
+          }
+        });
+
+      document
+        .querySelector(".check-biography")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("biography-answer").value
+          );
+
+          const writing = document
+            .getElementById("biography-writing")
+            .value
+            .trim();
+
+          if (
+            answer === "was" &&
+            writing.length >= 10 &&
+            writing.includes("?")
+          ) {
+            completeActivity(5, "✓ Práctica de biografía guardada.");
+          } else {
+            setFeedback(
+              5,
+              "Completa was y escribe una pregunta completa en inglés."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-irregular")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("irregular-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("irregular-answer-2").value
+          );
+
+          if (answer1 === "made" && answer2 === "travel") {
+            completeActivity(
+              6,
+              "✓ Correcto: They made a record. Did Marcus travel to Japan?"
+            );
+          } else {
+            setFeedback(6, "Pista: made / travel.");
+          }
+        });
+
+      document
+        .querySelector(".check-duration")
+        .addEventListener("click", () => {
+          const didnt = normalize(
+            document.getElementById("didnt-answer").value
+          );
+
+          const forAnswer = normalize(
+            document.getElementById("for-answer").value
+          );
+
+          if (
+            (didnt === "didnt" || didnt === "didn't") &&
+            forAnswer === "for"
+          ) {
+            completeActivity(
+              7,
+              "✓ Correcto: They didn't have children. He lived there for four years."
+            );
+          } else {
+            setFeedback(7, "Pista: didn't / for.");
+          }
+        });
+
+      document
+        .querySelector(".check-connectors")
+        .addEventListener("click", () => {
+          const ago = normalize(
+            document.getElementById("ago-answer").value
+          );
+
+          const which = normalize(
+            document.getElementById("which-answer").value
+          );
+
+          if (ago === "ago" && (which === "which" || which === "that")) {
+            completeActivity(8, "✓ Correcto: ago / which.");
+          } else {
+            setFeedback(8, "Pista: ago / which.");
+          }
+        });
+
+      document
+        .querySelector(".check-culture")
+        .addEventListener("click", () => {
+          const writing = document
+            .getElementById("culture-writing")
+            .value
+            .trim();
+
+          if (writing.length >= 12) {
+            completeActivity(9, "✓ Respuesta cultural guardada.");
+          } else {
+            setFeedback(9, "Escribe una oración completa en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("review-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("review-answer-2").value
+          );
+
+          const writing = document
+            .getElementById("final-writing")
+            .value
+            .trim();
+
+          if (
+            answer1 === "was" &&
+            answer2 === "for" &&
+            writing.length >= 90
+          ) {
+            completeActivity(10, "✓ ¡Entrega 3.2 completada!");
+          } else {
+            setFeedback(
+              10,
+              "Completa was, for y escribe al menos cuatro oraciones en inglés."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
 </body>
 </html>

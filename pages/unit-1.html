@@ -24,29 +24,40 @@
       padding: 3.5rem 0 5rem;
     }
 
-    .lesson-hero {
-      margin-bottom: 2rem;
-      padding: 1.5rem;
+    .lesson-hero,
+    .audio-player-card,
+    .activity-card {
       border: 1px solid rgba(47, 215, 255, 0.32);
       border-radius: 18px;
-      background: rgba(4, 20, 39, 0.72);
+      background: rgba(4, 20, 39, 0.76);
       box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
     }
 
-    .lesson-hero h1 {
+    .lesson-hero {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+
+    .lesson-hero h1,
+    .activity-card h2,
+    .completion-card h2 {
       margin: 0;
       color: #effaff;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.65rem, 4vw, 3rem);
-      line-height: 1.2;
       text-transform: uppercase;
     }
 
-    .lesson-hero > p:last-child {
-      max-width: 850px;
-      margin: 1rem 0 0;
-      color: rgba(220, 240, 255, 0.8);
-      font-size: 1.12rem;
+    .lesson-hero h1 {
+      font-size: clamp(1.65rem, 4vw, 3rem);
+      line-height: 1.2;
+    }
+
+    .lesson-hero > p:last-child,
+    .activity-card p,
+    .activity-card li,
+    .completion-card p {
+      color: rgba(225, 243, 255, 0.86);
+      font-size: 1.05rem;
       line-height: 1.55;
     }
 
@@ -64,10 +75,12 @@
       margin-bottom: 0.65rem;
     }
 
-    .lesson-progress-header span {
+    .lesson-progress-header span,
+    .activity-label,
+    .audio-player-label {
       color: #ffc43d;
       font-family: "Orbitron", sans-serif;
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -75,7 +88,6 @@
 
     .lesson-progress-header strong {
       color: #8cecff;
-      font-size: 0.95rem;
     }
 
     .lesson-progress-track {
@@ -91,23 +103,24 @@
       height: 100%;
       border-radius: inherit;
       background: linear-gradient(90deg, #2fd7ff, #71ffc0);
-      box-shadow: 0 0 14px rgba(47, 215, 255, 0.7);
       transition: width 0.3s ease;
     }
 
     .audio-player-card {
-      margin: 1.5rem 0 2rem;
+      margin: 1.5rem 0 1rem;
       padding: 1.25rem;
-      border: 1px solid rgba(47, 215, 255, 0.42);
-      border-radius: 16px;
-      background: rgba(4, 20, 39, 0.78);
-      box-shadow: 0 0 28px rgba(47, 215, 255, 0.12);
+    }
+
+    .audio-player-info,
+    .audio-player-controls,
+    .activity-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
     }
 
     .audio-player-info {
-      display: flex;
       align-items: flex-start;
-      gap: 0.85rem;
     }
 
     .audio-player-icon {
@@ -124,113 +137,91 @@
 
     .audio-player-label {
       margin: 0 0 0.25rem;
-      color: #ffc43d;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
 
     .audio-player-info h2 {
       margin: 0;
       color: #effaff;
       font-family: "Orbitron", sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       text-transform: uppercase;
     }
 
     .audio-player-info p:last-child {
       margin: 0.35rem 0 0;
       color: rgba(220, 240, 255, 0.78);
-      line-height: 1.4;
     }
 
     .audio-player-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
       margin-top: 1rem;
     }
 
-    .audio-play-button {
+    .audio-play-button,
+    .activity-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      min-height: 42px;
-      padding: 0.65rem 0.95rem;
-      border: 1px solid rgba(47, 215, 255, 0.72);
-      border-radius: 9px;
-      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
-      box-shadow: 0 0 18px rgba(47, 215, 255, 0.24);
-      color: #061321;
+      min-height: 40px;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid rgba(47, 215, 255, 0.65);
+      border-radius: 8px;
+      background: rgba(47, 215, 255, 0.12);
+      color: #b7f5ff;
       cursor: pointer;
       font-family: "Orbitron", sans-serif;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .audio-play-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 26px rgba(47, 215, 255, 0.46);
+    .audio-play-button {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      color: #061321;
     }
 
-    .audio-time {
-      color: #8cecff;
-      font-variant-numeric: tabular-nums;
+    .audio-play-button:hover,
+    .activity-button:hover {
+      background: rgba(47, 215, 255, 0.25);
+    }
+
+    .audio-time,
+    .activity-status {
+      color: #71ffc0;
       font-weight: 700;
     }
 
     .audio-progress {
       width: 100%;
-      height: 6px;
       margin-top: 1rem;
       accent-color: #2fd7ff;
-      cursor: pointer;
     }
 
     .activity-card {
       margin: 1.25rem 0;
       padding: clamp(1.15rem, 3vw, 1.7rem);
-      border: 1px solid rgba(118, 226, 255, 0.28);
-      border-radius: 16px;
-      background: rgba(5, 16, 35, 0.74);
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+    }
+
+    .activity-card h2 {
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 1.3;
     }
 
     .activity-label {
       margin: 0 0 0.55rem;
-      color: #ffc43d;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .activity-card h2 {
-      margin: 0;
-      color: #effaff;
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
-      line-height: 1.3;
-      text-transform: uppercase;
-    }
-
-    .activity-card p,
-    .activity-card li {
-      color: rgba(225, 243, 255, 0.84);
-      font-size: 1.05rem;
-      line-height: 1.55;
     }
 
     .activity-card ul,
     .activity-card ol {
-      padding-left: 1.25rem;
+      padding-left: 1.3rem;
+    }
+
+    .activity-card.is-complete {
+      border-color: rgba(113, 255, 192, 0.7);
+    }
+
+    .activity-card.is-complete .activity-label {
+      color: #71ffc0;
     }
 
     .dialogue {
@@ -262,7 +253,6 @@
       padding: 0.65rem 0.75rem;
       border: 1px solid rgba(118, 226, 255, 0.24);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.03);
       cursor: pointer;
     }
 
@@ -272,7 +262,8 @@
 
     .student-input {
       width: 100%;
-      margin-top: 0.55rem;
+      box-sizing: border-box;
+      margin: 0.55rem 0 1rem;
       padding: 0.75rem;
       border: 1px solid rgba(118, 226, 255, 0.35);
       border-radius: 8px;
@@ -293,47 +284,8 @@
     }
 
     .activity-actions {
-      display: flex;
-      align-items: center;
       flex-wrap: wrap;
-      gap: 0.75rem;
       margin-top: 1rem;
-    }
-
-    .activity-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 39px;
-      padding: 0.6rem 0.85rem;
-      border: 1px solid rgba(47, 215, 255, 0.6);
-      border-radius: 8px;
-      background: rgba(47, 215, 255, 0.12);
-      color: #b7f5ff;
-      cursor: pointer;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.66rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .activity-button:hover {
-      background: rgba(47, 215, 255, 0.22);
-    }
-
-    .activity-status {
-      color: #71ffc0;
-      font-size: 0.96rem;
-      font-weight: 700;
-    }
-
-    .activity-card.is-complete {
-      border-color: rgba(113, 255, 192, 0.5);
-    }
-
-    .activity-card.is-complete .activity-label {
-      color: #71ffc0;
     }
 
     .vocabulary-grid {
@@ -375,17 +327,16 @@
       text-align: center;
     }
 
-    .completion-card h2 {
-      margin: 0;
-      color: #effaff;
-      font-family: "Orbitron", sans-serif;
-      text-transform: uppercase;
+    .completion-card p {
+      max-width: 700px;
+      margin: 0.8rem auto 1.2rem;
     }
 
-    .completion-card p {
-      margin: 0.8rem auto 1.2rem;
-      color: rgba(225, 243, 255, 0.85);
-      line-height: 1.5;
+    .completion-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
     @media (max-width: 650px) {
@@ -454,7 +405,6 @@
     <div class="container">
       <section class="lesson-hero">
         <p class="kicker">Unidad 01 · Entrega 01</p>
-
         <h1>Contactos: Un cóctel en Nueva York</h1>
 
         <p>
@@ -484,7 +434,6 @@
 
       <section class="activity-card" data-activity="1">
         <p class="activity-label">Actividad 01 · Diálogo</p>
-
         <h2>Un cóctel en Nueva York</h2>
 
         <p>
@@ -815,9 +764,7 @@
           they're.</strong>
         </p>
 
-        <p>
-          <strong>Ejemplo:</strong> American, he → He's American.
-        </p>
+        <p><strong>Ejemplo:</strong> American, he → He's American.</p>
 
         <label for="to-be-answer">
           Escriba dos frases usando <em>to be</em>:
@@ -879,9 +826,9 @@
         </p>
 
         <p>
-          Preguntas como <strong>How are you?</strong>, <strong>How's it going?</strong>,
-          <strong>How are things?</strong> o <strong>What's new?</strong> pueden
-          utilizarse como saludos informales.
+          Preguntas como <strong>How are you?</strong>,
+          <strong>How's it going?</strong>, <strong>How are things?</strong> o
+          <strong>What's new?</strong> pueden utilizarse como saludos informales.
         </p>
 
         <p>
@@ -947,15 +894,21 @@
       <section class="completion-card" id="completion-card" hidden>
         <p class="kicker">Entrega completada</p>
         <h2>¡Excelente trabajo!</h2>
+
         <p>
-          Completaste “Contactos: Un cóctel en Nueva York”. Tu avance se guardó
-          en este navegador y se intentará registrar en tu cuenta cuando hayas
-          iniciado sesión.
+          Completaste “Contactos: Un cóctel en Nueva York”.
+          Ya puedes continuar con la Entrega 2 de la Unidad 1.
         </p>
 
-        <a href="unit-1.html" class="button button-primary">
-          Volver a Unidad 1
-        </a>
+        <div class="completion-actions">
+          <a href="unit-1-delivery-2.html" class="button button-primary">
+            Siguiente entrega →
+          </a>
+
+          <a href="unit-1.html" class="button button-outline">
+            Volver a Unidad 1
+          </a>
+        </div>
       </section>
     </div>
   </main>
@@ -970,332 +923,326 @@
 
   <script type="module" src="../assets/js/supabase-auth.js?v=7"></script>
 
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const storageKey = "506EnglishExpress.unit1.delivery1.progress";
-    const totalActivities = 9;
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit1.delivery1.progress";
+      const totalActivities = 9;
 
-    const progressText = document.getElementById("lesson-progress-text");
-    const progressFill = document.getElementById("lesson-progress-fill");
-    const completionCard = document.getElementById("completion-card");
-    const progressTrack = document.querySelector(".lesson-progress-track");
+      const progressText = document.getElementById("lesson-progress-text");
+      const progressFill = document.getElementById("lesson-progress-fill");
+      const completionCard = document.getElementById("completion-card");
+      const progressTrack = document.querySelector(".lesson-progress-track");
 
-    function getCompletedActivities() {
-      try {
-        const saved = JSON.parse(localStorage.getItem(storageKey));
+      function getCompletedActivities() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
 
-        if (!Array.isArray(saved)) {
+          if (!Array.isArray(saved)) {
+            return [];
+          }
+
+          return [...new Set(
+            saved
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
           return [];
         }
-
-        return [...new Set(
-          saved
-            .map(Number)
-            .filter(
-              (activity) =>
-                Number.isInteger(activity) &&
-                activity >= 1 &&
-                activity <= totalActivities
-            )
-        )].sort((a, b) => a - b);
-      } catch {
-        return [];
       }
-    }
 
-    function saveCompletedActivities(completed) {
-      localStorage.setItem(storageKey, JSON.stringify(completed));
-    }
+      function saveCompletedActivities(completed) {
+        localStorage.setItem(storageKey, JSON.stringify(completed));
+      }
 
-    function getActivityCard(activity) {
-      return document.querySelector(
-        `.activity-card[data-activity="${activity}"]`
-      );
-    }
+      function updateInterface() {
+        const completed = getCompletedActivities();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
 
-    function updateInterface() {
-      const completed = getCompletedActivities();
-      const count = completed.length;
-      const percent = Math.round((count / totalActivities) * 100);
-
-      progressText.textContent =
-        `${count} de ${totalActivities} secciones completadas`;
-
-      progressFill.style.width = `${percent}%`;
-      progressTrack.setAttribute("aria-valuenow", String(percent));
-
-      document.querySelectorAll(".activity-card[data-activity]").forEach((card) => {
-        const activity = Number(card.dataset.activity);
-        const status = document.getElementById(`activity-status-${activity}`);
-        const button = card.querySelector("[data-complete]");
-
-        if (completed.includes(activity)) {
-          card.classList.add("is-complete");
-
-          if (status) {
-            status.textContent = "✓ Actividad completada";
-          }
-
-          if (button) {
-            button.textContent = "Actividad completada";
-          }
-        } else {
-          card.classList.remove("is-complete");
+        if (progressText) {
+          progressText.textContent =
+            `${completedCount} de ${totalActivities} secciones completadas`;
         }
-      });
 
-      completionCard.hidden = count !== totalActivities;
-    }
+        if (progressFill) {
+          progressFill.style.width = `${percentage}%`;
+        }
 
-    function goToNextActivity(activity) {
-      const nextActivity = getActivityCard(activity + 1);
+        if (progressTrack) {
+          progressTrack.setAttribute("aria-valuenow", String(percentage));
+        }
 
-      if (!nextActivity) {
-        completionCard.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
+        document
+          .querySelectorAll(".activity-card[data-activity]")
+          .forEach((card) => {
+            const activity = Number(card.dataset.activity);
+            const status = document.getElementById(
+              `activity-status-${activity}`
+            );
+            const button = card.querySelector("[data-complete]");
 
-        return;
-      }
+            if (completed.includes(activity)) {
+              card.classList.add("is-complete");
 
-      nextActivity.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
+              if (status) {
+                status.textContent = "✓ Actividad completada";
+              }
 
-    async function markActivityComplete(activity, moveToNext = true) {
-      const completed = getCompletedActivities();
+              if (button) {
+                button.textContent = "Actividad completada";
+              }
+            } else {
+              card.classList.remove("is-complete");
 
-      if (!completed.includes(activity)) {
-        completed.push(activity);
-        completed.sort((a, b) => a - b);
-        saveCompletedActivities(completed);
-      }
-
-      updateInterface();
-
-      if (
-        activity === totalActivities &&
-        typeof window.saveStudentProgress === "function"
-      ) {
-        await window.saveStudentProgress({
-          unitNumber: 1,
-          activityId: "unit-1-delivery-1",
-          activityTitle: "Contactos: Un cóctel en Nueva York",
-          completed: true,
-          score: 100
-        });
-      }
-
-      if (moveToNext) {
-        goToNextActivity(activity);
-      }
-    }
-
-    function addNextButtons() {
-      document
-        .querySelectorAll(".activity-card[data-activity]")
-        .forEach((card) => {
-          const activity = Number(card.dataset.activity);
-
-          if (activity === totalActivities) {
-            return;
-          }
-
-          const actions = card.querySelector(".activity-actions");
-
-          if (!actions || actions.querySelector(".next-activity-button")) {
-            return;
-          }
-
-          const nextButton = document.createElement("button");
-
-          nextButton.type = "button";
-          nextButton.className = "activity-button next-activity-button";
-          nextButton.textContent = "Siguiente actividad →";
-
-          nextButton.addEventListener("click", () => {
-            markActivityComplete(activity, false);
-            goToNextActivity(activity);
+              if (status) {
+                status.textContent = "";
+              }
+            }
           });
 
-          actions.insertBefore(
-            nextButton,
-            actions.querySelector(".activity-status")
-          );
-        });
-    }
-
-    document.querySelectorAll("[data-complete]").forEach((button) => {
-      button.addEventListener("click", () => {
-        markActivityComplete(Number(button.dataset.complete));
-      });
-    });
-
-    document
-      .getElementById("check-comprehension")
-      .addEventListener("click", () => {
-        const answerOne = document.querySelector(
-          'input[name="question-1"]:checked'
-        )?.value;
-
-        const answerTwo = document.querySelector(
-          'input[name="question-2"]:checked'
-        )?.value;
-
-        const status = document.getElementById("activity-status-2");
-
-        if (answerOne === "Jeff" && answerTwo === "California") {
-          status.textContent =
-            "✓ ¡Correcto! Jeff presenta a Tom y Tom es de California.";
-
-          markActivityComplete(2);
-        } else {
-          status.textContent = "Revisa el diálogo e inténtalo otra vez.";
+        if (completionCard) {
+          completionCard.hidden = completedCount !== totalActivities;
         }
-      });
-
-    document
-      .getElementById("check-vocabulary")
-      .addEventListener("click", () => {
-        const answer = document
-          .getElementById("vocabulary-answer")
-          .value
-          .trim()
-          .toLowerCase();
-
-        const status = document.getElementById("activity-status-4");
-
-        if (
-          answer.includes("tom") &&
-          answer.includes("new") &&
-          answer.includes("cameraman")
-        ) {
-          status.textContent = "✓ Correcto: Tom is the new cameraman.";
-          markActivityComplete(4);
-        } else {
-          status.textContent = "Pista: Tom is the new cameraman.";
-        }
-      });
-
-    document
-      .getElementById("check-expressions")
-      .addEventListener("click", () => {
-        const greeting = document
-          .getElementById("greeting-answer")
-          .value
-          .trim()
-          .toLowerCase();
-
-        const country = document
-          .getElementById("country-answer")
-          .value
-          .trim()
-          .toLowerCase();
-
-        const status = document.getElementById("activity-status-5");
-
-        if (
-          (greeting === "hello" || greeting === "hi") &&
-          (country === "am" || country === "'m" || country === "come")
-        ) {
-          status.textContent =
-            "✓ ¡Muy bien! Hello, nice to meet you. / I am from Costa Rica.";
-
-          markActivityComplete(5);
-        } else {
-          status.textContent =
-            "Pista: Hello, nice to meet you. / I am from Costa Rica.";
-        }
-      });
-
-    const audio = document.getElementById("cocktail-audio");
-    const playButton = document.getElementById("audio-play-button");
-    const playIcon = document.getElementById("audio-play-icon");
-    const playText = document.getElementById("audio-play-text");
-    const audioProgress = document.getElementById("audio-progress");
-    const audioTime = document.getElementById("audio-time");
-
-    function formatTime(seconds) {
-      if (!Number.isFinite(seconds)) {
-        return "0:00";
       }
 
-      const minutes = Math.floor(seconds / 60);
-      const remainingSeconds = String(
-        Math.floor(seconds % 60)
-      ).padStart(2, "0");
+      async function markActivityComplete(activity) {
+        const completed = getCompletedActivities();
 
-      return `${minutes}:${remainingSeconds}`;
-    }
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveCompletedActivities(completed);
+        }
 
-    function updateAudioPlayer() {
-      const currentTime = audio.currentTime || 0;
-      const duration = audio.duration || 0;
+        updateInterface();
 
-      audioTime.textContent =
-        `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        if (
+          activity === totalActivities &&
+          typeof window.saveStudentProgress === "function"
+        ) {
+          try {
+            await window.saveStudentProgress({
+              unitNumber: 1,
+              activityId: "unit-1-delivery-1",
+              activityTitle: "Contactos: Un cóctel en Nueva York",
+              completed: true,
+              score: 100
+            });
+          } catch (error) {
+            console.warn("El progreso local se guardó.", error);
+          }
+        }
+      }
 
-      if (duration > 0) {
-        audioProgress.value = String(
-          (currentTime / duration) * 100
+      document.querySelectorAll("[data-complete]").forEach((button) => {
+        button.addEventListener("click", () => {
+          markActivityComplete(Number(button.dataset.complete));
+        });
+      });
+
+      const comprehensionButton = document.getElementById("check-comprehension");
+
+      if (comprehensionButton) {
+        comprehensionButton.addEventListener("click", () => {
+          const answerOne = document.querySelector(
+            'input[name="question-1"]:checked'
+          )?.value;
+
+          const answerTwo = document.querySelector(
+            'input[name="question-2"]:checked'
+          )?.value;
+
+          const status = document.getElementById("activity-status-2");
+
+          if (answerOne === "Jeff" && answerTwo === "California") {
+            if (status) {
+              status.textContent =
+                "✓ ¡Correcto! Jeff presenta a Tom y Tom es de California.";
+            }
+
+            markActivityComplete(2);
+          } else if (status) {
+            status.textContent = "Revisa el diálogo e inténtalo otra vez.";
+          }
+        });
+      }
+
+      const vocabularyButton = document.getElementById("check-vocabulary");
+
+      if (vocabularyButton) {
+        vocabularyButton.addEventListener("click", () => {
+          const answer = document
+            .getElementById("vocabulary-answer")
+            .value
+            .trim()
+            .toLowerCase();
+
+          const status = document.getElementById("activity-status-4");
+
+          if (
+            answer.includes("tom") &&
+            answer.includes("new") &&
+            answer.includes("cameraman")
+          ) {
+            if (status) {
+              status.textContent = "✓ Correcto: Tom is the new cameraman.";
+            }
+
+            markActivityComplete(4);
+          } else if (status) {
+            status.textContent = "Pista: Tom is the new cameraman.";
+          }
+        });
+      }
+
+      const expressionsButton = document.getElementById("check-expressions");
+
+      if (expressionsButton) {
+        expressionsButton.addEventListener("click", () => {
+          const greeting = document
+            .getElementById("greeting-answer")
+            .value
+            .trim()
+            .toLowerCase();
+
+          const country = document
+            .getElementById("country-answer")
+            .value
+            .trim()
+            .toLowerCase();
+
+          const status = document.getElementById("activity-status-5");
+
+          const greetingCorrect = greeting === "hello" || greeting === "hi";
+          const countryCorrect =
+            country === "am" ||
+            country === "'m" ||
+            country === "come";
+
+          if (greetingCorrect && countryCorrect) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Muy bien! Hello, nice to meet you. / I am from Costa Rica.";
+            }
+
+            markActivityComplete(5);
+          } else if (status) {
+            status.textContent =
+              "Pista: Hello, nice to meet you. / I am from Costa Rica.";
+          }
+        });
+      }
+
+      const audio = document.getElementById("cocktail-audio");
+      const playButton = document.getElementById("audio-play-button");
+      const playIcon = document.getElementById("audio-play-icon");
+      const playText = document.getElementById("audio-play-text");
+      const audioProgress = document.getElementById("audio-progress");
+      const audioTime = document.getElementById("audio-time");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) {
+          return "0:00";
+        }
+
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = String(
+          Math.floor(seconds % 60)
+        ).padStart(2, "0");
+
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      function updateAudioPlayer() {
+        if (!audio || !audioProgress || !audioTime) {
+          return;
+        }
+
+        const currentTime = audio.currentTime || 0;
+        const duration = audio.duration || 0;
+
+        audioTime.textContent =
+          `${formatTime(currentTime)} / ${formatTime(duration)}`;
+
+        if (duration > 0) {
+          audioProgress.value = String((currentTime / duration) * 100);
+        }
+      }
+
+      function setAudioButton(isPlaying) {
+        if (!playButton || !playIcon || !playText) {
+          return;
+        }
+
+        playIcon.textContent = isPlaying ? "❚❚" : "▶";
+        playText.textContent = isPlaying
+          ? "Pausar audio"
+          : "Reproducir audio";
+
+        playButton.setAttribute(
+          "aria-label",
+          isPlaying ? "Pausar audio" : "Reproducir audio"
         );
       }
-    }
 
-    function setAudioButton(isPlaying) {
-      playIcon.textContent = isPlaying ? "❚❚" : "▶";
-      playText.textContent = isPlaying
-        ? "Pausar audio"
-        : "Reproducir audio";
+      if (audio && playButton) {
+        playButton.addEventListener("click", async () => {
+          if (audio.paused) {
+            try {
+              await audio.play();
+            } catch (error) {
+              console.warn("No se pudo reproducir el audio.", error);
+            }
+          } else {
+            audio.pause();
+          }
+        });
 
-      playButton.setAttribute(
-        "aria-label",
-        isPlaying ? "Pausar audio" : "Reproducir audio"
-      );
-    }
+        audio.addEventListener("loadedmetadata", updateAudioPlayer);
+        audio.addEventListener("timeupdate", updateAudioPlayer);
 
-    playButton.addEventListener("click", async () => {
-      if (audio.paused) {
-        await audio.play();
-      } else {
-        audio.pause();
+        audio.addEventListener("play", () => {
+          setAudioButton(true);
+        });
+
+        audio.addEventListener("pause", () => {
+          setAudioButton(false);
+        });
+
+        audio.addEventListener("ended", () => {
+          audio.currentTime = 0;
+
+          if (audioProgress) {
+            audioProgress.value = "0";
+          }
+
+          updateAudioPlayer();
+          setAudioButton(false);
+        });
       }
-    });
 
-    audio.addEventListener("loadedmetadata", updateAudioPlayer);
-    audio.addEventListener("timeupdate", updateAudioPlayer);
+      if (audio && audioProgress) {
+        audioProgress.addEventListener("input", () => {
+          if (audio.duration) {
+            audio.currentTime =
+              (Number(audioProgress.value) / 100) * audio.duration;
+          }
+        });
+      }
 
-    audio.addEventListener("play", () => {
-      setAudioButton(true);
-    });
-
-    audio.addEventListener("pause", () => {
-      setAudioButton(false);
-    });
-
-    audio.addEventListener("ended", () => {
-      audio.currentTime = 0;
-      audioProgress.value = "0";
       updateAudioPlayer();
-      setAudioButton(false);
+      updateInterface();
     });
-
-    audioProgress.addEventListener("input", () => {
-      if (audio.duration) {
-        audio.currentTime =
-          (Number(audioProgress.value) / 100) * audio.duration;
-      }
-    });
-
-    addNextButtons();
-    updateAudioPlayer();
-    updateInterface();
-  });
-</script>
+  </script>
 </body>
 </html>

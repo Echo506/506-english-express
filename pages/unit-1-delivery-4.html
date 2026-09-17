@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07101f">
-  <meta
-    name="description"
-    content="Unidad 1, Entrega 4: En el World Trade Center."
-  >
+  <meta name="description" content="Unidad 1, entrega 4: En el World Trade Center.">
 
   <title>En el World Trade Center | 506 English Express</title>
 
@@ -17,9 +14,345 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-
   <link rel="stylesheet" href="../assets/css/styles.css">
-  <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-page {
+      padding: 3.5rem 0 5rem;
+    }
+
+    .lesson-hero,
+    .audio-player-card,
+    .activity-card {
+      border: 1px solid rgba(47, 215, 255, 0.32);
+      border-radius: 18px;
+      background: rgba(4, 20, 39, 0.76);
+      box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
+    }
+
+    .lesson-hero {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+
+    .lesson-hero h1,
+    .activity-card h2,
+    .completion-card h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .lesson-hero h1 {
+      font-size: clamp(1.65rem, 4vw, 3rem);
+      line-height: 1.2;
+    }
+
+    .lesson-hero > p:last-child,
+    .activity-card p,
+    .activity-card li,
+    .completion-card p {
+      color: rgba(225, 243, 255, 0.86);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .lesson-progress {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(47, 215, 255, 0.2);
+    }
+
+    .lesson-progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .lesson-progress-header span,
+    .activity-label,
+    .audio-player-label {
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lesson-progress-header strong {
+      color: #8cecff;
+    }
+
+    .lesson-progress-track {
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(47, 215, 255, 0.26);
+      border-radius: 999px;
+      background: rgba(1, 11, 27, 0.75);
+    }
+
+    .lesson-progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2fd7ff, #71ffc0);
+      box-shadow: 0 0 14px rgba(47, 215, 255, 0.7);
+      transition: width 0.3s ease;
+    }
+
+    .audio-player-card {
+      margin: 1.5rem 0 1rem;
+      padding: 1.25rem;
+    }
+
+    .audio-player-info,
+    .audio-player-controls,
+    .activity-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .audio-player-info {
+      align-items: flex-start;
+    }
+
+    .audio-player-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      place-items: center;
+      border: 1px solid rgba(47, 215, 255, 0.58);
+      border-radius: 50%;
+      background: rgba(47, 215, 255, 0.1);
+      font-size: 1.25rem;
+    }
+
+    .audio-player-label {
+      margin: 0 0 0.25rem;
+    }
+
+    .audio-player-info h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+    }
+
+    .audio-player-info p:last-child {
+      margin: 0.35rem 0 0;
+      color: rgba(220, 240, 255, 0.78);
+    }
+
+    .audio-player-controls {
+      margin-top: 1rem;
+    }
+
+    .audio-play-button,
+    .activity-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid rgba(47, 215, 255, 0.65);
+      border-radius: 8px;
+      background: rgba(47, 215, 255, 0.12);
+      color: #b7f5ff;
+      cursor: pointer;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .audio-play-button {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      color: #061321;
+    }
+
+    .audio-play-button:hover,
+    .activity-button:hover {
+      background: rgba(47, 215, 255, 0.25);
+    }
+
+    .audio-time,
+    .activity-status {
+      color: #71ffc0;
+      font-weight: 700;
+    }
+
+    .audio-progress {
+      width: 100%;
+      margin-top: 1rem;
+      accent-color: #2fd7ff;
+    }
+
+    .activity-card {
+      margin: 1.25rem 0;
+      padding: clamp(1.15rem, 3vw, 1.7rem);
+    }
+
+    .activity-card h2 {
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 1.3;
+    }
+
+    .activity-label {
+      margin: 0 0 0.55rem;
+    }
+
+    .activity-card ul,
+    .activity-card ol {
+      padding-left: 1.3rem;
+    }
+
+    .activity-card.is-complete {
+      border-color: rgba(113, 255, 192, 0.7);
+    }
+
+    .activity-card.is-complete .activity-label {
+      color: #71ffc0;
+    }
+
+    .dialogue {
+      margin-top: 1.1rem;
+      padding: 1rem;
+      border-left: 3px solid #2fd7ff;
+      border-radius: 0 10px 10px 0;
+      background: rgba(47, 215, 255, 0.06);
+    }
+
+    .dialogue p {
+      margin: 0.65rem 0;
+    }
+
+    .dialogue strong {
+      color: #8cecff;
+    }
+
+    .answer-options {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .answer-option {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.24);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .answer-option input {
+      accent-color: #2fd7ff;
+    }
+
+    .student-input {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0.55rem 0 1rem;
+      padding: 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.35);
+      border-radius: 8px;
+      outline: none;
+      background: rgba(1, 11, 27, 0.62);
+      color: #effaff;
+      font: inherit;
+    }
+
+    .student-input:focus {
+      border-color: #2fd7ff;
+      box-shadow: 0 0 0 3px rgba(47, 215, 255, 0.12);
+    }
+
+    textarea.student-input {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .activity-actions {
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-box {
+      padding: 1rem;
+      border: 1px solid rgba(118, 226, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(1, 11, 27, 0.34);
+    }
+
+    .vocabulary-box h3 {
+      margin: 0 0 0.6rem;
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .vocabulary-box p {
+      margin: 0;
+    }
+
+    .completion-card {
+      margin-top: 2rem;
+      padding: 1.7rem;
+      border: 1px solid rgba(113, 255, 192, 0.5);
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        rgba(113, 255, 192, 0.13),
+        rgba(4, 20, 39, 0.78)
+      );
+      text-align: center;
+    }
+
+    .completion-card p {
+      max-width: 700px;
+      margin: 0.8rem auto 1.2rem;
+    }
+
+    .completion-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 650px) {
+      .lesson-page {
+        padding-top: 2.2rem;
+      }
+
+      .lesson-progress-header,
+      .audio-player-controls {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .vocabulary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -45,7 +378,7 @@
   <header>
     <nav class="container navbar" aria-label="Navegación principal">
       <a href="../index.html" class="brand" aria-label="Volver al inicio">
-        <span class="brand-mark" aria-hidden="true"><span>⚡</span></span>
+        <span class="brand-mark" aria-hidden="true">⚡</span>
         <span class="brand-text">English <strong>506</strong> Express</span>
       </a>
 
@@ -54,17 +387,22 @@
         <a href="unit-1.html">Unidad 1</a>
       </div>
 
-      <a href="unit-1-delivery-3.html" class="button button-outline button-small">
-        Entrega anterior
-      </a>
+      <div class="nav-actions">
+        <a href="progress.html" class="button button-primary button-small">
+          Mi progreso
+        </a>
+
+        <a href="unit-1.html" class="button button-outline button-small">
+          Ver unidad
+        </a>
+      </div>
     </nav>
   </header>
 
   <main class="lesson-page">
     <div class="container">
-      <section class="lesson-banner">
+      <section class="lesson-hero">
         <p class="kicker">Unidad 01 · Entrega 04</p>
-
         <h1>En el World Trade Center</h1>
 
         <p>
@@ -74,874 +412,512 @@
         </p>
 
         <div class="lesson-progress">
-          <div>
-            <div class="lesson-progress-label">
-              <span>Progreso de la entrega</span>
-              <span id="progress-text">0 de 9 secciones completadas</span>
-            </div>
-
-            <div
-              class="progress-track"
-              role="progressbar"
-              aria-label="Progreso de la entrega"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="0"
-            >
-              <div class="progress-fill" id="progress-fill"></div>
-            </div>
+          <div class="lesson-progress-header">
+            <span>Progreso de la entrega</span>
+            <strong id="lesson-progress-text">0 de 9 secciones completadas</strong>
           </div>
 
-          <button
-            class="button button-outline button-small"
-            id="reset-progress"
-            type="button"
+          <div
+            class="lesson-progress-track"
+            role="progressbar"
+            aria-label="Progreso de la entrega"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
           >
-            Reiniciar
-          </button>
+            <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
+          </div>
         </div>
       </section>
 
-      <section class="lesson-sections">
-
-        <article class="lesson-section activity-card" data-activity="1">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
-              <h2>Esperando a Van der Wildt</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🏢</span>
-          </div>
-
-          <p>
-            Lea y escuche el diálogo. Observe cómo Barbara, Jeff, Tom y Phil
-            hablan por teléfono y se preparan para una entrevista.
-          </p>
-
-          <div class="audio-placeholder">
-            <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-1/world-trade-center.mp3</strong>
-            </span>
-          </div>
-
-          <div class="dialogue-box">
-            <p><strong>Phil:</strong> Hello?</p>
-
-            <p><strong>Jeff:</strong> Is Barbara there?</p>
-
-            <p>
-              <strong>Phil:</strong>
-              Hey, Barbara, it's for you. It's Jeff.
-            </p>
-
-            <p><strong>Barbara:</strong> Hi, Jeff.</p>
-
-            <p><strong>Jeff:</strong> How's it going?</p>
-
-            <p>
-              <strong>Barbara:</strong>
-              Fine, fine. We're almost ready. We're just waiting for Van der Wildt.
-            </p>
-
-            <p>
-              <strong>Jeff:</strong>
-              Don't worry. He always arrives late for interviews.
-            </p>
-
-            <p>
-              <strong>Barbara:</strong>
-              That's O.K., because we're also waiting for the new cameraman.
-              Where the hell is he?
-            </p>
-
-            <p>
-              <strong>Tom:</strong>
-              Hi, Barbara. The new cameraman is here, right on time. And my
-              name's Tom.
-            </p>
-
-            <p><strong>Barbara:</strong> Oh, er... Hi, Tom.</p>
-
-            <p><strong>Tom:</strong> I'm ready when you are, Barbara.</p>
-
-            <p>
-              <strong>Barbara:</strong>
-              Excuse me — I'm just letting off steam.
-            </p>
-
-            <p>
-              <strong>Phil:</strong>
-              Hey, come on! Here's Van der Wildt. He's walking in the door!
-            </p>
-
-            <p>
-              <strong>Tom:</strong>
-              Hurry up, Barbara! We're all waiting for you.
-            </p>
-
-            <p><strong>Barbara:</strong> Oh!</p>
-          </div>
-
-          <div class="translation-box">
-            <strong>Idea principal:</strong>
-            <span>
-              El equipo está casi listo para entrevistar a Van der Wildt.
-              Barbara espera al nuevo camarógrafo, pero Tom llega a tiempo y
-              Van der Wildt finalmente entra por la puerta.
-            </span>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
-            </button>
-
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="2">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 02 · COMPRENSIÓN</p>
-              <h2>Compruebe su comprensión</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🧠</span>
-          </div>
-
-          <div class="question-block">
-            <p><strong>1. ¿A quién está esperando el equipo?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="question-1" value="a">
-              They are waiting for Van der Wildt.
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-1" value="b">
-              They are waiting for a taxi.
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-1" value="c">
-              They are waiting for Jeff's family.
-            </label>
-          </div>
-
-          <div class="question-block">
-            <p><strong>2. ¿Quién es Tom?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="question-2" value="a">
-              He is the new interviewer.
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-2" value="b">
-              He is the new cameraman.
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-2" value="c">
-              He is the telephone operator.
-            </label>
-          </div>
-
-          <div class="question-block">
-            <p><strong>3. ¿Qué hace Van der Wildt al final?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="question-3" value="a">
-              He is walking in the door.
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-3" value="b">
-              He is calling Jeff.
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-3" value="c">
-              He is leaving the building.
-            </label>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-comprehension" type="button">
-              Revisar respuestas
-            </button>
-
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="3">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 03 · VOCABULARIO</p>
-              <h2>El teléfono y las acciones</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">☎️</span>
-          </div>
-
-          <div class="vocabulary-columns">
-            <section class="vocabulary-group">
-              <h3>Teléfono</h3>
-
-              <dl class="vocabulary-list">
-                <div><dt>telephone / phone</dt><dd>teléfono</dd></div>
-                <div><dt>telephone booth</dt><dd>cabina de teléfono</dd></div>
-                <div><dt>receiver</dt><dd>auricular</dd></div>
-                <div><dt>operator</dt><dd>operadora/or</dd></div>
-                <div><dt>caller</dt><dd>persona que llama</dd></div>
-                <div><dt>dial tone</dt><dd>tono de marcar</dd></div>
-                <div><dt>coin</dt><dd>moneda</dd></div>
-                <div><dt>call</dt><dd>llamada</dd></div>
-                <div><dt>collect call</dt><dd>llamada a cobro revertido</dd></div>
-                <div><dt>long distance call</dt><dd>llamada de larga distancia</dd></div>
-                <div><dt>local call</dt><dd>llamada local</dd></div>
-                <div><dt>information</dt><dd>información</dd></div>
-              </dl>
-            </section>
-
-            <section class="vocabulary-group">
-              <h3>Objetos y palabras</h3>
-
-              <dl class="vocabulary-list">
-                <div><dt>pencil</dt><dd>lápiz</dd></div>
-                <div><dt>pen</dt><dd>bolígrafo, pluma</dd></div>
-                <div><dt>paper</dt><dd>papel</dd></div>
-                <div><dt>note-pad</dt><dd>bloc de notas</dd></div>
-                <div><dt>door</dt><dd>puerta</dd></div>
-                <div><dt>steam</dt><dd>vapor</dd></div>
-                <div><dt>hell</dt><dd>infierno; expresión de enfado</dd></div>
-                <div><dt>heaven</dt><dd>paraíso</dd></div>
-                <div><dt>God</dt><dd>Dios</dd></div>
-              </dl>
-            </section>
-
-            <section class="vocabulary-group">
-              <h3>Verbos y expresiones</h3>
-
-              <dl class="vocabulary-list">
-                <div><dt>to wait for</dt><dd>esperar a</dd></div>
-                <div><dt>to worry</dt><dd>preocuparse</dd></div>
-                <div><dt>to walk in</dt><dd>entrar caminando</dd></div>
-                <div><dt>to hurry</dt><dd>darse prisa</dd></div>
-                <div><dt>to look for</dt><dd>buscar</dd></div>
-                <div><dt>to go out</dt><dd>salir</dd></div>
-                <div><dt>to come in</dt><dd>entrar</dd></div>
-                <div><dt>to get on</dt><dd>subirse, entrar</dd></div>
-                <div><dt>to get off</dt><dd>bajarse, salir</dd></div>
-                <div><dt>to arrive</dt><dd>llegar</dd></div>
-                <div><dt>to call</dt><dd>llamar</dd></div>
-                <div><dt>to write</dt><dd>escribir</dd></div>
-                <div><dt>to read</dt><dd>leer</dd></div>
-                <div><dt>almost</dt><dd>casi</dd></div>
-                <div><dt>ready</dt><dd>listo/a, preparado/a</dd></div>
-                <div><dt>on time</dt><dd>a tiempo</dd></div>
-                <div><dt>late / early</dt><dd>tarde / temprano</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <div class="question-block">
-            <label for="vocabulary-answer">
-              Complete: “No te preocupes.” →
-              <strong>Don't __________.</strong>
-            </label>
-
-            <input
-              id="vocabulary-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe la palabra que falta"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-vocabulary" type="button">
-              Revisar respuesta
-            </button>
-
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="4">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 04 · CÓMO SE DICE</p>
-              <h2>Teléfono, disculpas y descontento</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">💬</span>
-          </div>
-
-          <div class="phrase-groups">
-            <section class="phrase-group">
-              <h3>1. Contestar al teléfono</h3>
-
-              <dl class="phrase-list">
-                <div><dt>Hello, Jeff speaking.</dt><dd>Soy Jeff. ¿Diga?</dd></div>
-                <div><dt>Hello, this is Jeff.</dt><dd>Soy Jeff. ¿Diga?</dd></div>
-                <div><dt>Hello, 650 8332.</dt><dd>Aquí el 650 8332. ¿Diga?</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>2. Pedir noticias</h3>
-
-              <dl class="phrase-list">
-                <div><dt>How's it going?</dt><dd>¿Cómo va todo?</dd></div>
-                <div><dt>How are you doing?</dt><dd>¿Cómo te va?</dd></div>
-                <div><dt>What's happening?</dt><dd>¿Qué pasa? ¿Qué ocurre?</dd></div>
-                <div><dt>Where is he?</dt><dd>¿Dónde está él?</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>3. Tranquilizar y disculparse</h3>
-
-              <dl class="phrase-list">
-                <div><dt>Don't worry.</dt><dd>No te preocupes.</dd></div>
-                <div><dt>Everything's fine.</dt><dd>Todo va bien.</dd></div>
-                <div><dt>That's O.K. / That's all right.</dt><dd>Está bien.</dd></div>
-                <div><dt>Excuse me.</dt><dd>Perdone / Perdona.</dd></div>
-                <div><dt>Pardon me.</dt><dd>Perdón.</dd></div>
-                <div><dt>I'm sorry.</dt><dd>Lo siento.</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>4. Expresar enfado</h3>
-
-              <dl class="phrase-list">
-                <div><dt>Where the hell is he?</dt><dd>¿Dónde diablos está?</dd></div>
-                <div><dt>He makes me mad.</dt><dd>Me vuelve loco/a.</dd></div>
-                <div><dt>I'm furious.</dt><dd>Estoy furioso/a.</dd></div>
-                <div><dt>I'm very angry.</dt><dd>Estoy muy enfadado/a.</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <div class="sentence-practice">
-            <label for="phone-answer">
-              Complete: “¿Cómo va todo?” →
-              <strong>How's it __________?</strong>
-            </label>
-
-            <input
-              id="phone-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe la palabra que falta"
-            >
-          </div>
-
-          <div class="sentence-practice">
-            <label for="apology-answer">
-              Complete: “Perdón.” →
-              <strong>__________ me.</strong>
-            </label>
-
-            <input
-              id="apology-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe la palabra que falta"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-expressions" type="button">
-              Revisar respuestas
-            </button>
-
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="5">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 05 · RECUERDE</p>
-              <h2>Lenguaje respetuoso</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">💡</span>
-          </div>
-
-          <div class="remember-grid">
-            <article class="remember-card">
-              <span>01</span>
-              <p>
-                <strong>Hello?</strong> se usa al responder una llamada:
-                significa “¿Diga?”.
-              </p>
-            </article>
-
-            <article class="remember-card">
-              <span>02</span>
-              <p>
-                <strong>Ready when you are</strong> expresa que estás listo/a
-                y esperas la señal de la otra persona para comenzar.
-              </p>
-            </article>
-
-            <article class="remember-card">
-              <span>03</span>
-              <p>
-                <strong>I'm just letting off steam</strong> significa “me estoy
-                desahogando”; se usa cuando alguien expresa frustración.
-              </p>
-            </article>
-
-            <article class="remember-card">
-              <span>04</span>
-              <p>
-                Expresiones como <strong>hell</strong>, <strong>damn</strong> o
-                referencias religiosas pueden resultar ofensivas para algunas
-                personas. En situaciones formales, usa alternativas neutrales:
-                <strong>Where is he?</strong> o <strong>I'm upset.</strong>
-              </p>
-            </article>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar recordatorio como completado
-            </button>
-
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="6">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 06 · PRÁCTICA ORAL</p>
-              <h2>Respuestas cortas y preguntas</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🎤</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>1. Respuestas cortas con Yes</h3>
-
-            <p class="example-box">
-              <strong>Ejemplos:</strong>
-              Does he drive to work? → Yes, he does. /
-              Is he driving his car now? → Yes, he is.
-            </p>
-
-            <p>
-              Responda: Are you listening to me? / Does he work for “Thirty
-              Minutes”? / Are New Yorkers friendly? / Is there a lot of traffic
-              in the city?
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>2. Respuestas cortas con No</h3>
-
-            <p class="example-box">
-              <strong>Ejemplos:</strong>
-              Are you coming? → No, I'm not. /
-              Does he like Los Angeles? → No, he doesn't.
-            </p>
-
-            <p>
-              Responda: Does she want to come with us? / Are you waiting for Mr.
-              Smith? / Do Londoners work a lot? / Does he live in Hawaii? / Are
-              they very late?
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>3. Pronombres interrogativos</h3>
-
-            <p class="example-box">
-              <strong>Ejemplos:</strong>
-              He's staying at the London Hilton. →
-              Where is he staying? /
-              They start work at 9:15. →
-              When do they start work?
-            </p>
-
-            <p>
-              Elija la pregunta correcta: He goes to work by car. / Paul is
-              working hard because he's ambitious. / A man is waiting for her. /
-              He usually drinks whiskey and Coca-Cola. / I'm on East 22nd and
-              Fifth Avenue.
-            </p>
-          </section>
-
-          <label for="oral-answer">
-            Escriba una respuesta corta con <strong>Yes</strong>, una con
-            <strong>No</strong> y una pregunta con <strong>Who, What, When,
-            Where, How</strong> o <strong>Why</strong>:
-          </label>
-
-          <textarea
-            id="oral-answer"
-            placeholder="Yes, he does. No, I'm not. Where is he staying?"
-          ></textarea>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar práctica como completada
-            </button>
-
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="7">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 07 · GRAMÁTICA</p>
-              <h2>This, that, these, those y when</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🧩</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>1. Demostrativos</h3>
-
-            <p class="example-box">
-              <strong>Ejemplos:</strong>
-              This office is awful. → These offices are awful. /
-              That man is late. → Those men are late.
-            </p>
-
-            <p>
-              Transforme: That girl is beautiful. / This woman is very busy. /
-              This car is very old. / That man is really friendly.
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>2. When + presente</h3>
-
-            <p class="example-box">
-              <strong>Ejemplo:</strong>
-              He always calls Jane. He goes to Paris. →
-              He always calls Jane when he goes to Paris.
-            </p>
-
-            <p>
-              Combine las ideas: I always take a taxi. I'm in New York. / You
-              never stay at a hotel. You go to Mexico City. / I often watch a
-              film. I fly from London to New York. / She makes many phone calls.
-              She goes to Sydney.
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>3. Pronunciación: th</h3>
-
-            <p>
-              Para producir el sonido <strong>th</strong>, coloque la lengua
-              suavemente entre los dientes y expulse aire.
-            </p>
-
-            <p class="example-box">
-              Repita: <strong>thirty · theater · thousand · thirty thousand ·
-              three thousand · thanks</strong>
-            </p>
-          </section>
-
-          <div class="question-block">
-            <label for="grammar-answer">
-              Complete: “Those men are late.” En singular:
-              <strong>__________ man is late.</strong>
-            </label>
-
-            <input
-              id="grammar-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe una palabra"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-grammar" type="button">
-              Revisar respuesta
-            </button>
-
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="8">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 08 · CULTURA</p>
-              <h2>Cuestión de tiempo</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">⏱️</span>
-          </div>
-
-          <div class="reading-card">
-            <h3>Time is money</h3>
-
-            <p>
-              La lectura presenta una reflexión cultural sobre la rapidez, la
-              eficiencia y la puntualidad como valores asociados a la vida
-              laboral estadounidense. La expresión <strong>Time is money</strong>
-              resume la idea de que el tiempo tiene valor económico.
-            </p>
-
-            <p>
-              El texto describe cómo la vida urbana, los servicios rápidos, los
-              restaurantes <em>fast-food</em> y los servicios <em>drive-in</em>
-              pueden reducir el tiempo necesario para realizar tareas diarias.
-            </p>
-
-            <p>
-              También invita a pensar críticamente sobre el equilibrio entre
-              productividad, tecnología y contacto humano. Ser puntual y
-              eficiente puede ser importante, pero el bienestar y la comunicación
-              respetuosa también lo son.
-            </p>
-          </div>
-
-          <div class="question-block">
-            <label for="culture-answer">
-              Escriba una oración en inglés sobre puntualidad usando
-              <strong>on time</strong>, <strong>late</strong> o
-              <strong>early</strong>:
-            </label>
-
-            <input
-              id="culture-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Ejemplo: I am always on time for class."
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar lectura como completada
-            </button>
-
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="9">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 09 · DE TODO UN POCO</p>
-              <h2>Escucha y cuestionario cultural</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🎵</span>
-          </div>
-
-          <section class="review-block">
-            <h3>1. Actividad de escucha</h3>
-
-            <p>
-              Escuche la canción tradicional
-              <strong>“He's Got the Whole World in His Hands”</strong>.
-              Identifique palabras relacionadas con el mundo, la naturaleza,
-              la familia o las personas.
-            </p>
-
-            <div class="audio-placeholder">
-              <span aria-hidden="true">🎶</span>
-              <span>
-                Audio sugerido:
-                <strong>assets/audio/unit-1/whole-world-in-his-hands.mp3</strong>
-              </span>
-            </div>
-
-            <label for="song-answer">
-              Escriba tres palabras o ideas que reconoció:
-            </label>
-
-            <textarea
-              id="song-answer"
-              placeholder="Ejemplo: world, wind, rain, baby, you and me"
-            ></textarea>
-          </section>
-
-          <section class="review-block">
-            <h3>2. El americano promedio</h3>
-
-            <p>
-              Elija una opción para cada pregunta. Este cuestionario se conserva
-              como práctica de lectura; las cifras y hábitos sociales pueden
-              variar con el tiempo.
-            </p>
-
-            <figure class="map-figure">
-              <img
-                src="../assets/images/unit-1/average-american-quiz.png"
-                alt="Cuestionario ilustrado sobre hábitos del estadounidense promedio"
-              >
-              <figcaption>
-                Imagen de apoyo para el cuestionario cultural.
-              </figcaption>
-            </figure>
-
-            <div class="question-block">
-              <p><strong>1. In one year the average American eats...</strong></p>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-1" value="a">
-                A. 3 kilos 500 grams of sugar
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-1" value="b">
-                B. 2 kilos of sugar
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-1" value="c">
-                C. 5 kilos of sugar
-              </label>
-            </div>
-
-            <div class="question-block">
-              <p><strong>2. The average American man is...</strong></p>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-2" value="a">
-                A. 1.73 m tall and weighs 78 kilos
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-2" value="b">
-                B. 1.83 m tall and weighs 85 kilos
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-2" value="c">
-                C. 1.93 m tall and weighs 90 kilos
-              </label>
-            </div>
-
-            <div class="question-block">
-              <p><strong>3. The average American woman is...</strong></p>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-3" value="a">
-                A. 1.72 m tall and weighs 65 kilos
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-3" value="b">
-                B. 1.66 m tall and weighs 60 kilos
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-3" value="c">
-                C. 1.60 m tall and weighs 65 kilos
-              </label>
-            </div>
-
-            <div class="question-block">
-              <p><strong>4. How many American marriages end in divorce?</strong></p>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-4" value="a">
-                A. Six out of ten
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-4" value="b">
-                B. Four out of ten
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-4" value="c">
-                C. Two out of ten
-              </label>
-            </div>
-
-            <div class="question-block">
-              <p><strong>5. What percentage of Americans go to museums?</strong></p>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-5" value="a">
-                A. 36%
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-5" value="b">
-                B. 48%
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-5" value="c">
-                C. 16%
-              </label>
-            </div>
-
-            <div class="question-block">
-              <p><strong>6. The average American watches...</strong></p>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-6" value="a">
-                A. 13 hours, 19 minutes of television a week
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-6" value="b">
-                B. 27 hours, 19 minutes of television a week
-              </label>
-
-              <label class="option-label">
-                <input type="radio" name="quiz-6" value="c">
-                C. 37 hours, 12 minutes of television a week
-              </label>
-            </div>
-
-            <div class="quiz-score-box" id="quiz-score-box" aria-live="polite"></div>
-          </section>
-
-          <div class="activity-actions">
-            <button class="button button-primary finish-lesson" type="button">
-              Revisar y completar entrega
-            </button>
-
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-      </section>
-
-      <section
-        class="lesson-complete-message"
-        id="lesson-complete-message"
-        aria-live="polite"
-      >
-        <p class="kicker">¡Entrega completada!</p>
-
-        <h2>Excelente trabajo</h2>
+      <section class="activity-card" data-activity="1">
+        <p class="activity-label">Actividad 01 · Diálogo</p>
+        <h2>Esperando a Van der Wildt</h2>
 
         <p>
-          Completaste “En el World Trade Center”. Ya practicaste teléfono,
-          preguntas, respuestas cortas, puntualidad y expresiones para situaciones
-          cotidianas.
+          Lea y escuche el diálogo. Observe cómo Barbara, Jeff, Tom y Phil
+          hablan por teléfono y se preparan para una entrevista.
         </p>
 
-        <a class="button button-primary" href="unit-1.html">
-          Volver a Unidad 1
-        </a>
+        <section class="audio-player-card" aria-label="Audio del diálogo">
+          <div class="audio-player-info">
+            <span class="audio-player-icon" aria-hidden="true">🔊</span>
+
+            <div>
+              <p class="audio-player-label">Audio del diálogo</p>
+              <h2>Esperando a Van der Wildt</h2>
+              <p>Escucha el diálogo y practica la pronunciación.</p>
+            </div>
+          </div>
+
+          <audio id="work-audio" preload="metadata">
+            <source
+              src="../assets/audio/unit-1/world-trade-center.mp3"
+              type="audio/mpeg"
+            >
+            Tu navegador no admite la reproducción de audio.
+          </audio>
+
+          <div class="audio-player-controls">
+            <button
+              id="audio-play-button"
+              class="audio-play-button"
+              type="button"
+              aria-label="Reproducir audio"
+            >
+              <span id="audio-play-icon" aria-hidden="true">▶</span>
+              <span id="audio-play-text">Reproducir audio</span>
+            </button>
+
+            <span id="audio-time" class="audio-time">0:00 / 0:00</span>
+          </div>
+
+          <input
+            id="audio-progress"
+            class="audio-progress"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            aria-label="Progreso del audio"
+          >
+        </section>
+
+        <div class="dialogue">
+          <p><strong>Phil:</strong> Hello?</p>
+          <p><strong>Jeff:</strong> Is Barbara there?</p>
+          <p><strong>Phil:</strong> Hey, Barbara, it's for you. It's Jeff.</p>
+          <p><strong>Barbara:</strong> Hi, Jeff.</p>
+          <p><strong>Jeff:</strong> How's it going?</p>
+          <p><strong>Barbara:</strong> Fine, fine. We're almost ready. We're just waiting for Van der Wildt.</p>
+          <p><strong>Jeff:</strong> Don't worry. He always arrives late for interviews.</p>
+          <p><strong>Barbara:</strong> That's O.K., because we're also waiting for the new cameraman. Where the hell is he?</p>
+          <p><strong>Tom:</strong> Hi, Barbara. The new cameraman is here, right on time. And my name's Tom.</p>
+          <p><strong>Barbara:</strong> Oh, er... Hi, Tom.</p>
+          <p><strong>Tom:</strong> I'm ready when you are, Barbara.</p>
+          <p><strong>Barbara:</strong> Excuse me — I'm just letting off steam.</p>
+          <p><strong>Phil:</strong> Hey, come on! Here's Van der Wildt. He's walking in the door!</p>
+          <p><strong>Tom:</strong> Hurry up, Barbara! We're all waiting for you.</p>
+          <p><strong>Barbara:</strong> Oh!</p>
+        </div>
+
+        <p>
+          <strong>Idea principal:</strong> El equipo está casi listo para
+          entrevistar a Van der Wildt. Barbara espera al nuevo camarógrafo,
+          pero Tom llega a tiempo y Van der Wildt finalmente entra por la puerta.
+        </p>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="1">
+            Marcar diálogo como completado
+          </button>
+          <span class="activity-status" id="activity-status-1"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="2">
+        <p class="activity-label">Actividad 02 · Comprensión</p>
+        <h2>Compruebe su comprensión</h2>
+
+        <p><strong>1. ¿A quién está esperando el equipo?</strong></p>
+
+        <div class="answer-options">
+          <label class="answer-option">
+            <input type="radio" name="question-1" value="vanderwildt">
+            They are waiting for Van der Wildt.
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-1" value="taxi">
+            They are waiting for a taxi.
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-1" value="family">
+            They are waiting for Jeff's family.
+          </label>
+        </div>
+
+        <p><strong>2. ¿Quién es Tom?</strong></p>
+
+        <div class="answer-options">
+          <label class="answer-option">
+            <input type="radio" name="question-2" value="interviewer">
+            He is the new interviewer.
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-2" value="cameraman">
+            He is the new cameraman.
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-2" value="operator">
+            He is the telephone operator.
+          </label>
+        </div>
+
+        <p><strong>3. ¿Qué hace Van der Wildt al final?</strong></p>
+
+        <div class="answer-options">
+          <label class="answer-option">
+            <input type="radio" name="question-3" value="walking">
+            He is walking in the door.
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-3" value="calling">
+            He is calling Jeff.
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-3" value="leaving">
+            He is leaving the building.
+          </label>
+        </div>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-comprehension">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-2"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="3">
+        <p class="activity-label">Actividad 03 · Vocabulario</p>
+        <h2>El teléfono y las acciones</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Teléfono</h3>
+            <p>
+              telephone / phone = teléfono, telephone booth = cabina de teléfono,
+              receiver = auricular, operator = operadora/or, caller = persona que llama,
+              dial tone = tono de marcar, coin = moneda, call = llamada,
+              collect call = llamada a cobro revertido, long distance call = llamada de larga distancia,
+              local call = llamada local, information = información.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Objetos y palabras</h3>
+            <p>
+              pencil = lápiz, pen = bolígrafo, pluma, paper = papel,
+              note-pad = bloc de notas, door = puerta, steam = vapor,
+              hell = infierno; expresión de enfado, heaven = paraíso, God = Dios.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Verbos y expresiones</h3>
+            <p>
+              to wait for = esperar a, to worry = preocuparse, to walk in = entrar caminando,
+              to hurry = darse prisa, to look for = buscar, to go out = salir,
+              to come in = entrar, to get on = subirse, entrar, to get off = bajarse,
+              salir, to arrive = llegar, to call = llamar, to write = escribir,
+              to read = leer, almost = casi, ready = listo/a, preparado/a,
+              on time = a tiempo, late / early = tarde / temprano.
+            </p>
+          </div>
+        </div>
+
+        <label for="worry-answer">
+          Complete: “No te preocupes.” → Don't __________.
+        </label>
+
+        <input
+          class="student-input"
+          id="worry-answer"
+          type="text"
+          placeholder="Escriba la palabra que falta"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-worry">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-3"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="4">
+        <p class="activity-label">Actividad 04 · Cómo se dice</p>
+        <h2>Teléfono, disculpas y descontento</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Contestar al teléfono</h3>
+            <p>
+              Hello, Jeff speaking. = Soy Jeff. ¿Diga?<br>
+              Hello, this is Jeff. = Soy Jeff. ¿Diga?<br>
+              Hello, 650 8332. = Aquí el 650 8332. ¿Diga?
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Pedir noticias</h3>
+            <p>
+              How's it going? = ¿Cómo va todo?<br>
+              How are you doing? = ¿Cómo te va?<br>
+              What's happening? = ¿Qué pasa? ¿Qué ocurre?<br>
+              Where is he? = ¿Dónde está él?
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Tranquilizar y disculparse</h3>
+            <p>
+              Don't worry. = No te preocupes.<br>
+              Everything's fine. = Todo va bien.<br>
+              That's O.K. / That's all right. = Está bien.<br>
+              Excuse me. = Perdona / Perdón.<br>
+              Pardon me. = Perdón.<br>
+              I'm sorry. = Lo siento.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Expresar enfado</h3>
+            <p>
+              Where the hell is he? = ¿Dónde diablos está?<br>
+              He makes me mad. = Me vuelve loco/a.<br>
+              I'm furious. = Estoy furioso/a.<br>
+              I'm very angry. = Estoy muy enfadado/a.
+            </p>
+          </div>
+        </div>
+
+        <label for="going-answer">
+          Complete: “¿Cómo va todo?” → How's it __________?
+        </label>
+
+        <input
+          class="student-input"
+          id="going-answer"
+          type="text"
+          placeholder="Escriba la palabra que falta"
+        >
+
+        <label for="pardon-answer">
+          Complete: “Perdón.” → __________ me.
+        </label>
+
+        <input
+          class="student-input"
+          id="pardon-answer"
+          type="text"
+          placeholder="Escriba la palabra que falta"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-expressions">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-4"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="5">
+        <p class="activity-label">Actividad 05 · Recuerde</p>
+        <h2>Lenguaje respetuoso</h2>
+
+        <ol>
+          <li><strong>Hello?</strong> se usa al responder una llamada: significa “¿Diga?”.</li>
+          <li><strong>Ready when you are</strong> expresa que estás listo/a y esperas la señal de la otra persona para comenzar.</li>
+          <li><strong>I'm just letting off steam</strong> significa “me estoy desahogando”; se usa cuando alguien expresa frustración.</li>
+          <li>Expresiones como <strong>hell</strong>, <strong>damn</strong> o referencias religiosas pueden resultar ofensivas para algunas personas. En situaciones formales, usa alternativas neutrales: <strong>Where is he?</strong> o <strong>I'm upset.</strong></li>
+        </ol>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="5">
+            Marcar recordatorio como completado
+          </button>
+          <span class="activity-status" id="activity-status-5"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="6">
+        <p class="activity-label">Actividad 06 · Práctica oral</p>
+        <h2>Respuestas cortas y preguntas</h2>
+
+        <p>
+          <strong>Respuestas cortas con Yes:</strong> Does he drive to work?
+          → Yes, he does. / Is he driving his car now? → Yes, he is.
+        </p>
+
+        <p>
+          Responda: Are you listening to me? / Does he work for “Thirty Minutes”?
+          / Are New Yorkers friendly? / Is there a lot of traffic in the city?
+        </p>
+
+        <p>
+          <strong>Respuestas cortas con No:</strong> Are you coming?
+          → No, I'm not. / Does he like Los Angeles? → No, he doesn't.
+        </p>
+
+        <p>
+          <strong>Pronombres interrogativos:</strong> He's staying at the London Hilton.
+          → Where is he staying? / They start work at 9:15. → When do they start work?
+        </p>
+
+        <label for="oral-answer">
+          Escriba una respuesta corta con Yes, una con No y una pregunta con Who, What, When, Where, How o Why.
+        </label>
+
+        <textarea
+          class="student-input"
+          id="oral-answer"
+          placeholder="Escriba sus respuestas y pregunta"
+        ></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-oral">
+            Marcar práctica como completada
+          </button>
+          <span class="activity-status" id="activity-status-6"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="7">
+        <p class="activity-label">Actividad 07 · Gramática</p>
+        <h2>This, that, these, those y when</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Demostrativos</h3>
+            <p>
+              This office is awful. → These offices are awful.<br>
+              That man is late. → Those men are late.<br>
+              That girl is beautiful. / This woman is very busy. /
+              This car is very old. / That man is really friendly.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>When + presente</h3>
+            <p>
+              He always calls Jane when he goes to Paris.<br>
+              I always take a taxi when I'm in New York.<br>
+              You never stay at a hotel when you go to Mexico City.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Pronunciación: TH</h3>
+            <p>
+              Para producir el sonido <strong>th</strong>, coloque la lengua
+              suavemente entre los dientes y expulse aire.<br>
+              Repita: thirty · theater · thousand · thirty thousand ·
+              three thousand · thanks.
+            </p>
+          </div>
+        </div>
+
+        <label for="those-answer">
+          Complete: “Those men are late.” En singular: __________ man is late.
+        </label>
+
+        <input
+          class="student-input"
+          id="those-answer"
+          type="text"
+          placeholder="Escriba la palabra correcta"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-those">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-7"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="8">
+        <p class="activity-label">Actividad 08 · Cultura</p>
+        <h2>Cuestión de tiempo</h2>
+
+        <p>
+          <strong>Time is money</strong> resume la idea de que el tiempo tiene
+          valor económico. La lectura presenta una reflexión cultural sobre la
+          rapidez, la eficiencia y la puntualidad como valores asociados a la
+          vida laboral estadounidense.
+        </p>
+
+        <p>
+          También invita a pensar críticamente sobre el equilibrio entre
+          productividad, tecnología y contacto humano. Ser puntual y eficiente
+          puede ser importante, pero el bienestar y la comunicación respetuosa
+          también lo son.
+        </p>
+
+        <label for="time-answer">
+          Escriba una oración en inglés sobre puntualidad usando on time, late o early.
+        </label>
+
+        <input
+          class="student-input"
+          id="time-answer"
+          type="text"
+          placeholder="Escriba una oración en inglés"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-time">
+            Marcar lectura como completada
+          </button>
+          <span class="activity-status" id="activity-status-8"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="9">
+        <p class="activity-label">Actividad 09 · De todo un poco</p>
+        <h2>Escucha y cuestionario cultural</h2>
+
+        <p>
+          Escuche la canción tradicional
+          <strong>“He's Got the Whole World in His Hands”</strong>.
+          Identifique palabras relacionadas con el mundo, la naturaleza,
+          la familia o las personas.
+        </p>
+
+        <label for="song-answer">
+          Escriba tres palabras o ideas que reconoció.
+        </label>
+
+        <textarea
+          class="student-input"
+          id="song-answer"
+          placeholder="Escriba tres palabras o ideas"
+        ></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="finish-lesson">
+            Revisar y completar entrega
+          </button>
+          <span class="activity-status" id="activity-status-9"></span>
+        </div>
+      </section>
+
+      <section class="completion-card" id="completion-card" hidden>
+        <p class="kicker">Entrega completada</p>
+        <h2>¡Excelente trabajo!</h2>
+
+        <p>
+          Completaste “En el World Trade Center”.
+          Ya puedes continuar con la siguiente entrega de la Unidad 1.
+        </p>
+
+        <div class="completion-actions">
+          <a href="unit-1-delivery-5.html" class="button button-primary">
+            Siguiente entrega →
+          </a>
+
+          <a href="unit-1.html" class="button button-outline">
+            Volver a Unidad 1
+          </a>
+        </div>
       </section>
     </div>
   </main>
@@ -954,6 +930,451 @@
     </div>
   </footer>
 
-  <script src="../assets/js/unit1-delivery4.js"></script>
+  <script type="module" src="../assets/js/supabase-auth.js?v=7"></script>
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit1.delivery4.progress";
+      const totalActivities = 9;
+
+      const progressText = document.getElementById("lesson-progress-text");
+      const progressFill = document.getElementById("lesson-progress-fill");
+      const completionCard = document.getElementById("completion-card");
+      const progressTrack = document.querySelector(".lesson-progress-track");
+
+      function getCompletedActivities() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(saved)) {
+            return [];
+          }
+
+          return [...new Set(
+            saved
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveCompletedActivities(completed) {
+        localStorage.setItem(storageKey, JSON.stringify(completed));
+      }
+
+      function updateInterface() {
+        const completed = getCompletedActivities();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        if (progressText) {
+          progressText.textContent =
+            `${completedCount} de ${totalActivities} secciones completadas`;
+        }
+
+        if (progressFill) {
+          progressFill.style.width = `${percentage}%`;
+        }
+
+        if (progressTrack) {
+          progressTrack.setAttribute("aria-valuenow", String(percentage));
+        }
+
+        document
+          .querySelectorAll(".activity-card[data-activity]")
+          .forEach((card) => {
+            const activity = Number(card.dataset.activity);
+            const status = document.getElementById(
+              `activity-status-${activity}`
+            );
+            const button = card.querySelector("[data-complete]");
+
+            if (completed.includes(activity)) {
+              card.classList.add("is-complete");
+
+              if (status) {
+                status.textContent = "✓ Actividad completada";
+              }
+
+              if (button) {
+                button.textContent = "Actividad completada";
+              }
+            } else {
+              card.classList.remove("is-complete");
+
+              if (status) {
+                status.textContent = "";
+              }
+            }
+          });
+
+        if (completionCard) {
+          completionCard.hidden = completedCount !== totalActivities;
+        }
+      }
+
+      async function markActivityComplete(activity) {
+        const completed = getCompletedActivities();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveCompletedActivities(completed);
+        }
+
+        updateInterface();
+
+        if (
+          activity === totalActivities &&
+          typeof window.saveStudentProgress === "function"
+        ) {
+          try {
+            await window.saveStudentProgress({
+              unitNumber: 1,
+              activityId: "unit-1-delivery-4",
+              activityTitle: "En el World Trade Center",
+              completed: true,
+              score: 100
+            });
+          } catch (error) {
+            console.warn("El progreso local se guardó.", error);
+          }
+        }
+      }
+
+      function normalize(value) {
+        return String(value)
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      document.querySelectorAll("[data-complete]").forEach((button) => {
+        button.addEventListener("click", () => {
+          markActivityComplete(Number(button.dataset.complete));
+        });
+      });
+
+      const comprehensionButton = document.getElementById("check-comprehension");
+
+      if (comprehensionButton) {
+        comprehensionButton.addEventListener("click", () => {
+          const answerOne = document.querySelector(
+            'input[name="question-1"]:checked'
+          )?.value;
+
+          const answerTwo = document.querySelector(
+            'input[name="question-2"]:checked'
+          )?.value;
+
+          const answerThree = document.querySelector(
+            'input[name="question-3"]:checked'
+          )?.value;
+
+          const status = document.getElementById("activity-status-2");
+
+          if (
+            answerOne === "vanderwildt" &&
+            answerTwo === "cameraman" &&
+            answerThree === "walking"
+          ) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Correcto! Esperan a Van der Wildt, Tom es el nuevo camarógrafo y Van der Wildt entra por la puerta.";
+            }
+
+            markActivityComplete(2);
+          } else if (status) {
+            status.textContent =
+              "Revisa el diálogo e inténtalo otra vez.";
+          }
+        });
+      }
+
+      const worryButton = document.getElementById("check-worry");
+
+      if (worryButton) {
+        worryButton.addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("worry-answer").value
+          );
+
+          const status = document.getElementById("activity-status-3");
+
+          if (answer === "worry") {
+            if (status) {
+              status.textContent =
+                "✓ ¡Correcto! “Don't worry” significa “No te preocupes”.";
+            }
+
+            markActivityComplete(3);
+          } else if (status) {
+            status.textContent = "Pista: Don't worry.";
+          }
+        });
+      }
+
+      const expressionsButton = document.getElementById("check-expressions");
+
+      if (expressionsButton) {
+        expressionsButton.addEventListener("click", () => {
+          const going = normalize(
+            document.getElementById("going-answer").value
+          );
+
+          const pardon = normalize(
+            document.getElementById("pardon-answer").value
+          );
+
+          const status = document.getElementById("activity-status-4");
+
+          if (going === "going" && (pardon === "pardon" || pardon === "excuse")) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Excelente! “How's it going?” y “Pardon me” son correctas.";
+            }
+
+            markActivityComplete(4);
+          } else if (status) {
+            status.textContent =
+              "Pista: How's it going? / Pardon me.";
+          }
+        });
+      }
+
+      const oralButton = document.getElementById("check-oral");
+
+      if (oralButton) {
+        oralButton.addEventListener("click", () => {
+          const answer = document
+            .getElementById("oral-answer")
+            .value
+            .trim();
+
+          const status = document.getElementById("activity-status-6");
+
+          if (answer.length >= 20) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Muy bien! Completaste la práctica oral.";
+            }
+
+            markActivityComplete(6);
+          } else if (status) {
+            status.textContent =
+              "Escribe una respuesta con Yes, una con No y una pregunta.";
+          }
+        });
+      }
+
+      const thoseButton = document.getElementById("check-those");
+
+      if (thoseButton) {
+        thoseButton.addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("those-answer").value
+          );
+
+          const status = document.getElementById("activity-status-7");
+
+          if (answer === "that") {
+            if (status) {
+              status.textContent =
+                "✓ ¡Correcto! “That man is late.”";
+            }
+
+            markActivityComplete(7);
+          } else if (status) {
+            status.textContent =
+              "Pista: El singular de those es that.";
+          }
+        });
+      }
+
+      const timeButton = document.getElementById("check-time");
+
+      if (timeButton) {
+        timeButton.addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("time-answer").value
+          );
+
+          const status = document.getElementById("activity-status-8");
+
+          if (
+            answer.length >= 8 &&
+            (
+              answer.includes("on time") ||
+              answer.includes("late") ||
+              answer.includes("early")
+            )
+          ) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Actividad completada! Buena oración sobre puntualidad.";
+            }
+
+            markActivityComplete(8);
+          } else if (status) {
+            status.textContent =
+              "Escribe una oración con on time, late o early.";
+          }
+        });
+      }
+
+      const finishButton = document.getElementById("finish-lesson");
+
+      if (finishButton) {
+        finishButton.addEventListener("click", () => {
+          const answer = document
+            .getElementById("song-answer")
+            .value
+            .trim();
+
+          const status = document.getElementById("activity-status-9");
+
+          if (answer.length >= 10) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Entrega completada! Excelente trabajo en el World Trade Center.";
+            }
+
+            markActivityComplete(9);
+
+            window.setTimeout(() => {
+              completionCard.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+            }, 250);
+          } else if (status) {
+            status.textContent =
+              "Escribe al menos tres palabras o ideas que reconociste.";
+          }
+        });
+      }
+
+      const audio = document.getElementById("work-audio");
+      const playButton = document.getElementById("audio-play-button");
+      const playIcon = document.getElementById("audio-play-icon");
+      const playText = document.getElementById("audio-play-text");
+      const audioProgress = document.getElementById("audio-progress");
+      const audioTime = document.getElementById("audio-time");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) {
+          return "0:00";
+        }
+
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = String(
+          Math.floor(seconds % 60)
+        ).padStart(2, "0");
+
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      function updateAudioPlayer() {
+        if (!audio || !audioProgress || !audioTime) {
+          return;
+        }
+
+        const currentTime = audio.currentTime || 0;
+        const duration = audio.duration || 0;
+
+        audioTime.textContent =
+          `${formatTime(currentTime)} / ${formatTime(duration)}`;
+
+        if (duration > 0) {
+          audioProgress.value = String((currentTime / duration) * 100);
+        }
+      }
+
+      function setAudioButton(isPlaying) {
+        if (!playButton || !playIcon || !playText) {
+          return;
+        }
+
+        playIcon.textContent = isPlaying ? "❚❚" : "▶";
+        playText.textContent = isPlaying
+          ? "Pausar audio"
+          : "Reproducir audio";
+
+        playButton.setAttribute(
+          "aria-label",
+          isPlaying ? "Pausar audio" : "Reproducir audio"
+        );
+      }
+
+      if (audio && playButton) {
+        playButton.addEventListener("click", async () => {
+          if (audio.paused) {
+            try {
+              await audio.play();
+            } catch (error) {
+              console.warn("No se pudo reproducir el audio.", error);
+            }
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("loadedmetadata", updateAudioPlayer);
+        audio.addEventListener("durationchange", updateAudioPlayer);
+        audio.addEventListener("timeupdate", updateAudioPlayer);
+
+        audio.addEventListener("play", () => {
+          setAudioButton(true);
+        });
+
+        audio.addEventListener("pause", () => {
+          setAudioButton(false);
+        });
+
+        audio.addEventListener("ended", () => {
+          audio.currentTime = 0;
+
+          if (audioProgress) {
+            audioProgress.value = "0";
+          }
+
+          updateAudioPlayer();
+          setAudioButton(false);
+        });
+
+        audio.addEventListener("error", () => {
+          if (audioTime) {
+            audioTime.textContent = "Audio no disponible";
+          }
+        });
+      }
+
+      if (audio && audioProgress) {
+        audioProgress.addEventListener("input", () => {
+          if (audio.duration) {
+            audio.currentTime =
+              (Number(audioProgress.value) / 100) * audio.duration;
+          }
+        });
+      }
+
+      updateAudioPlayer();
+      updateInterface();
+    });
+  </script>
 </body>
 </html>

@@ -20,6 +20,20 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -62,7 +76,6 @@
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
         <p class="kicker">Unidad 03 · Entrega 04</p>
         <h1>The Blue Lagoon</h1>
@@ -103,8 +116,6 @@
       </section>
 
       <section class="lesson-sections">
-
-        <!-- ACTIVIDAD 1 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -159,7 +170,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 2 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
@@ -217,7 +227,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 3 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
@@ -252,7 +261,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 4 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
@@ -264,66 +272,30 @@
 
           <div class="question-block">
             <p><strong>1. ¿Qué bebidas pide Barbara?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q1" value="a">
-              A Black Russian and a double scotch on the rocks
-            </label>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q1" value="b">
-              Two coffees and a tea
-            </label>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q1" value="c">
-              A Tequila Sunrise and water
-            </label>
+            <label class="option-label"><input type="radio" name="lagoon-q1" value="a"> A Black Russian and a double scotch on the rocks</label>
+            <label class="option-label"><input type="radio" name="lagoon-q1" value="b"> Two coffees and a tea</label>
+            <label class="option-label"><input type="radio" name="lagoon-q1" value="c"> A Tequila Sunrise and water</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. ¿Desde cuándo trabaja Tom como cameraman?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q2" value="a">
-              Since he moved to L.A.
-            </label>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q2" value="b">
-              Since he met Barbara
-            </label>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q2" value="c">
-              Since he left New York
-            </label>
+            <label class="option-label"><input type="radio" name="lagoon-q2" value="a"> Since he moved to L.A.</label>
+            <label class="option-label"><input type="radio" name="lagoon-q2" value="b"> Since he met Barbara</label>
+            <label class="option-label"><input type="radio" name="lagoon-q2" value="c"> Since he left New York</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. ¿Cuánto tiempo ha vivido Tom en Los Ángeles?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q3" value="a">
-              For two years
-            </label>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q3" value="b">
-              For ten years
-            </label>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q3" value="c">
-              Since 1960
-            </label>
+            <label class="option-label"><input type="radio" name="lagoon-q3" value="a"> For two years</label>
+            <label class="option-label"><input type="radio" name="lagoon-q3" value="b"> For ten years</label>
+            <label class="option-label"><input type="radio" name="lagoon-q3" value="c"> Since 1960</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. ¿Qué hacía Barbara antes de ser periodista de TV?</strong></p>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q4" value="a">
-              She used to be a jazz singer
-            </label>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q4" value="b">
-              She used to be a waitress
-            </label>
-            <label class="option-label">
-              <input type="radio" name="lagoon-q4" value="c">
-              She used to be a teacher
-            </label>
+            <label class="option-label"><input type="radio" name="lagoon-q4" value="a"> She used to be a jazz singer</label>
+            <label class="option-label"><input type="radio" name="lagoon-q4" value="b"> She used to be a waitress</label>
+            <label class="option-label"><input type="radio" name="lagoon-q4" value="c"> She used to be a teacher</label>
           </div>
 
           <div class="activity-actions">
@@ -334,7 +306,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 5 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
@@ -411,7 +382,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 6 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
@@ -484,7 +454,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 7 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
@@ -545,7 +514,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 8 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
@@ -617,7 +585,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 9 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
@@ -666,7 +633,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
@@ -729,26 +695,33 @@
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
       </section>
 
       <section
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
+
         <p>
           Completaste “The Blue Lagoon”. Ya puedes ofrecer una bebida, saludar
           a personas, hablar de experiencias y usar presente perfecto con
           <em>since</em>, <em>for</em> y <em>ever</em>.
         </p>
-        <a class="button button-primary" href="unit-3.html">
-          Volver a Unidad 3
-        </a>
-      </section>
 
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-3-delivery-5.html">
+            Siguiente entrega →
+          </a>
+
+          <a class="button button-outline" href="unit-3.html">
+            Volver a Unidad 3
+          </a>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -760,6 +733,348 @@
     </div>
   </footer>
 
-  <script src="../assets/js/unit3-delivery4.js"></script>
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit3.delivery4.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(stored)) {
+            return [];
+          }
+
+          return [...new Set(
+            stored
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        progressText.textContent =
+          `${completedCount} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const dialogueButton = card.querySelector(".complete-activity");
+
+          if (dialogueButton) {
+            dialogueButton.textContent = isComplete
+              ? "Actividad completada"
+              : "Marcar diálogo como completado";
+          }
+        });
+
+        completionMessage.hidden = completedCount !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="lagoon-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="lagoon-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="lagoon-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="lagoon-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "a" &&
+            answer3 === "b" &&
+            answer4 === "a"
+          ) {
+            completeActivity(
+              4,
+              "✓ ¡Correcto! Comprendiste la conversación en The Blue Lagoon."
+            );
+          } else {
+            setFeedback(4, "Revisa los diálogos e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "autograph") {
+            completeActivity(
+              5,
+              "✓ Correcto: Could I have your autograph?"
+            );
+          } else {
+            setFeedback(5, "Pista: la camarera le pide esto a Barbara.");
+          }
+        });
+
+      document
+        .querySelector(".check-phrases")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("phrases-answer").value
+          );
+
+          const writing = document
+            .getElementById("phrases-writing")
+            .value
+            .trim();
+
+          if (answer === "get" && writing.length >= 10) {
+            completeActivity(6, "✓ Práctica de expresiones guardada.");
+          } else {
+            setFeedback(
+              6,
+              "Completa get y escribe una frase de saludo en inglés."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-perfect")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("perfect-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("perfect-answer-2").value
+          );
+
+          if (answer1 === "has" && answer2 === "ever") {
+            completeActivity(
+              7,
+              "✓ Correcto: Tom has lived in L.A. for ten years."
+            );
+          } else {
+            setFeedback(7, "Pista: has / ever.");
+          }
+        });
+
+      document
+        .querySelector(".check-time")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("time-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("time-answer-2").value
+          );
+
+          const writing = normalize(
+            document.getElementById("time-writing").value
+          );
+
+          const hasPerfectStructure =
+            writing.includes("have ") ||
+            writing.includes("has ") ||
+            writing.includes("ive ") ||
+            writing.includes("hes ") ||
+            writing.includes("shes ");
+
+          const hasTimeExpression =
+            writing.includes(" since ") ||
+            writing.includes(" for ");
+
+          if (
+            answer1 === "since" &&
+            answer2 === "for" &&
+            writing.length >= 16 &&
+            hasPerfectStructure &&
+            hasTimeExpression
+          ) {
+            completeActivity(8, "✓ Práctica de tiempo guardada.");
+          } else {
+            setFeedback(
+              8,
+              "Completa since y for, y escribe una oración en presente perfecto."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-culture")
+        .addEventListener("click", () => {
+          const writing = document
+            .getElementById("culture-writing")
+            .value
+            .trim();
+
+          if (writing.length >= 12) {
+            completeActivity(9, "✓ Respuesta cultural guardada.");
+          } else {
+            setFeedback(9, "Escribe una oración completa en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("review-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("review-answer-2").value
+          );
+
+          const writing = normalize(
+            document.getElementById("final-writing").value
+          );
+
+          const hasGreeting =
+            writing.includes("great to see you") ||
+            writing.includes("hello") ||
+            writing.includes("hi ");
+
+          const hasOffer =
+            writing.includes("can i get you") ||
+            writing.includes("would you like") ||
+            writing.includes("can i offer");
+
+          const hasHowLong = writing.includes("how long");
+
+          const hasSinceOrFor =
+            writing.includes(" since ") ||
+            writing.includes(" for ");
+
+          if (
+            answer1 === "have" &&
+            answer2 === "for" &&
+            writing.length >= 100 &&
+            hasGreeting &&
+            hasOffer &&
+            hasHowLong &&
+            hasSinceOrFor
+          ) {
+            completeActivity(10, "✓ ¡Entrega 3.4 completada!");
+          } else {
+            setFeedback(
+              10,
+              "Completa have y for, y redacta el diálogo solicitado con todos los elementos."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
 </body>
 </html>

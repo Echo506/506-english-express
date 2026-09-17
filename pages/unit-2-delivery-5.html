@@ -20,6 +20,20 @@
 
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -62,7 +76,6 @@
 
   <main class="lesson-page">
     <div class="container">
-
       <section class="lesson-banner">
         <p class="kicker">Unidad 02 · Entrega 05</p>
         <h1>Ocio californiano</h1>
@@ -104,8 +117,6 @@
       </section>
 
       <section class="lesson-sections">
-
-        <!-- ACTIVIDAD 1 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -129,31 +140,18 @@
 
           <div class="dialogue-box">
             <p><strong>Jane:</strong> This is fun! I like roller-skating, but I'm not very good at it.</p>
-
             <p><strong>Tom:</strong> Watch out! You're going to hit that man. Oh no!</p>
-
             <p><strong>Jane:</strong> Oh! I'm terribly sorry. Are you hurt?</p>
-
             <p><strong>Man:</strong> No, that's O.K., honey. I'm all right. Say, are you from England?</p>
-
             <p><strong>Jane:</strong> Yes, from London. You see, I'm not used to roller-skating. It's not really an English sport.</p>
-
             <p><strong>Man:</strong> I love England. Good old rainy London!</p>
-
             <p><strong>Jane:</strong> It doesn't rain all the time, but it's not sunny like California.</p>
-
             <p><strong>Man:</strong> And is this your gentleman friend? Is he from England?</p>
-
             <p><strong>Tom:</strong> No, I live here.</p>
-
             <p><strong>Man:</strong> And are you going to show your lady friend around the most beautiful parts of California?</p>
-
             <p><strong>Tom:</strong> Yes, I sure will.</p>
-
             <p><strong>Man:</strong> Have a good time! And watch out for the pedestrians!</p>
-
             <p><strong>Tom:</strong> Goodbye. Nice meeting you.</p>
-
             <p><strong>Jane:</strong> Goodbye.</p>
           </div>
 
@@ -174,7 +172,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 2 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
@@ -199,19 +196,12 @@
 
           <div class="dialogue-box">
             <p><strong>Jane:</strong> So, are you going to show me around California?</p>
-
             <p><strong>Tom:</strong> Sure I am. Tomorrow we'll take the coast road to San Francisco. We can just drive along and stop at one of the beaches for a swim.</p>
-
             <p><strong>Jane:</strong> It'll be magnificent. You know, Tom, you're a very good guide... Hey! Do you feel like going for a swim now?</p>
-
             <p><strong>Tom:</strong> Right now? Sure. But I have to make a phone call first. There's a phone booth over there. Will you wait for me here?</p>
-
             <p><strong>Jane:</strong> O.K., don't be long. Maybe I'll run over another pedestrian!</p>
-
             <p><strong>Tom:</strong> Jane, um, I'm really sorry. We'll have to put off our plans for a while. I have to go to New Orleans for work.</p>
-
             <p><strong>Jane:</strong> New Orleans! When will you come back?</p>
-
             <p><strong>Tom:</strong> Soon, I hope. I'm not looking forward to this job.</p>
           </div>
 
@@ -232,7 +222,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 3 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
@@ -244,78 +233,30 @@
 
           <div class="question-block">
             <p><strong>1. ¿Por qué Jane casi golpea al hombre?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q1" value="a">
-              Because she is not very good at roller-skating
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q1" value="b">
-              Because she is driving a car
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q1" value="c">
-              Because she is swimming
-            </label>
+            <label class="option-label"><input type="radio" name="leisure-q1" value="a"> Because she is not very good at roller-skating</label>
+            <label class="option-label"><input type="radio" name="leisure-q1" value="b"> Because she is driving a car</label>
+            <label class="option-label"><input type="radio" name="leisure-q1" value="c"> Because she is swimming</label>
           </div>
 
           <div class="question-block">
             <p><strong>2. ¿A dónde planean viajar Jane y Tom?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q2" value="a">
-              To New York
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q2" value="b">
-              To San Francisco
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q2" value="c">
-              To London
-            </label>
+            <label class="option-label"><input type="radio" name="leisure-q2" value="a"> To New York</label>
+            <label class="option-label"><input type="radio" name="leisure-q2" value="b"> To San Francisco</label>
+            <label class="option-label"><input type="radio" name="leisure-q2" value="c"> To London</label>
           </div>
 
           <div class="question-block">
             <p><strong>3. ¿Qué quiere hacer Jane en una playa?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q3" value="a">
-              Go skiing
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q3" value="b">
-              Go shopping
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q3" value="c">
-              Go for a swim
-            </label>
+            <label class="option-label"><input type="radio" name="leisure-q3" value="a"> Go skiing</label>
+            <label class="option-label"><input type="radio" name="leisure-q3" value="b"> Go shopping</label>
+            <label class="option-label"><input type="radio" name="leisure-q3" value="c"> Go for a swim</label>
           </div>
 
           <div class="question-block">
             <p><strong>4. ¿Por qué Tom aplaza los planes?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q4" value="a">
-              He has to go to New Orleans for work
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q4" value="b">
-              He wants to go roller-skating
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="leisure-q4" value="c">
-              He is going back to England
-            </label>
+            <label class="option-label"><input type="radio" name="leisure-q4" value="a"> He has to go to New Orleans for work</label>
+            <label class="option-label"><input type="radio" name="leisure-q4" value="b"> He wants to go roller-skating</label>
+            <label class="option-label"><input type="radio" name="leisure-q4" value="c"> He is going back to England</label>
           </div>
 
           <div class="activity-actions">
@@ -326,7 +267,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 4 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
@@ -402,7 +342,6 @@
             <label for="vocabulary-answer">
               Complete: “Tom and Jane plan to stop at one of the __________ for a swim.”
             </label>
-
             <input
               id="vocabulary-answer"
               type="text"
@@ -419,7 +358,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 5 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
@@ -466,7 +404,6 @@
             <label for="weather-answer">
               Complete: “California has a very __________ climate.”
             </label>
-
             <input
               id="weather-answer"
               type="text"
@@ -479,7 +416,6 @@
             <label for="leisure-writing">
               Escribe una pregunta en inglés para proponer una actividad:
             </label>
-
             <textarea
               id="leisure-writing"
               placeholder="Do you feel like going for a swim?"
@@ -494,7 +430,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 6 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
@@ -531,7 +466,6 @@
             <label for="good-at-answer">
               Complete: “Jane is not very good __________ roller-skating.”
             </label>
-
             <input
               id="good-at-answer"
               type="text"
@@ -544,7 +478,6 @@
             <label for="feel-like-answer">
               Complete: “Do you feel like __________ for a swim?”
             </label>
-
             <input
               id="feel-like-answer"
               type="text"
@@ -557,7 +490,6 @@
             <label for="ability-writing">
               Escribe una oración sobre una habilidad tuya:
             </label>
-
             <textarea
               id="ability-writing"
               placeholder="I'm good at playing soccer."
@@ -572,7 +504,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 7 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
@@ -608,16 +539,13 @@
               I need some money. Go to the bank. →
               <strong>I have to go to the bank.</strong>
             </p>
-            <p>
-              Tom has to go to New Orleans for work.
-            </p>
+            <p>Tom has to go to New Orleans for work.</p>
           </section>
 
           <div class="question-block">
             <label for="going-to-answer">
               Complete: “Tomorrow, Tom and Jane are __________ to take the coast road.”
             </label>
-
             <input
               id="going-to-answer"
               type="text"
@@ -630,7 +558,6 @@
             <label for="have-to-answer">
               Complete: “Tom __________ to go to New Orleans for work.”
             </label>
-
             <input
               id="have-to-answer"
               type="text"
@@ -647,7 +574,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 8 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
@@ -665,16 +591,13 @@
               I don't often water-ski. →
               <strong>I'm not used to water-skiing.</strong>
             </p>
-            <p>
-              Jane dice: <strong>I'm not used to roller-skating.</strong>
-            </p>
+            <p>Jane dice: <strong>I'm not used to roller-skating.</strong></p>
           </section>
 
           <div class="question-block">
             <label for="used-to-answer">
               Complete: “Jane isn't __________ to roller-skating.”
             </label>
-
             <input
               id="used-to-answer"
               type="text"
@@ -687,7 +610,6 @@
             <label for="habit-writing">
               Escribe una oración sobre algo a lo que estás o no estás acostumbrado/a:
             </label>
-
             <textarea
               id="habit-writing"
               placeholder="I'm used to waking up early."
@@ -702,7 +624,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 9 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
@@ -719,14 +640,12 @@
               suele asociarse con autopistas, barrios muy diversos, cine, televisión,
               playas y una cultura marcada por el automóvil.
             </p>
-
             <p>
               El texto cultural contrasta distintas zonas y estilos de vida de la
               ciudad, y menciona problemas ambientales asociados al tráfico y la
               contaminación. También destaca la importancia histórica de la industria
               cinematográfica en la región.
             </p>
-
             <p>
               Para las personas que visitan California, las playas, el clima, el
               deporte al aire libre y los trayectos por la costa forman parte de la
@@ -739,7 +658,6 @@
               Escribe una oración en inglés sobre Los Angeles, California, el clima,
               una playa o una actividad de ocio:
             </label>
-
             <textarea
               id="culture-writing"
               placeholder="California is sunny and has beautiful beaches."
@@ -754,7 +672,6 @@
           </div>
         </article>
 
-        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
@@ -779,7 +696,6 @@
             <label for="review-answer-1">
               Complete: “I __________ swim, but I can't dive.”
             </label>
-
             <input
               id="review-answer-1"
               type="text"
@@ -792,7 +708,6 @@
             <label for="review-answer-2">
               Complete: “We are going __________ travel around California.”
             </label>
-
             <input
               id="review-answer-2"
               type="text"
@@ -808,7 +723,6 @@
               <strong>going to</strong> y otra con <strong>feel like</strong> o
               <strong>used to</strong>.
             </label>
-
             <textarea
               id="final-writing"
               placeholder="I'm going to visit the beach this weekend. The weather will be sunny. I feel like swimming in the ocean. I'm used to doing outdoor sports."
@@ -822,15 +736,15 @@
             <span class="activity-feedback" aria-live="polite"></span>
           </div>
         </article>
-
       </section>
 
       <section
         class="lesson-complete-message"
         id="lesson-complete-message"
         aria-live="polite"
+        hidden
       >
-        <p class="kicker">¡Entrega completada!</p>
+        <p class="kicker">¡Unidad 2 completada!</p>
         <h2>Excelente trabajo</h2>
 
         <p>
@@ -838,4 +752,357 @@
           clima, ocio, capacidades, costumbres, planes futuros y obligaciones.
         </p>
 
-        <a class="button button-primary"
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-3-delivery-1.html">
+            Comenzar Unidad 3 →
+          </a>
+
+          <a class="button button-outline" href="unit-2.html">
+            Volver a Unidad 2
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>Unidad 2 · Entrega 5 · Ocio californiano</span>
+      <a href="unit-2.html">Volver a Unidad 2</a>
+    </div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit2.delivery5.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(saved)) {
+            return [];
+          }
+
+          return [...new Set(
+            saved
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        progressText.textContent =
+          `${completedCount} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const completeButton = card.querySelector(".complete-activity");
+
+          if (completeButton && isComplete) {
+            completeButton.textContent = "Actividad completada";
+          }
+        });
+
+        completionMessage.hidden = completedCount !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="leisure-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="leisure-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="leisure-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="leisure-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "b" &&
+            answer3 === "c" &&
+            answer4 === "a"
+          ) {
+            completeActivity(3, "✓ ¡Correcto! Comprendiste los diálogos.");
+          } else {
+            setFeedback(3, "Revisa los diálogos e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "beaches") {
+            completeActivity(
+              4,
+              "✓ Correcto: Tom and Jane plan to stop at one of the beaches."
+            );
+          } else {
+            setFeedback(4, "Pista: la palabra está en plural.");
+          }
+        });
+
+      document
+        .querySelector(".check-leisure")
+        .addEventListener("click", () => {
+          const weather = normalize(
+            document.getElementById("weather-answer").value
+          );
+
+          const writing = document
+            .getElementById("leisure-writing")
+            .value
+            .trim();
+
+          if (weather === "pleasant" && writing.length >= 12) {
+            completeActivity(5, "✓ Práctica de ocio y clima guardada.");
+          } else {
+            setFeedback(
+              5,
+              "Completa pleasant y escribe una pregunta completa en inglés."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-abilities")
+        .addEventListener("click", () => {
+          const goodAt = normalize(
+            document.getElementById("good-at-answer").value
+          );
+
+          const feelLike = normalize(
+            document.getElementById("feel-like-answer").value
+          );
+
+          const writing = document
+            .getElementById("ability-writing")
+            .value
+            .trim();
+
+          if (
+            goodAt === "at" &&
+            feelLike === "going" &&
+            writing.length >= 10
+          ) {
+            completeActivity(6, "✓ Práctica de capacidades guardada.");
+          } else {
+            setFeedback(6, "Completa at, going y escribe una oración.");
+          }
+        });
+
+      document
+        .querySelector(".check-plans")
+        .addEventListener("click", () => {
+          const goingTo = normalize(
+            document.getElementById("going-to-answer").value
+          );
+
+          const haveTo = normalize(
+            document.getElementById("have-to-answer").value
+          );
+
+          if (goingTo === "going" && haveTo === "has") {
+            completeActivity(
+              7,
+              "✓ Correcto: are going to / Tom has to go to New Orleans."
+            );
+          } else {
+            setFeedback(7, "Pista: going / has.");
+          }
+        });
+
+      document
+        .querySelector(".check-habits")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("used-to-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("habit-writing").value
+          );
+
+          const validHabit =
+            writing.startsWith("im used to") ||
+            writing.startsWith("i am used to") ||
+            writing.startsWith("im not used to") ||
+            writing.startsWith("i am not used to");
+
+          if (answer === "used" && validHabit && writing.length >= 14) {
+            completeActivity(8, "✓ Práctica de costumbres guardada.");
+          } else {
+            setFeedback(
+              8,
+              "Completa used y escribe una oración con I'm used to o I'm not used to."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-culture")
+        .addEventListener("click", () => {
+          const writing = document
+            .getElementById("culture-writing")
+            .value
+            .trim();
+
+          if (writing.length >= 12) {
+            completeActivity(9, "✓ Respuesta cultural guardada.");
+          } else {
+            setFeedback(9, "Escribe una oración completa en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("review-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("review-answer-2").value
+          );
+
+          const writing = document
+            .getElementById("final-writing")
+            .value
+            .trim();
+
+          if (
+            answer1 === "can" &&
+            answer2 === "to" &&
+            writing.length >= 80
+          ) {
+            completeActivity(10, "✓ ¡Entrega 2.5 y Unidad 2 completadas!");
+          } else {
+            setFeedback(
+              10,
+              "Completa can, to y escribe al menos cuatro oraciones en inglés."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
+</body>
+</html>
