@@ -1,408 +1,1106 @@
-"use strict";
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <meta
+    name="description"
+    content="Unidad 1, Entrega 1: Contactos, un cóctel en Nueva York."
+  >
 
-document.addEventListener("DOMContentLoaded", () => {
-  const storageKey = "506EnglishExpress.unit1.delivery1.progress";
-  const totalActivities = 9;
+  <title>Contactos: Un cóctel en Nueva York | 506 English Express</title>
 
-  const activityCards = Array.from(
-    document.querySelectorAll(".activity-card[data-activity]")
-  );
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-  const progressText = document.getElementById("progress-text");
-  const progressFill = document.getElementById("progress-fill");
-  const progressTrack = document.querySelector(".progress-track");
-  const resetButton = document.getElementById("reset-progress");
-  const completeMessage = document.getElementById(
-    "lesson-complete-message"
-  );
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/lesson.css">
 
-  function getCompletedActivities() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(storageKey));
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
 
-      if (!Array.isArray(saved)) {
-        return [];
+    .completion-actions,
+    .activity-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .completion-actions {
+      justify-content: center;
+    }
+
+    .next-activity-button {
+      display: inline-flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      cursor: pointer;
+    }
+
+    .next-activity-highlight {
+      animation: nextActivityHighlight 1.6s ease-out;
+    }
+
+    @keyframes nextActivityHighlight {
+      0% {
+        box-shadow: 0 0 0 0 rgba(47, 215, 255, 0.95);
       }
 
-      return [...new Set(
-        saved
-          .map(Number)
-          .filter(
-            (activity) =>
-              Number.isInteger(activity) &&
-              activity >= 1 &&
-              activity <= totalActivities
-          )
-      )].sort((a, b) => a - b);
-    } catch {
-      return [];
-    }
-  }
-
-  function saveCompletedActivities(completedActivities) {
-    localStorage.setItem(
-      storageKey,
-      JSON.stringify(completedActivities)
-    );
-  }
-
-  function getCard(activityNumber) {
-    return document.querySelector(
-      `.activity-card[data-activity="${activityNumber}"]`
-    );
-  }
-
-  function getFeedback(card) {
-    return card.querySelector(".activity-feedback");
-  }
-
-  function updateProgress() {
-    const completedActivities = getCompletedActivities();
-    const completedCount = completedActivities.length;
-    const percentage = Math.round(
-      (completedCount / totalActivities) * 100
-    );
-
-    if (progressText) {
-      progressText.textContent =
-        `${completedCount} de ${totalActivities} secciones completadas`;
-    }
-
-    if (progressFill) {
-      progressFill.style.width = `${percentage}%`;
-    }
-
-    if (progressTrack) {
-      progressTrack.setAttribute("aria-valuenow", String(percentage));
-    }
-
-    if (completeMessage) {
-      completeMessage.hidden = completedCount !== totalActivities;
-    }
-  }
-
-  function updateActivities() {
-    const completedActivities = getCompletedActivities();
-
-    activityCards.forEach((card) => {
-      const activityNumber = Number(card.dataset.activity);
-      const previousActivityIsComplete =
-        activityNumber === 1 ||
-        completedActivities.includes(activityNumber - 1);
-
-      const activityIsComplete =
-        completedActivities.includes(activityNumber);
-
-      const feedback = getFeedback(card);
-      const completeButton = card.querySelector(".complete-activity");
-      const finishButton = card.querySelector(".finish-lesson");
-
-      if (previousActivityIsComplete) {
-        card.classList.remove("is-locked");
-      } else {
-        card.classList.add("is-locked");
+      50% {
+        box-shadow: 0 0 0 12px rgba(47, 215, 255, 0.18);
       }
 
-      if (activityIsComplete) {
-        card.classList.add("is-complete");
-
-        if (feedback) {
-          feedback.textContent = "✓ Actividad completada";
-        }
-
-        if (completeButton) {
-          completeButton.textContent = "Actividad completada";
-        }
-
-        if (finishButton) {
-          finishButton.textContent = "Entrega completada";
-        }
-      } else {
-        card.classList.remove("is-complete");
+      100% {
+        box-shadow: 0 0 0 0 rgba(47, 215, 255, 0);
       }
-    });
-
-    updateProgress();
-  }
-
-  function scrollToNextActivity(activityNumber) {
-    const nextCard = getCard(activityNumber + 1);
-
-    if (!nextCard) {
-      if (completeMessage) {
-        completeMessage.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }
-
-      return;
     }
+  </style>
+</head>
 
-    setTimeout(() => {
-      nextCard.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source
+        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
+        type="video/mp4"
+      >
+    </video>
+  </div>
 
-      nextCard.classList.add("next-activity-highlight");
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
 
-      setTimeout(() => {
-        nextCard.classList.remove("next-activity-highlight");
-      }, 1600);
-    }, 250);
-  }
+  <div class="topbar">
+    <div class="container topbar-content">
+      <span>506 English Express</span>
+      <span>Unidad 1 · Entrega 1 · Contactos</span>
+    </div>
+  </div>
 
-  function completeActivity(activityNumber, shouldScroll = true) {
-    const completedActivities = getCompletedActivities();
+  <header>
+    <nav class="container navbar" aria-label="Navegación principal">
+      <a href="../index.html" class="brand" aria-label="Volver al inicio">
+        <span class="brand-mark" aria-hidden="true"><span>⚡</span></span>
+        <span class="brand-text">English <strong>506</strong> Express</span>
+      </a>
 
-    if (!completedActivities.includes(activityNumber)) {
-      completedActivities.push(activityNumber);
-      completedActivities.sort((a, b) => a - b);
-      saveCompletedActivities(completedActivities);
-    }
+      <div class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="unit-1.html">Unidad 1</a>
+        <a href="progress.html">Mi progreso</a>
+      </div>
 
-    updateActivities();
+      <a href="unit-1.html" class="button button-outline button-small">
+        Ver unidad
+      </a>
+    </nav>
+  </header>
 
-    if (shouldScroll) {
-      scrollToNextActivity(activityNumber);
-    }
-  }
+  <main class="lesson-page">
+    <div class="container">
+      <section class="lesson-banner">
+        <p class="kicker">Unidad 01 · Entrega 01</p>
 
-  function showFeedback(card, message, isCorrect = false) {
-    const feedback = getFeedback(card);
+        <h1>Contactos: Un cóctel en Nueva York</h1>
 
-    if (!feedback) {
-      return;
-    }
+        <p>
+          Durante un cóctel en Nueva York ofrecido por Jeff Wilton, productor de
+          televisión, varios compañeros de trabajo se encuentran y hacen nuevos
+          amigos.
+        </p>
 
-    feedback.textContent = message;
-    feedback.classList.toggle("feedback-correct", isCorrect);
-    feedback.classList.toggle("feedback-error", !isCorrect);
-  }
+        <div class="lesson-progress">
+          <div>
+            <div class="lesson-progress-label">
+              <span>Progreso de la entrega</span>
+              <span id="progress-text">0 de 9 secciones completadas</span>
+            </div>
 
-  function addNextButton(card) {
-    const activityNumber = Number(card.dataset.activity);
-    const actions = card.querySelector(".activity-actions");
+            <div
+              class="progress-track"
+              role="progressbar"
+              aria-label="Progreso de la entrega"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
 
-    if (!actions || activityNumber === totalActivities) {
-      return;
-    }
+          <button
+            class="button button-outline button-small"
+            id="reset-progress"
+            type="button"
+          >
+            Reiniciar
+          </button>
+        </div>
+      </section>
 
-    if (actions.querySelector(".next-activity-button")) {
-      return;
-    }
+      <section class="lesson-sections">
+        <article class="lesson-section activity-card" data-activity="1">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
+              <h2>Un cóctel en Nueva York</h2>
+            </div>
 
-    const nextButton = document.createElement("button");
-    nextButton.type = "button";
-    nextButton.className =
-      "button button-outline next-activity-button";
-    nextButton.textContent = "Siguiente actividad →";
+            <span class="activity-icon" aria-hidden="true">🍸</span>
+          </div>
 
-    nextButton.addEventListener("click", () => {
-      const completedActivities = getCompletedActivities();
+          <p>
+            Lea y escuche el diálogo. Jeff presenta a Barbara Rivers y Tom Ryder
+            durante un cóctel en Nueva York.
+          </p>
 
-      if (!completedActivities.includes(activityNumber)) {
-        completeActivity(activityNumber, false);
-      }
+          <div class="dialogue-box">
+            <p><strong>Jeff:</strong> Hi, Barbara! I'm very happy to see you. That's a great dress!</p>
+            <p><strong>Barbara:</strong> Hi, Jeff! How are you?</p>
+            <p><strong>Jeff:</strong> Fine, thanks. Hey, come and meet Tom. He's from California.</p>
+            <p><strong>Barbara:</strong> Oh, yeah?</p>
+            <p><strong>Jeff:</strong> Hey, Tom, let me introduce you to Barbara Rivers. She's a reporter on our program “Thirty Minutes”. Barbara, this is Tom Ryder.</p>
+            <p><strong>Tom:</strong> Nice to meet you.</p>
+            <p><strong>Barbara:</strong> Hello, Tom.</p>
+            <p><strong>Tom:</strong> Are you from New York, Barb?</p>
+            <p><strong>Barbara:</strong> Yes. And I'm not Barb. My name's Barbara.</p>
+            <p><strong>Tom:</strong> Oh, I'm sorry, Barbara. I'm from L.A.</p>
+            <p><strong>Jeff:</strong> I'm glad you two are friends now. That's great because Tom's the new cameraman on “Thirty Minutes”.</p>
+            <p><strong>Barbara:</strong> Oh, that's nice.</p>
+          </div>
 
-      scrollToNextActivity(activityNumber);
-    });
+          <div class="translation-box">
+            <strong>Comprensión general:</strong>
+            <span>
+              Jeff Wilton presenta a Tom Ryder a Barbara Rivers. Barbara es
+              reportera del programa “Thirty Minutes” y Tom es el nuevo
+              camarógrafo del programa.
+            </span>
+          </div>
 
-    actions.appendChild(nextButton);
-  }
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar diálogo como completado
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
 
-  activityCards.forEach((card) => {
-    addNextButton(card);
-  });
+        <article class="lesson-section activity-card is-locked" data-activity="2">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 02 · COMPRENSIÓN</p>
+              <h2>Compruebe su comprensión</h2>
+            </div>
 
-  document.querySelectorAll(".complete-activity").forEach((button) => {
-    button.addEventListener("click", () => {
-      const card = button.closest(".activity-card");
-      const activityNumber = Number(card.dataset.activity);
+            <span class="activity-icon" aria-hidden="true">🧠</span>
+          </div>
 
-      completeActivity(activityNumber);
-    });
-  });
+          <p>Seleccione la respuesta correcta según el diálogo.</p>
 
-  document.querySelectorAll(".finish-lesson").forEach((button) => {
-    button.addEventListener("click", () => {
-      const card = button.closest(".activity-card");
-      const activityNumber = Number(card.dataset.activity);
+          <div class="question-block">
+            <p><strong>1. ¿Quién presenta a Tom?</strong></p>
 
-      completeActivity(activityNumber);
-    });
-  });
+            <label class="option-label">
+              <input type="radio" name="question-1" value="a">
+              Barbara
+            </label>
 
-  const comprehensionButton = document.querySelector(
-    ".check-comprehension"
-  );
+            <label class="option-label">
+              <input type="radio" name="question-1" value="b">
+              Jeff
+            </label>
 
-  if (comprehensionButton) {
-    comprehensionButton.addEventListener("click", () => {
-      const card = comprehensionButton.closest(".activity-card");
+            <label class="option-label">
+              <input type="radio" name="question-1" value="c">
+              Un camarero
+            </label>
+          </div>
 
-      const questionOne = document.querySelector(
-        'input[name="question-1"]:checked'
-      )?.value;
+          <div class="question-block">
+            <p><strong>2. ¿De dónde es Tom?</strong></p>
 
-      const questionTwo = document.querySelector(
-        'input[name="question-2"]:checked'
-      )?.value;
+            <label class="option-label">
+              <input type="radio" name="question-2" value="a">
+              New York
+            </label>
 
-      if (questionOne === "b" && questionTwo === "b") {
-        showFeedback(
-          card,
-          "✓ ¡Correcto! Jeff presenta a Tom y Tom es de California.",
-          true
-        );
+            <label class="option-label">
+              <input type="radio" name="question-2" value="b">
+              California / L.A.
+            </label>
 
-        completeActivity(2);
-      } else {
-        showFeedback(
-          card,
-          "Revisa el diálogo e inténtalo nuevamente."
-        );
-      }
-    });
-  }
+            <label class="option-label">
+              <input type="radio" name="question-2" value="c">
+              London
+            </label>
+          </div>
 
-  const vocabularyButton = document.querySelector(".check-vocabulary");
+          <div class="activity-actions">
+            <button class="button button-primary check-comprehension" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
 
-  if (vocabularyButton) {
-    vocabularyButton.addEventListener("click", () => {
-      const card = vocabularyButton.closest(".activity-card");
+        <article class="lesson-section activity-card is-locked" data-activity="3">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 03 · ESCUCHE Y REPITA</p>
+              <h2>Saludos y presentaciones</h2>
+            </div>
 
-      const answer = document
-        .getElementById("vocabulary-answer")
-        .value
-        .trim()
-        .toLowerCase();
+            <span class="activity-icon" aria-hidden="true">🗣️</span>
+          </div>
 
-      if (
-        answer.includes("tom") &&
-        answer.includes("new") &&
-        answer.includes("cameraman")
-      ) {
-        showFeedback(
-          card,
-          "✓ Correcto: Tom is the new cameraman.",
-          true
-        );
+          <p>
+            Repita estas expresiones en voz alta. Después, vuelva a leer el
+            diálogo e identifique dónde aparece cada una.
+          </p>
 
-        completeActivity(4);
-      } else {
-        showFeedback(
-          card,
-          "Pista: Tom is the new cameraman."
-        );
-      }
-    });
-  }
+          <div class="translation-box">
+            <strong>Práctica sugerida:</strong>
+            <span>
+              Hi, Barbara! / How are you? / Fine, thanks. / Nice to meet you. /
+              Are you from New York? / I'm from L.A.
+            </span>
+          </div>
 
-  const expressionsButton = document.querySelector(".check-expressions");
+          <p>Encontrará la traducción en la página 1 del anexo.</p>
 
-  if (expressionsButton) {
-    expressionsButton.addEventListener("click", () => {
-      const card = expressionsButton.closest(".activity-card");
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar práctica como completada
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
 
-      const greetingAnswer = document
-        .getElementById("greeting-answer")
-        .value
-        .trim()
-        .toLowerCase();
+        <article class="lesson-section activity-card is-locked" data-activity="4">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 04 · VOCABULARIO</p>
+              <h2>Palabras y expresiones</h2>
+            </div>
 
-      const originAnswer = document
-        .getElementById("origin-answer")
-        .value
-        .trim()
-        .toLowerCase();
+            <span class="activity-icon" aria-hidden="true">📚</span>
+          </div>
 
-      const greetingCorrect = greetingAnswer === "hello";
-      const originCorrect =
-        originAnswer === "am" ||
-        originAnswer === "'m";
+          <div class="vocabulary-columns">
+            <section class="vocabulary-group">
+              <h3>Sustantivos</h3>
+              <dl class="vocabulary-list">
+                <div><dt>program</dt><dd>programa</dd></div>
+                <div><dt>minute(s)</dt><dd>minuto(s)</dd></div>
+                <div><dt>name</dt><dd>nombre</dd></div>
+                <div><dt>friend</dt><dd>amigo/a</dd></div>
+                <div><dt>cameraman</dt><dd>camarógrafo</dd></div>
+                <div><dt>reporter</dt><dd>reportero/a</dd></div>
+                <div><dt>engineer</dt><dd>ingeniero/a</dd></div>
+                <div><dt>secretary</dt><dd>secretario/a</dd></div>
+                <div><dt>producer</dt><dd>productor/a</dd></div>
+                <div><dt>director</dt><dd>director/a</dd></div>
+                <div><dt>model</dt><dd>modelo</dd></div>
+                <div><dt>job</dt><dd>empleo</dd></div>
+                <div><dt>television</dt><dd>televisión</dd></div>
+              </dl>
+            </section>
 
-      if (greetingCorrect && originCorrect) {
-        showFeedback(
-          card,
-          "✓ ¡Muy bien! Hello, nice to meet you. / I am from Costa Rica.",
-          true
-        );
+            <section class="vocabulary-group">
+              <h3>Adjetivos y nacionalidades</h3>
+              <dl class="vocabulary-list">
+                <div><dt>sad</dt><dd>triste</dd></div>
+                <div><dt>beautiful</dt><dd>hermoso/a</dd></div>
+                <div><dt>pretty</dt><dd>bonito/a</dd></div>
+                <div><dt>American</dt><dd>americano/a</dd></div>
+                <div><dt>English</dt><dd>inglés/a</dd></div>
+                <div><dt>French</dt><dd>francés/a</dd></div>
+                <div><dt>Spanish</dt><dd>español/a</dd></div>
+                <div><dt>Italian</dt><dd>italiano/a</dd></div>
+                <div><dt>German</dt><dd>alemán/a</dd></div>
+                <div><dt>Japanese</dt><dd>japonés/a</dd></div>
+                <div><dt>friendly</dt><dd>amistoso/a</dd></div>
+                <div><dt>happy</dt><dd>feliz</dd></div>
+                <div><dt>great</dt><dd>fantástico</dd></div>
+                <div><dt>nice</dt><dd>agradable</dd></div>
+                <div><dt>new</dt><dd>nuevo/a</dd></div>
+              </dl>
+            </section>
 
-        completeActivity(5);
-      } else {
-        showFeedback(
-          card,
-          "Pista: Hello, nice to meet you. / I am from Costa Rica."
-        );
-      }
-    });
-  }
+            <section class="vocabulary-group">
+              <h3>Verbos y expresiones</h3>
+              <dl class="vocabulary-list">
+                <div><dt>to be</dt><dd>ser/estar</dd></div>
+                <div><dt>to see</dt><dd>ver</dd></div>
+                <div><dt>to come</dt><dd>venir</dd></div>
+                <div><dt>to meet</dt><dd>conocer</dd></div>
+                <div><dt>to introduce</dt><dd>presentar</dd></div>
+                <div><dt>to work</dt><dd>trabajar</dd></div>
+                <div><dt>to go</dt><dd>ir</dd></div>
+                <div><dt>fine</dt><dd>bien</dd></div>
+                <div><dt>now</dt><dd>ahora</dd></div>
+                <div><dt>because</dt><dd>porque</dd></div>
+                <div><dt>nice to meet you</dt><dd>mucho gusto</dd></div>
+                <div><dt>I'm sorry</dt><dd>lo siento</dd></div>
+              </dl>
+            </section>
+          </div>
 
-  if (resetButton) {
-    resetButton.addEventListener("click", () => {
-      const shouldReset = window.confirm(
-        "¿Deseas reiniciar el progreso de esta entrega?"
+          <div class="question-block">
+            <label for="vocabulary-answer">
+              Complete en inglés: “Tom es el nuevo camarógrafo.”
+            </label>
+
+            <input
+              id="vocabulary-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Tom is the new..."
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-vocabulary" type="button">
+              Revisar respuesta
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="5">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 05 · CÓMO SE DICE</p>
+              <h2>Saludos, presentaciones y profesiones</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">💬</span>
+          </div>
+
+          <div class="phrase-groups">
+            <section class="phrase-group">
+              <h3>Saludos</h3>
+              <dl class="phrase-list">
+                <div><dt>Hi! / Hello!</dt><dd>¡Hola!</dd></div>
+                <div><dt>I'm very happy to see you.</dt><dd>Encantado/a de verte.</dd></div>
+                <div><dt>How are you?</dt><dd>¿Cómo estás?</dd></div>
+                <div><dt>Fine, thanks.</dt><dd>Bien, gracias.</dd></div>
+              </dl>
+            </section>
+
+            <section class="phrase-group">
+              <h3>Presentaciones</h3>
+              <dl class="phrase-list">
+                <div><dt>Let me introduce you to Barbara Rivers.</dt><dd>Permítame presentarle a Barbara Rivers.</dd></div>
+                <div><dt>Barbara, this is Tom Ryder.</dt><dd>Barbara, este es Tom Ryder.</dd></div>
+                <div><dt>My name's Barbara.</dt><dd>Me llamo Barbara.</dd></div>
+                <div><dt>Nice to meet you.</dt><dd>Mucho gusto.</dd></div>
+              </dl>
+            </section>
+
+            <section class="phrase-group">
+              <h3>Procedencia y profesiones</h3>
+              <dl class="phrase-list">
+                <div><dt>I come from New York.</dt><dd>Procedo de Nueva York.</dd></div>
+                <div><dt>I'm from London.</dt><dd>Soy de Londres.</dd></div>
+                <div><dt>He's French.</dt><dd>Es francés.</dd></div>
+                <div><dt>She's a reporter.</dt><dd>Es reportera.</dd></div>
+                <div><dt>He's a cameraman.</dt><dd>Es camarógrafo.</dd></div>
+                <div><dt>I'm an engineer.</dt><dd>Soy ingeniero/a.</dd></div>
+                <div><dt>What do you do?</dt><dd>¿En qué trabaja?</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <div class="sentence-practice">
+            <label for="greeting-answer">
+              Complete: “Hola, mucho gusto.” →
+              <strong>__________, nice to meet you.</strong>
+            </label>
+
+            <input
+              id="greeting-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe el saludo"
+            >
+          </div>
+
+          <div class="sentence-practice">
+            <label for="country-answer">
+              Complete: “Soy de Costa Rica.” →
+              <strong>I __________ from Costa Rica.</strong>
+            </label>
+
+            <input
+              id="country-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe la palabra que falta"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-expressions" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="6">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 06 · RECUERDE</p>
+              <h2>Puntos importantes</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">📘</span>
+          </div>
+
+          <div class="remember-grid">
+            <article class="remember-card">
+              <span>HI</span>
+              <p>Hi y Hello se pueden usar con amigos o personas desconocidas.</p>
+            </article>
+
+            <article class="remember-card">
+              <span>I</span>
+              <p>El pronombre sujeto I siempre se escribe con mayúscula.</p>
+            </article>
+
+            <article class="remember-card">
+              <span>ENGLISH</span>
+              <p>Países, idiomas y nacionalidades comienzan con mayúscula: I'm American y she speaks English.</p>
+            </article>
+
+            <article class="remember-card">
+              <span>A / AN</span>
+              <p>Con profesiones se usa el artículo indefinido: He's a cameraman y I'm an engineer.</p>
+            </article>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar recordatorio como completado
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="7">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 07 · PRÁCTICA ORAL</p>
+              <h2>To be, negación e interrogación</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">🎤</span>
+          </div>
+
+          <p>Practique en voz alta: <strong>I'm, you're, he's, she's, we're, they're.</strong></p>
+
+          <p class="example-box"><strong>Ejemplo:</strong> American, he → He's American.</p>
+
+          <div class="question-block">
+            <label for="oral-answer-one">Escriba dos frases usando <strong>to be</strong>:</label>
+            <textarea id="oral-answer-one" placeholder="She is a reporter. They are friends."></textarea>
+          </div>
+
+          <div class="question-block">
+            <label for="oral-answer-two">Escriba dos frases negativas:</label>
+            <textarea id="oral-answer-two" placeholder="He is not sad. We are not late."></textarea>
+          </div>
+
+          <div class="question-block">
+            <label for="oral-answer-three">Escriba dos preguntas:</label>
+            <textarea id="oral-answer-three" placeholder="Are you from Costa Rica? Is she a reporter?"></textarea>
+          </div>
+
+          <div class="question-block">
+            <label for="oral-answer-four">Responda: How are you? What's your name? Where are you from?</label>
+            <textarea id="oral-answer-four" placeholder="Fine, thanks. My name is ____. I am from _____."></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar práctica oral como completada
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="8">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 08 · SALUDOS</p>
+              <h2>Saludos: una cultura de informalidad</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">🌎</span>
+          </div>
+
+          <div class="reading-card">
+            <p>
+              En Estados Unidos, expresiones como <strong>Hi</strong>,
+              <strong>Hello</strong> y <strong>Nice to meet you</strong> se usan
+              con frecuencia tanto con personas conocidas como con personas que
+              se conocen por primera vez.
+            </p>
+
+            <p>
+              Preguntas como <strong>How are you?</strong>,
+              <strong>How's it going?</strong>, <strong>How are things?</strong>
+              o <strong>What's new?</strong> pueden utilizarse como saludos
+              informales.
+            </p>
+
+            <p>
+              Respuestas breves como <strong>Fine, thanks</strong>,
+              <strong>Good, thanks</strong> o <strong>Everything is fine</strong>
+              suelen ser suficientes.
+            </p>
+          </div>
+
+          <div class="question-block">
+            <label for="greeting-practice-answer">
+              Escriba una respuesta corta en inglés para: “How are you?”
+            </label>
+
+            <input
+              id="greeting-practice-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Fine, thanks."
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar lectura como completada
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="9">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 09 · REPASO</p>
+              <h2>De todo un poco N.º 1</h2>
+            </div>
+
+            <span class="activity-icon" aria-hidden="true">✅</span>
+          </div>
+
+          <div class="question-block">
+            <label for="characters-answer">
+              <strong>1. Identifique a los personajes:</strong> escriba los tres
+              personajes principales del diálogo.
+            </label>
+
+            <input
+              id="characters-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Jeff, Barbara, Tom"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="review-answer">
+              <strong>2. Práctica escrita:</strong> complete y escriba las
+              respuestas para Vivien Leigh, Sean Connery, Woody Allen y
+              The Magnificent Seven.
+            </label>
+
+            <textarea
+              id="review-answer"
+              placeholder="Escriba sus respuestas"
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary finish-lesson" type="button">
+              Completar entrega
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+      </section>
+
+      <section
+        class="lesson-complete-message"
+        id="lesson-complete-message"
+        aria-live="polite"
+        hidden
+      >
+        <p class="kicker">Entrega completada</p>
+        <h2>¡Excelente trabajo!</h2>
+
+        <p>
+          Completaste “Contactos: Un cóctel en Nueva York”. Tu avance se guardó
+          en este navegador y se intentará registrar en tu cuenta cuando hayas
+          iniciado sesión.
+        </p>
+
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-1-delivery-2.html">
+            Continuar a la siguiente entrega →
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>Unidad 1 · Entrega 1 · Contactos</span>
+    </div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit1.delivery1.progress";
+      const totalActivities = 9;
+
+      const activityCards = Array.from(
+        document.querySelectorAll(".activity-card[data-activity]")
       );
 
-      if (!shouldReset) {
-        return;
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completeMessage = document.getElementById(
+        "lesson-complete-message"
+      );
+
+      function getCompletedActivities() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(saved)) {
+            return [];
+          }
+
+          return [...new Set(
+            saved
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
       }
 
-      localStorage.removeItem(storageKey);
+      function saveCompletedActivities(completedActivities) {
+        localStorage.setItem(
+          storageKey,
+          JSON.stringify(completedActivities)
+        );
+      }
 
-      document
-        .querySelectorAll("input[type='text'], textarea")
-        .forEach((field) => {
-          field.value = "";
+      function getCard(activityNumber) {
+        return document.querySelector(
+          `.activity-card[data-activity="${activityNumber}"]`
+        );
+      }
+
+      function getFeedback(card) {
+        return card ? card.querySelector(".activity-feedback") : null;
+      }
+
+      function updateProgress() {
+        const completedActivities = getCompletedActivities();
+        const completedCount = completedActivities.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        if (progressText) {
+          progressText.textContent =
+            `${completedCount} de ${totalActivities} secciones completadas`;
+        }
+
+        if (progressFill) {
+          progressFill.style.width = `${percentage}%`;
+        }
+
+        if (progressTrack) {
+          progressTrack.setAttribute("aria-valuenow", String(percentage));
+        }
+
+        if (completeMessage) {
+          completeMessage.hidden = completedCount !== totalActivities;
+        }
+      }
+
+      function updateActivities() {
+        const completedActivities = getCompletedActivities();
+
+        activityCards.forEach((card) => {
+          const activityNumber = Number(card.dataset.activity);
+          const activityIsComplete =
+            completedActivities.includes(activityNumber);
+
+          const previousActivityIsComplete =
+            activityNumber === 1 ||
+            completedActivities.includes(activityNumber - 1);
+
+          const feedback = getFeedback(card);
+          const completeButton = card.querySelector(".complete-activity");
+          const finishButton = card.querySelector(".finish-lesson");
+
+          card.classList.toggle(
+            "is-locked",
+            !previousActivityIsComplete && !activityIsComplete
+          );
+
+          card.classList.toggle("is-complete", activityIsComplete);
+
+          if (activityIsComplete) {
+            if (feedback) {
+              feedback.textContent = "✓ Actividad completada";
+              feedback.classList.add("feedback-correct");
+              feedback.classList.remove("feedback-error");
+            }
+
+            if (completeButton) {
+              completeButton.textContent = "Actividad completada";
+            }
+
+            if (finishButton) {
+              finishButton.textContent = "Entrega completada";
+            }
+          }
         });
 
-      document
-        .querySelectorAll("input[type='radio']")
-        .forEach((field) => {
-          field.checked = false;
+        updateProgress();
+      }
+
+      function scrollToNextActivity(activityNumber) {
+        const nextCard = getCard(activityNumber + 1);
+
+        if (!nextCard) {
+          if (completeMessage) {
+            completeMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }
+
+          return;
+        }
+
+        window.setTimeout(() => {
+          nextCard.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+          nextCard.classList.add("next-activity-highlight");
+
+          window.setTimeout(() => {
+            nextCard.classList.remove("next-activity-highlight");
+          }, 1600);
+        }, 250);
+      }
+
+      function completeActivity(activityNumber, shouldScroll = true) {
+        const completedActivities = getCompletedActivities();
+
+        if (!completedActivities.includes(activityNumber)) {
+          completedActivities.push(activityNumber);
+          completedActivities.sort((a, b) => a - b);
+          saveCompletedActivities(completedActivities);
+        }
+
+        updateActivities();
+
+        if (shouldScroll) {
+          scrollToNextActivity(activityNumber);
+        }
+      }
+
+      function showFeedback(card, message, isCorrect = false) {
+        const feedback = getFeedback(card);
+
+        if (!feedback) {
+          return;
+        }
+
+        feedback.textContent = message;
+        feedback.classList.toggle("feedback-correct", isCorrect);
+        feedback.classList.toggle("feedback-error", !isCorrect);
+      }
+
+      function addNextButton(card) {
+        const activityNumber = Number(card.dataset.activity);
+        const actions = card.querySelector(".activity-actions");
+
+        if (!actions || activityNumber === totalActivities) {
+          return;
+        }
+
+        if (actions.querySelector(".next-activity-button")) {
+          return;
+        }
+
+        const nextButton = document.createElement("button");
+
+        nextButton.type = "button";
+        nextButton.className =
+          "button button-outline next-activity-button";
+        nextButton.textContent = "Siguiente actividad →";
+
+        nextButton.addEventListener("click", () => {
+          const completedActivities = getCompletedActivities();
+
+          if (!completedActivities.includes(activityNumber)) {
+            completeActivity(activityNumber, false);
+          }
+
+          scrollToNextActivity(activityNumber);
         });
 
-      document
-        .querySelectorAll(".activity-feedback")
-        .forEach((feedback) => {
-          feedback.textContent = "";
+        actions.appendChild(nextButton);
+      }
+
+      activityCards.forEach((card) => {
+        addNextButton(card);
+      });
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".activity-card");
+
+          if (!card) {
+            return;
+          }
+
+          completeActivity(Number(card.dataset.activity));
         });
+      });
 
-      document
-        .querySelectorAll(".complete-activity")
-        .forEach((button) => {
-          button.textContent =
-            button.closest('[data-activity="3"]')
-              ? "Marcar práctica como completada"
-              : button.closest('[data-activity="6"]')
-                ? "Marcar recordatorio como completado"
-                : button.closest('[data-activity="7"]')
-                  ? "Marcar práctica oral como completada"
-                  : button.closest('[data-activity="8"]')
-                    ? "Marcar lectura como completada"
-                    : "Marcar diálogo como completado";
+      document.querySelectorAll(".finish-lesson").forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".activity-card");
+
+          if (!card) {
+            return;
+          }
+
+          const charactersAnswer = (
+            document.getElementById("characters-answer")?.value || ""
+          ).trim();
+
+          const reviewAnswer = (
+            document.getElementById("review-answer")?.value || ""
+          ).trim();
+
+          if (charactersAnswer.length < 8 || reviewAnswer.length < 20) {
+            showFeedback(
+              card,
+              "Completa los nombres de los personajes y la práctica escrita."
+            );
+            return;
+          }
+
+          completeActivity(Number(card.dataset.activity));
         });
+      });
 
-      const finishButton = document.querySelector(".finish-lesson");
+      const comprehensionButton = document.querySelector(
+        ".check-comprehension"
+      );
 
-      if (finishButton) {
-        finishButton.textContent = "Completar entrega";
+      if (comprehensionButton) {
+        comprehensionButton.addEventListener("click", () => {
+          const card = comprehensionButton.closest(".activity-card");
+
+          const questionOne = document.querySelector(
+            'input[name="question-1"]:checked'
+          )?.value;
+
+          const questionTwo = document.querySelector(
+            'input[name="question-2"]:checked'
+          )?.value;
+
+          if (questionOne === "b" && questionTwo === "b") {
+            showFeedback(
+              card,
+              "✓ ¡Correcto! Jeff presenta a Tom y Tom es de California.",
+              true
+            );
+
+            completeActivity(2);
+          } else {
+            showFeedback(
+              card,
+              "Revisa el diálogo e inténtalo nuevamente."
+            );
+          }
+        });
+      }
+
+      const vocabularyButton = document.querySelector(".check-vocabulary");
+
+      if (vocabularyButton) {
+        vocabularyButton.addEventListener("click", () => {
+          const card = vocabularyButton.closest(".activity-card");
+
+          const answer = (
+            document.getElementById("vocabulary-answer")?.value || ""
+          )
+            .trim()
+            .toLowerCase();
+
+          if (answer.includes("cameraman")) {
+            showFeedback(
+              card,
+              "✓ Correcto: Tom is the new cameraman.",
+              true
+            );
+
+            completeActivity(4);
+          } else {
+            showFeedback(
+              card,
+              "Pista: Tom is the new cameraman."
+            );
+          }
+        });
+      }
+
+      const expressionsButton = document.querySelector(".check-expressions");
+
+      if (expressionsButton) {
+        expressionsButton.addEventListener("click", () => {
+          const card = expressionsButton.closest(".activity-card");
+
+          const greetingAnswer = (
+            document.getElementById("greeting-answer")?.value || ""
+          )
+            .trim()
+            .toLowerCase();
+
+          const countryAnswer = (
+            document.getElementById("country-answer")?.value || ""
+          )
+            .trim()
+            .toLowerCase();
+
+          const greetingCorrect = greetingAnswer === "hello";
+          const countryCorrect =
+            countryAnswer === "am" ||
+            countryAnswer === "'m";
+
+          if (greetingCorrect && countryCorrect) {
+            showFeedback(
+              card,
+              "✓ ¡Muy bien! Hello, nice to meet you. / I am from Costa Rica.",
+              true
+            );
+
+            completeActivity(5);
+          } else {
+            showFeedback(
+              card,
+              "Pista: Hello / am."
+            );
+          }
+        });
+      }
+
+      if (resetButton) {
+        resetButton.addEventListener("click", () => {
+          const shouldReset = window.confirm(
+            "¿Deseas reiniciar el progreso de esta entrega?"
+          );
+
+          if (!shouldReset) {
+            return;
+          }
+
+          localStorage.removeItem(storageKey);
+
+          document
+            .querySelectorAll("input[type='text'], textarea")
+            .forEach((field) => {
+              field.value = "";
+            });
+
+          document
+            .querySelectorAll("input[type='radio']")
+            .forEach((field) => {
+              field.checked = false;
+            });
+
+          document
+            .querySelectorAll(".activity-feedback")
+            .forEach((feedback) => {
+              feedback.textContent = "";
+              feedback.classList.remove(
+                "feedback-correct",
+                "feedback-error"
+              );
+            });
+
+          document
+            .querySelectorAll(".complete-activity")
+            .forEach((button) => {
+              button.textContent =
+                button.closest('[data-activity="3"]')
+                  ? "Marcar práctica como completada"
+                  : button.closest('[data-activity="6"]')
+                    ? "Marcar recordatorio como completado"
+                    : button.closest('[data-activity="7"]')
+                      ? "Marcar práctica oral como completada"
+                      : button.closest('[data-activity="8"]')
+                        ? "Marcar lectura como completada"
+                        : "Marcar diálogo como completado";
+            });
+
+          const finishButton = document.querySelector(".finish-lesson");
+
+          if (finishButton) {
+            finishButton.textContent = "Completar entrega";
+          }
+
+          updateActivities();
+
+          const firstCard = getCard(1);
+
+          if (firstCard) {
+            firstCard.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          }
+        });
       }
 
       updateActivities();
-
-      const firstCard = getCard(1);
-
-      if (firstCard) {
-        firstCard.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
     });
-  }
-
-  updateActivities();
-});
+  </script>
+</body>
+</html>
