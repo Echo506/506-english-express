@@ -8,6 +8,7 @@
     name="description"
     content="506 English Express: curso de inglés progresivo con diálogos, vocabulario, gramática, cultura y actividades interactivas."
   >
+
   <meta
     property="og:title"
     content="506 English Express | Aprende inglés paso a paso"
@@ -26,7 +27,7 @@
   >
   <meta
     property="og:image"
-    content="https://echo506.github.io/506-english-express/assets/img/share-card.png"
+    content="https://echo506.github.io/506-english-express/assets/images/from-zero-to-hero.png"
   >
   <meta
     property="og:image:width"
@@ -40,6 +41,7 @@
     property="og:image:alt"
     content="506 English Express"
   >
+
   <meta
     name="twitter:card"
     content="summary_large_image"
@@ -54,16 +56,10 @@
   >
   <meta
     name="twitter:image"
-    content="https://echo506.github.io/506-english-express/assets/img/share-card.png"
+    content="https://echo506.github.io/506-english-express/assets/images/from-zero-to-hero.png"
   >
 
   <title>506 English Express | Aprende inglés paso a paso</title>
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="assets/img/favicon.png"
-  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -826,7 +822,8 @@
     }
 
     .secondary-portal-card {
-      display: block;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
       overflow: hidden;
       border: 1px solid rgba(255, 196, 61, 0.22);
       border-radius: 22px;
@@ -1137,7 +1134,8 @@
       .hero-grid,
       .features-grid,
       .course-grid,
-      .portal-card {
+      .portal-card,
+      .secondary-portal-card {
         grid-template-columns: 1fr;
       }
 
@@ -1599,61 +1597,60 @@
         >
           <div class="portal-image-wrap">
             <img
+              src="assets/images/from-zero-to-hero.png"
+              alt="From Zero to Hero, práctica avanzada de inglés"
               class="portal-image"
-              src="assets/img/academy-preview.png"
-              alt="Vista previa de Elite English Cyber Academy"
             >
           </div>
 
           <div class="portal-content">
             <div class="portal-meta">
-              <span class="portal-badge">Nuevo portal</span>
-              <span class="portal-level">Grammar · Practice</span>
+              <span class="portal-badge">Advanced Practice</span>
+              <span class="portal-level">A1-C2 Grammar</span>
             </div>
 
             <h3>Elite English Cyber Academy</h3>
 
             <p>
-              Accede a una experiencia enfocada en gramática, estructuras,
-              ejercicios guiados y recursos adicionales para reforzar tu inglés.
+              Practica gramática inglesa desde foundations hasta proficiency con una
+              experiencia visual más intensa y un enfoque de precisión.
             </p>
 
-            <span class="portal-link">Entrar ahora</span>
+            <span class="portal-link">Entrar a la academia →</span>
           </div>
         </a>
       </div>
     </section>
 
-    <section class="secondary-portal-section" id="second-route">
+    <section class="secondary-portal-section" id="secondary-portal">
       <div class="container">
         <a
           class="secondary-portal-card"
-          href="https://echo506.github.io/english-level-up/"
+          href="https://echo506.github.io/ruta-ingles-secundaria-cr/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Ir a English Level Up"
+          aria-label="Ir a Ruta Inglés Secundaria CR"
         >
           <div class="secondary-portal-image-wrap">
             <img
+              src="assets/images/secondary-route-image.png"
+              alt="Ruta de inglés para estudiantes de secundaria"
               class="secondary-portal-image"
-              src="assets/img/level-up-preview.png"
-              alt="Vista previa de English Level Up"
             >
-
             <div class="secondary-portal-overlay">
               <div class="secondary-portal-meta">
-                <span class="portal-badge">Ruta extra</span>
-                <span class="portal-level">Practice · Speaking</span>
+                <span class="portal-badge">School Support</span>
+                <span class="portal-level">7th-11th Levels</span>
               </div>
 
-              <h3>English Level Up</h3>
+              <h3>Ruta Inglés Secundaria CR</h3>
 
               <p>
-                Refuerza tu aprendizaje con otra ruta de práctica enfocada en
-                comprensión, producción y desarrollo progresivo del idioma.
+                Refuerza reading, listening, vocabulario y gramática funcional con
+                misiones, XP, rachas e insignias para estudiantes de colegio.
               </p>
 
-              <span class="portal-link">Explorar portal</span>
+              <span class="portal-link">Abrir ruta →</span>
             </div>
           </div>
         </a>
@@ -1661,74 +1658,35 @@
     </section>
 
     <section class="start-section">
-      <div class="container">
-        <div class="start-card">
-          <div>
-            <h2>Empieza hoy tu ruta de aprendizaje</h2>
-            <p>
-              Entra a la primera unidad, completa las actividades y continúa
-              avanzando paso a paso dentro de 506 English Express.
-            </p>
-          </div>
+      <div class="container start-card">
+        <div>
+          <p class="kicker">Comienza ahora</p>
+          <h2>Unidad 1 · Contactos</h2>
 
-          <a href="pages/unit-1.html" class="button button-primary">
-            Ir a la Unidad 1
-          </a>
+          <p>
+            Inicia con presentaciones, saludos, nacionalidades y conversaciones
+            básicas. Completa las actividades para habilitar progresivamente las
+            siguientes lecciones.
+          </p>
         </div>
+
+        <a class="button button-primary" href="pages/unit-1.html">
+          Empezar curso
+        </a>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container footer-content">
-      <span>© 2026 506 English Express</span>
-      <span>Aprender inglés paso a paso</span>
+      <span>506 English Express</span>
+      <span>Aprender · Practicar · Avanzar</span>
+      <span>© 2026</span>
     </div>
   </footer>
 
-  <div class="theme-flash" id="theme-flash" aria-hidden="true"></div>
   <div class="auth-message" id="auth-message" aria-live="polite"></div>
-
-  <script type="module" src="assets/js/supabase-auth.js"></script>
-  <script>
-    const body = document.body;
-    const themeToggle = document.getElementById("theme-toggle");
-    const themeFlash = document.getElementById("theme-flash");
-
-    if (themeToggle) {
-      themeToggle.addEventListener("click", () => {
-        const isGreen = body.classList.toggle("cyber-green-theme");
-        themeToggle.setAttribute("aria-pressed", String(isGreen));
-        themeToggle.setAttribute(
-          "aria-label",
-          isGreen ? "Activar tema azul cyber" : "Activar tema verde cyber"
-        );
-        themeToggle.setAttribute(
-          "title",
-          isGreen ? "Cambiar a modo azul cyber" : "Cambiar a modo verde cyber"
-        );
-
-        if (themeFlash) {
-          themeFlash.classList.remove("play");
-          void themeFlash.offsetWidth;
-          themeFlash.classList.add("play");
-        }
-      });
-    }
-
-    const authMessage = document.getElementById("auth-message");
-
-    function showAuthMessage(message) {
-      if (!authMessage) return;
-      authMessage.textContent = message;
-      authMessage.classList.add("show");
-      clearTimeout(showAuthMessage.timeoutId);
-      showAuthMessage.timeoutId = setTimeout(() => {
-        authMessage.classList.remove("show");
-      }, 2600);
-    }
-
-    window.showAuthMessage = showAuthMessage;
-  </script>
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="./assets/js/supabase-auth.js?v=6"></script>
 </body>
 </html>
