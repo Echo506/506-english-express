@@ -9,6 +9,62 @@
     content="506 English Express: curso de inglés progresivo con diálogos, vocabulario, gramática, cultura y actividades interactivas."
   >
 
+  <meta
+    property="og:title"
+    content="506 English Express | Aprende inglés paso a paso"
+  >
+  <meta
+    property="og:description"
+    content="Curso interactivo de inglés con diálogos, vocabulario, gramática y actividades."
+  >
+  <meta
+    property="og:type"
+    content="website"
+  >
+  <meta
+    property="og:url"
+    content="https://echo506.github.io/506-english-express/"
+  >
+  <meta
+    property="og:image"
+    content="https://echo506.github.io/506-english-express/assets/img/share-card.png"
+  >
+  <meta
+    property="og:image:width"
+    content="1200"
+  >
+  <meta
+    property="og:image:height"
+    content="630"
+  >
+  <meta
+    property="og:image:alt"
+    content="506 English Express"
+  >
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+  <meta
+    name="twitter:title"
+    content="506 English Express | Aprende inglés paso a paso"
+  >
+  <meta
+    name="twitter:description"
+    content="Curso interactivo de inglés con diálogos, vocabulario, gramática y actividades."
+  >
+  <meta
+    name="twitter:image"
+    content="https://echo506.github.io/506-english-express/assets/img/share-card.png"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/img/favicon.png"
+  >
+
   <title>506 English Express | Aprende inglés paso a paso</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -796,11 +852,12 @@
 
     .secondary-portal-image {
       width: 100%;
-      height: 100%;
+      height: auto;
       min-height: 420px;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
       display: block;
+      background: #040c17;
     }
 
     .secondary-portal-overlay {
@@ -813,6 +870,7 @@
         rgba(3, 12, 25, 0.52) 38%,
         rgba(3, 12, 25, 0.92) 100%
       );
+      z-index: 2;
     }
 
     .secondary-portal-meta {
@@ -844,6 +902,7 @@
     }
 
     .secondary-portal-overlay p {
+      display: block;
       max-width: 70ch;
       margin: 0.95rem 0 0;
       color: rgba(239, 250, 255, 0.88);
