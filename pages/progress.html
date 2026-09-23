@@ -472,7 +472,7 @@
         <div class="reward-stats">
           <span class="reward-pill" id="reward-avatar-pill">Avatar 01</span>
           <span class="reward-pill" id="reward-xp-pill">0 / 1000 XP</span>
-          <span class="reward-pill" id="reward-activities-pill">0 / 47 actividades</span>
+          <span class="reward-pill" id="reward-activities-pill">0 / 255 actividades</span>
         </div>
       </div>
     </section>
@@ -500,7 +500,7 @@
 
         <div class="progress-label">
           <span>Actividades completadas</span>
-          <span id="unit-1-progress">0 / 18</span>
+          <span id="unit-1-progress">0 / 60</span>
         </div>
 
         <div class="track">
@@ -523,7 +523,7 @@
 
         <div class="progress-label">
           <span>Actividades completadas</span>
-          <span id="unit-2-progress">0 / 10</span>
+          <span id="unit-2-progress">0 / 65</span>
         </div>
 
         <div class="track">
@@ -548,7 +548,7 @@
 
         <div class="progress-label">
           <span>Actividades completadas</span>
-          <span id="unit-3-progress">0 / 9</span>
+          <span id="unit-3-progress">0 / 65</span>
         </div>
 
         <div class="track">
@@ -573,7 +573,7 @@
 
         <div class="progress-label">
           <span>Actividades completadas</span>
-          <span id="unit-4-progress">0 / 10</span>
+          <span id="unit-4-progress">0 / 65</span>
         </div>
 
         <div class="track">
@@ -615,14 +615,14 @@
       const rewards506State = window.Rewards506.getState();
 
       const unit1Completed = window.RewardsSystem.getProgressSources().filter(s => s.key.includes("unit1")).reduce((acc, s) => acc + s.completed, 0);
-      const unit2Completed = window.RewardsSystem.getProgressSources().find(s => s.key.includes("unit2"))?.completed || 0;
-      const unit3Completed = window.RewardsSystem.getProgressSources().find(s => s.key.includes("unit1.delivery3"))?.completed || 0;
-      const unit4Completed = window.RewardsSystem.getProgressSources().find(s => s.key.includes("unit4"))?.completed || 0;
+      const unit2Completed = window.RewardsSystem.getProgressSources().filter(s => s.key.includes("unit2")).reduce((acc, s) => acc + s.completed, 0);
+      const unit3Completed = window.RewardsSystem.getProgressSources().filter(s => s.key.includes("unit3")).reduce((acc, s) => acc + s.completed, 0);
+      const unit4Completed = window.RewardsSystem.getProgressSources().filter(s => s.key.includes("unit4")).reduce((acc, s) => acc + s.completed, 0);
 
-      const unit1Total = 18;
-      const unit2Total = 10;
-      const unit3Total = 9;
-      const unit4Total = 10;
+      const unit1Total = 60;
+      const unit2Total = 65;
+      const unit3Total = 65;
+      const unit4Total = 65;
 
       const unit1Complete = unit1Completed >= unit1Total;
       const unit2Complete = unit2Completed >= unit2Total;
@@ -674,7 +674,6 @@
       setUnitCard(3, unit3Completed, unit3Total, unit2Complete, "🔒 Completa Unidad 2");
       setUnitCard(4, unit4Completed, unit4Total, unit3Complete, "🔒 Completa Unidad 3");
 
-      // Renderizar tarjeta de recompensa actual usando RewardsSystem
       const image = document.getElementById("reward-image");
       const title = document.getElementById("reward-title");
       const copy = document.getElementById("reward-copy");
@@ -692,13 +691,11 @@
       if (xpPill) xpPill.textContent = `${state.xp} / 1000 XP`;
       if (activitiesPill) activitiesPill.textContent = `${state.totalCompleted} / ${state.totalActivities} actividades`;
 
-      // Sincronizar imagen del avatar en el menú superior
       const navImg = document.getElementById("nav-avatar-img");
       if (navImg) {
         navImg.src = window.RewardsSystem.getAvatarPath(state.avatar);
       }
 
-      // Progreso general
       document.getElementById("total-percent").textContent = `${state.totalPercent}%`;
       document.getElementById("total-fill").style.width = `${state.totalPercent}%`;
 
@@ -711,7 +708,6 @@
         }
       }
 
-      // Enlaces de ruta de aprendizaje y texto dinámico ("Comenzar" / "Continuar")
       const learningPath = window.RewardsSystem.getCurrentLearningPath();
       const continueLink = document.getElementById("continue-link");
       const currentUnitLink = document.getElementById("current-unit-link");
@@ -729,10 +725,8 @@
         currentUnitLink.href = learningPath.unitPage;
       }
 
-      // Renderizar colección completa de los 30 avatares
       window.Rewards506.renderAvatarCollection("#avatar-collection-container", rewards506State.currentAvatar);
 
-      // Botón de reinicio
       document.getElementById("reset-progress").addEventListener("click", () => {
         const confirmReset = confirm("¿Deseas borrar el progreso de prueba guardado en este navegador?");
         if (!confirmReset) return;

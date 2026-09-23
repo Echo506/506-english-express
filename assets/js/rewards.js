@@ -20,11 +20,33 @@ window.RewardsSystem = (function () {
   };
 
   const PROGRESS_SOURCES = [
-    ["506EnglishExpress.unit1.delivery1.progress", 9],
-    ["506EnglishExpress.unit1.delivery2.progress", 9],
-    ["506EnglishExpress.unit1.delivery3.progress", 9],
-    ["506EnglishExpress.unit2.delivery1.progress", 10],
-    ["506EnglishExpress.unit4.delivery4.progress", 10]
+    // Unidad 1 (60 actividades)
+    ["506EnglishExpress.unit1.delivery1.progress", 15],
+    ["506EnglishExpress.unit1.delivery2.progress", 10],
+    ["506EnglishExpress.unit1.delivery3.progress", 10],
+    ["506EnglishExpress.unit1.delivery4.progress", 10],
+    ["506EnglishExpress.unit1.delivery5.progress", 15],
+    
+    // Unidad 2 (65 actividades)
+    ["506EnglishExpress.unit2.delivery1.progress", 13],
+    ["506EnglishExpress.unit2.delivery2.progress", 13],
+    ["506EnglishExpress.unit2.delivery3.progress", 13],
+    ["506EnglishExpress.unit2.delivery4.progress", 13],
+    ["506EnglishExpress.unit2.delivery5.progress", 13],
+
+    // Unidad 3 (65 actividades)
+    ["506EnglishExpress.unit3.delivery1.progress", 13],
+    ["506EnglishExpress.unit3.delivery2.progress", 13],
+    ["506EnglishExpress.unit3.delivery3.progress", 13],
+    ["506EnglishExpress.unit3.delivery4.progress", 13],
+    ["506EnglishExpress.unit3.delivery5.progress", 13],
+
+    // Unidad 4 (65 actividades)
+    ["506EnglishExpress.unit4.delivery1.progress", 13],
+    ["506EnglishExpress.unit4.delivery2.progress", 13],
+    ["506EnglishExpress.unit4.delivery3.progress", 13],
+    ["506EnglishExpress.unit4.delivery4.progress", 13],
+    ["506EnglishExpress.unit4.delivery5.progress", 13]
   ];
 
   function clamp(value, min, max) {
@@ -114,24 +136,6 @@ window.RewardsSystem = (function () {
   }
 
   function getCurrentLearningPath() {
-    const u1d1 = readProgress("506EnglishExpress.unit1.delivery1.progress", 9);
-    const u1d2 = readProgress("506EnglishExpress.unit1.delivery2.progress", 9);
-    const u1d3 = readProgress("506EnglishExpress.unit1.delivery3.progress", 9);
-    const u2d1 = readProgress("506EnglishExpress.unit2.delivery1.progress", 10);
-    const u4d4 = readProgress("506EnglishExpress.unit4.delivery4.progress", 10);
-
-    if (u1d1 < 9) {
-      return { continuePage: "unit-1.html", unitPage: "unit-1.html" };
-    } else if (u1d2 < 9) {
-      return { continuePage: "unit-1.html", unitPage: "unit-1.html" };
-    } else if (u1d3 < 9) {
-      return { continuePage: "unit-1.html", unitPage: "unit-1.html" };
-    } else if (u2d1 < 10) {
-      return { continuePage: "unit-2.html", unitPage: "unit-2.html" };
-    } else if (u4d4 < 10) {
-      return { continuePage: "unit-4.html", unitPage: "unit-4.html" };
-    }
-
     return { continuePage: "unit-1.html", unitPage: "unit-1.html" };
   }
 
@@ -228,61 +232,6 @@ window.RewardsSystem = (function () {
         font-size: 1rem;
         line-height: 1.5;
       }
-      #progress-reward-card {
-        margin: 1.5rem 0 2rem;
-        padding: 1.5rem;
-        display: grid;
-        grid-template-columns: 160px 1fr;
-        gap: 1.25rem;
-        align-items: center;
-        border-radius: 18px;
-        border: 1px solid rgba(47, 215, 255, 0.35);
-        background: rgba(5, 16, 35, 0.94);
-        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-        color: #effaff;
-      }
-      #progress-reward-card img {
-        width: 160px;
-        height: 160px;
-        object-fit: cover;
-        border-radius: 16px;
-        border: 1px solid rgba(47, 215, 255, 0.35);
-        background: rgba(255, 255, 255, 0.05);
-      }
-      .progress-reward-kicker {
-        margin: 0 0 0.35rem;
-        color: #ffc43d;
-        font-family: Orbitron, sans-serif;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-      }
-      .progress-reward-title {
-        margin: 0 0 0.5rem;
-        font-family: Orbitron, sans-serif;
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        color: #effaff;
-      }
-      .progress-reward-copy {
-        margin: 0 0 0.4rem;
-        color: rgba(220, 240, 255, 0.86);
-        line-height: 1.5;
-      }
-      .progress-reward-copy:last-child {
-        margin-bottom: 0;
-        color: rgba(220, 240, 255, 0.82);
-      }
-      @media (max-width: 720px) {
-        #progress-reward-card {
-          grid-template-columns: 1fr;
-        }
-        #progress-reward-card img {
-          width: min(220px, 100%);
-          height: auto;
-          margin: 0 auto;
-        }
-      }
     `;
 
     document.head.appendChild(style);
@@ -309,49 +258,6 @@ window.RewardsSystem = (function () {
 
     text.textContent = message;
     modal.classList.add("is-visible");
-  }
-
-  function renderProgressReward() {
-    const state = getState();
-    const progressHeading = Array.from(document.querySelectorAll("h1, h2, h3, .section-title"))
-      .find((el) => el.textContent && el.textContent.toLowerCase().includes("progreso"));
-
-    const anchor =
-      document.querySelector("main") ||
-      document.querySelector(".progress-page") ||
-      document.body;
-
-    if (!anchor || document.getElementById("progress-reward-card")) return;
-
-    const card = document.createElement("section");
-    card.id = "progress-reward-card";
-    card.innerHTML = `
-      <img
-        id="progress-reward-image"
-        src="${getAvatarPath(state.avatar)}"
-        alt="Avatar ${String(state.avatar).padStart(2, "0")} desbloqueado"
-        width="160"
-        height="160"
-      >
-      <div>
-        <p class="progress-reward-kicker">Tu recompensa actual</p>
-        <h2 class="progress-reward-title">Nivel ${state.level} · ${state.levelTitle}</h2>
-        <p class="progress-reward-copy">Avatar actual: ${String(state.avatar).padStart(2, "0")}</p>
-        <p class="progress-reward-copy">Progreso global: ${state.totalPercent}% · ${state.xp}/1000 XP · ${state.totalCompleted}/${state.totalActivities} actividades completadas.</p>
-      </div>
-    `;
-
-    const img = card.querySelector("#progress-reward-image");
-    img.onerror = function () {
-      img.onerror = null;
-      img.src = "../assets/images/avatars/avatar-placeholder.jpg";
-    };
-
-    if (progressHeading && progressHeading.parentElement) {
-      progressHeading.parentElement.insertAdjacentElement("afterend", card);
-    } else {
-      anchor.prepend(card);
-    }
   }
 
   function checkForReward() {
@@ -385,7 +291,6 @@ window.RewardsSystem = (function () {
     getState,
     checkForReward,
     getAvatarPath,
-    renderProgressReward,
     getProgressSources,
     getCurrentLearningPath
   };
@@ -423,7 +328,7 @@ window.Rewards506 = (function () {
       const currentAvatar = clampAvatar(state.avatar || state.currentAvatar || 1);
 
       return {
-        totalActivities: Number(state.totalActivities || 47),
+        totalActivities: Number(state.totalActivities || 255),
         completedActivities: Number(state.totalCompleted || 0),
         xp: Number(state.xp || 0),
         xpGoal: 1000,
@@ -438,7 +343,7 @@ window.Rewards506 = (function () {
     }
 
     return {
-      totalActivities: 47,
+      totalActivities: 255,
       completedActivities: 0,
       xp: 0,
       xpGoal: 1000,
@@ -457,35 +362,6 @@ window.Rewards506 = (function () {
     if (typeof containerSelector === "string") return document.querySelector(containerSelector);
     if (containerSelector instanceof Element) return containerSelector;
     return null;
-  }
-
-  function renderCurrentAvatarBadge(containerSelector) {
-    const container = resolveContainer(containerSelector);
-    if (!container) return null;
-
-    const state = getState();
-    container.innerHTML = `
-      <section class="reward-avatar-badge" aria-label="Tu avatar actual">
-        <div class="reward-avatar-badge__media">
-          <img
-            src="${state.currentAvatarPath}"
-            alt="${state.currentAvatarLabel}"
-            class="reward-avatar-badge__image"
-            loading="lazy"
-            decoding="async"
-            width="96"
-            height="96"
-          >
-        </div>
-        <div class="reward-avatar-badge__content">
-          <p class="reward-avatar-badge__eyebrow">Tu avatar actual</p>
-          <h3 class="reward-avatar-badge__title">${state.currentAvatarLabel}</h3>
-          <p class="reward-avatar-badge__meta">Avatar ${padAvatarNumber(state.currentAvatar)}</p>
-          <p class="reward-avatar-badge__progress">${state.completedActivities} / ${state.totalActivities} actividades</p>
-        </div>
-      </section>
-    `;
-    return state;
   }
 
   function renderAvatarCollection(containerSelector, currentAvatar) {
@@ -537,7 +413,6 @@ window.Rewards506 = (function () {
     getState,
     getAvatarPath,
     getUnlockedAvatars,
-    renderCurrentAvatarBadge,
     renderAvatarCollection
   };
 })();
