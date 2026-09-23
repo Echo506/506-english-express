@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <meta
+    name="description"
+    content="Unidad 1, entrega 1: Contactos, saludos, presentaciones y comunicación en inglés."
+  >
+
+  <title>Contactos: Un cóctel en Nueva York | 506 English Express</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    .lesson-page {
+      padding: 3.5rem 0 5rem;
+    }
+
+    .lesson-hero,
+    .audio-player-card,
+    .activity-card {
+      border: 1px solid rgba(47, 215, 255, 0.32);
+      border-radius: 18px;
+      background: rgba(4, 20, 39, 0.76);
+      box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
+    }
+
+    .lesson-hero {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+
+    .lesson-hero h1,
+    .activity-card h2,
+    .completion-card h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .lesson-hero h1 {
+      font-size: clamp(1.65rem, 4vw, 3rem);
+      line-height: 1.2;
+    }
+
+    .lesson-hero > p:last-child,
+    .activity-card p,
+    .activity-card li,
+    .completion-card p {
+      color: rgba(225, 243, 255, 0.86);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .lesson-progress {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(47, 215, 255, 0.2);
+    }
+
+    .lesson-progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .lesson-progress-header span,
+    .activity-label,
+    .audio-player-label {
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lesson-progress-header strong {
+      color: #8cecff;
+    }
+
+    .lesson-progress-track {
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(47, 215, 255, 0.26);
+      border-radius: 999px;
+      background: rgba(1, 11, 27, 0.75);
+    }
+
+    .lesson-progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2fd7ff, #71ffc0);
+      transition: width 0.3s ease;
+    }
+
+    .audio-player-card {
+      margin: 1.5rem 0 1rem;
+      padding: 1.25rem;
+    }
+
+    .audio-player-info,
+    .audio-player-controls,
+    .activity-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .audio-player-info {
+      align-items: flex-start;
+    }
+
+    .audio-player-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      place-items: center;
+      border: 1px solid rgba(47, 215, 255, 0.58);
+      border-radius: 50%;
+      background: rgba(47, 215, 255, 0.1);
+      font-size: 1.25rem;
+    }
+
+    .audio-player-label {
+      margin: 0 0 0.25rem;
+    }
+
+    .audio-player-info h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+    }
+
+    .audio-player-info p:last-child {
+      margin: 0.35rem 0 0;
+      color: rgba(220, 240, 255, 0.78);
+    }
+
+    .audio-player-controls {
+      margin-top: 1rem;
+    }
+
+    .audio-play-button,
+    .activity-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid rgba(47, 215, 255, 0.65);
+      border-radius: 8px;
+      background: rgba(47, 215, 255, 0.12);
+      color: #b7f5ff;
+      cursor: pointer;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .audio-play-button {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      color: #061321;
+    }
+
+    .audio-play-button:hover,
+    .activity-button:hover {
+      background: rgba(47, 215, 255, 0.25);
+    }
+
+    .audio-time,
+    .activity-status {
+      color: #71ffc0;
+      font-weight: 700;
+    }
+
+    .audio-progress {
+      width: 100%;
+      margin-top: 1rem;
+      accent-color: #2fd7ff;
+    }
+
+    .activity-card {
+      margin: 1.25rem 0;
+      padding: clamp(1.15rem, 3vw, 1.7rem);
+    }
+
+    .activity-card h2 {
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 1.3;
+    }
+
+    .activity-label {
+      margin: 0 0 0.55rem;
+    }
+
+    .activity-card ul,
+    .activity-card ol {
+      padding-left: 1.3rem;
+    }
+
+    .activity-card.is-complete {
+      border-color: rgba(113, 255, 192, 0.7);
+    }
+
+    .activity-card.is-complete .activity-label {
+      color: #71ffc0;
+    }
+
+    .dialogue {
+      margin-top: 1.1rem;
+      padding: 1rem;
+      border-left: 3px solid #2fd7ff;
+      border-radius: 0 10px 10px 0;
+      background: rgba(47, 215, 255, 0.06);
+    }
+
+    .dialogue p {
+      margin: 0.65rem 0;
+    }
+
+    .dialogue strong {
+      color: #8cecff;
+    }
+
+    .answer-options {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .answer-option {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.24);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .answer-option input {
+      accent-color: #2fd7ff;
+    }
+
+    .student-input {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0.55rem 0 1rem;
+      padding: 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.35);
+      border-radius: 8px;
+      outline: none;
+      background: rgba(1, 11, 27, 0.62);
+      color: #effaff;
+      font: inherit;
+    }
+
+    .student-input:focus {
+      border-color: #2fd7ff;
+      box-shadow: 0 0 0 3px rgba(47, 215, 255, 0.12);
+    }
+
+    textarea.student-input {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .activity-actions {
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-box {
+      padding: 1rem;
+      border: 1px solid rgba(118, 226, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(1, 11, 27, 0.34);
+    }
+
+    .vocabulary-box h3 {
+      margin: 0 0 0.6rem;
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .vocabulary-box p {
+      margin: 0;
+    }
+
+    .completion-card {
+      margin-top: 2rem;
+      padding: 1.7rem;
+      border: 1px solid rgba(113, 255, 192, 0.5);
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        rgba(113, 255, 192, 0.13),
+        rgba(4, 20, 39, 0.78)
+      );
+      text-align: center;
+    }
+
+    .completion-card p {
+      max-width: 700px;
+      margin: 0.8rem auto 1.2rem;
+    }
+
+    .completion-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 650px) {
+      .lesson-page {
+        padding-top: 2.2rem;
+      }
+
+      .lesson-progress-header,
+      .audio-player-controls {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .vocabulary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source
+        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
+        type="video/mp4"
+      >
+    </video>
+  </div>
+
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="container topbar-content">
+      <span>506 English Express</span>
+      <span>Unidad 1 · Entrega 1 · Contactos</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container navbar" aria-label="Navegación principal">
+      <a href="../index.html" class="brand" aria-label="Volver al inicio">
+        <span class="brand-mark" aria-hidden="true">⚡</span>
+        <span class="brand-text">English <strong>506</strong> Express</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="unit-1.html">Unidad 1</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="progress.html" class="button button-primary button-small">
+          Mi progreso
+        </a>
+
+        <a href="unit-1.html" class="button button-outline button-small">
+          Ver unidad
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="lesson-page">
+    <div class="container">
+      <section class="lesson-hero">
+        <p class="kicker">Unidad 01 · Entrega 01</p>
+        <h1>Contactos: Un cóctel en Nueva York</h1>
+
+        <p>
+          Durante un cóctel en Nueva York ofrecido por Jeff Wilton, productor
+          de televisión, varios compañeros de trabajo se encuentran y hacen
+          nuevos amigos.
+        </p>
+
+        <div class="lesson-progress">
+          <div class="lesson-progress-header">
+            <span>Progreso de la entrega</span>
+            <strong id="lesson-progress-text">0 de 9 secciones completadas</strong>
+          </div>
+
+          <div
+            class="lesson-progress-track"
+            role="progressbar"
+            aria-label="Progreso de la entrega"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="1">
+        <p class="activity-label">Actividad 01 · Diálogo</p>
+        <h2>Un cóctel en Nueva York</h2>
+
+        <p>
+          Lea y escuche el diálogo. Jeff presenta a Barbara Rivers y Tom Ryder
+          durante un cóctel en Nueva York.
+        </p>
+
+        <section class="audio-player-card" aria-label="Audio del diálogo">
+          <div class="audio-player-info">
+            <span class="audio-player-icon" aria-hidden="true">🔊</span>
+
+            <div>
+              <p class="audio-player-label">Audio del diálogo</p>
+              <h2>Un cóctel en Nueva York</h2>
+              <p>Escucha el diálogo y practica la pronunciación.</p>
+            </div>
+          </div>
+
+          <audio id="cocktail-audio" preload="metadata">
+            <source
+              src="../assets/audio/unit-1/cocktail-new-york.mp3"
+              type="audio/mpeg"
+            >
+            Tu navegador no admite la reproducción de audio.
+          </audio>
+
+          <div class="audio-player-controls">
+            <button
+              id="audio-play-button"
+              class="audio-play-button"
+              type="button"
+              aria-label="Reproducir audio"
+            >
+              <span id="audio-play-icon" aria-hidden="true">▶</span>
+              <span id="audio-play-text">Reproducir audio</span>
+            </button>
+
+            <span id="audio-time" class="audio-time">0:00 / 0:00</span>
+          </div>
+
+          <input
+            id="audio-progress"
+            class="audio-progress"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            aria-label="Progreso del audio"
+          >
+        </section>
+
+        <div class="dialogue">
+          <p><strong>Jeff:</strong> Hi, Barbara! I'm very happy to see you. That's a great dress!</p>
+          <p><strong>Barbara:</strong> Hi, Jeff! How are you?</p>
+          <p><strong>Jeff:</strong> Fine, thanks. Hey, come and meet Tom. He's from California.</p>
+          <p><strong>Barbara:</strong> Oh, yeah?</p>
+          <p><strong>Jeff:</strong> Hey, Tom, let me introduce you to Barbara Rivers. She's a reporter on our program “Thirty Minutes”. Barbara, this is Tom Ryder.</p>
+          <p><strong>Tom:</strong> Nice to meet you.</p>
+          <p><strong>Barbara:</strong> Hello, Tom.</p>
+          <p><strong>Tom:</strong> Are you from New York, Barb?</p>
+          <p><strong>Barbara:</strong> Yes. And I'm not Barb. My name's Barbara.</p>
+          <p><strong>Tom:</strong> Oh, I'm sorry, Barbara. I'm from L.A.</p>
+          <p><strong>Jeff:</strong> I'm glad you two are friends now. That's great because Tom's the new cameraman on “Thirty Minutes”.</p>
+          <p><strong>Barbara:</strong> Oh, that's nice.</p>
+        </div>
+
+        <p>
+          <strong>Comprensión general:</strong> Jeff Wilton presenta a Tom Ryder
+          a Barbara Rivers. Barbara es reportera del programa “Thirty Minutes” y
+          Tom es el nuevo camarógrafo del programa.
+        </p>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="1">
+            Marcar actividad completada
+          </button>
+          <span class="activity-status" id="activity-status-1"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="2">
+        <p class="activity-label">Actividad 02 · Comprensión</p>
+        <h2>Compruebe su comprensión</h2>
+
+        <p>Seleccione la respuesta correcta según el diálogo.</p>
+
+        <p><strong>1. ¿Quién presenta a Tom?</strong></p>
+
+        <div class="answer-options">
+          <label class="answer-option">
+            <input type="radio" name="question-1" value="Barbara">
+            Barbara
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-1" value="Jeff">
+            Jeff
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-1" value="Camarero">
+            Un camarero
+          </label>
+        </div>
+
+        <p><strong>2. ¿De dónde es Tom?</strong></p>
+
+        <div class="answer-options">
+          <label class="answer-option">
+            <input type="radio" name="question-2" value="New York">
+            New York
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-2" value="California">
+            California / L.A.
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-2" value="London">
+            London
+          </label>
+        </div>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-comprehension">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-2"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="3">
+        <p class="activity-label">Actividad 03 · Escuche y repita</p>
+        <h2>Saludos y presentaciones</h2>
+
+        <p>
+          Repita estas expresiones en voz alta. Después, vuelva a leer el diálogo
+          e identifique dónde aparece cada una.
+        </p>
+
+        <p>
+          <strong>Práctica sugerida:</strong>
+          Hi, Barbara! / How are you? / Fine, thanks. / Nice to meet you. /
+          Are you from New York? / I'm from L.A.
+        </p>
+
+        <p>Encontrará la traducción en la página 1 del anexo.</p>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="3">
+            Marcar actividad completada
+          </button>
+          <span class="activity-status" id="activity-status-3"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="4">
+        <p class="activity-label">Actividad 04 · Vocabulario</p>
+        <h2>Palabras y expresiones</h2>
+
+        <p>
+          Estudie estas palabras. Léelas en voz alta y vuelva al diálogo para
+          encontrar dónde se utilizan.
+        </p>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Sustantivos</h3>
+            <p>
+              program = programa, minute(s) = minuto(s), name = nombre,
+              friend = amigo/a, cameraman = camarógrafo, reporter = reportero/a,
+              engineer = ingeniero/a, secretary = secretario/a,
+              producer = productor/a, director = director/a, model = modelo,
+              job = empleo, television = televisión.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Adjetivos y nacionalidades</h3>
+            <p>
+              sad = triste, beautiful = hermoso/a, pretty = bonito/a,
+              American = americano/a, English = inglés/a, French = francés/a,
+              Spanish = español/a, Italian = italiano/a, German = alemán/a,
+              Japanese = japonés/a, friendly = amistoso/a, happy = feliz,
+              great = fantástico, nice = agradable, new = nuevo/a.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Verbos</h3>
+            <p>
+              to be = ser/estar, to see = ver, to come = venir, to meet =
+              conocer, to introduce = presentar, to work = trabajar, to go = ir.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Expresiones</h3>
+            <p>
+              fine = bien, now = ahora, because = porque, nice to meet you =
+              mucho gusto, I'm sorry = lo siento.
+            </p>
+          </div>
+        </div>
+
+        <label for="vocabulary-answer">
+          Complete en inglés: “Tom es el nuevo camarógrafo.”
+        </label>
+
+        <input
+          class="student-input"
+          id="vocabulary-answer"
+          type="text"
+          placeholder="Escriba su respuesta en inglés"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-vocabulary">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-4"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="5">
+        <p class="activity-label">Actividad 05 · Cómo se dice</p>
+        <h2>Saludos, presentaciones y profesiones</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Saludos</h3>
+            <p>
+              Hi! / Hello! = ¡Hola!<br>
+              I'm very happy to see you. = Encantado/a de verte.<br>
+              How are you? = ¿Cómo estás?<br>
+              Fine, thanks. = Bien, gracias.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Presentaciones</h3>
+            <p>
+              Let me introduce you to Barbara Rivers. = Permítame presentarle a
+              Barbara Rivers.<br>
+              Barbara, this is Tom Ryder. = Barbara, este es Tom Ryder.<br>
+              My name's Barbara. = Me llamo Barbara.<br>
+              Nice to meet you. = Mucho gusto.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Procedencia</h3>
+            <p>
+              I come from New York. = Procedo de Nueva York.<br>
+              I'm from London. = Soy de Londres.<br>
+              He's French. = Es francés.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Profesiones</h3>
+            <p>
+              She's a reporter. = Es reportera.<br>
+              He's a cameraman. = Es camarógrafo.<br>
+              I'm an engineer. = Soy ingeniero/a.<br>
+              What do you do? = ¿En qué trabaja?
+            </p>
+          </div>
+        </div>
+
+        <label for="greeting-answer">
+          Complete: “Hola, mucho gusto.” → ________, nice to meet you.
+        </label>
+
+        <input
+          class="student-input"
+          id="greeting-answer"
+          type="text"
+          placeholder="Escriba la palabra que falta"
+        >
+
+        <label for="country-answer">
+          Complete: “Soy de Costa Rica.” → I ________ from Costa Rica.
+        </label>
+
+        <input
+          class="student-input"
+          id="country-answer"
+          type="text"
+          placeholder="Escriba la palabra que falta"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-expressions">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-5"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="6">
+        <p class="activity-label">Actividad 06 · Recuerde</p>
+        <h2>Puntos importantes</h2>
+
+        <ol>
+          <li>Hi y Hello se pueden usar con amigos o personas desconocidas.</li>
+          <li>El pronombre sujeto I siempre se escribe con mayúscula.</li>
+          <li>Países, idiomas y nacionalidades comienzan con mayúscula: I'm American y she speaks English.</li>
+          <li>Con profesiones se usa el artículo indefinido: He's a cameraman y I'm an engineer.</li>
+        </ol>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="6">
+            Marcar recordatorio como completado
+          </button>
+          <span class="activity-status" id="activity-status-6"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="7">
+        <p class="activity-label">Actividad 07 · Práctica oral</p>
+        <h2>To be, negación e interrogación</h2>
+
+        <p>
+          Practique en voz alta: <strong>I'm, you're, he's, she's, we're,
+          they're.</strong>
+        </p>
+
+        <p><strong>Ejemplo:</strong> American, he → He's American.</p>
+
+        <label for="to-be-answer">
+          Escriba dos frases usando <em>to be</em>:
+        </label>
+
+        <textarea
+          class="student-input"
+          id="to-be-answer"
+          placeholder="Escriba dos frases"
+        ></textarea>
+
+        <label for="negative-answer">
+          Escriba dos frases negativas:
+        </label>
+
+        <textarea
+          class="student-input"
+          id="negative-answer"
+          placeholder="Escriba dos frases negativas"
+        ></textarea>
+
+        <label for="question-answer">
+          Escriba dos preguntas:
+        </label>
+
+        <textarea
+          class="student-input"
+          id="question-answer"
+          placeholder="Escriba dos preguntas"
+        ></textarea>
+
+        <label for="personal-answer">
+          Responda: How are you? What's your name? Where are you from?
+        </label>
+
+        <textarea
+          class="student-input"
+          id="personal-answer"
+          placeholder="Escriba sus respuestas"
+        ></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="7">
+            Marcar práctica oral como completada
+          </button>
+          <span class="activity-status" id="activity-status-7"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="8">
+        <p class="activity-label">Actividad 08 · Saludos</p>
+        <h2>Saludos: una cultura de informalidad</h2>
+
+        <p>
+          En Estados Unidos, expresiones como <strong>Hi</strong>,
+          <strong>Hello</strong> y <strong>Nice to meet you</strong> se usan
+          con frecuencia tanto con personas conocidas como con personas que se
+          conocen por primera vez.
+        </p>
+
+        <p>
+          Preguntas como <strong>How are you?</strong>,
+          <strong>How's it going?</strong>, <strong>How are things?</strong> o
+          <strong>What's new?</strong> pueden utilizarse como saludos informales.
+        </p>
+
+        <p>
+          Respuestas breves como <strong>Fine, thanks</strong>,
+          <strong>Good, thanks</strong> o <strong>Everything is fine</strong>
+          suelen ser suficientes.
+        </p>
+
+        <label for="culture-answer">
+          Escriba una respuesta corta en inglés para: “How are you?”
+        </label>
+
+        <input
+          class="student-input"
+          id="culture-answer"
+          type="text"
+          placeholder="Escriba su respuesta"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="8">
+            Marcar lectura como completada
+          </button>
+          <span class="activity-status" id="activity-status-8"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="9">
+        <p class="activity-label">Actividad 09 · Repaso</p>
+        <h2>De todo un poco N.º 1</h2>
+
+        <p>
+          <strong>1. Identifique a los personajes:</strong> escriba los tres
+          personajes principales del diálogo.
+        </p>
+
+        <input
+          class="student-input"
+          id="characters-answer"
+          type="text"
+          placeholder="Escriba los tres personajes"
+        >
+
+        <p>
+          <strong>2. Práctica escrita:</strong> complete y escriba las respuestas
+          para Vivien Leigh, Sean Connery, Woody Allen y The Magnificent Seven.
+        </p>
+
+        <textarea
+          class="student-input"
+          id="review-answer"
+          placeholder="Escriba sus respuestas"
+        ></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="9">
+            Completar entrega
+          </button>
+          <span class="activity-status" id="activity-status-9"></span>
+        </div>
+      </section>
+
+      <section class="completion-card" id="completion-card" hidden>
+        <p class="kicker">Entrega completada</p>
+        <h2>¡Excelente trabajo!</h2>
+
+        <p>
+          Completaste “Contactos: Un cóctel en Nueva York”.
+          Ya puedes continuar con la Entrega 2 de la Unidad 1.
+        </p>
+
+        <div class="completion-actions">
+          <a href="unit-1-delivery-2.html" class="button button-primary">
+            Siguiente entrega →
+          </a>
+
+          <a href="unit-1.html" class="button button-outline">
+            Volver a Unidad 1
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>Unidad 1 · Entrega 1 · Contactos</span>
+      <a href="unit-1.html">Volver a Unidad 1</a>
+    </div>
+  </footer>
+
+  <script type="module" src="../assets/js/supabase-auth.js?v=7"></script>
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit1.delivery1.progress";
+      const totalActivities = 9;
+
+      const progressText = document.getElementById("lesson-progress-text");
+      const progressFill = document.getElementById("lesson-progress-fill");
+      const completionCard = document.getElementById("completion-card");
+      const progressTrack = document.querySelector(".lesson-progress-track");
+
+      function getCompletedActivities() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(saved)) {
+            return [];
+          }
+
+          return [...new Set(
+            saved
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveCompletedActivities(completed) {
+        localStorage.setItem(storageKey, JSON.stringify(completed));
+      }
+
+      function updateInterface() {
+        const completed = getCompletedActivities();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        if (progressText) {
+          progressText.textContent =
+            `${completedCount} de ${totalActivities} secciones completadas`;
+        }
+
+        if (progressFill) {
+          progressFill.style.width = `${percentage}%`;
+        }
+
+        if (progressTrack) {
+          progressTrack.setAttribute("aria-valuenow", String(percentage));
+        }
+
+        document
+          .querySelectorAll(".activity-card[data-activity]")
+          .forEach((card) => {
+            const activity = Number(card.dataset.activity);
+            const status = document.getElementById(
+              `activity-status-${activity}`
+            );
+            const button = card.querySelector("[data-complete]");
+
+            if (completed.includes(activity)) {
+              card.classList.add("is-complete");
+
+              if (status) {
+                status.textContent = "✓ Actividad completada";
+              }
+
+              if (button) {
+                button.textContent = "Actividad completada";
+              }
+            } else {
+              card.classList.remove("is-complete");
+
+              if (status) {
+                status.textContent = "";
+              }
+            }
+          });
+
+        if (completionCard) {
+          completionCard.hidden = completedCount !== totalActivities;
+        }
+      }
+
+      async function markActivityComplete(activity) {
+        const completed = getCompletedActivities();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveCompletedActivities(completed);
+        }
+
+        updateInterface();
+
+        if (
+          activity === totalActivities &&
+          typeof window.saveStudentProgress === "function"
+        ) {
+          try {
+            await window.saveStudentProgress({
+              unitNumber: 1,
+              activityId: "unit-1-delivery-1",
+              activityTitle: "Contactos: Un cóctel en Nueva York",
+              completed: true,
+              score: 100
+            });
+          } catch (error) {
+            console.warn("El progreso local se guardó.", error);
+          }
+        }
+      }
+
+      document.querySelectorAll("[data-complete]").forEach((button) => {
+        button.addEventListener("click", () => {
+          markActivityComplete(Number(button.dataset.complete));
+        });
+      });
+
+      const comprehensionButton = document.getElementById("check-comprehension");
+
+      if (comprehensionButton) {
+        comprehensionButton.addEventListener("click", () => {
+          const answerOne = document.querySelector(
+            'input[name="question-1"]:checked'
+          )?.value;
+
+          const answerTwo = document.querySelector(
+            'input[name="question-2"]:checked'
+          )?.value;
+
+          const status = document.getElementById("activity-status-2");
+
+          if (answerOne === "Jeff" && answerTwo === "California") {
+            if (status) {
+              status.textContent =
+                "✓ ¡Correcto! Jeff presenta a Tom y Tom es de California.";
+            }
+
+            markActivityComplete(2);
+          } else if (status) {
+            status.textContent = "Revisa el diálogo e inténtalo otra vez.";
+          }
+        });
+      }
+
+      const vocabularyButton = document.getElementById("check-vocabulary");
+
+      if (vocabularyButton) {
+        vocabularyButton.addEventListener("click", () => {
+          const answer = document
+            .getElementById("vocabulary-answer")
+            .value
+            .trim()
+            .toLowerCase();
+
+          const status = document.getElementById("activity-status-4");
+
+          if (
+            answer.includes("tom") &&
+            answer.includes("new") &&
+            answer.includes("cameraman")
+          ) {
+            if (status) {
+              status.textContent = "✓ Correcto: Tom is the new cameraman.";
+            }
+
+            markActivityComplete(4);
+          } else if (status) {
+            status.textContent = "Pista: Tom is the new cameraman.";
+          }
+        });
+      }
+
+      const expressionsButton = document.getElementById("check-expressions");
+
+      if (expressionsButton) {
+        expressionsButton.addEventListener("click", () => {
+          const greeting = document
+            .getElementById("greeting-answer")
+            .value
+            .trim()
+            .toLowerCase();
+
+          const country = document
+            .getElementById("country-answer")
+            .value
+            .trim()
+            .toLowerCase();
+
+          const status = document.getElementById("activity-status-5");
+
+          const greetingCorrect = greeting === "hello" || greeting === "hi";
+          const countryCorrect =
+            country === "am" ||
+            country === "'m" ||
+            country === "come";
+
+          if (greetingCorrect && countryCorrect) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Muy bien! Hello, nice to meet you. / I am from Costa Rica.";
+            }
+
+            markActivityComplete(5);
+          } else if (status) {
+            status.textContent =
+              "Pista: Hello, nice to meet you. / I am from Costa Rica.";
+          }
+        });
+      }
+
+      const audio = document.getElementById("cocktail-audio");
+      const playButton = document.getElementById("audio-play-button");
+      const playIcon = document.getElementById("audio-play-icon");
+      const playText = document.getElementById("audio-play-text");
+      const audioProgress = document.getElementById("audio-progress");
+      const audioTime = document.getElementById("audio-time");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) {
+          return "0:00";
+        }
+
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = String(
+          Math.floor(seconds % 60)
+        ).padStart(2, "0");
+
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      function updateAudioPlayer() {
+        if (!audio || !audioProgress || !audioTime) {
+          return;
+        }
+
+        const currentTime = audio.currentTime || 0;
+        const duration = audio.duration || 0;
+
+        audioTime.textContent =
+          `${formatTime(currentTime)} / ${formatTime(duration)}`;
+
+        if (duration > 0) {
+          audioProgress.value = String((currentTime / duration) * 100);
+        }
+      }
+
+      function setAudioButton(isPlaying) {
+        if (!playButton || !playIcon || !playText) {
+          return;
+        }
+
+        playIcon.textContent = isPlaying ? "❚❚" : "▶";
+        playText.textContent = isPlaying
+          ? "Pausar audio"
+          : "Reproducir audio";
+
+        playButton.setAttribute(
+          "aria-label",
+          isPlaying ? "Pausar audio" : "Reproducir audio"
+        );
+      }
+
+      if (audio && playButton) {
+        playButton.addEventListener("click", async () => {
+          if (audio.paused) {
+            try {
+              await audio.play();
+            } catch (error) {
+              console.warn("No se pudo reproducir el audio.", error);
+            }
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("loadedmetadata", updateAudioPlayer);
+        audio.addEventListener("timeupdate", updateAudioPlayer);
+
+        audio.addEventListener("play", () => {
+          setAudioButton(true);
+        });
+
+        audio.addEventListener("pause", () => {
+          setAudioButton(false);
+        });
+
+        audio.addEventListener("ended", () => {
+          audio.currentTime = 0;
+
+          if (audioProgress) {
+            audioProgress.value = "0";
+          }
+
+          updateAudioPlayer();
+          setAudioButton(false);
+        });
+      }
+
+      if (audio && audioProgress) {
+        audioProgress.addEventListener("input", () => {
+          if (audio.duration) {
+            audio.currentTime =
+              (Number(audioProgress.value) / 100) * audio.duration;
+          }
+        });
+      }
+
+      updateAudioPlayer();
+      updateInterface();
+    });
+  </script>
+<script src="../assets/js/rewards.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.RewardsSystem) {
+      window.RewardsSystem.checkForReward();
+    }
+  });
+</script>
+</body>
+</html>

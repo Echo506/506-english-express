@@ -1,0 +1,1076 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <meta name="description" content="Unidad 3 de 506 English Express.">
+
+  <title>Unidad 1 · Entrega 3 | 506 English Express</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    .lesson-page {
+      padding: 3.5rem 0 5rem;
+    }
+
+    .lesson-hero,
+    .activity-card,
+    .completion-card {
+      border: 1px solid rgba(47, 215, 255, 0.32);
+      border-radius: 18px;
+      background: rgba(4, 20, 39, 0.76);
+      box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
+    }
+
+    .lesson-hero {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+
+    .lesson-hero h1,
+    .activity-card h2,
+    .completion-card h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .lesson-hero h1 {
+      font-size: clamp(1.65rem, 4vw, 3rem);
+      line-height: 1.2;
+    }
+
+    .lesson-hero > p:last-child,
+    .activity-card p,
+    .activity-card li,
+    .completion-card p {
+      color: rgba(225, 243, 255, 0.86);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .lesson-progress {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(47, 215, 255, 0.2);
+    }
+
+    .lesson-progress-main {
+      flex: 1;
+    }
+
+    .lesson-progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.65rem;
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #progress-text {
+      color: #8cecff;
+    }
+
+    .progress-track {
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(47, 215, 255, 0.26);
+      border-radius: 999px;
+      background: rgba(1, 11, 27, 0.75);
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2fd7ff, #71ffc0);
+      box-shadow: 0 0 14px rgba(47, 215, 255, 0.7);
+      transition: width 0.3s ease;
+    }
+
+    .activity-card {
+      margin: 1.25rem 0;
+      padding: clamp(1.15rem, 3vw, 1.7rem);
+    }
+
+    .activity-card.is-complete {
+      border-color: rgba(113, 255, 192, 0.72);
+    }
+
+    .activity-number {
+      margin: 0 0 0.55rem;
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .activity-card.is-complete .activity-number {
+      color: #71ffc0;
+    }
+
+    .activity-card h2 {
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 1.3;
+    }
+
+    .activity-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .activity-status {
+      color: #71ffc0;
+      font-weight: 700;
+    }
+
+    .activity-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid rgba(47, 215, 255, 0.65);
+      border-radius: 8px;
+      background: rgba(47, 215, 255, 0.12);
+      color: #b7f5ff;
+      cursor: pointer;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .activity-button:hover {
+      background: rgba(47, 215, 255, 0.25);
+    }
+
+    .student-input {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0.65rem 0 0;
+      padding: 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.35);
+      border-radius: 8px;
+      outline: none;
+      background: rgba(1, 11, 27, 0.62);
+      color: #effaff;
+      font: inherit;
+    }
+
+    .student-input:focus {
+      border-color: #2fd7ff;
+      box-shadow: 0 0 0 3px rgba(47, 215, 255, 0.12);
+    }
+
+    textarea.student-input {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .answer-options {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0.9rem 0;
+    }
+
+    .answer-option {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid rgba(118, 226, 255, 0.24);
+      border-radius: 8px;
+      color: rgba(225, 243, 255, 0.9);
+      cursor: pointer;
+    }
+
+    .answer-option input {
+      accent-color: #2fd7ff;
+    }
+
+    .vocabulary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-box {
+      padding: 1rem;
+      border: 1px solid rgba(118, 226, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(1, 11, 27, 0.34);
+    }
+
+    .vocabulary-box h3 {
+      margin: 0 0 0.6rem;
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .vocabulary-box p {
+      margin: 0;
+    }
+
+    .completion-card {
+      margin-top: 2rem;
+      padding: 1.7rem;
+      border-color: rgba(113, 255, 192, 0.5);
+      background: linear-gradient(
+        135deg,
+        rgba(113, 255, 192, 0.13),
+        rgba(4, 20, 39, 0.78)
+      );
+      text-align: center;
+    }
+
+    .completion-card[hidden] {
+      display: none;
+    }
+
+    .completion-card p {
+      max-width: 700px;
+      margin: 0.8rem auto 1.2rem;
+    }
+
+    .completion-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 650px) {
+      .lesson-page {
+        padding-top: 2.2rem;
+      }
+
+      .lesson-progress {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .lesson-progress-label {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .vocabulary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <style id="rewards-506-shared-style">
+    .reward-avatar-badge {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: .95rem;
+      align-items: center;
+      padding: .9rem 1rem;
+      border: 1px solid rgba(47,215,255,.25);
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(6,22,42,.92), rgba(4,15,30,.78));
+      box-shadow: 0 0 24px rgba(47,215,255,.08);
+    }
+    .reward-avatar-badge__media { display: flex; justify-content: center; align-items: center; }
+    .reward-avatar-badge__image {
+      width: 78px;
+      height: 78px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(47,215,255,.46);
+      box-shadow: 0 0 18px rgba(47,215,255,.2);
+    }
+    .reward-avatar-badge__eyebrow,
+    .reward-avatar-collection__eyebrow {
+      margin: 0 0 .35rem;
+      color: #ffc43d;
+      font-family: Orbitron, sans-serif;
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .reward-avatar-badge__title,
+    .reward-avatar-card__body h3,
+    .reward-avatar-collection__header h2 {
+      margin: 0 0 .3rem;
+      font-family: Orbitron, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .reward-avatar-badge__meta,
+    .reward-avatar-badge__progress,
+    .reward-avatar-card__body p,
+    .reward-avatar-collection__header p:last-child {
+      margin: 0 0 .2rem;
+      color: rgba(220,240,255,.78);
+    }
+    .reward-avatar-collection__grid {
+      display: grid;
+      grid-template-columns: repeat(5,minmax(0,1fr));
+      gap: .9rem;
+      margin-top: 1.2rem;
+    }
+    .reward-avatar-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(47,215,255,.16);
+      background: rgba(3,11,27,.7);
+      padding: .85rem;
+      min-height: 196px;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+    .reward-avatar-card__visual {
+      position: relative;
+      border-radius: 14px;
+      background: rgba(6,20,38,.9);
+      padding: .75rem;
+      display: grid;
+      place-items: center;
+      min-height: 116px;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .reward-avatar-card__image {
+      width: 100%;
+      max-width: 92px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(47,215,255,.32);
+      display: block;
+    }
+    .reward-avatar-card__placeholder {
+      display: grid;
+      place-items: center;
+      width: 92px;
+      height: 92px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.14);
+      color: rgba(255,255,255,.45);
+      font-size: 2rem;
+      background: rgba(255,255,255,.02);
+    }
+    .reward-avatar-card__number {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      min-width: 34px;
+      min-height: 34px;
+      padding: .2rem .45rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(3,11,27,.82);
+      border: 1px solid rgba(47,215,255,.3);
+      color: #8cecff;
+      font-family: Orbitron, sans-serif;
+      font-size: .66rem;
+      letter-spacing: .08em;
+    }
+    .reward-avatar-card.is-current {
+      border-color: rgba(255,196,61,.7);
+      box-shadow: 0 0 0 1px rgba(255,196,61,.18), 0 18px 35px rgba(255,196,61,.12);
+      background: linear-gradient(160deg, rgba(255,196,61,.14), rgba(3,11,27,.84));
+    }
+    .reward-avatar-card.is-unlocked .reward-avatar-card__body p {
+      color: rgba(113,255,192,.88);
+    }
+    .reward-avatar-card.is-locked {
+      opacity: .58;
+      filter: grayscale(1);
+    }
+    @media (max-width: 860px) {
+      .reward-avatar-collection__grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+    }
+    @media (max-width: 560px) {
+      .reward-avatar-badge { grid-template-columns: 64px minmax(0,1fr); }
+      .reward-avatar-badge__image { width: 64px; height: 64px; }
+      .reward-avatar-collection__grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source
+        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
+        type="video/mp4"
+      >
+    </video>
+  </div>
+
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="container topbar-content">
+      <span>506 English Express</span>
+      <span>UNIDAD 1 · ENTREGA 3 · INGLÉS PRÁCTICO</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container navbar" aria-label="Navegación principal">
+      <a href="../index.html" class="brand" aria-label="Volver al inicio">
+        <span class="brand-mark" aria-hidden="true">⚡</span>
+        <span class="brand-text">English <strong>506</strong> Express</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="unit-1.html">Unidad 1</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="progress.html" class="button button-primary button-small">
+          Mi progreso
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="lesson-page">
+    <div class="container">
+      <section class="lesson-hero">
+        <p class="kicker">UNIDAD 01 · ENTREGA 03</p>
+        <h1>Comunicación práctica</h1>
+
+        <p>
+          Practica vocabulario, comprensión, expresiones y producción escrita
+          para comunicarte con mayor confianza en inglés.
+        </p>
+
+        <div class="lesson-progress">
+          <div class="lesson-progress-main">
+            <div class="lesson-progress-label">
+              <span>Progreso de la unidad</span>
+              <span id="progress-text">0 de 9 actividades completadas</span>
+            </div>
+
+            <div
+              class="progress-track"
+              role="progressbar"
+              aria-label="Progreso de la unidad"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <button
+            class="button button-outline button-small"
+            id="reset-progress"
+            type="button"
+          >
+            Reiniciar
+          </button>
+        </div>
+      </section>
+
+      <section class="activity-card" aria-labelledby="current-avatar-title" style="margin-top:1rem;">
+        <div style="padding:1rem;">
+          <p class="lesson-kicker">Sistema de recompensas</p>
+          <h2 id="current-avatar-title">Tu avatar actual</h2>
+          <div id="current-avatar-badge"></div>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="1">
+        <p class="activity-number">Actividad 01 · Inicio</p>
+        <h2>Objetivos de la unidad</h2>
+
+        <p>
+          En esta unidad practicarás cómo hablar de lugares, personas, horarios,
+          actividades diarias y situaciones cotidianas.
+        </p>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="1">
+            Marcar actividad completada
+          </button>
+          <span class="activity-status" id="activity-status-1"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="2">
+        <p class="activity-number">Actividad 02 · Comprensión</p>
+        <h2>Seleccione la respuesta correcta</h2>
+
+        <p><strong>¿Cuál expresión se usa para pedir ayuda?</strong></p>
+
+        <div class="answer-options">
+          <label class="answer-option">
+            <input type="radio" name="comprehension" value="a">
+            I am from Costa Rica.
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="comprehension" value="b">
+            Can you help me, please?
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="comprehension" value="c">
+            It is five o'clock.
+          </label>
+        </div>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-comprehension">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-2"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="3">
+        <p class="activity-number">Actividad 03 · Vocabulario</p>
+        <h2>Palabras útiles</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Lugares</h3>
+            <p>street = calle, city = ciudad, office = oficina, station = estación, store = tienda.</p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Acciones</h3>
+            <p>work = trabajar, go = ir, live = vivir, speak = hablar, study = estudiar.</p>
+          </div>
+        </div>
+
+        <label for="vocabulary-answer">
+          Complete: “Yo trabajo en una oficina.” → I ________ in an office.
+        </label>
+
+        <input
+          id="vocabulary-answer"
+          class="student-input"
+          type="text"
+          autocomplete="off"
+          placeholder="Escriba la palabra correcta"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-vocabulary">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-3"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="4">
+        <p class="activity-number">Actividad 04 · Expresiones</p>
+        <h2>Frases de uso diario</h2>
+
+        <p>
+          Practica estas expresiones: <strong>Where are you?</strong>,
+          <strong>What time is it?</strong>, <strong>How much is it?</strong> y
+          <strong>Can you help me?</strong>
+        </p>
+
+        <label for="expression-answer">
+          Complete: “¿Qué hora es?” → What ________ is it?
+        </label>
+
+        <input
+          id="expression-answer"
+          class="student-input"
+          type="text"
+          autocomplete="off"
+          placeholder="Escriba la palabra correcta"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-expression">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-4"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="5">
+        <p class="activity-number">Actividad 05 · Gramática</p>
+        <h2>Presente simple</h2>
+
+        <p>
+          Usa el presente simple para hablar de rutinas, hechos y acciones
+          frecuentes: <strong>I work in San José</strong> y
+          <strong>She lives in New York</strong>.
+        </p>
+
+        <label for="grammar-answer">
+          Complete: “Ella vive en Costa Rica.” → She ________ in Costa Rica.
+        </label>
+
+        <input
+          id="grammar-answer"
+          class="student-input"
+          type="text"
+          autocomplete="off"
+          placeholder="Escriba la forma correcta del verbo"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-grammar">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-5"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="6">
+        <p class="activity-number">Actividad 06 · Práctica oral</p>
+        <h2>Hable de su rutina</h2>
+
+        <p>
+          Lea sus respuestas en voz alta y practique la pronunciación.
+        </p>
+
+        <label for="routine-answer">
+          Escriba tres oraciones en inglés sobre su rutina diaria.
+        </label>
+
+        <textarea
+          id="routine-answer"
+          class="student-input"
+          placeholder="I get up at... I work... I study..."
+        ></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-routine">
+            Completar práctica
+          </button>
+          <span class="activity-status" id="activity-status-6"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="7">
+        <p class="activity-number">Actividad 07 · Lugares</p>
+        <h2>Direcciones básicas</h2>
+
+        <p>
+          Repita: <strong>Go straight</strong>, <strong>turn left</strong>,
+          <strong>turn right</strong>, <strong>next to</strong> y
+          <strong>across from</strong>.
+        </p>
+
+        <label for="directions-answer">
+          Complete: “Gire a la izquierda.” → Turn ________.
+        </label>
+
+        <input
+          id="directions-answer"
+          class="student-input"
+          type="text"
+          autocomplete="off"
+          placeholder="Escriba la palabra correcta"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-directions">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-7"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="8">
+        <p class="activity-number">Actividad 08 · Cultura</p>
+        <h2>Comunicación respetuosa</h2>
+
+        <p>
+          En contextos cotidianos, <strong>please</strong>, <strong>thank you</strong>
+          y <strong>excuse me</strong> ayudan a que la comunicación sea amable y
+          clara.
+        </p>
+
+        <label for="culture-answer">
+          Escriba una oración amable en inglés usando “please” o “thank you”.
+        </label>
+
+        <input
+          id="culture-answer"
+          class="student-input"
+          type="text"
+          autocomplete="off"
+          placeholder="Ejemplo: Thank you very much."
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-culture">
+            Completar actividad
+          </button>
+          <span class="activity-status" id="activity-status-8"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="9">
+        <p class="activity-number">Actividad 09 · Repaso final</p>
+        <h2>Escriba un diálogo breve</h2>
+
+        <p>
+          Escriba un diálogo corto en inglés donde una persona pide ayuda o
+          direcciones y la otra responde.
+        </p>
+
+        <textarea
+          id="final-answer"
+          class="student-input"
+          placeholder="Excuse me, can you help me? Yes, of course..."
+        ></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="finish-unit">
+            Completar unidad
+          </button>
+          <span class="activity-status" id="activity-status-9"></span>
+        </div>
+      </section>
+
+      <section class="completion-card" id="completion-card" hidden>
+        <p class="kicker">Unidad completada</p>
+        <h2>¡Excelente trabajo!</h2>
+
+        <p>
+          Completaste las actividades de esta unidad. Tu progreso se guardó en
+          este navegador.
+        </p>
+
+        <div class="completion-actions">
+          <a href="unit-1-delivery-4.html">SIGUIENTE ENTREGA →</a>
+
+          <a href="unit-1.html" class="button button-outline">
+            Volver a Unidad 1
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>UNIDAD 1 · ENTREGA 3 · INGLÉS PRÁCTICO</span>
+      <a href="../index.html">Volver al inicio</a>
+    </div>
+  </footer>
+
+  <script type="module" src="../assets/js/supabase-auth.js?v=7"></script>
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit3.progress";
+      const totalActivities = 9;
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const completionCard = document.getElementById("completion-card");
+      const resetButton = document.getElementById("reset-progress");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getCompletedActivities() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(stored)) {
+            return [];
+          }
+
+          return [...new Set(
+            stored
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveCompletedActivities(activities) {
+        localStorage.setItem(storageKey, JSON.stringify(activities));
+      }
+
+      function setStatus(activity, message) {
+        const status = document.getElementById(`activity-status-${activity}`);
+
+        if (status) {
+          status.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getCompletedActivities();
+        const count = completed.length;
+        const percentage = Math.round((count / totalActivities) * 100);
+
+        progressText.textContent =
+          `${count} de ${totalActivities} actividades completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        document.querySelectorAll("[data-activity]").forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const button = card.querySelector("[data-complete]");
+
+          card.classList.toggle("is-complete", completed.includes(activity));
+
+          if (completed.includes(activity)) {
+            setStatus(activity, "✓ Actividad completada");
+
+            if (button) {
+              button.textContent = "Actividad completada";
+            }
+          } else if (!card.querySelector(".activity-status")?.textContent) {
+            setStatus(activity, "");
+          }
+        });
+
+        completionCard.hidden = count !== totalActivities;
+      }
+
+      async function markActivityComplete(activity) {
+        const completed = getCompletedActivities();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveCompletedActivities(completed);
+        }
+
+        updateInterface();
+
+        if (
+          activity === totalActivities &&
+          typeof window.saveStudentProgress === "function"
+        ) {
+          try {
+            await window.saveStudentProgress({
+              unitNumber: 3,
+              activityId: "unit-3",
+              activityTitle: "Unidad 3: Comunicación práctica",
+              completed: true,
+              score: 100
+            });
+          } catch (error) {
+            console.warn("El progreso se guardó localmente.", error);
+          }
+        }
+      }
+
+      document.querySelectorAll("[data-complete]").forEach((button) => {
+        button.addEventListener("click", () => {
+          markActivityComplete(Number(button.dataset.complete));
+        });
+      });
+
+      document
+        .getElementById("check-comprehension")
+        .addEventListener("click", () => {
+          const answer = document.querySelector(
+            'input[name="comprehension"]:checked'
+          )?.value;
+
+          if (answer === "b") {
+            setStatus(2, "✓ Correcto. Esa expresión pide ayuda.");
+            markActivityComplete(2);
+          } else {
+            setStatus(2, "Revisa las opciones e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .getElementById("check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "work") {
+            setStatus(3, "✓ Correcto: I work in an office.");
+            markActivityComplete(3);
+          } else {
+            setStatus(3, "Pista: el verbo es “work”.");
+          }
+        });
+
+      document
+        .getElementById("check-expression")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("expression-answer").value
+          );
+
+          if (answer === "time") {
+            setStatus(4, "✓ Correcto: What time is it?");
+            markActivityComplete(4);
+          } else {
+            setStatus(4, "Pista: What time is it?");
+          }
+        });
+
+      document
+        .getElementById("check-grammar")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("grammar-answer").value
+          );
+
+          if (answer === "lives") {
+            setStatus(5, "✓ Correcto: She lives in Costa Rica.");
+            markActivityComplete(5);
+          } else {
+            setStatus(5, "Pista: con she se usa “lives”.");
+          }
+        });
+
+      document
+        .getElementById("check-routine")
+        .addEventListener("click", () => {
+          const answer = document.getElementById("routine-answer").value.trim();
+
+          if (answer.length >= 30) {
+            setStatus(6, "✓ Práctica oral completada.");
+            markActivityComplete(6);
+          } else {
+            setStatus(6, "Escribe al menos tres oraciones cortas.");
+          }
+        });
+
+      document
+        .getElementById("check-directions")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("directions-answer").value
+          );
+
+          if (answer === "left") {
+            setStatus(7, "✓ Correcto: Turn left.");
+            markActivityComplete(7);
+          } else {
+            setStatus(7, "Pista: Turn left.");
+          }
+        });
+
+      document
+        .getElementById("check-culture")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("culture-answer").value
+          );
+
+          if (
+            answer.length >= 8 &&
+            (answer.includes("please") || answer.includes("thank"))
+          ) {
+            setStatus(8, "✓ Actividad completada.");
+            markActivityComplete(8);
+          } else {
+            setStatus(8, "Incluye “please” o “thank you” en tu oración.");
+          }
+        });
+
+      document
+        .getElementById("finish-unit")
+        .addEventListener("click", () => {
+          const answer = document.getElementById("final-answer").value.trim();
+
+          if (answer.length >= 25) {
+            setStatus(9, "✓ ¡Unidad completada!");
+            markActivityComplete(9);
+
+            window.setTimeout(() => {
+              completionCard.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+            }, 250);
+          } else {
+            setStatus(9, "Escribe un diálogo breve de al menos dos líneas.");
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+        document.querySelectorAll(".activity-status").forEach((status) => {
+          status.textContent = "";
+        });
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
+  <script src="../assets/js/rewards.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.RewardsSystem) {
+        window.RewardsSystem.checkForReward();
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.Rewards506 && typeof window.Rewards506.renderCurrentAvatarBadge === "function") {
+        window.Rewards506.renderCurrentAvatarBadge("#current-avatar-badge");
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+

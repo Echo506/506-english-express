@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <meta
+    name="description"
+    content="Vista de unidades y progreso de 506 English Express."
+  >
+
+  <title>Unidades | 506 English Express</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #07101f;
+      --panel: rgba(5, 16, 35, 0.76);
+      --panel-strong: rgba(3, 11, 27, 0.88);
+      --blue: #2fd7ff;
+      --blue-soft: #8cecff;
+      --gold: #ffc43d;
+      --purple: #b690ff;
+      --green: #71ffc0;
+      --red: #ff6a83;
+      --text: #effaff;
+      --muted: rgba(220, 240, 255, 0.76);
+      --border: rgba(118, 226, 255, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Rajdhani", Arial, sans-serif;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .video-bg {
+      position: fixed;
+      inset: -25px;
+      z-index: -10;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .video-bg video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.58;
+      filter: blur(7px) saturate(1.15) contrast(1.08) brightness(0.78);
+      transform: scale(1.08);
+    }
+
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -9;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2, 8, 22, 0.78) 0%,
+          rgba(4, 15, 36, 0.44) 50%,
+          rgba(2, 8, 22, 0.78) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(2, 8, 20, 0.28) 0%,
+          rgba(3, 11, 27, 0.58) 100%
+        );
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -8;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(80, 216, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(80, 216, 255, 0.06) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      z-index: -7;
+      pointer-events: none;
+      opacity: 0.14;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.035) 0,
+          rgba(255, 255, 255, 0.035) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+    }
+
+    .topbar {
+      border-bottom: 1px solid rgba(47, 215, 255, 0.17);
+      background: rgba(2, 9, 22, 0.65);
+      backdrop-filter: blur(12px);
+    }
+
+    .topbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 38px;
+      color: rgba(216, 244, 255, 0.72);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(47, 215, 255, 0.16);
+      background: rgba(3, 11, 28, 0.8);
+      backdrop-filter: blur(20px);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      min-height: 78px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid rgba(47, 215, 255, 0.72);
+      border-radius: 10px;
+      background: rgba(47, 215, 255, 0.12);
+      box-shadow: 0 0 18px rgba(47, 215, 255, 0.3);
+      color: var(--blue);
+      font-size: 1.15rem;
+    }
+
+    .brand-text {
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.93rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-text strong {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 0.5rem 0.7rem;
+      border-radius: 8px;
+      color: rgba(224, 244, 255, 0.8);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(47, 215, 255, 0.12);
+      color: var(--blue);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.7rem 1.05rem;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      box-shadow: 0 0 18px rgba(47, 215, 255, 0.32);
+      color: #061321;
+    }
+
+    .button-outline {
+      border-color: rgba(47, 215, 255, 0.62);
+      background: rgba(47, 215, 255, 0.08);
+      color: var(--blue-soft);
+    }
+
+    .button-small {
+      min-height: 36px;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.64rem;
+    }
+
+    .page-hero {
+      padding: clamp(3.5rem, 8vw, 6rem) 0 2.4rem;
+    }
+
+    .kicker {
+      margin: 0 0 0.7rem;
+      color: var(--gold);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .page-hero h1 {
+      max-width: 850px;
+      margin: 0;
+      color: #f6fcff;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.12;
+      text-transform: uppercase;
+    }
+
+    .page-hero h1 span {
+      color: var(--blue);
+      text-shadow: 0 0 22px rgba(47, 215, 255, 0.35);
+    }
+
+    .page-intro {
+      max-width: 850px;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.55;
+    }
+
+    .progress-info {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 2rem;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid rgba(255, 196, 61, 0.38);
+      border-radius: 14px;
+      background: rgba(255, 196, 61, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .progress-info-icon {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 1px solid rgba(255, 196, 61, 0.5);
+      border-radius: 12px;
+      background: rgba(255, 196, 61, 0.08);
+      font-size: 1.45rem;
+    }
+
+    .progress-info h2 {
+      margin: 0;
+      color: #fff6d9;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .progress-info p {
+      margin: 0.35rem 0 0;
+      color: rgba(255, 246, 220, 0.8);
+      line-height: 1.45;
+    }
+
+    .units-section {
+      padding: 1.5rem 0 5rem;
+    }
+
+    .units-list {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .unit-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .unit-card.unit-2 {
+      border-color: rgba(182, 144, 255, 0.34);
+    }
+
+    .unit-card.unit-3 {
+      border-color: rgba(255, 196, 61, 0.34);
+    }
+
+    .unit-card.unit-4 {
+      border-color: rgba(79, 255, 163, 0.34);
+    }
+
+    .unit-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.35rem 1.45rem;
+      border-bottom: 1px solid rgba(118, 226, 255, 0.16);
+      background: rgba(4, 13, 31, 0.48);
+    }
+
+    .unit-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .unit-number {
+      display: grid;
+      width: 52px;
+      height: 52px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(47, 215, 255, 0.55);
+      border-radius: 12px;
+      background: rgba(47, 215, 255, 0.1);
+      color: var(--blue);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.96rem;
+      font-weight: 800;
+    }
+
+    .unit-2 .unit-number {
+      border-color: rgba(182, 144, 255, 0.58);
+      background: rgba(182, 144, 255, 0.1);
+      color: var(--purple);
+    }
+
+    .unit-3 .unit-number {
+      border-color: rgba(255, 196, 61, 0.58);
+      background: rgba(255, 196, 61, 0.1);
+      color: var(--gold);
+    }
+
+    .unit-4 .unit-number {
+      border-color: rgba(79, 255, 163, 0.58);
+      background: rgba(79, 255, 163, 0.1);
+      color: var(--green);
+    }
+
+    .unit-label {
+      margin: 0 0 0.25rem;
+      color: var(--blue);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .unit-2 .unit-label {
+      color: var(--purple);
+    }
+
+    .unit-3 .unit-label {
+      color: var(--gold);
+    }
+
+    .unit-4 .unit-label {
+      color: var(--green);
+    }
+
+    .unit-header h2 {
+      margin: 0;
+      color: #f7fcff;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      text-transform: uppercase;
+    }
+
+    .unit-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex: 0 0 auto;
+      padding: 0.42rem 0.65rem;
+      border-radius: 999px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .status-open {
+      border: 1px solid rgba(79, 255, 163, 0.48);
+      background: rgba(79, 255, 163, 0.1);
+      color: #91ffd0;
+    }
+
+    .status-locked {
+      border: 1px solid rgba(255, 196, 61, 0.48);
+      background: rgba(255, 196, 61, 0.1);
+      color: #ffe29a;
+    }
+
+    .lock-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    .unit-body {
+      padding: 1.35rem 1.45rem 1.5rem;
+    }
+
+    .unit-description {
+      max-width: 900px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.5;
+    }
+
+    .unit-progress {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.55rem 1rem;
+      align-items: center;
+      margin: 1.2rem 0;
+    }
+
+    .unit-progress-label {
+      color: rgba(235, 248, 255, 0.86);
+      font-size: 0.96rem;
+      font-weight: 700;
+    }
+
+    .unit-progress-value {
+      color: var(--blue-soft);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .progress-track {
+      grid-column: 1 / -1;
+      height: 9px;
+      overflow: hidden;
+      border: 1px solid rgba(118, 226, 255, 0.16);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      box-shadow: 0 0 12px rgba(47, 215, 255, 0.62);
+    }
+
+    .delivery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.65rem;
+      margin-top: 1.1rem;
+    }
+
+    .delivery-card {
+      position: relative;
+      min-height: 115px;
+      padding: 0.85rem;
+      border: 1px solid rgba(118, 226, 255, 0.2);
+      border-radius: 11px;
+      background: rgba(0, 0, 0, 0.17);
+    }
+
+    .delivery-card.current {
+      border-color: rgba(47, 215, 255, 0.6);
+      background: rgba(47, 215, 255, 0.1);
+      box-shadow: 0 0 18px rgba(47, 215, 255, 0.1);
+    }
+
+    .delivery-card.locked {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.24);
+      opacity: 0.62;
+    }
+
+    .delivery-number {
+      display: block;
+      color: var(--blue);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .delivery-card.locked .delivery-number {
+      color: rgba(220, 240, 255, 0.58);
+    }
+
+    .delivery-card h3 {
+      margin: 0.5rem 0 0;
+      color: #eafaff;
+      font-size: 0.97rem;
+      line-height: 1.12;
+    }
+
+    .delivery-card p {
+      margin: 0.35rem 0 0;
+      color: rgba(220, 240, 255, 0.62);
+      font-size: 0.88rem;
+      line-height: 1.2;
+    }
+
+    .delivery-lock {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      color: #ffd66e;
+      font-size: 1rem;
+    }
+
+    .unit-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.4rem;
+    }
+
+    .unit-note {
+      color: rgba(220, 240, 255, 0.68);
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
+
+    .unit-note strong {
+      color: var(--gold);
+    }
+
+    .locked-button {
+      pointer-events: none;
+      border-color: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(239, 250, 255, 0.5);
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .how-it-works {
+      margin-top: 2rem;
+      padding: 1.4rem;
+      border: 1px solid rgba(47, 215, 255, 0.26);
+      border-radius: 16px;
+      background: rgba(5, 16, 35, 0.68);
+      backdrop-filter: blur(12px);
+    }
+
+    .how-it-works h2 {
+      margin: 0;
+      color: #f5fbff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .step {
+      padding: 1rem;
+      border: 1px solid rgba(118, 226, 255, 0.16);
+      border-radius: 11px;
+      background: rgba(0, 0, 0, 0.16);
+    }
+
+    .step-number {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: var(--gold);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+    }
+
+    .step h3 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .step p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    footer {
+      margin-top: 2rem;
+      border-top: 1px solid rgba(47, 215, 255, 0.15);
+      background: rgba(1, 8, 20, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 75px;
+      color: rgba(218, 240, 255, 0.68);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .delivery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 0.85rem 0;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+      }
+
+      .unit-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .unit-status {
+        margin-left: 68px;
+      }
+
+      .delivery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .topbar-content,
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.55rem 0;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .delivery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .unit-body,
+      .unit-header {
+        padding: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source src="../assets/video/dame_otra.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="video-overlay" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="container topbar-content">
+      <span>506 English Express</span>
+      <span>Ruta de aprendizaje · Progreso progresivo</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container navbar" aria-label="Navegación principal">
+      <a href="../index.html" class="brand" aria-label="Ir al inicio">
+        <span class="brand-mark" aria-hidden="true">⚡</span>
+        <span class="brand-text">English <strong>506</strong> Express</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="units.html" class="active">Unidades</a>
+      </div>
+
+      <a href="unit-1.html" class="button button-primary button-small">
+        Continuar
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="kicker">Panel de aprendizaje</p>
+
+        <h1>
+          Tus <span>unidades</span> y progreso
+        </h1>
+
+        <p class="page-intro">
+          Consulta el contenido disponible de cada unidad. Para acceder a las
+          siguientes actividades, primero debes completar las entregas y los
+          ejercicios anteriores.
+        </p>
+
+        <aside class="progress-info">
+          <div class="progress-info-icon" aria-hidden="true">🔒</div>
+
+          <div>
+            <h2>Acceso progresivo activado</h2>
+            <p>
+              Las lecciones no se abren todas al mismo tiempo. Completa una
+              actividad, guarda tu avance y desbloquea el siguiente paso.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="units-section">
+      <div class="container">
+        <div class="units-list">
+
+          <article class="unit-card unit-1">
+            <header class="unit-header">
+              <div class="unit-title-wrap">
+                <span class="unit-number">01</span>
+
+                <div>
+                  <p class="unit-label">Unidad disponible</p>
+                  <h2>Contactos y comunicación</h2>
+                </div>
+              </div>
+
+              <span class="unit-status status-open">
+                <span class="lock-dot"></span>
+                Disponible
+              </span>
+            </header>
+
+            <div class="unit-body">
+              <p class="unit-description">
+                Saludos, presentaciones, profesiones, nacionalidades,
+                pronunciación, direcciones y situaciones iniciales en Nueva
+                York.
+              </p>
+
+              <div class="unit-progress">
+                <span class="unit-progress-label">Progreso de Unidad 1</span>
+                <span class="unit-progress-value">0%</span>
+                <div class="progress-track">
+                  <div class="progress-fill"></div>
+                </div>
+              </div>
+
+              <div class="delivery-grid">
+                <article class="delivery-card current">
+                  <span class="delivery-number">ENTREGA 1.1</span>
+                  <h3>Contactos</h3>
+                  <p>Un cóctel en Nueva York</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 1.2</span>
+                  <h3>Vocabulario</h3>
+                  <p>Se abre al completar 1.1</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 1.3</span>
+                  <h3>Gramática</h3>
+                  <p>Se abre con tu progreso</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 1.4</span>
+                  <h3>Práctica oral</h3>
+                  <p>Completa el paso anterior</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 1.5</span>
+                  <h3>Repaso final</h3>
+                  <p>Disponible al final</p>
+                </article>
+              </div>
+
+              <div class="unit-actions">
+                <span class="unit-note">
+                  <strong>Primer paso:</strong> comienza con la Entrega 1.1.
+                </span>
+
+                <a href="unit-1.html" class="button button-primary">
+                  Abrir Unidad 1
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="unit-card unit-2">
+            <header class="unit-header">
+              <div class="unit-title-wrap">
+                <span class="unit-number">02</span>
+
+                <div>
+                  <p class="unit-label">Requiere progreso</p>
+                  <h2>Viajes y situaciones sociales</h2>
+                </div>
+              </div>
+
+              <span class="unit-status status-locked">
+                <span class="lock-dot"></span>
+                Bloqueada
+              </span>
+            </header>
+
+            <div class="unit-body">
+              <p class="unit-description">
+                Hoteles, alquiler de autos, restaurantes, comparaciones,
+                cantidades, cultura y comunicación para viajar.
+              </p>
+
+              <div class="unit-progress">
+                <span class="unit-progress-label">Progreso de Unidad 2</span>
+                <span class="unit-progress-value">Bloqueada</span>
+                <div class="progress-track">
+                  <div class="progress-fill"></div>
+                </div>
+              </div>
+
+              <div class="delivery-grid">
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 2.1</span>
+                  <h3>Hotel</h3>
+                  <p>Requiere Unidad 1</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 2.2</span>
+                  <h3>Autos y viajes</h3>
+                  <p>Se abre progresivamente</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 2.3</span>
+                  <h3>Restaurante</h3>
+                  <p>Completa los ejercicios</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 2.4</span>
+                  <h3>Comparaciones</h3>
+                  <p>Acceso por progreso</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 2.5</span>
+                  <h3>Cultura y repaso</h3>
+                  <p>Final de unidad</p>
+                </article>
+              </div>
+
+              <div class="unit-actions">
+                <span class="unit-note">
+                  <strong>Para desbloquear:</strong> completa la Unidad 1.
+                </span>
+
+                <span class="button locked-button">
+                  🔒 Completa Unidad 1
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="unit-card unit-3">
+            <header class="unit-header">
+              <div class="unit-title-wrap">
+                <span class="unit-number">03</span>
+
+                <div>
+                  <p class="unit-label">Requiere progreso</p>
+                  <h2>Experiencias y comunicación</h2>
+                </div>
+              </div>
+
+              <span class="unit-status status-locked">
+                <span class="lock-dot"></span>
+                Bloqueada
+              </span>
+            </header>
+
+            <div class="unit-body">
+              <p class="unit-description">
+                Nuevos diálogos, vocabulario, comprensión, práctica oral y
+                estructuras para ampliar tu comunicación en inglés.
+              </p>
+
+              <div class="unit-progress">
+                <span class="unit-progress-label">Progreso de Unidad 3</span>
+                <span class="unit-progress-value">Bloqueada</span>
+                <div class="progress-track">
+                  <div class="progress-fill"></div>
+                </div>
+              </div>
+
+              <div class="delivery-grid">
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 3.1</span>
+                  <h3>Diálogo inicial</h3>
+                  <p>Requiere Unidad 2</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 3.2</span>
+                  <h3>Vocabulario</h3>
+                  <p>Se abre progresivamente</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 3.3</span>
+                  <h3>Comprensión</h3>
+                  <p>Completa los pasos previos</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 3.4</span>
+                  <h3>Gramática</h3>
+                  <p>Acceso por progreso</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 3.5</span>
+                  <h3>Repaso</h3>
+                  <p>Final de unidad</p>
+                </article>
+              </div>
+
+              <div class="unit-actions">
+                <span class="unit-note">
+                  <strong>Para desbloquear:</strong> completa las Unidades 1 y 2.
+                </span>
+
+                <span class="button locked-button">
+                  🔒 Completa Unidad 2
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="unit-card unit-4">
+            <header class="unit-header">
+              <div class="unit-title-wrap">
+                <span class="unit-number">04</span>
+
+                <div>
+                  <p class="unit-label">Requiere progreso</p>
+                  <h2>Situaciones reales y cultura</h2>
+                </div>
+              </div>
+
+              <span class="unit-status status-locked">
+                <span class="lock-dot"></span>
+                Bloqueada
+              </span>
+            </header>
+
+            <div class="unit-body">
+              <p class="unit-description">
+                Llamadas, agencias de viajes, noticias, carreteras, favores,
+                publicidad, celebraciones y cultura de Estados Unidos.
+              </p>
+
+              <div class="unit-progress">
+                <span class="unit-progress-label">Progreso de Unidad 4</span>
+                <span class="unit-progress-value">Bloqueada</span>
+                <div class="progress-track">
+                  <div class="progress-fill"></div>
+                </div>
+              </div>
+
+              <div class="delivery-grid">
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 4.1</span>
+                  <h3>Comunicación</h3>
+                  <p>Requiere Unidad 3</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 4.2</span>
+                  <h3>Agencia de viajes</h3>
+                  <p>Se abre progresivamente</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 4.3</span>
+                  <h3>Noticias</h3>
+                  <p>Completa los ejercicios</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 4.4</span>
+                  <h3>Autopista</h3>
+                  <p>Acceso por progreso</p>
+                </article>
+
+                <article class="delivery-card locked">
+                  <span class="delivery-lock" aria-hidden="true">🔒</span>
+                  <span class="delivery-number">ENTREGA 4.5</span>
+                  <h3>El 4 de Julio</h3>
+                  <p>Final de la unidad</p>
+                </article>
+              </div>
+
+              <div class="unit-actions">
+                <span class="unit-note">
+                  <strong>Para desbloquear:</strong> completa primero la Unidad 3.
+                </span>
+
+                <span class="button locked-button">
+                  🔒 Completa Unidad 3
+                </span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <section class="how-it-works">
+          <h2>Cómo funciona el acceso</h2>
+
+          <div class="steps">
+            <article class="step">
+              <span class="step-number">PASO 01</span>
+              <h3>Entra a una unidad</h3>
+              <p>
+                Comienza por la primera entrega disponible de la Unidad 1.
+              </p>
+            </article>
+
+            <article class="step">
+              <span class="step-number">PASO 02</span>
+              <h3>Completa actividades</h3>
+              <p>
+                Responde, revisa y marca las actividades terminadas para guardar
+                tu avance.
+              </p>
+            </article>
+
+            <article class="step">
+              <span class="step-number">PASO 03</span>
+              <h3>Desbloquea contenido</h3>
+              <p>
+                Al completar una entrega se habilita la siguiente, y al finalizar
+                una unidad podrás acceder a la siguiente.
+              </p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>Aprender · Practicar · Avanzar</span>
+      <a href="../index.html" class="button button-outline button-small">
+        Volver al inicio
+      </a>
+    </div>
+  </footer>
+</body>
+</html>

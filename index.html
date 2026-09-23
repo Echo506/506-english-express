@@ -461,9 +461,10 @@
       color: rgba(47, 215, 255, 0.22);
       content: "ENGLISH";
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(2rem, 5vw, 4.8rem);
+      font-size: clamp(1.2rem, 7vw, 3.2rem);
       font-weight: 800;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.05em;
+      pointer-events: none;
     }
 
     .hero-card-content {
@@ -1502,8 +1503,9 @@
           <p class="kicker">English through real situations</p>
 
           <h1>
-            ¡Bienvenido a<br>
-            <span>506 English Express!</span>
+            ¡BIENVENIDO A<br>
+            <span>506 ENGLISH<br>
+            EXPRESS!</span>
           </h1>
 
           <p class="hero-text">
@@ -1643,7 +1645,7 @@
 
           <article class="course-card">
             <div class="course-card-top">
-              <span class="unit-label">Unidad 03</span>
+              <span class="unit-label">UNIDAD 03</span>
               <span class="status">Disponible</span>
             </div>
 
@@ -1705,6 +1707,8 @@
                 src="assets/img/whatsapp-lessons.png"
                 alt="Canal de WhatsApp con lecciones de diferentes tópicos"
                 class="learning-tool-image"
+                loading="lazy"
+                decoding="async"
               >
             </div>
 
@@ -1731,6 +1735,8 @@
                 src="assets/img/teacher-assistant.png"
                 alt="Teacher Assistant para apoyo en inglés"
                 class="learning-tool-image"
+                loading="lazy"
+                decoding="async"
               >
             </div>
 
@@ -1757,6 +1763,8 @@
                 src="assets/img/notebook.png"
                 alt="Notebook de estudio complementario"
                 class="learning-tool-image"
+                loading="lazy"
+                decoding="async"
               >
             </div>
 
@@ -1797,6 +1805,8 @@
               src="assets/images/from-zero-to-hero.png"
               alt="From Zero to Hero, práctica avanzada de inglés"
               class="portal-image"
+              loading="lazy"
+              decoding="async"
             >
           </div>
 
@@ -1833,6 +1843,8 @@
               src="assets/images/secondary-route-image.png"
               alt="Ruta de inglés para estudiantes de secundaria"
               class="secondary-portal-image"
+              loading="lazy"
+              decoding="async"
             >
             <div class="secondary-portal-overlay">
               <div class="secondary-portal-meta">
@@ -1883,7 +1895,6 @@
   </footer>
 
   <div class="auth-message" id="auth-message" aria-live="polite"></div>
-  <script src="./assets/js/script.js"></script>
   <script type="module" src="./assets/js/supabase-auth.js?v=6"></script>
 </body>
 </html>

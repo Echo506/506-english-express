@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -1244,5 +1244,15 @@
       updateInterface();
     });
   </script>
+<script src="../assets/js/rewards.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.RewardsSystem) {
+      window.RewardsSystem.checkForReward();
+    }
+  });
+</script>
 </body>
 </html>
+
+

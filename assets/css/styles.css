@@ -287,7 +287,7 @@ header {
   background: rgba(5, 14, 30, 0.58);
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em; 
   text-transform: uppercase;
 }
 
@@ -300,10 +300,11 @@ h3 {
 }
 
 .hero h1 {
-  max-width: 11ch;
+  /* Ancho libre para respetar los saltos de línea del HTML */
   margin: 0;
-  font-size: clamp(3.1rem, 7vw, 6.6rem);
-  line-height: 0.96;
+  font-size: clamp(2.9rem, 6.4vw, 6.2rem);
+  line-height: 1.02;
+  letter-spacing: 0.04em;
   text-shadow:
     0 0 25px rgba(87, 245, 255, 0.18),
     0 0 55px rgba(255, 59, 212, 0.12);
@@ -312,6 +313,7 @@ h3 {
 .hero h1 span {
   color: transparent;
   -webkit-text-stroke: 1px var(--cyan);
+  letter-spacing: 0.05em;
   text-shadow: 0 0 16px rgba(87, 245, 255, 0.4);
 }
 
@@ -635,7 +637,7 @@ footer {
   }
 
   .hero h1 {
-    font-size: clamp(2.8rem, 14vw, 4.5rem);
+    font-size: clamp(2.5rem, 12vw, 4.2rem);
   }
 
   .welcome-grid,
@@ -648,8 +650,9 @@ footer {
     padding: 1.4rem;
   }
 
+  /* Ajuste de escala fluido para asegurar que números o palabras cortas no se salgan en móviles pequeños */
   .hero-note .big {
-    font-size: 5rem;
+    font-size: clamp(3.5rem, 15vw, 5rem);
   }
 }
 

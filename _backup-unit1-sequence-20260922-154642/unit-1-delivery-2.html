@@ -1,0 +1,1411 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <meta
+    name="description"
+    content="Unidad 1, entrega 2: Contactos en el trabajo, presente progresivo, alfabeto y posesivos."
+  >
+
+  <title>Contactos en el trabajo | 506 English Express</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    .lesson-page {
+      padding: 3.5rem 0 5rem;
+    }
+
+    .lesson-hero,
+    .audio-player-card,
+    .activity-card {
+      border: 1px solid rgba(47, 215, 255, 0.32);
+      border-radius: 18px;
+      background: rgba(4, 20, 39, 0.76);
+      box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
+    }
+
+    .lesson-hero {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+
+    .lesson-hero h1,
+    .activity-card h2,
+    .completion-card h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .lesson-hero h1 {
+      font-size: clamp(1.65rem, 4vw, 3rem);
+      line-height: 1.2;
+    }
+
+    .lesson-hero > p:last-child,
+    .activity-card p,
+    .activity-card li,
+    .completion-card p {
+      color: rgba(225, 243, 255, 0.86);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .lesson-progress {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(47, 215, 255, 0.2);
+    }
+
+    .lesson-progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .lesson-progress-header span,
+    .activity-label,
+    .audio-player-label {
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lesson-progress-header strong {
+      color: #8cecff;
+    }
+
+    .lesson-progress-track {
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(47, 215, 255, 0.26);
+      border-radius: 999px;
+      background: rgba(1, 11, 27, 0.75);
+    }
+
+    .lesson-progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2fd7ff, #71ffc0);
+      box-shadow: 0 0 14px rgba(47, 215, 255, 0.7);
+      transition: width 0.3s ease;
+    }
+
+    .audio-player-card {
+      margin: 1.5rem 0 1rem;
+      padding: 1.25rem;
+    }
+
+    .audio-player-info,
+    .audio-player-controls,
+    .activity-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .audio-player-info {
+      align-items: flex-start;
+    }
+
+    .audio-player-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      place-items: center;
+      border: 1px solid rgba(47, 215, 255, 0.58);
+      border-radius: 50%;
+      background: rgba(47, 215, 255, 0.1);
+      font-size: 1.25rem;
+    }
+
+    .audio-player-label {
+      margin: 0 0 0.25rem;
+    }
+
+    .audio-player-info h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+    }
+
+    .audio-player-info p:last-child {
+      margin: 0.35rem 0 0;
+      color: rgba(220, 240, 255, 0.78);
+    }
+
+    .audio-player-controls {
+      margin-top: 1rem;
+    }
+
+    .audio-play-button,
+    .activity-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid rgba(47, 215, 255, 0.65);
+      border-radius: 8px;
+      background: rgba(47, 215, 255, 0.12);
+      color: #b7f5ff;
+      cursor: pointer;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .audio-play-button {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      color: #061321;
+    }
+
+    .audio-play-button:hover,
+    .activity-button:hover {
+      background: rgba(47, 215, 255, 0.25);
+    }
+
+    .audio-time,
+    .activity-status {
+      color: #71ffc0;
+      font-weight: 700;
+    }
+
+    .audio-progress {
+      width: 100%;
+      margin-top: 1rem;
+      accent-color: #2fd7ff;
+    }
+
+    .activity-card {
+      margin: 1.25rem 0;
+      padding: clamp(1.15rem, 3vw, 1.7rem);
+    }
+
+    .activity-card h2 {
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 1.3;
+    }
+
+    .activity-label {
+      margin: 0 0 0.55rem;
+    }
+
+    .activity-card ul,
+    .activity-card ol {
+      padding-left: 1.3rem;
+    }
+
+    .activity-card.is-complete {
+      border-color: rgba(113, 255, 192, 0.7);
+    }
+
+    .activity-card.is-complete .activity-label {
+      color: #71ffc0;
+    }
+
+    .dialogue {
+      margin-top: 1.1rem;
+      padding: 1rem;
+      border-left: 3px solid #2fd7ff;
+      border-radius: 0 10px 10px 0;
+      background: rgba(47, 215, 255, 0.06);
+    }
+
+    .dialogue p {
+      margin: 0.65rem 0;
+    }
+
+    .dialogue strong {
+      color: #8cecff;
+    }
+
+    .answer-options {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .answer-option {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.24);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .answer-option input {
+      accent-color: #2fd7ff;
+    }
+
+    .student-input {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0.55rem 0 1rem;
+      padding: 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.35);
+      border-radius: 8px;
+      outline: none;
+      background: rgba(1, 11, 27, 0.62);
+      color: #effaff;
+      font: inherit;
+    }
+
+    .student-input:focus {
+      border-color: #2fd7ff;
+      box-shadow: 0 0 0 3px rgba(47, 215, 255, 0.12);
+    }
+
+    textarea.student-input {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .activity-actions {
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-box {
+      padding: 1rem;
+      border: 1px solid rgba(118, 226, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(1, 11, 27, 0.34);
+    }
+
+    .vocabulary-box h3 {
+      margin: 0 0 0.6rem;
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .vocabulary-box p {
+      margin: 0;
+    }
+
+    .completion-card {
+      margin-top: 2rem;
+      padding: 1.7rem;
+      border: 1px solid rgba(113, 255, 192, 0.5);
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        rgba(113, 255, 192, 0.13),
+        rgba(4, 20, 39, 0.78)
+      );
+      text-align: center;
+    }
+
+    .completion-card p {
+      max-width: 700px;
+      margin: 0.8rem auto 1.2rem;
+    }
+
+    .completion-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 650px) {
+      .lesson-page {
+        padding-top: 2.2rem;
+      }
+
+      .lesson-progress-header,
+      .audio-player-controls {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .vocabulary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<style id="rewards-506-shared-style">
+.reward-avatar-badge {
+  display:grid;
+  grid-template-columns:78px minmax(0,1fr);
+  gap:.95rem;
+  align-items:center;
+  padding:.9rem 1rem;
+  border:1px solid rgba(47,215,255,.25);
+  border-radius:16px;
+  background:linear-gradient(145deg, rgba(6,22,42,.92), rgba(4,15,30,.78));
+  box-shadow:0 0 24px rgba(47,215,255,.08);
+}
+.reward-avatar-badge__media{display:flex;justify-content:center;align-items:center}
+.reward-avatar-badge__image{width:78px;height:78px;object-fit:cover;border-radius:18px;border:1px solid rgba(47,215,255,.46);box-shadow:0 0 18px rgba(47,215,255,.2)}
+.reward-avatar-badge__eyebrow,.reward-avatar-collection__eyebrow{margin:0 0 .35rem;color:#ffc43d;font-family:Orbitron,sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.reward-avatar-badge__title,.reward-avatar-card__body h3,.reward-avatar-collection__header h2{margin:0 0 .3rem;font-family:Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.04em}
+.reward-avatar-badge__meta,.reward-avatar-badge__progress,.reward-avatar-card__body p,.reward-avatar-collection__header p:last-child{margin:0 0 .2rem;color:rgba(220,240,255,.78)}
+.reward-avatar-collection__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
+.reward-avatar-card{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(47,215,255,.16);background:rgba(3,11,27,.7);padding:.85rem;min-height:196px;display:flex;flex-direction:column;gap:.7rem}
+.reward-avatar-card__visual{position:relative;border-radius:14px;background:rgba(6,20,38,.9);padding:.75rem;display:grid;place-items:center;min-height:116px;border:1px solid rgba(255,255,255,.06)}
+.reward-avatar-card__image{width:100%;max-width:92px;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid rgba(47,215,255,.32);display:block}
+.reward-avatar-card__placeholder{display:grid;place-items:center;width:92px;height:92px;border-radius:14px;border:1px dashed rgba(255,255,255,.14);color:rgba(255,255,255,.45);font-size:2rem;background:rgba(255,255,255,.02)}
+.reward-avatar-card__number{position:absolute;top:.5rem;right:.5rem;min-width:34px;min-height:34px;padding:.2rem .45rem;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:rgba(3,11,27,.82);border:1px solid rgba(47,215,255,.3);color:#8cecff;font-family:Orbitron,sans-serif;font-size:.66rem;letter-spacing:.08em}
+.reward-avatar-card.is-current{border-color:rgba(255,196,61,.7);box-shadow:0 0 0 1px rgba(255,196,61,.18),0 18px 35px rgba(255,196,61,.12);background:linear-gradient(160deg, rgba(255,196,61,.14), rgba(3,11,27,.84))}
+.reward-avatar-card.is-unlocked .reward-avatar-card__body p{color:rgba(113,255,192,.88)}
+.reward-avatar-card.is-locked{opacity:.58;filter:grayscale(1)}
+@media (max-width:860px){.reward-avatar-collection__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.reward-avatar-badge{grid-template-columns:64px minmax(0,1fr)}.reward-avatar-badge__image{width:64px;height:64px}.reward-avatar-collection__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source
+        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
+        type="video/mp4"
+      >
+    </video>
+  </div>
+
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="container topbar-content">
+      <span>506 English Express</span>
+      <span>Unidad 1 · Entrega 2 · Contactos en el trabajo</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container navbar" aria-label="Navegación principal">
+      <a href="../index.html" class="brand" aria-label="Volver al inicio">
+        <span class="brand-mark" aria-hidden="true">⚡</span>
+        <span class="brand-text">English <strong>506</strong> Express</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="unit-1.html">Unidad 1</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="progress.html" class="button button-primary button-small">
+          Mi progreso
+        </a>
+
+        <a href="unit-1.html" class="button button-outline button-small">
+          Ver unidad
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="lesson-page">
+    <div class="container">
+      <section class="lesson-hero">
+        <p class="kicker">Unidad 01 · Entrega 02</p>
+        <h1>Contactos en el trabajo</h1>
+
+        <p>
+          Barbara recibe una llamada de Jeff mientras prepara una entrevista.
+          En el estudio, ambos ven una película sobre Van der Wildt y el grupo
+          E.G.I. Esta entrega practica el presente progresivo, descripciones,
+          el alfabeto y los adjetivos posesivos.
+        </p>
+
+        <div class="lesson-progress">
+          <div class="lesson-progress-header">
+            <span>Progreso de la entrega</span>
+            <strong id="lesson-progress-text">0 de 9 secciones completadas</strong>
+          </div>
+
+          <div
+            class="lesson-progress-track"
+            role="progressbar"
+            aria-label="Progreso de la entrega"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
+          </div>
+        </div>
+      </section>
+<section class="activity-card" aria-labelledby="current-avatar-title" style="margin-top:1rem;">
+  <div style="padding:1rem;">
+    <p class="lesson-kicker">Sistema de recompensas</p>
+    <h2 id="current-avatar-title">Tu avatar actual</h2>
+    <div id="current-avatar-badge"></div>
+  </div>
+</section>
+
+
+      <section class="activity-card" data-activity="1">
+        <p class="activity-label">Actividad 01 · Diálogo</p>
+        <h2>Contactos en el trabajo</h2>
+
+        <p>
+          Lea y escuche el diálogo. Identifique qué hacen Barbara, Jeff y Jean.
+        </p>
+
+        <section class="audio-player-card" aria-label="Audio del diálogo">
+          <div class="audio-player-info">
+            <span class="audio-player-icon" aria-hidden="true">🔊</span>
+
+            <div>
+              <p class="audio-player-label">Audio del diálogo</p>
+              <h2>Contactos en el trabajo</h2>
+              <p>Escucha el diálogo y practica la pronunciación.</p>
+            </div>
+          </div>
+
+          <audio id="work-audio" preload="metadata">
+            <source
+              src="../assets/audio/unit-1/unit-1-delivery-2.mp3"
+              type="audio/mpeg"
+            >
+            Tu navegador no admite la reproducción de audio.
+          </audio>
+
+          <div class="audio-player-controls">
+            <button
+              id="audio-play-button"
+              class="audio-play-button"
+              type="button"
+              aria-label="Reproducir audio"
+            >
+              <span id="audio-play-icon" aria-hidden="true">▶</span>
+              <span id="audio-play-text">Reproducir audio</span>
+            </button>
+
+            <span id="audio-time" class="audio-time">0:00 / 0:00</span>
+          </div>
+
+          <input
+            id="audio-progress"
+            class="audio-progress"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            aria-label="Progreso del audio"
+          >
+        </section>
+
+        <div class="dialogue">
+          <p><strong>Barbara:</strong> Barbara Rivers.</p>
+          <p><strong>Jeff:</strong> Hi, Barbara, it's Jeff. Where are you? We're in the studio. We're watching the film on the World Trade Convention. What are you doing? Are you coming?</p>
+          <p><strong>Barbara:</strong> Well... I'm busy right now. I'm preparing the Van der Wildt interview for tomorrow.</p>
+          <p><strong>Jeff:</strong> This is important. Van der Wildt's in the film. He's talking about the E.G.I. group.</p>
+          <p><strong>Barbara:</strong> O.K. I'm coming.</p>
+          <p><strong>Barbara:</strong> Come on, Jean, let's go to the studio. Jeff's watching a film on Van der Wildt.</p>
+          <p><strong>Jean:</strong> Who's Van der Wildt anyway?</p>
+          <p><strong>Barbara:</strong> He's a very powerful businessman. He's also very rich.</p>
+          <p><strong>Jean:</strong> He's got a difficult name. How do you spell it?</p>
+          <p><strong>Barbara:</strong> V-A-N D-E-R W-I-L-D-T.</p>
+          <p><strong>Jeff:</strong> Hi, Barbara. Now listen to this.</p>
+          <p><strong>Mr. Van der Wildt:</strong> All the companies in the E.G.I. group are doing very well this year. Our profits are rising...</p>
+          <p><strong>Barbara:</strong> Wow! This is brilliant! I'm not staying for this, Jeff. This is just a publicity film.</p>
+          <p><strong>Jeff:</strong> Well, he's a persuasive man. That's the main reason for his fantastic success.</p>
+        </div>
+
+        <p>
+          <strong>Idea principal:</strong> Barbara está preparando una entrevista,
+          pero Jeff la llama al estudio para ver una película publicitaria sobre
+          Van der Wildt, un empresario rico y poderoso.
+        </p>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="1">
+            Marcar actividad completada
+          </button>
+          <span class="activity-status" id="activity-status-1"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="2">
+        <p class="activity-label">Actividad 02 · Comprensión</p>
+        <h2>Compruebe su comprensión</h2>
+
+        <p><strong>1. ¿Dónde están Jeff y las otras personas?</strong></p>
+
+        <div class="answer-options">
+          <label class="answer-option">
+            <input type="radio" name="question-1" value="airport">
+            At the airport
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-1" value="studio">
+            In the studio
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-1" value="hotel">
+            In a hotel
+          </label>
+        </div>
+
+        <p><strong>2. ¿Qué está preparando Barbara?</strong></p>
+
+        <div class="answer-options">
+          <label class="answer-option">
+            <input type="radio" name="question-2" value="interview">
+            The Van der Wildt interview
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-2" value="television">
+            A new television
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-2" value="film">
+            A publicity film
+          </label>
+        </div>
+
+        <p><strong>3. ¿Cómo describe Barbara a Van der Wildt?</strong></p>
+
+        <div class="answer-options">
+          <label class="answer-option">
+            <input type="radio" name="question-3" value="poor">
+            He is poor and sad
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-3" value="rich">
+            He is a very powerful businessman and very rich
+          </label>
+
+          <label class="answer-option">
+            <input type="radio" name="question-3" value="cameraman">
+            He is a cameraman
+          </label>
+        </div>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-comprehension">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-2"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="3">
+        <p class="activity-label">Actividad 03 · Vocabulario</p>
+        <h2>Palabras y expresiones</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Nombres</h3>
+            <p>
+              film / movie = película, interview = entrevista, studio = estudio,
+              company = compañía, year = año, profit = beneficio, loss = pérdida,
+              publicity film = película publicitaria, reason = razón, success = éxito.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Adjetivos</h3>
+            <p>
+              busy = ocupado/a, important = importante, powerful = poderoso/a,
+              rich = rico/a, difficult = difícil, brilliant = brillante,
+              persuasive = persuasivo/a, main = principal, fantastic = fantástico/a.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Verbos</h3>
+            <p>
+              to watch = mirar, to do = hacer, to prepare = preparar,
+              to spell = deletrear, to listen = escuchar, to rise = subir,
+              to stay = quedarse, to talk about = hablar de.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Expresiones</h3>
+            <p>
+              right now = ahora mismo, tomorrow = mañana, let's go = vamos,
+              anyway = de todas formas, very = muy, also = también, just = solo.
+            </p>
+          </div>
+        </div>
+
+        <label for="profits-answer">
+          Complete en inglés: “Los beneficios están subiendo.”
+        </label>
+
+        <input
+          class="student-input"
+          id="profits-answer"
+          type="text"
+          placeholder="Escriba su respuesta en inglés"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-profits">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-3"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="4">
+        <p class="activity-label">Actividad 04 · Cómo se dice</p>
+        <h2>Teléfono, acciones y descripciones</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Por teléfono</h3>
+            <p>
+              Barbara Rivers. = Soy Barbara Rivers.<br>
+              It's Jeff. = Soy Jeff.<br>
+              Where are you? = ¿Dónde estás?
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Acciones</h3>
+            <p>
+              What are you doing? = ¿Qué estás haciendo?<br>
+              I'm preparing. = Estoy preparando.<br>
+              We're watching. = Estamos mirando.<br>
+              I'm coming. = Ya voy.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Descripciones</h3>
+            <p>
+              He's a very powerful businessman.<br>
+              He's very rich.<br>
+              He's a persuasive man.<br>
+              They're clever.
+            </p>
+          </div>
+
+          <div class="vocabulary-box">
+            <h3>Presente progresivo</h3>
+            <p>
+              I am preparing.<br>
+              You are watching.<br>
+              He is talking.<br>
+              They are doing well.
+            </p>
+          </div>
+        </div>
+
+        <label for="phone-answer">
+          Complete: “Soy Jeff.” → ________ Jeff.
+        </label>
+
+        <input
+          class="student-input"
+          id="phone-answer"
+          type="text"
+          placeholder="Escriba la palabra que falta"
+        >
+
+        <label for="preparing-answer">
+          Complete: “Estoy preparando una entrevista.” → I'm ________ an interview.
+        </label>
+
+        <input
+          class="student-input"
+          id="preparing-answer"
+          type="text"
+          placeholder="Escriba la palabra que falta"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-expressions">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-4"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="5">
+        <p class="activity-label">Actividad 05 · Recuerde</p>
+        <h2>Notas importantes</h2>
+
+        <ol>
+          <li>Al contestar una llamada de teléfono, especialmente en el trabajo, puede presentarse diciendo simplemente su nombre: Barbara Rivers.</li>
+          <li><strong>To make</strong> se usa para fabricar o crear algo; <strong>to do</strong> se usa en muchas acciones generales.</li>
+          <li>Para hablar de una acción que está ocurriendo ahora se usa <strong>am / is / are + verbo terminado en -ing</strong>: I'm preparing y We're watching.</li>
+          <li>Los adjetivos posesivos se colocan antes del sustantivo: my interview, her interview y our profits.</li>
+        </ol>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="5">
+            Marcar recordatorio como completado
+          </button>
+          <span class="activity-status" id="activity-status-5"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="6">
+        <p class="activity-label">Actividad 06 · Práctica oral</p>
+        <h2>La forma progresiva</h2>
+
+        <p>
+          Repita: <strong>I'm watching, you're watching, he's watching,
+          she's watching, we're watching, they're watching.</strong>
+        </p>
+
+        <p>
+          <strong>Ejemplo:</strong> What's he watching? TV. → He's watching TV.
+        </p>
+
+        <p>
+          Transforme estas ideas: Susan's talking about the new film. /
+          Profits are rising. / The company is doing very well. /
+          Susan and Tom are staying in London.
+        </p>
+
+        <label for="progressive-answer">
+          Escriba tres ejemplos: una frase afirmativa, una pregunta y una frase negativa.
+        </label>
+
+        <textarea
+          class="student-input"
+          id="progressive-answer"
+          placeholder="Escriba sus tres ejemplos"
+        ></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-progressive">
+            Revisar práctica
+          </button>
+          <span class="activity-status" id="activity-status-6"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="7">
+        <p class="activity-label">Actividad 07 · Alfabeto y posesivos</p>
+        <h2>Deletrear y usar posesivos</h2>
+
+        <p>
+          Deletree: <strong>Barbara, television, success, interview</strong> y
+          <strong>World Trade</strong>.
+        </p>
+
+        <p>
+          Repita los posesivos:
+          <strong>my, your, his, her, its, our, your, their.</strong>
+        </p>
+
+        <p>
+          <strong>Ejemplo:</strong> Barbara's preparing an interview for tomorrow.
+          → She's preparing <strong>her</strong> interview for tomorrow.
+        </p>
+
+        <label for="possessive-answer">
+          Complete: “Barbara is preparing her interview.” El adjetivo posesivo correcto es:
+        </label>
+
+        <input
+          class="student-input"
+          id="possessive-answer"
+          type="text"
+          placeholder="Escriba la palabra correcta"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-possessive">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-7"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="8">
+        <p class="activity-label">Actividad 08 · Cultura y pronunciación</p>
+        <h2>To work or not to work</h2>
+
+        <p>
+          Esta lectura presenta una reflexión sobre la importancia histórica y
+          social del trabajo en Estados Unidos. Destaca la eficacia, el
+          pragmatismo, el esfuerzo individual y la búsqueda del éxito.
+        </p>
+
+        <p>
+          El texto también advierte sobre el riesgo de que el trabajo se convierta
+          en una obsesión, conocido en inglés como <strong>workaholism</strong>.
+        </p>
+
+        <p>
+          <strong>Pronunciación:</strong> repita:
+          leave / live · heat / hit · feel / fill · eat / it · he's / his · sit / seat.
+        </p>
+
+        <label for="work-answer">
+          Escriba una oración en inglés sobre el trabajo usando <em>work</em> o <em>busy</em>.
+        </label>
+
+        <input
+          class="student-input"
+          id="work-answer"
+          type="text"
+          placeholder="Escriba una oración en inglés"
+        >
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-work">
+            Revisar oración
+          </button>
+          <span class="activity-status" id="activity-status-8"></span>
+        </div>
+      </section>
+
+      <section class="activity-card" data-activity="9">
+        <p class="activity-label">Actividad 09 · De todo un poco</p>
+        <h2>Escucha y canción</h2>
+
+        <p>
+          Escuche la canción tradicional <strong>“Michael, Row the Boat Ashore”</strong>.
+          Identifique palabras conocidas relacionadas con familia, ayuda, río y barco.
+        </p>
+
+        <label for="song-answer">
+          Después de escuchar, escriba tres palabras o ideas que haya reconocido.
+        </label>
+
+        <textarea
+          class="student-input"
+          id="song-answer"
+          placeholder="Escriba tres palabras o ideas"
+        ></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="finish-lesson">
+            Completar entrega
+          </button>
+          <span class="activity-status" id="activity-status-9"></span>
+        </div>
+      </section>
+
+      <section class="completion-card" id="completion-card" hidden>
+        <p class="kicker">Entrega completada</p>
+        <h2>¡Excelente trabajo!</h2>
+
+        <p>
+          Completaste “Contactos en el trabajo”.
+          Ya puedes continuar con la siguiente entrega de la Unidad 1.
+        </p>
+
+        <div class="completion-actions">
+          <a href="unit-1-delivery-3.html" class="button button-primary">
+            Siguiente entrega →
+          </a>
+
+          <a href="unit-1.html" class="button button-outline">
+            Volver a Unidad 1
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>Unidad 1 · Entrega 2 · Contactos en el trabajo</span>
+      <a href="unit-1.html">Volver a Unidad 1</a>
+    </div>
+  </footer>
+
+  <script type="module" src="../assets/js/supabase-auth.js?v=7"></script>
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit1.delivery2.progress";
+      const totalActivities = 9;
+
+      const progressText = document.getElementById("lesson-progress-text");
+      const progressFill = document.getElementById("lesson-progress-fill");
+      const completionCard = document.getElementById("completion-card");
+      const progressTrack = document.querySelector(".lesson-progress-track");
+
+      function getCompletedActivities() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(saved)) {
+            return [];
+          }
+
+          return [...new Set(
+            saved
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveCompletedActivities(completed) {
+        localStorage.setItem(storageKey, JSON.stringify(completed));
+      }
+
+      function updateInterface() {
+        const completed = getCompletedActivities();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        if (progressText) {
+          progressText.textContent =
+            `${completedCount} de ${totalActivities} secciones completadas`;
+        }
+
+        if (progressFill) {
+          progressFill.style.width = `${percentage}%`;
+        }
+
+        if (progressTrack) {
+          progressTrack.setAttribute("aria-valuenow", String(percentage));
+        }
+
+        document
+          .querySelectorAll(".activity-card[data-activity]")
+          .forEach((card) => {
+            const activity = Number(card.dataset.activity);
+            const status = document.getElementById(
+              `activity-status-${activity}`
+            );
+            const button = card.querySelector("[data-complete]");
+
+            if (completed.includes(activity)) {
+              card.classList.add("is-complete");
+
+              if (status) {
+                status.textContent = "✓ Actividad completada";
+              }
+
+              if (button) {
+                button.textContent = "Actividad completada";
+              }
+            } else {
+              card.classList.remove("is-complete");
+
+              if (status) {
+                status.textContent = "";
+              }
+            }
+          });
+
+        if (completionCard) {
+          completionCard.hidden = completedCount !== totalActivities;
+        }
+      }
+
+      async function markActivityComplete(activity) {
+        const completed = getCompletedActivities();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveCompletedActivities(completed);
+        }
+
+        updateInterface();
+
+        if (
+          activity === totalActivities &&
+          typeof window.saveStudentProgress === "function"
+        ) {
+          try {
+            await window.saveStudentProgress({
+              unitNumber: 1,
+              activityId: "unit-1-delivery-2",
+              activityTitle: "Contactos en el trabajo",
+              completed: true,
+              score: 100
+            });
+          } catch (error) {
+            console.warn("El progreso local se guardó.", error);
+          }
+        }
+      }
+
+      function normalize(value) {
+        return String(value)
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      document.querySelectorAll("[data-complete]").forEach((button) => {
+        button.addEventListener("click", () => {
+          markActivityComplete(Number(button.dataset.complete));
+        });
+      });
+
+      const comprehensionButton = document.getElementById("check-comprehension");
+
+      if (comprehensionButton) {
+        comprehensionButton.addEventListener("click", () => {
+          const answerOne = document.querySelector(
+            'input[name="question-1"]:checked'
+          )?.value;
+
+          const answerTwo = document.querySelector(
+            'input[name="question-2"]:checked'
+          )?.value;
+
+          const answerThree = document.querySelector(
+            'input[name="question-3"]:checked'
+          )?.value;
+
+          const status = document.getElementById("activity-status-2");
+
+          if (
+            answerOne === "studio" &&
+            answerTwo === "interview" &&
+            answerThree === "rich"
+          ) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Correcto! Están en el estudio, Barbara prepara la entrevista y Van der Wildt es un empresario poderoso y rico.";
+            }
+
+            markActivityComplete(2);
+          } else if (status) {
+            status.textContent =
+              "Revisa el diálogo e inténtalo otra vez.";
+          }
+        });
+      }
+
+      const profitsButton = document.getElementById("check-profits");
+
+      if (profitsButton) {
+        profitsButton.addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("profits-answer").value
+          );
+
+          const status = document.getElementById("activity-status-3");
+
+          if (
+            answer === "our profits are rising" ||
+            answer === "profits are rising"
+          ) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Muy bien! “Our profits are rising” es la respuesta correcta.";
+            }
+
+            markActivityComplete(3);
+          } else if (status) {
+            status.textContent =
+              "Pista: Our profits are rising.";
+          }
+        });
+      }
+
+      const expressionsButton = document.getElementById("check-expressions");
+
+      if (expressionsButton) {
+        expressionsButton.addEventListener("click", () => {
+          const phone = normalize(
+            document.getElementById("phone-answer").value
+          );
+
+          const preparing = normalize(
+            document.getElementById("preparing-answer").value
+          );
+
+          const status = document.getElementById("activity-status-4");
+
+          const phoneCorrect = phone === "its" || phone === "it is";
+          const preparingCorrect = preparing === "preparing";
+
+          if (phoneCorrect && preparingCorrect) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Excelente! “It’s Jeff” e “I’m preparing an interview” son correctas.";
+            }
+
+            markActivityComplete(4);
+          } else if (status) {
+            status.textContent =
+              "Pista: It’s Jeff / I’m preparing an interview.";
+          }
+        });
+      }
+
+      const progressiveButton = document.getElementById("check-progressive");
+
+      if (progressiveButton) {
+        progressiveButton.addEventListener("click", () => {
+          const answer = document
+            .getElementById("progressive-answer")
+            .value
+            .trim();
+
+          const status = document.getElementById("activity-status-6");
+
+          if (answer.length >= 20) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Muy bien! Incluiste una frase afirmativa, una pregunta y una respuesta negativa.";
+            }
+
+            markActivityComplete(6);
+          } else if (status) {
+            status.textContent =
+              "Escribe una frase afirmativa, una pregunta y una frase negativa.";
+          }
+        });
+      }
+
+      const possessiveButton = document.getElementById("check-possessive");
+
+      if (possessiveButton) {
+        possessiveButton.addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("possessive-answer").value
+          );
+
+          const status = document.getElementById("activity-status-7");
+
+          if (answer === "her") {
+            if (status) {
+              status.textContent =
+                "✓ ¡Correcto! “Her” es el adjetivo posesivo para Barbara.";
+            }
+
+            markActivityComplete(7);
+          } else if (status) {
+            status.textContent =
+              "Pista: Barbara es una mujer; usa her.";
+          }
+        });
+      }
+
+      const workButton = document.getElementById("check-work");
+
+      if (workButton) {
+        workButton.addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("work-answer").value
+          );
+
+          const status = document.getElementById("activity-status-8");
+
+          if (
+            answer.length >= 8 &&
+            (answer.includes("work") || answer.includes("busy"))
+          ) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Actividad completada! Buena oración sobre el trabajo.";
+            }
+
+            markActivityComplete(8);
+          } else if (status) {
+            status.textContent =
+              "Escribe una oración con work o busy.";
+          }
+        });
+      }
+
+      const finishButton = document.getElementById("finish-lesson");
+
+      if (finishButton) {
+        finishButton.addEventListener("click", () => {
+          const answer = document
+            .getElementById("song-answer")
+            .value
+            .trim();
+
+          const status = document.getElementById("activity-status-9");
+
+          if (answer.length >= 10) {
+            if (status) {
+              status.textContent =
+                "✓ ¡Entrega completada! Excelente trabajo con Contactos en el trabajo.";
+            }
+
+            markActivityComplete(9);
+
+            window.setTimeout(() => {
+              completionCard.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+            }, 250);
+          } else if (status) {
+            status.textContent =
+              "Escribe al menos tres palabras o ideas que reconociste.";
+          }
+        });
+      }
+
+      const audio = document.getElementById("work-audio");
+      const playButton = document.getElementById("audio-play-button");
+      const playIcon = document.getElementById("audio-play-icon");
+      const playText = document.getElementById("audio-play-text");
+      const audioProgress = document.getElementById("audio-progress");
+      const audioTime = document.getElementById("audio-time");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) {
+          return "0:00";
+        }
+
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = String(
+          Math.floor(seconds % 60)
+        ).padStart(2, "0");
+
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      function updateAudioPlayer() {
+        if (!audio || !audioProgress || !audioTime) {
+          return;
+        }
+
+        const currentTime = audio.currentTime || 0;
+        const duration = audio.duration || 0;
+
+        audioTime.textContent =
+          `${formatTime(currentTime)} / ${formatTime(duration)}`;
+
+        if (duration > 0) {
+          audioProgress.value = String((currentTime / duration) * 100);
+        }
+      }
+
+      function setAudioButton(isPlaying) {
+        if (!playButton || !playIcon || !playText) {
+          return;
+        }
+
+        playIcon.textContent = isPlaying ? "❚❚" : "▶";
+        playText.textContent = isPlaying
+          ? "Pausar audio"
+          : "Reproducir audio";
+
+        playButton.setAttribute(
+          "aria-label",
+          isPlaying ? "Pausar audio" : "Reproducir audio"
+        );
+      }
+
+      if (audio && playButton) {
+        playButton.addEventListener("click", async () => {
+          if (audio.paused) {
+            try {
+              await audio.play();
+            } catch (error) {
+              console.warn("No se pudo reproducir el audio.", error);
+            }
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("loadedmetadata", updateAudioPlayer);
+        audio.addEventListener("timeupdate", updateAudioPlayer);
+
+        audio.addEventListener("play", () => {
+          setAudioButton(true);
+        });
+
+        audio.addEventListener("pause", () => {
+          setAudioButton(false);
+        });
+
+        audio.addEventListener("ended", () => {
+          audio.currentTime = 0;
+
+          if (audioProgress) {
+            audioProgress.value = "0";
+          }
+
+          updateAudioPlayer();
+          setAudioButton(false);
+        });
+      }
+
+      if (audio && audioProgress) {
+        audioProgress.addEventListener("input", () => {
+          if (audio.duration) {
+            audio.currentTime =
+              (Number(audioProgress.value) / 100) * audio.duration;
+          }
+        });
+      }
+
+      updateAudioPlayer();
+      updateInterface();
+    });
+  </script>
+<script src="../assets/js/rewards.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.RewardsSystem) {
+      window.RewardsSystem.checkForReward();
+    }
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.Rewards506 && typeof window.Rewards506.renderCurrentAvatarBadge === 'function') {
+    window.Rewards506.renderCurrentAvatarBadge('#current-avatar-badge');
+  }
+});
+</script>
+</body>
+</html>
+
