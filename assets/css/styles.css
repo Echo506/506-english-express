@@ -148,7 +148,7 @@ header {
   z-index: 50;
   top: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(5, 9, 20, 0.7);
+  background: rgba(5, 9, 20, 0.88);
   backdrop-filter: blur(18px);
 }
 
@@ -211,6 +211,12 @@ header {
 .nav-links a:hover {
   color: var(--cyan);
   text-shadow: 0 0 12px var(--cyan);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
 }
 
 .button {
@@ -300,10 +306,9 @@ h3 {
 }
 
 .hero h1 {
-  /* Ancho libre para respetar los saltos de línea del HTML */
   margin: 0;
   font-size: clamp(2.9rem, 6.4vw, 6.2rem);
-  line-height: 1.02;
+  line-height: 1.05;
   letter-spacing: 0.04em;
   text-shadow:
     0 0 25px rgba(87, 245, 255, 0.18),
@@ -596,7 +601,7 @@ footer {
 @media (max-width: 980px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .hero-note {
@@ -619,25 +624,75 @@ footer {
 
 @media (max-width: 680px) {
   body {
-    font-size: 17px;
+    font-size: 16px;
   }
 
-  .topbar-content,
-  .footer-content {
+  .topbar {
+    display: none;
+  }
+
+  header {
+    position: relative;
+    padding: 0.5rem 0;
+  }
+
+  .navbar {
     flex-direction: column;
+    justify-content: center;
+    gap: 0.8rem;
+    min-height: auto;
+    padding: 0.5rem 0;
+  }
+
+  .nav-actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .nav-actions .button,
+  .nav-actions div {
+    max-width: 100%;
+  }
+
+  .brand {
+    font-size: 0.88rem;
   }
 
   .brand-text {
-    display: none;
+    display: inline-block;
   }
 
   .hero {
     min-height: auto;
-    padding-top: 4rem;
+    padding: 2rem 0 3rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .hero h1 {
-    font-size: clamp(2.5rem, 12vw, 4.2rem);
+    font-size: clamp(2rem, 9vw, 3.2rem);
+    line-height: 1.15;
+    word-break: break-word;
+  }
+
+  .hero-intro {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero-actions .button {
+    width: 100%;
   }
 
   .welcome-grid,
@@ -646,13 +701,22 @@ footer {
   }
 
   .hero-note {
-    min-height: 295px;
-    padding: 1.4rem;
+    min-height: auto;
+    padding: 1.5rem;
   }
 
-  /* Ajuste de escala fluido para asegurar que números o palabras cortas no se salgan en móviles pequeños */
+  .hero-note-content {
+    min-height: auto;
+  }
+
   .hero-note .big {
-    font-size: clamp(3.5rem, 15vw, 5rem);
+    font-size: clamp(3rem, 14vw, 4.5rem);
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
   }
 }
 
@@ -664,10 +728,4 @@ footer {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
 }
