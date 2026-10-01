@@ -153,7 +153,7 @@ header {
   top: 0;
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(5, 9, 20, 0.85);
+  background: rgba(5, 9, 20, 0.88);
   backdrop-filter: blur(18px);
 }
 
@@ -162,7 +162,7 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-height: 78px;
+  min-height: 72px;
 }
 
 .brand {
@@ -174,6 +174,7 @@ header {
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .brand strong {
@@ -182,19 +183,19 @@ header {
 
 .brand-mark {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   flex-shrink: 0;
   place-items: center;
   border: 1px solid var(--cyan);
-  border-radius: 12px;
+  border-radius: 10px;
   color: var(--cyan);
   box-shadow: 0 0 22px rgba(87, 245, 255, 0.4);
   transform: rotate(45deg);
 }
 
 .brand-mark span {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   transform: rotate(-45deg);
 }
 
@@ -222,7 +223,6 @@ header {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  flex-wrap: wrap;
 }
 
 .button {
@@ -230,8 +230,8 @@ header {
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  min-height: 46px;
-  padding: 0.78rem 1.2rem;
+  min-height: 44px;
+  padding: 0.7rem 1.15rem;
   border: 1px solid transparent;
   border-radius: 999px;
   color: var(--text);
@@ -244,17 +244,17 @@ header {
 }
 
 .button:hover:not(:disabled) {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .button-primary {
   color: #02141a;
   background: linear-gradient(135deg, var(--cyan), #c9fbff, #ffffff);
-  box-shadow: 0 0 28px rgba(87, 245, 255, 0.34);
+  box-shadow: 0 0 24px rgba(87, 245, 255, 0.34);
 }
 
 .button-primary:hover:not(:disabled) {
-  box-shadow: 0 0 42px rgba(87, 245, 255, 0.64);
+  box-shadow: 0 0 36px rgba(87, 245, 255, 0.6);
 }
 
 .button-outline {
@@ -264,13 +264,13 @@ header {
 
 .button-outline:hover:not(:disabled) {
   border-color: var(--cyan);
-  box-shadow: 0 0 24px rgba(87, 245, 255, 0.18);
+  box-shadow: 0 0 20px rgba(87, 245, 255, 0.18);
 }
 
 .button-small {
-  min-height: 38px;
-  padding: 0.55rem 0.95rem;
-  font-size: 0.82rem;
+  min-height: 36px;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem;
 }
 
 .hero {
@@ -605,115 +605,6 @@ footer {
 }
 
 /* =========================================================
-   ESTILOS DE REPRODUCTOR Y BOTON DE AUDIO CUSTOM
-========================================================= */
-
-.audio-player-card {
-  margin: 1.5rem 0 1rem;
-  padding: 1.25rem;
-  border: 1px solid rgba(47, 215, 255, 0.32);
-  border-radius: 18px;
-  background: rgba(4, 20, 39, 0.76);
-  box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
-}
-
-.audio-player-info,
-.audio-player-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.audio-player-info {
-  align-items: flex-start;
-}
-
-.audio-player-icon {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  flex: 0 0 44px;
-  place-items: center;
-  border: 1px solid rgba(47, 215, 255, 0.58);
-  border-radius: 50%;
-  background: rgba(47, 215, 255, 0.1);
-  font-size: 1.25rem;
-}
-
-.audio-player-label {
-  margin: 0 0 0.25rem;
-  color: #ffc43d;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.audio-player-info h2 {
-  margin: 0;
-  color: #effaff;
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  text-transform: uppercase;
-}
-
-.audio-player-info p:last-child {
-  margin: 0.35rem 0 0;
-  color: rgba(220, 240, 255, 0.78);
-}
-
-.audio-player-controls {
-  margin-top: 1rem;
-}
-
-.audio-play-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  min-height: 42px;
-  padding: 0.65rem 1.15rem;
-  border: 1px solid rgba(47, 215, 255, 0.65);
-  border-radius: 10px;
-  background: linear-gradient(135deg, #2fd7ff, #69e8ff);
-  color: #061321;
-  cursor: pointer;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  box-shadow: 0 0 18px rgba(47, 215, 255, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-}
-
-.audio-play-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 26px rgba(47, 215, 255, 0.6);
-  filter: brightness(1.1);
-}
-
-.audio-play-button:active {
-  transform: translateY(0);
-}
-
-.audio-time {
-  color: #71ffc0;
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-.audio-progress {
-  width: 100%;
-  margin-top: 1rem;
-  accent-color: #2fd7ff;
-  cursor: pointer;
-}
-
-/* =========================================================
    RESPONSIVE DESIGN (TABLETS Y MÓVILES)
 ========================================================= */
 
@@ -742,10 +633,11 @@ footer {
 }
 
 @media (max-width: 768px) {
+  /* Cabecera compacta: Logo a la izquierda, Menú/Acciones a la derecha en una sola línea */
   header {
-    position: relative !important;
-    top: auto !important;
-    padding: 0.75rem 0;
+    position: sticky !important;
+    top: 0 !important;
+    padding: 0.4rem 0;
   }
 
   .topbar {
@@ -753,107 +645,115 @@ footer {
   }
 
   .navbar {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-    min-height: auto;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.5rem !important;
+    min-height: 56px !important;
     padding: 0;
   }
 
   .brand {
-    white-space: normal;
-    font-size: 0.9rem;
-    justify-content: center;
+    font-size: 0.82rem;
+    gap: 0.5rem;
+    flex-shrink: 0;
   }
 
-  .nav-actions {
-    width: 100%;
-    justify-content: center;
-    gap:
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+  }
 
-/* --- REPRODUCTOR DE AUDIO ESTILO ENTREGA 1 --- */
-.audio-player-card {
-  margin: 1.5rem 0 1rem;
-  padding: 1.25rem;
-  border: 1px solid rgba(47, 215, 255, 0.32);
-  border-radius: 18px;
-  background: rgba(4, 20, 39, 0.76);
-  box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
+  .brand-mark span {
+    font-size: 0.95rem;
+  }
+
+  /* Acciones y botones alineados a la derecha de forma compacta */
+  .nav-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 0.4rem !important;
+    width: auto !important;
+  }
+
+  .nav-actions .button,
+  header .button {
+    min-height: 32px !important;
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.04em !important;
+    white-space: nowrap !important;
+  }
+
+  /* Todo el espacio vertical libre para el contenido y títulos */
+  .hero {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 7.5vw, 2.8rem);
+    line-height: 1.15;
+    text-align: left;
+  }
+
+  .kicker {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-intro {
+    text-align: left;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    margin-top: 1.25rem;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-note {
+    padding: 1.25rem;
+    border-radius: 18px;
+    min-height: auto;
+  }
+
+  .hero-note .big {
+    font-size: clamp(3rem, 13vw, 4.2rem);
+  }
+
+  .welcome-grid,
+  .path-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
 }
-.audio-player-info,
-.audio-player-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-.audio-player-info {
-  align-items: flex-start;
-}
-.audio-player-icon {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  flex: 0 0 44px;
-  place-items: center;
-  border: 1px solid rgba(47, 215, 255, 0.58);
-  border-radius: 50%;
-  background: rgba(47, 215, 255, 0.1);
-  font-size: 1.25rem;
-}
-.audio-player-label {
-  margin: 0 0 0.25rem;
-  color: #ffc43d;
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.audio-player-info h2 {
-  margin: 0;
-  color: #effaff;
-  font-family: "Orbitron", sans-serif;
-  font-size: 1.05rem;
-  text-transform: uppercase;
-}
-.audio-player-info p:last-child {
-  margin: 0.35rem 0 0;
-  color: rgba(220, 240, 255, 0.78);
-}
-.audio-player-controls {
-  margin-top: 1rem;
-}
-.audio-play-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  min-height: 40px;
-  padding: 0.65rem 0.9rem;
-  border: 1px solid rgba(47, 215, 255, 0.65);
-  border-radius: 8px;
-  background: linear-gradient(135deg, #2fd7ff, #69e8ff);
-  color: #061321;
-  cursor: pointer;
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.67rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.audio-play-button:hover {
-  background: rgba(47, 215, 255, 0.25);
-  filter: brightness(1.1);
-}
-.audio-time {
-  color: #71ffc0;
-  font-weight: 700;
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.8rem;
-}
-.audio-progress {
-  width: 100%;
-  margin-top: 1rem;
-  accent-color: #2fd7ff;
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
