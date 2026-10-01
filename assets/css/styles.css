@@ -15,7 +15,9 @@
   --radius: 22px;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -27,6 +29,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
+  padding: 0;
   overflow-x: hidden;
   color: var(--text);
   background: var(--bg);
@@ -127,6 +130,7 @@ button:disabled {
 }
 
 .topbar {
+  width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(4, 11, 24, 0.68);
   backdrop-filter: blur(15px);
@@ -147,8 +151,9 @@ header {
   position: sticky;
   z-index: 50;
   top: 0;
+  width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(5, 9, 20, 0.88);
+  background: rgba(5, 9, 20, 0.85);
   backdrop-filter: blur(18px);
 }
 
@@ -156,7 +161,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
   min-height: 78px;
 }
 
@@ -164,7 +169,6 @@ header {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  white-space: nowrap;
   font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 800;
@@ -180,6 +184,7 @@ header {
   display: grid;
   width: 42px;
   height: 42px;
+  flex-shrink: 0;
   place-items: center;
   border: 1px solid var(--cyan);
   border-radius: 12px;
@@ -217,6 +222,7 @@ header {
   display: flex;
   align-items: center;
   gap: 0.65rem;
+  flex-wrap: wrap;
 }
 
 .button {
@@ -269,15 +275,15 @@ header {
 
 .hero {
   display: grid;
-  min-height: 94vh;
-  padding: 5rem 0 4rem;
+  min-height: calc(100vh - 120px);
+  padding: 3rem 0;
   align-items: center;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 4rem;
+  gap: 3.5rem;
   align-items: center;
 }
 
@@ -307,9 +313,10 @@ h3 {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(2.9rem, 6.4vw, 6.2rem);
-  line-height: 1.05;
+  font-size: clamp(2.2rem, 5.5vw, 5rem);
+  line-height: 1.08;
   letter-spacing: 0.04em;
+  word-break: break-word;
   text-shadow:
     0 0 25px rgba(87, 245, 255, 0.18),
     0 0 55px rgba(255, 59, 212, 0.12);
@@ -326,7 +333,7 @@ h3 {
   max-width: 63ch;
   margin: 1.3rem 0 0;
   color: var(--muted);
-  font-size: 1.14rem;
+  font-size: 1.1rem;
 }
 
 .hero-actions {
@@ -339,7 +346,7 @@ h3 {
 .hero-note {
   position: relative;
   overflow: hidden;
-  min-height: 450px;
+  min-height: 420px;
   padding: 2rem;
   border: 1px solid rgba(87, 245, 255, 0.2);
   border-radius: 28px;
@@ -378,7 +385,7 @@ h3 {
   position: relative;
   z-index: 1;
   display: flex;
-  min-height: 390px;
+  min-height: 360px;
   flex-direction: column;
   justify-content: center;
 }
@@ -387,20 +394,20 @@ h3 {
   display: block;
   color: var(--cyan);
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 9vw, 8rem);
+  font-size: clamp(4rem, 8vw, 7rem);
   font-weight: 800;
   line-height: 1;
   text-shadow: 0 0 28px rgba(87, 245, 255, 0.45);
 }
 
 .hero-note h2 {
-  max-width: 10ch;
+  max-width: 14ch;
   margin: 0.6rem 0 0.8rem;
   font-size: 1.8rem;
 }
 
 .hero-note p {
-  max-width: 28ch;
+  max-width: 32ch;
   margin: 0;
   color: var(--muted);
 }
@@ -425,7 +432,7 @@ h3 {
 }
 
 section {
-  padding: 5.5rem 0;
+  padding: 4.5rem 0;
   scroll-margin-top: 90px;
 }
 
@@ -441,8 +448,8 @@ section {
 
 .heading h2 {
   margin: 0 0 0.8rem;
-  font-size: clamp(2rem, 4vw, 3.3rem);
-  line-height: 1.1;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.15;
 }
 
 .heading p {
@@ -586,7 +593,6 @@ footer {
   from {
     transform: translateY(0);
   }
-
   to {
     transform: translateY(80px);
   }
@@ -598,6 +604,10 @@ footer {
   }
 }
 
+/* =========================================================
+   RESPONSIVE DESIGN (TABLETS Y MÓVILES)
+========================================================= */
+
 @media (max-width: 980px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -605,11 +615,11 @@ footer {
   }
 
   .hero-note {
-    min-height: 330px;
+    min-height: auto;
   }
 
   .hero-note-content {
-    min-height: 270px;
+    min-height: auto;
   }
 
   .welcome-grid,
@@ -622,46 +632,42 @@ footer {
   }
 }
 
-@media (max-width: 680px) {
-  body {
-    font-size: 16px;
+@media (max-width: 768px) {
+  /* Evitar superposiciones en móvil: el header no debe ser pegajoso ni tapar contenido */
+  header {
+    position: relative !important;
+    top: auto !important;
+    padding: 0.75rem 0;
   }
 
   .topbar {
     display: none;
   }
 
-  header {
-    position: relative;
-    padding: 0.5rem 0;
-  }
-
   .navbar {
     flex-direction: column;
-    justify-content: center;
-    gap: 0.8rem;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
     min-height: auto;
-    padding: 0.5rem 0;
+    padding: 0;
+  }
+
+  .brand {
+    white-space: normal;
+    font-size: 0.9rem;
+    justify-content: center;
   }
 
   .nav-actions {
     width: 100%;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.6rem;
   }
 
   .nav-actions .button,
-  .nav-actions div {
+  .nav-actions > div {
     max-width: 100%;
-  }
-
-  .brand {
-    font-size: 0.88rem;
-  }
-
-  .brand-text {
-    display: inline-block;
   }
 
   .hero {
@@ -675,19 +681,26 @@ footer {
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 9vw, 3.2rem);
+    font-size: clamp(2rem, 8.5vw, 3rem);
     line-height: 1.15;
-    word-break: break-word;
+    text-align: center;
+  }
+
+  .kicker {
+    margin: 0 auto 1rem;
+    display: table;
   }
 
   .hero-intro {
+    text-align: center;
     font-size: 1rem;
-    margin-top: 1rem;
+    margin: 1rem auto 0;
   }
 
   .hero-actions {
     flex-direction: column;
-    gap: 0.75rem;
+    align-items: stretch;
+    gap: 0.8rem;
     margin-top: 1.5rem;
   }
 
@@ -695,22 +708,18 @@ footer {
     width: 100%;
   }
 
-  .welcome-grid,
-  .path-grid {
-    grid-template-columns: 1fr;
-  }
-
   .hero-note {
-    min-height: auto;
     padding: 1.5rem;
-  }
-
-  .hero-note-content {
-    min-height: auto;
+    border-radius: 20px;
   }
 
   .hero-note .big {
     font-size: clamp(3rem, 14vw, 4.5rem);
+  }
+
+  .welcome-grid,
+  .path-grid {
+    grid-template-columns: 1fr;
   }
 
   .footer-content {
