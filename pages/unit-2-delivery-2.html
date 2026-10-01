@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -167,13 +167,31 @@
             Texarkana Oil Incorporated, una gran compañía petrolera.
           </p>
 
-          <div class="audio-placeholder">
-            <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-2/texas-oil-magnate.mp3</strong>
-            </span>
-          </div>
+                    <section class="audio-player-card" aria-label="Audio del diálogo">
+            <div class="audio-player-info">
+              <span class="audio-player-icon" aria-hidden="true">🎧</span>
+              <div>
+                <p class="audio-player-label">Audio del diálogo</p>
+                <h2>Barbara entrevista a R.J.</h2>
+                <p>Escucha el diálogo y practica la pronunciación.</p>
+              </div>
+            </div>
+
+            <audio id="work-audio" preload="metadata">
+              <source src="../assets/audio/unit-2/2-un-magnate-lejano.mp3" type="audio/mpeg">
+              Tu navegador no admite la reproducción de audio.
+            </audio>
+
+            <div class="audio-player-controls">
+              <button id="audio-play-button" class="audio-play-button" type="button" aria-label="Reproducir audio">
+                <span id="audio-play-icon" aria-hidden="true">▶</span>
+                <span id="audio-play-text">Reproducir audio</span>
+              </button>
+              <span id="audio-time" class="audio-time">0:00 / 0:00</span>
+            </div>
+
+            <input id="audio-progress" class="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
+          </section>
 
           <div class="dialogue-box">
             <p><strong>Barbara:</strong> Ronald Jordan, you're the president of Texarkana Oil Incorporated. You own 30 percent of the oilfields in Texas, and your company controls 20 percent of the world's total oil production. How much oil does your company produce per day?</p>
@@ -344,7 +362,7 @@
           </div>
 
           <div class="question-block">
-            <label for="vocabulary-answer">
+            <label for=\"vocabulary-answer\">
               Complete: “Texarkana Oil produces two million __________ per day.”
             </label>
 
@@ -1215,9 +1233,129 @@
 
         completionMessage.hidden = true;
         updateInterface();
-      });
+
+      // --- Control de Reproductor de Audio Personalizado ---
+      const audio = document.getElementById("work-audio");
+      const playButton = document.getElementById("audio-play-button");
+      const playIcon = document.getElementById("audio-play-icon");
+      const playText = document.getElementById("audio-play-text");
+      const audioProgress = document.getElementById("audio-progress");
+      const audioTime = document.getElementById("audio-time");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) return "0:00";
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = String(Math.floor(seconds % 60)).padStart(2, "0");
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      function updateAudioPlayer() {
+        if (!audio || !audioProgress || !audioTime) return;
+        const currentTime = audio.currentTime || 0;
+        const duration = audio.duration || 0;
+        audioTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        if (duration > 0) {
+          audioProgress.value = String((currentTime / duration) * 100);
+        }
+      }
+
+      function setAudioButton(isPlaying) {
+        if (!playButton || !playIcon || !playText) return;
+        playIcon.textContent = isPlaying ? "⏸" : "▶";
+        playText.textContent = isPlaying ? "Pausar audio" : "Reproducir audio";
+        playButton.setAttribute("aria-label", isPlaying ? "Pausar audio" : "Reproducir audio");
+      }
+
+      if (audio && playButton) {
+        playButton.addEventListener("click", async () => {
+          if (audio.paused) {
+            try {
+              await audio.play();
+            } catch (e) {
+              console.warn(e);
+            }
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("loadedmetadata", updateAudioPlayer);
+        audio.addEventListener("timeupdate", updateAudioPlayer);
+        audio.addEventListener("play", () => setAudioButton(true));
+        audio.addEventListener("pause", () => setAudioButton(false));
+
+        if (audioProgress) {
+          audioProgress.addEventListener("input", () => {
+            if (audio.duration) {
+              audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
+              updateAudioPlayer();
+            }
+          });
+        }
+      }
+    });
 
       updateInterface();
+
+      // --- Control de Reproductor de Audio Personalizado ---
+      const audio = document.getElementById("work-audio");
+      const playButton = document.getElementById("audio-play-button");
+      const playIcon = document.getElementById("audio-play-icon");
+      const playText = document.getElementById("audio-play-text");
+      const audioProgress = document.getElementById("audio-progress");
+      const audioTime = document.getElementById("audio-time");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) return "0:00";
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = String(Math.floor(seconds % 60)).padStart(2, "0");
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      function updateAudioPlayer() {
+        if (!audio || !audioProgress || !audioTime) return;
+        const currentTime = audio.currentTime || 0;
+        const duration = audio.duration || 0;
+        audioTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        if (duration > 0) {
+          audioProgress.value = String((currentTime / duration) * 100);
+        }
+      }
+
+      function setAudioButton(isPlaying) {
+        if (!playButton || !playIcon || !playText) return;
+        playIcon.textContent = isPlaying ? "⏸" : "▶";
+        playText.textContent = isPlaying ? "Pausar audio" : "Reproducir audio";
+        playButton.setAttribute("aria-label", isPlaying ? "Pausar audio" : "Reproducir audio");
+      }
+
+      if (audio && playButton) {
+        playButton.addEventListener("click", async () => {
+          if (audio.paused) {
+            try {
+              await audio.play();
+            } catch (e) {
+              console.warn(e);
+            }
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("loadedmetadata", updateAudioPlayer);
+        audio.addEventListener("timeupdate", updateAudioPlayer);
+        audio.addEventListener("play", () => setAudioButton(true));
+        audio.addEventListener("pause", () => setAudioButton(false));
+
+        if (audioProgress) {
+          audioProgress.addEventListener("input", () => {
+            if (audio.duration) {
+              audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
+              updateAudioPlayer();
+            }
+          });
+        }
+      }
     });
   </script>
 <script src="../assets/js/rewards.js"></script>
@@ -1237,3 +1375,10 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
+
+
+
+
+
+

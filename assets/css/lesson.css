@@ -376,3 +376,89 @@
     width: 100%;
   }
 }
+
+/* --- REPRODUCTOR DE AUDIO ESTILO ENTREGA 1 --- */
+.audio-player-card {
+  margin: 1.5rem 0 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(47, 215, 255, 0.32);
+  border-radius: 18px;
+  background: rgba(4, 20, 39, 0.76);
+  box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
+}
+.audio-player-info,
+.audio-player-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.audio-player-info {
+  align-items: flex-start;
+}
+.audio-player-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  border: 1px solid rgba(47, 215, 255, 0.58);
+  border-radius: 50%;
+  background: rgba(47, 215, 255, 0.1);
+  font-size: 1.25rem;
+}
+.audio-player-label {
+  margin: 0 0 0.25rem;
+  color: #ffc43d;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.audio-player-info h2 {
+  margin: 0;
+  color: #effaff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+}
+.audio-player-info p:last-child {
+  margin: 0.35rem 0 0;
+  color: rgba(220, 240, 255, 0.78);
+}
+.audio-player-controls {
+  margin-top: 1rem;
+}
+.audio-play-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 40px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(47, 215, 255, 0.65);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+  color: #061321;
+  cursor: pointer;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.audio-play-button:hover {
+  background: rgba(47, 215, 255, 0.25);
+  filter: brightness(1.1);
+}
+.audio-time {
+  color: #71ffc0;
+  font-weight: 700;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+}
+.audio-progress {
+  width: 100%;
+  margin-top: 1rem;
+  accent-color: #2fd7ff;
+}

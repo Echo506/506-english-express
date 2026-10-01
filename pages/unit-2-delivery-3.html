@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -48,7 +48,7 @@
 }
 .reward-avatar-badge__media{display:flex;justify-content:center;align-items:center}
 .reward-avatar-badge__image{width:78px;height:78px;object-fit:cover;border-radius:18px;border:1px solid rgba(47,215,255,.46);box-shadow:0 0 18px rgba(47,215,255,.2)}
-.reward-avatar-badge__eyebrow,.reward-avatar-collection__eyebrow{margin:0 0 .35rem;color:#ffc43d;font-family:Orbitron,sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.reward-avatar-badge__eyebrow,.reward-avatar-collection__eyebrow{margin:0 0 .35rem;color:#ffc43d;font-family:Orbitron,sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transformuppercase}
 .reward-avatar-badge__title,.reward-avatar-card__body h3,.reward-avatar-collection__header h2{margin:0 0 .3rem;font-family:Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.04em}
 .reward-avatar-badge__meta,.reward-avatar-badge__progress,.reward-avatar-card__body p,.reward-avatar-collection__header p:last-child{margin:0 0 .2rem;color:rgba(220,240,255,.78)}
 .reward-avatar-collection__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
@@ -167,13 +167,31 @@
             chili con carne, el vino y la comida que van a ordenar.
           </p>
 
-          <div class="audio-placeholder">
-            <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-2/at-the-restaurant.mp3</strong>
-            </span>
-          </div>
+          <section class="audio-player-card" aria-label="Audio del diálogo">
+            <div class="audio-player-info">
+              <span class="audio-player-icon" aria-hidden="true">🎧</span>
+              <div>
+                <p class="audio-player-label">Audio del diálogo</p>
+                <h2>En el restaurante</h2>
+                <p>Escucha el diálogo y practica la pronunciación.</p>
+              </div>
+            </div>
+
+            <audio id="work-audio" preload="metadata">
+              <source src="../assets/audio/unit-2/3-en-el-restaurante.mp3" type="audio/mpeg">
+              Tu navegador no admite la reproducción de audio.
+            </audio>
+
+            <div class="audio-player-controls">
+              <button id="audio-play-button" class="audio-play-button" type="button" aria-label="Reproducir audio">
+                <span id="audio-play-icon" aria-hidden="true">▶</span>
+                <span id="audio-play-text">Reproducir audio</span>
+              </button>
+              <span id="audio-time" class="audio-time">0:00 / 0:00</span>
+            </div>
+
+            <input id="audio-progress" class="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
+          </section>
 
           <div class="dialogue-box">
             <p><strong>Jane:</strong> What a lovely place! I love the music.</p>
@@ -926,7 +944,7 @@
           .toLowerCase()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
-          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/[.,!?;:¡¿'\"“”]/g, "")
           .replace(/\s+/g, " ");
       }
 
@@ -1231,6 +1249,66 @@
         updateInterface();
       });
 
+      // --- Control de Reproductor de Audio Personalizado ---
+      const audio = document.getElementById("work-audio");
+      const playButton = document.getElementById("audio-play-button");
+      const playIcon = document.getElementById("audio-play-icon");
+      const playText = document.getElementById("audio-play-text");
+      const audioProgress = document.getElementById("audio-progress");
+      const audioTime = document.getElementById("audio-time");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) return "0:00";
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = String(Math.floor(seconds % 60)).padStart(2, "0");
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      function updateAudioPlayer() {
+        if (!audio || !audioProgress || !audioTime) return;
+        const currentTime = audio.currentTime || 0;
+        const duration = audio.duration || 0;
+        audioTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        if (duration > 0) {
+          audioProgress.value = String((currentTime / duration) * 100);
+        }
+      }
+
+      function setAudioButton(isPlaying) {
+        if (!playButton || !playIcon || !playText) return;
+        playIcon.textContent = isPlaying ? "⏸" : "▶";
+        playText.textContent = isPlaying ? "Pausar audio" : "Reproducir audio";
+        playButton.setAttribute("aria-label", isPlaying ? "Pausar audio" : "Reproducir audio");
+      }
+
+      if (audio && playButton) {
+        playButton.addEventListener("click", async () => {
+          if (audio.paused) {
+            try {
+              await audio.play();
+            } catch (e) {
+              console.warn(e);
+            }
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("loadedmetadata", updateAudioPlayer);
+        audio.addEventListener("timeupdate", updateAudioPlayer);
+        audio.addEventListener("play", () => setAudioButton(true));
+        audio.addEventListener("pause", () => setAudioButton(false));
+
+        if (audioProgress) {
+          audioProgress.addEventListener("input", () => {
+            if (audio.duration) {
+              audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
+              updateAudioPlayer();
+            }
+          });
+        }
+      }
+
       updateInterface();
     });
   </script>
@@ -1251,3 +1329,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
