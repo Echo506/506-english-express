@@ -1,0 +1,1165 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <meta
+    name="description"
+    content="Unidad 2, Entrega 5: Ocio californiano."
+  >
+
+  <title>Ocio californiano | 506 English Express</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/lesson.css">
+
+  <style>
+    .lesson-complete-message[hidden] {
+      display: none;
+    }
+
+    .completion-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
+<style id="rewards-506-shared-style">
+.reward-avatar-badge {
+  display:grid;
+  grid-template-columns:78px minmax(0,1fr);
+  gap:.95rem;
+  align-items:center;
+  padding:.9rem 1rem;
+  border:1px solid rgba(47,215,255,.25);
+  border-radius:16px;
+  background:linear-gradient(145deg, rgba(6,22,42,.92), rgba(4,15,30,.78));
+  box-shadow:0 0 24px rgba(47,215,255,.08);
+}
+.reward-avatar-badge__media{display:flex;justify-content:center;align-items:center}
+.reward-avatar-badge__image{width:78px;height:78px;object-fit:cover;border-radius:18px;border:1px solid rgba(47,215,255,.46);box-shadow:0 0 18px rgba(47,215,255,.2)}
+.reward-avatar-badge__eyebrow,.reward-avatar-collection__eyebrow{margin:0 0 .35rem;color:#ffc43d;font-family:Orbitron,sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.reward-avatar-badge__title,.reward-avatar-card__body h3,.reward-avatar-collection__header h2{margin:0 0 .3rem;font-family:Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.04em}
+.reward-avatar-badge__meta,.reward-avatar-badge__progress,.reward-avatar-card__body p,.reward-avatar-collection__header p:last-child{margin:0 0 .2rem;color:rgba(220,240,255,.78)}
+.reward-avatar-collection__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
+.reward-avatar-card{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(47,215,255,.16);background:rgba(3,11,27,.7);padding:.85rem;min-height:196px;display:flex;flex-direction:column;gap:.7rem}
+.reward-avatar-card__visual{position:relative;border-radius:14px;background:rgba(6,20,38,.9);padding:.75rem;display:grid;place-items:center;min-height:116px;border:1px solid rgba(255,255,255,.06)}
+.reward-avatar-card__image{width:100%;max-width:92px;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid rgba(47,215,255,.32);display:block}
+.reward-avatar-card__placeholder{display:grid;place-items:center;width:92px;height:92px;border-radius:14px;border:1px dashed rgba(255,255,255,.14);color:rgba(255,255,255,.45);font-size:2rem;background:rgba(255,255,255,.02)}
+.reward-avatar-card__number{position:absolute;top:.5rem;right:.5rem;min-width:34px;min-height:34px;padding:.2rem .45rem;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:rgba(3,11,27,.82);border:1px solid rgba(47,215,255,.3);color:#8cecff;font-family:Orbitron,sans-serif;font-size:.66rem;letter-spacing:.08em}
+.reward-avatar-card.is-current{border-color:rgba(255,196,61,.7);box-shadow:0 0 0 1px rgba(255,196,61,.18),0 18px 35px rgba(255,196,61,.12);background:linear-gradient(160deg, rgba(255,196,61,.14), rgba(3,11,27,.84))}
+.reward-avatar-card.is-unlocked .reward-avatar-card__body p{color:rgba(113,255,192,.88)}
+.reward-avatar-card.is-locked{opacity:.58;filter:grayscale(1)}
+@media (max-width:860px){.reward-avatar-collection__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.reward-avatar-badge{grid-template-columns:64px minmax(0,1fr)}.reward-avatar-badge__image{width:64px;height:64px}.reward-avatar-collection__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source
+        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
+        type="video/mp4"
+      >
+    </video>
+  </div>
+
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="container topbar-content">
+      <span>506 English Express</span>
+      <span>Unidad 2 · Entrega 5 · Ocio californiano</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container navbar" aria-label="Navegación principal">
+      <a href="../index.html" class="brand" aria-label="Volver al inicio">
+        <span class="brand-mark" aria-hidden="true"><span>⚡</span></span>
+        <span class="brand-text">English <strong>506</strong> Express</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="unit-2.html">Unidad 2</a>
+      </div>
+
+      <a href="unit-2-delivery-4.html" class="button button-outline button-small">
+        Entrega anterior
+      </a>
+    </nav>
+  </header>
+
+  <main class="lesson-page">
+<section class="activity-card" aria-labelledby="current-avatar-title" style="margin-top:1rem;">
+  <div style="padding:1rem;">
+    <p class="lesson-kicker">Sistema de recompensas</p>
+    <h2 id="current-avatar-title">Tu avatar actual</h2>
+    <div id="current-avatar-badge"></div>
+  </div>
+</section>
+
+    <div class="container">
+      <section class="lesson-banner">
+        <p class="kicker">Unidad 02 · Entrega 05</p>
+        <h1>Ocio californiano</h1>
+
+        <p>
+          Jane y Tom recorren California, hablan de deportes, playas, clima,
+          planes y actividades de ocio. Practicarás propuestas, capacidades,
+          costumbres, futuro con <em>going to</em> y obligaciones con
+          <em>have to</em>.
+        </p>
+
+        <div class="lesson-progress">
+          <div>
+            <div class="lesson-progress-label">
+              <span>Progreso de la entrega</span>
+              <span id="progress-text">0 de 10 secciones completadas</span>
+            </div>
+
+            <div
+              class="progress-track"
+              role="progressbar"
+              aria-label="Progreso de la entrega"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <button
+            class="button button-outline button-small"
+            id="reset-progress"
+            type="button"
+          >
+            Reiniciar
+          </button>
+        </div>
+      </section>
+
+      <section class="lesson-sections">
+        <article class="lesson-section activity-card" data-activity="1">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
+              <h2>Roller-skating en Venice</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🛼</span>
+          </div>
+
+          <p>
+            Jane y Tom están patinando en el boardwalk de Venice, California.
+          </p>
+
+          <div class="audio-lesson-container" style="margin: 1.5rem 0; padding: 1.2rem; border: 1px solid rgba(47,215,255,0.3); border-radius: 16px; background: rgba(6,20,38,0.85); box-shadow: 0 0 20px rgba(47,215,255,0.08);">
+  <p style="margin: 0 0 0.75rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: #8cecff; letter-spacing: 0.1em; text-transform: uppercase;">
+    🔊 Audio de la lección · Unidad 2
+  </p>
+  <audio controls preload="metadata" style="width: 100%; accent-color: #22d3ee;">
+    <source src="../assets/audio/unit-2/californian-leisure.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+</div>
+
+          <div class="dialogue-box">
+            <p><strong>Jane:</strong> This is fun! I like roller-skating, but I'm not very good at it.</p>
+            <p><strong>Tom:</strong> Watch out! You're going to hit that man. Oh no!</p>
+            <p><strong>Jane:</strong> Oh! I'm terribly sorry. Are you hurt?</p>
+            <p><strong>Man:</strong> No, that's O.K., honey. I'm all right. Say, are you from England?</p>
+            <p><strong>Jane:</strong> Yes, from London. You see, I'm not used to roller-skating. It's not really an English sport.</p>
+            <p><strong>Man:</strong> I love England. Good old rainy London!</p>
+            <p><strong>Jane:</strong> It doesn't rain all the time, but it's not sunny like California.</p>
+            <p><strong>Man:</strong> And is this your gentleman friend? Is he from England?</p>
+            <p><strong>Tom:</strong> No, I live here.</p>
+            <p><strong>Man:</strong> And are you going to show your lady friend around the most beautiful parts of California?</p>
+            <p><strong>Tom:</strong> Yes, I sure will.</p>
+            <p><strong>Man:</strong> Have a good time! And watch out for the pedestrians!</p>
+            <p><strong>Tom:</strong> Goodbye. Nice meeting you.</p>
+            <p><strong>Jane:</strong> Goodbye.</p>
+          </div>
+
+          <div class="translation-box">
+            <strong>Idea principal:</strong>
+            <span>
+              Jane disfruta patinar sobre ruedas, pero no tiene mucha experiencia.
+              Casi golpea a un peatón, se disculpa y conversa con él sobre Inglaterra
+              y California.
+            </span>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar diálogo como completado
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="2">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 02 · DIÁLOGO</p>
+              <h2>Planes para California</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🏖️</span>
+          </div>
+
+          <p>
+            Después de patinar, Jane y Tom hablan de un viaje por la costa hacia
+            San Francisco.
+          </p>
+
+          <div class="audio-lesson-container" style="margin: 1.5rem 0; padding: 1.2rem; border: 1px solid rgba(47,215,255,0.3); border-radius: 16px; background: rgba(6,20,38,0.85); box-shadow: 0 0 20px rgba(47,215,255,0.08);">
+  <p style="margin: 0 0 0.75rem; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: #8cecff; letter-spacing: 0.1em; text-transform: uppercase;">
+    🔊 Audio de la lección · Unidad 2
+  </p>
+  <audio controls preload="metadata" style="width: 100%; accent-color: #22d3ee;">
+    <source src="../assets/audio/unit-2/californian-leisure.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+</div>
+
+          <div class="dialogue-box">
+            <p><strong>Jane:</strong> So, are you going to show me around California?</p>
+            <p><strong>Tom:</strong> Sure I am. Tomorrow we'll take the coast road to San Francisco. We can just drive along and stop at one of the beaches for a swim.</p>
+            <p><strong>Jane:</strong> It'll be magnificent. You know, Tom, you're a very good guide... Hey! Do you feel like going for a swim now?</p>
+            <p><strong>Tom:</strong> Right now? Sure. But I have to make a phone call first. There's a phone booth over there. Will you wait for me here?</p>
+            <p><strong>Jane:</strong> O.K., don't be long. Maybe I'll run over another pedestrian!</p>
+            <p><strong>Tom:</strong> Jane, um, I'm really sorry. We'll have to put off our plans for a while. I have to go to New Orleans for work.</p>
+            <p><strong>Jane:</strong> New Orleans! When will you come back?</p>
+            <p><strong>Tom:</strong> Soon, I hope. I'm not looking forward to this job.</p>
+          </div>
+
+          <div class="translation-box">
+            <strong>Idea principal:</strong>
+            <span>
+              Tom planea llevar a Jane a San Francisco por la carretera costera,
+              pero una llamada de trabajo lo obliga a aplazar el viaje y salir hacia
+              Nueva Orleans.
+            </span>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary complete-activity" type="button">
+              Marcar diálogo como completado
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="3">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 03 · COMPRENSIÓN</p>
+              <h2>Compruebe su comprensión</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🧠</span>
+          </div>
+
+          <div class="question-block">
+            <p><strong>1. ¿Por qué Jane casi golpea al hombre?</strong></p>
+            <label class="option-label"><input type="radio" name="leisure-q1" value="a"> Because she is not very good at roller-skating</label>
+            <label class="option-label"><input type="radio" name="leisure-q1" value="b"> Because she is driving a car</label>
+            <label class="option-label"><input type="radio" name="leisure-q1" value="c"> Because she is swimming</label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>2. ¿A dónde planean viajar Jane y Tom?</strong></p>
+            <label class="option-label"><input type="radio" name="leisure-q2" value="a"> To New York</label>
+            <label class="option-label"><input type="radio" name="leisure-q2" value="b"> To San Francisco</label>
+            <label class="option-label"><input type="radio" name="leisure-q2" value="c"> To London</label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>3. ¿Qué quiere hacer Jane en una playa?</strong></p>
+            <label class="option-label"><input type="radio" name="leisure-q3" value="a"> Go skiing</label>
+            <label class="option-label"><input type="radio" name="leisure-q3" value="b"> Go shopping</label>
+            <label class="option-label"><input type="radio" name="leisure-q3" value="c"> Go for a swim</label>
+          </div>
+
+          <div class="question-block">
+            <p><strong>4. ¿Por qué Tom aplaza los planes?</strong></p>
+            <label class="option-label"><input type="radio" name="leisure-q4" value="a"> He has to go to New Orleans for work</label>
+            <label class="option-label"><input type="radio" name="leisure-q4" value="b"> He wants to go roller-skating</label>
+            <label class="option-label"><input type="radio" name="leisure-q4" value="c"> He is going back to England</label>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-comprehension" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="4">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 04 · VOCABULARIO</p>
+              <h2>Deportes, clima y viajes</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">📚</span>
+          </div>
+
+          <div class="vocabulary-columns">
+            <section class="vocabulary-group">
+              <h3>Ocio y lugares</h3>
+              <dl class="vocabulary-list">
+                <div><dt>roller-skating</dt><dd>patinaje sobre ruedas</dd></div>
+                <div><dt>sport</dt><dd>deporte</dd></div>
+                <div><dt>pedestrian</dt><dd>peatón</dd></div>
+                <div><dt>coast</dt><dd>costa</dd></div>
+                <div><dt>beach</dt><dd>playa</dd></div>
+                <div><dt>swim</dt><dd>nado; baño</dd></div>
+                <div><dt>guide</dt><dd>guía</dd></div>
+                <div><dt>phone call</dt><dd>llamada telefónica</dd></div>
+                <div><dt>plan</dt><dd>plan, proyecto</dd></div>
+                <div><dt>driver</dt><dd>conductor/a</dd></div>
+                <div><dt>traveler</dt><dd>viajero/a</dd></div>
+                <div><dt>tourist</dt><dd>turista</dd></div>
+                <div><dt>foreigner</dt><dd>extranjero/a</dd></div>
+              </dl>
+            </section>
+
+            <section class="vocabulary-group">
+              <h3>El tiempo</h3>
+              <dl class="vocabulary-list">
+                <div><dt>rainy</dt><dd>lluvioso/a</dd></div>
+                <div><dt>sunny</dt><dd>soleado/a</dd></div>
+                <div><dt>magnificent</dt><dd>magnífico/a</dd></div>
+                <div><dt>cloudy</dt><dd>nublado/a</dd></div>
+                <div><dt>foggy</dt><dd>brumoso/a</dd></div>
+                <div><dt>windy</dt><dd>con viento</dd></div>
+                <div><dt>humid</dt><dd>húmedo/a</dd></div>
+                <div><dt>hot</dt><dd>caluroso/a</dd></div>
+                <div><dt>warm</dt><dd>templado/a</dd></div>
+                <div><dt>cold</dt><dd>frío/a</dd></div>
+                <div><dt>mild</dt><dd>suave</dd></div>
+                <div><dt>pleasant</dt><dd>agradable</dd></div>
+                <div><dt>humidity</dt><dd>humedad</dd></div>
+              </dl>
+            </section>
+
+            <section class="vocabulary-group">
+              <h3>Acciones</h3>
+              <dl class="vocabulary-list">
+                <div><dt>to roller-skate</dt><dd>patinar sobre ruedas</dd></div>
+                <div><dt>to hit</dt><dd>golpear</dd></div>
+                <div><dt>to be hurt</dt><dd>estar herido/a</dd></div>
+                <div><dt>to show someone around</dt><dd>mostrar lugares a alguien</dd></div>
+                <div><dt>to feel like</dt><dd>tener ganas de</dd></div>
+                <div><dt>to wait for</dt><dd>esperar a</dd></div>
+                <div><dt>to run over</dt><dd>atropellar</dd></div>
+                <div><dt>to put off</dt><dd>aplazar</dd></div>
+                <div><dt>to come back</dt><dd>volver</dd></div>
+                <div><dt>to look forward to</dt><dd>esperar con ilusión</dd></div>
+                <div><dt>to ski</dt><dd>esquiar</dd></div>
+                <div><dt>to dive</dt><dd>bucear</dd></div>
+                <div><dt>to sunbathe</dt><dd>tomar el sol</dd></div>
+                <div><dt>to cycle</dt><dd>andar en bicicleta</dd></div>
+                <div><dt>to go jogging</dt><dd>hacer jogging</dd></div>
+                <div><dt>to cancel</dt><dd>cancelar</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <div class="question-block">
+            <label for="vocabulary-answer">
+              Complete: “Tom and Jane plan to stop at one of the __________ for a swim.”
+            </label>
+            <input
+              id="vocabulary-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe una palabra en inglés"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-vocabulary" type="button">
+              Revisar respuesta
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="5">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 05 · CÓMO SE DICE</p>
+              <h2>Deporte, ocio y tiempo</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🎾</span>
+          </div>
+
+          <div class="phrase-groups">
+            <section class="phrase-group">
+              <h3>1. Deporte y ocio</h3>
+              <dl class="phrase-list">
+                <div><dt>I go skiing in the Rockies.</dt><dd>Voy a esquiar a las Rocosas.</dd></div>
+                <div><dt>I play a lot of tennis.</dt><dd>Juego mucho tenis.</dd></div>
+                <div><dt>Is it safe to dive here?</dt><dd>¿Es seguro bucear aquí?</dd></div>
+                <div><dt>Can we go backpacking here?</dt><dd>¿Podemos ir de excursión aquí?</dd></div>
+              </dl>
+            </section>
+
+            <section class="phrase-group">
+              <h3>2. Hablar del tiempo</h3>
+              <dl class="phrase-list">
+                <div><dt>It rains a lot in Ireland.</dt><dd>Llueve mucho en Irlanda.</dd></div>
+                <div><dt>It snows a lot in Scotland.</dt><dd>Nieva mucho en Escocia.</dd></div>
+                <div><dt>California has a very pleasant climate.</dt><dd>California tiene un clima muy agradable.</dd></div>
+                <div><dt>Florida gets a lot of sun.</dt><dd>Florida tiene mucho sol.</dd></div>
+                <div><dt>What's the weather like in California?</dt><dd>¿Cómo está el tiempo en California?</dd></div>
+                <div><dt>What's the weather forecast for the weekend?</dt><dd>¿Cuál es el pronóstico para el fin de semana?</dd></div>
+              </dl>
+            </section>
+
+            <section class="phrase-group">
+              <h3>3. Proponer actividades</h3>
+              <dl class="phrase-list">
+                <div><dt>Do you feel like going for a swim?</dt><dd>¿Te gustaría ir a nadar?</dd></div>
+                <div><dt>Would you like to go for a swim?</dt><dd>¿Te gustaría ir a nadar?</dd></div>
+                <div><dt>How about going for a swim?</dt><dd>¿Qué tal si vamos a nadar?</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <div class="question-block">
+            <label for="weather-answer">
+              Complete: “California has a very __________ climate.”
+            </label>
+            <input
+              id="weather-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: pleasant"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="leisure-writing">
+              Escribe una pregunta en inglés para proponer una actividad:
+            </label>
+            <textarea
+              id="leisure-writing"
+              placeholder="Do you feel like going for a swim?"
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-leisure" type="button">
+              Guardar práctica
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="6">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 06 · CAPACIDADES</p>
+              <h2>Good at, bad at y feel like</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🏊</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>Capacidades</h3>
+            <p class="example-box">
+              I'm good at riding.<br>
+              I'm not very good at wind-surfing.<br>
+              I'm bad at skiing.<br>
+              You play tennis very well.<br>
+              I can swim but I can't dive.
+            </p>
+          </section>
+
+          <section class="oral-practice-block">
+            <h3>Do you feel like...?</h3>
+            <p class="example-box">
+              Do you want to go for a swim? →
+              <strong>Do you feel like going for a swim?</strong>
+            </p>
+            <p>
+              Recuerda: después de <strong>feel like</strong> usamos un verbo con
+              <strong>-ing</strong>.
+            </p>
+          </section>
+
+          <div class="question-block">
+            <label for="good-at-answer">
+              Complete: “Jane is not very good __________ roller-skating.”
+            </label>
+            <input
+              id="good-at-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: at"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="feel-like-answer">
+              Complete: “Do you feel like __________ for a swim?”
+            </label>
+            <input
+              id="feel-like-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: going"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="ability-writing">
+              Escribe una oración sobre una habilidad tuya:
+            </label>
+            <textarea
+              id="ability-writing"
+              placeholder="I'm good at playing soccer."
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-abilities" type="button">
+              Guardar práctica
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="7">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 07 · PLANES Y OBLIGACIONES</p>
+              <h2>Going to, not going to y have to</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">📅</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>Going to...</h3>
+            <p class="example-box">
+              She wants to take tennis lessons soon. →
+              <strong>She's going to take tennis lessons.</strong>
+            </p>
+            <p>
+              We want to have a swim soon. → We're going to have a swim.<br>
+              They want to travel around California soon. → They're going to travel around California.
+            </p>
+          </section>
+
+          <section class="oral-practice-block">
+            <h3>Not going to...</h3>
+            <p class="example-box">
+              Is he going to make a phone call? →
+              <strong>No, he isn't going to make a phone call.</strong>
+            </p>
+          </section>
+
+          <section class="oral-practice-block">
+            <h3>Have to...</h3>
+            <p class="example-box">
+              I need some money. Go to the bank. →
+              <strong>I have to go to the bank.</strong>
+            </p>
+            <p>Tom has to go to New Orleans for work.</p>
+          </section>
+
+          <div class="question-block">
+            <label for="going-to-answer">
+              Complete: “Tomorrow, Tom and Jane are __________ to take the coast road.”
+            </label>
+            <input
+              id="going-to-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: going"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="have-to-answer">
+              Complete: “Tom __________ to go to New Orleans for work.”
+            </label>
+            <input
+              id="have-to-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: has"
+            >
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-plans" type="button">
+              Revisar respuestas
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="8">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 08 · COSTUMBRES</p>
+              <h2>I'm used to...</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🚲</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>Hablar de costumbres</h3>
+            <p class="example-box">
+              I often cycle. →
+              <strong>I'm used to cycling.</strong><br><br>
+              I don't often water-ski. →
+              <strong>I'm not used to water-skiing.</strong>
+            </p>
+            <p>Jane dice: <strong>I'm not used to roller-skating.</strong></p>
+          </section>
+
+          <div class="question-block">
+            <label for="used-to-answer">
+              Complete: “Jane isn't __________ to roller-skating.”
+            </label>
+            <input
+              id="used-to-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: used"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="habit-writing">
+              Escribe una oración sobre algo a lo que estás o no estás acostumbrado/a:
+            </label>
+            <textarea
+              id="habit-writing"
+              placeholder="I'm used to waking up early."
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-habits" type="button">
+              Guardar práctica
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="9">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 09 · CULTURA</p>
+              <h2>Los Angeles</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">🌴</span>
+          </div>
+
+          <div class="reading-card">
+            <h3>Una ciudad extensa</h3>
+            <p>
+              Los Angeles es una de las grandes áreas urbanas de Estados Unidos y
+              suele asociarse con autopistas, barrios muy diversos, cine, televisión,
+              playas y una cultura marcada por el automóvil.
+            </p>
+            <p>
+              El texto cultural contrasta distintas zonas y estilos de vida de la
+              ciudad, y menciona problemas ambientales asociados al tráfico y la
+              contaminación. También destaca la importancia histórica de la industria
+              cinematográfica en la región.
+            </p>
+            <p>
+              Para las personas que visitan California, las playas, el clima, el
+              deporte al aire libre y los trayectos por la costa forman parte de la
+              experiencia turística más conocida.
+            </p>
+          </div>
+
+          <div class="question-block">
+            <label for="culture-writing">
+              Escribe una oración en inglés sobre Los Angeles, California, el clima,
+              una playa o una actividad de ocio:
+            </label>
+            <textarea
+              id="culture-writing"
+              placeholder="California is sunny and has beautiful beaches."
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary check-culture" type="button">
+              Guardar respuesta
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="lesson-section activity-card is-locked" data-activity="10">
+          <div class="activity-heading">
+            <div>
+              <p class="activity-number">ACTIVIDAD 10 · REPASO FINAL</p>
+              <h2>Planes, ocio y clima</h2>
+            </div>
+            <span class="activity-icon" aria-hidden="true">✨</span>
+          </div>
+
+          <section class="oral-practice-block">
+            <h3>Repaso de la entrega</h3>
+            <p>
+              En esta entrega practicaste vocabulario de deportes, ocio y clima;
+              propuestas como <strong>Do you feel like...?</strong>; capacidades con
+              <strong>good at</strong>; planes con <strong>going to</strong>;
+              costumbres con <strong>used to</strong>; y obligaciones con
+              <strong>have to</strong>.
+            </p>
+          </section>
+
+          <div class="question-block">
+            <label for="review-answer-1">
+              Complete: “I __________ swim, but I can't dive.”
+            </label>
+            <input
+              id="review-answer-1"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: can"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="review-answer-2">
+              Complete: “We are going __________ travel around California.”
+            </label>
+            <input
+              id="review-answer-2"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe: to"
+            >
+          </div>
+
+          <div class="question-block">
+            <label for="final-writing">
+              Escribe al menos cuatro oraciones en inglés sobre un plan de ocio o
+              vacaciones. Incluye una actividad, el clima, una frase con
+              <strong>going to</strong> y otra con <strong>feel like</strong> o
+              <strong>used to</strong>.
+            </label>
+            <textarea
+              id="final-writing"
+              placeholder="I'm going to visit the beach this weekend. The weather will be sunny. I feel like swimming in the ocean. I'm used to doing outdoor sports."
+            ></textarea>
+          </div>
+
+          <div class="activity-actions">
+            <button class="button button-primary finish-lesson" type="button">
+              Completar Entrega 2.5
+            </button>
+            <span class="activity-feedback" aria-live="polite"></span>
+          </div>
+        </article>
+      </section>
+
+      <section
+        class="lesson-complete-message"
+        id="lesson-complete-message"
+        aria-live="polite"
+        hidden
+      >
+        <p class="kicker">¡Unidad 2 completada!</p>
+        <h2>Excelente trabajo</h2>
+
+        <p>
+          Completaste “Ocio californiano”. Ahora puedes conversar sobre deportes,
+          clima, ocio, capacidades, costumbres, planes futuros y obligaciones.
+        </p>
+
+        <div class="completion-actions">
+          <a class="button button-primary" href="unit-3-delivery-1.html">
+            Comenzar Unidad 3 →
+          </a>
+
+          <a class="button button-outline" href="unit-2.html">
+            Volver a Unidad 2
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>506 English Express</span>
+      <span>Unidad 2 · Entrega 5 · Ocio californiano</span>
+      <a href="unit-2.html">Volver a Unidad 2</a>
+    </div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const storageKey = "506EnglishExpress.unit2.delivery5.progress";
+      const totalActivities = 10;
+      const cards = [...document.querySelectorAll("[data-activity]")];
+
+      const progressText = document.getElementById("progress-text");
+      const progressFill = document.getElementById("progress-fill");
+      const progressTrack = document.querySelector(".progress-track");
+      const resetButton = document.getElementById("reset-progress");
+      const completionMessage = document.getElementById("lesson-complete-message");
+
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function getProgress() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
+
+          if (!Array.isArray(saved)) {
+            return [];
+          }
+
+          return [...new Set(
+            saved
+              .map(Number)
+              .filter(
+                (activity) =>
+                  Number.isInteger(activity) &&
+                  activity >= 1 &&
+                  activity <= totalActivities
+              )
+          )].sort((a, b) => a - b);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveProgress(progress) {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+      }
+
+      function setFeedback(activity, message) {
+        const feedback = document.querySelector(
+          `[data-activity="${activity}"] .activity-feedback`
+        );
+
+        if (feedback) {
+          feedback.textContent = message;
+        }
+      }
+
+      function updateInterface() {
+        const completed = getProgress();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
+
+        progressText.textContent =
+          `${completedCount} de ${totalActivities} secciones completadas`;
+
+        progressFill.style.width = `${percentage}%`;
+        progressTrack.setAttribute("aria-valuenow", String(percentage));
+
+        cards.forEach((card) => {
+          const activity = Number(card.dataset.activity);
+          const isComplete = completed.includes(activity);
+          const isLocked =
+            activity > 1 &&
+            !completed.includes(activity - 1) &&
+            !isComplete;
+
+          card.classList.toggle("is-complete", isComplete);
+          card.classList.toggle("is-locked", isLocked);
+
+          const completeButton = card.querySelector(".complete-activity");
+
+          if (completeButton && isComplete) {
+            completeButton.textContent = "Actividad completada";
+          }
+        });
+
+        completionMessage.hidden = completedCount !== totalActivities;
+      }
+
+      function completeActivity(activity, message = "✓ Actividad completada.") {
+        const completed = getProgress();
+
+        if (!completed.includes(activity)) {
+          completed.push(activity);
+          completed.sort((a, b) => a - b);
+          saveProgress(completed);
+        }
+
+        setFeedback(activity, message);
+        updateInterface();
+
+        if (activity === totalActivities) {
+          window.setTimeout(() => {
+            completionMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 250);
+        }
+      }
+
+      document.querySelectorAll(".complete-activity").forEach((button) => {
+        button.addEventListener("click", () => {
+          const activity = Number(
+            button.closest("[data-activity]").dataset.activity
+          );
+
+          completeActivity(activity);
+        });
+      });
+
+      document
+        .querySelector(".check-comprehension")
+        .addEventListener("click", () => {
+          const answer1 = document.querySelector(
+            'input[name="leisure-q1"]:checked'
+          )?.value;
+
+          const answer2 = document.querySelector(
+            'input[name="leisure-q2"]:checked'
+          )?.value;
+
+          const answer3 = document.querySelector(
+            'input[name="leisure-q3"]:checked'
+          )?.value;
+
+          const answer4 = document.querySelector(
+            'input[name="leisure-q4"]:checked'
+          )?.value;
+
+          if (
+            answer1 === "a" &&
+            answer2 === "b" &&
+            answer3 === "c" &&
+            answer4 === "a"
+          ) {
+            completeActivity(3, "✓ ¡Correcto! Comprendiste los diálogos.");
+          } else {
+            setFeedback(3, "Revisa los diálogos e inténtalo otra vez.");
+          }
+        });
+
+      document
+        .querySelector(".check-vocabulary")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("vocabulary-answer").value
+          );
+
+          if (answer === "beaches") {
+            completeActivity(
+              4,
+              "✓ Correcto: Tom and Jane plan to stop at one of the beaches."
+            );
+          } else {
+            setFeedback(4, "Pista: la palabra está en plural.");
+          }
+        });
+
+      document
+        .querySelector(".check-leisure")
+        .addEventListener("click", () => {
+          const weather = normalize(
+            document.getElementById("weather-answer").value
+          );
+
+          const writing = document
+            .getElementById("leisure-writing")
+            .value
+            .trim();
+
+          if (weather === "pleasant" && writing.length >= 12) {
+            completeActivity(5, "✓ Práctica de ocio y clima guardada.");
+          } else {
+            setFeedback(
+              5,
+              "Completa pleasant y escribe una pregunta completa en inglés."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-abilities")
+        .addEventListener("click", () => {
+          const goodAt = normalize(
+            document.getElementById("good-at-answer").value
+          );
+
+          const feelLike = normalize(
+            document.getElementById("feel-like-answer").value
+          );
+
+          const writing = document
+            .getElementById("ability-writing")
+            .value
+            .trim();
+
+          if (
+            goodAt === "at" &&
+            feelLike === "going" &&
+            writing.length >= 10
+          ) {
+            completeActivity(6, "✓ Práctica de capacidades guardada.");
+          } else {
+            setFeedback(6, "Completa at, going y escribe una oración.");
+          }
+        });
+
+      document
+        .querySelector(".check-plans")
+        .addEventListener("click", () => {
+          const goingTo = normalize(
+            document.getElementById("going-to-answer").value
+          );
+
+          const haveTo = normalize(
+            document.getElementById("have-to-answer").value
+          );
+
+          if (goingTo === "going" && haveTo === "has") {
+            completeActivity(
+              7,
+              "✓ Correcto: are going to / Tom has to go to New Orleans."
+            );
+          } else {
+            setFeedback(7, "Pista: going / has.");
+          }
+        });
+
+      document
+        .querySelector(".check-habits")
+        .addEventListener("click", () => {
+          const answer = normalize(
+            document.getElementById("used-to-answer").value
+          );
+
+          const writing = normalize(
+            document.getElementById("habit-writing").value
+          );
+
+          const validHabit =
+            writing.startsWith("im used to") ||
+            writing.startsWith("i am used to") ||
+            writing.startsWith("im not used to") ||
+            writing.startsWith("i am not used to");
+
+          if (answer === "used" && validHabit && writing.length >= 14) {
+            completeActivity(8, "✓ Práctica de costumbres guardada.");
+          } else {
+            setFeedback(
+              8,
+              "Completa used y escribe una oración con I'm used to o I'm not used to."
+            );
+          }
+        });
+
+      document
+        .querySelector(".check-culture")
+        .addEventListener("click", () => {
+          const writing = document
+            .getElementById("culture-writing")
+            .value
+            .trim();
+
+          if (writing.length >= 12) {
+            completeActivity(9, "✓ Respuesta cultural guardada.");
+          } else {
+            setFeedback(9, "Escribe una oración completa en inglés.");
+          }
+        });
+
+      document
+        .querySelector(".finish-lesson")
+        .addEventListener("click", () => {
+          const answer1 = normalize(
+            document.getElementById("review-answer-1").value
+          );
+
+          const answer2 = normalize(
+            document.getElementById("review-answer-2").value
+          );
+
+          const writing = document
+            .getElementById("final-writing")
+            .value
+            .trim();
+
+          if (
+            answer1 === "can" &&
+            answer2 === "to" &&
+            writing.length >= 80
+          ) {
+            completeActivity(10, "✓ ¡Entrega 2.5 y Unidad 2 completadas!");
+          } else {
+            setFeedback(
+              10,
+              "Completa can, to y escribe al menos cuatro oraciones en inglés."
+            );
+          }
+        });
+
+      resetButton.addEventListener("click", () => {
+        localStorage.removeItem(storageKey);
+
+        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
+          feedback.textContent = "";
+        });
+
+        completionMessage.hidden = true;
+        updateInterface();
+      });
+
+      updateInterface();
+    });
+  </script>
+<script src="../assets/js/rewards.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.RewardsSystem) {
+      window.RewardsSystem.checkForReward();
+    }
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.Rewards506 && typeof window.Rewards506.renderCurrentAvatarBadge === 'function') {
+    window.Rewards506.renderCurrentAvatarBadge('#current-avatar-badge');
+  }
+});
+</script>
+</body>
+</html>
+

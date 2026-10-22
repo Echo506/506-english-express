@@ -235,14 +235,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.2rem;
+      gap: 0.8rem;
       min-height: 78px;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
       color: var(--text);
       text-decoration: none;
       white-space: nowrap;
@@ -250,21 +250,21 @@
 
     .brand-mark {
       display: grid;
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       place-items: center;
       border: 1px solid rgba(47, 215, 255, 0.72);
       border-radius: 10px;
       background: rgba(47, 215, 255, 0.12);
       box-shadow: 0 0 18px rgba(47, 215, 255, 0.3);
       color: var(--blue);
-      font-size: 1.15rem;
+      font-size: 1rem;
     }
 
     .brand-text {
       font-family: "Orbitron", sans-serif;
-      font-size: 0.93rem;
-      letter-spacing: 0.04em;
+      font-size: 0.82rem;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
     }
 
@@ -276,18 +276,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.25rem;
-      flex-wrap: wrap;
+      gap: 0.15rem;
+      flex-wrap: nowrap;
     }
 
     .nav-links a {
-      padding: 0.5rem 0.7rem;
+      padding: 0.45rem 0.55rem;
       border-radius: 8px;
       color: rgba(224, 244, 255, 0.8);
-      font-size: 1rem;
+      font-size: 0.92rem;
       font-weight: 700;
       text-decoration: none;
       transition: 0.2s ease;
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
@@ -299,8 +300,8 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 0.6rem;
-      flex-wrap: wrap;
+      gap: 0.45rem;
+      flex-wrap: nowrap;
     }
 
     .button {
@@ -341,18 +342,19 @@
     }
 
     .button-small {
-      min-height: 36px;
-      padding: 0.55rem 0.8rem;
-      font-size: 0.64rem;
+      min-height: 34px;
+      padding: 0.45rem 0.65rem;
+      font-size: 0.58rem;
+      white-space: nowrap;
     }
 
     .theme-toggle {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.38rem;
-      min-height: 36px;
-      padding: 0.45rem 0.62rem;
+      gap: 0.3rem;
+      min-height: 34px;
+      padding: 0.4rem 0.5rem;
       border: 1px solid rgba(113, 255, 192, 0.55);
       border-radius: 9px;
       background: rgba(113, 255, 192, 0.08);
@@ -360,10 +362,11 @@
       color: #baffda;
       cursor: pointer;
       font-family: "Orbitron", sans-serif;
-      font-size: 0.58rem;
+      font-size: 0.54rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
     }
 
     .theme-toggle:hover {
@@ -374,7 +377,7 @@
 
     .theme-toggle-icon {
       color: var(--green);
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       text-shadow: 0 0 10px rgba(113, 255, 192, 0.9);
     }
 
@@ -1220,17 +1223,18 @@
       }
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 1080px) {
       .navbar {
         align-items: flex-start;
         flex-wrap: wrap;
-        padding: 0.85rem 0;
+        padding: 0.75rem 0;
       }
 
       .nav-links {
         order: 3;
         width: 100%;
         justify-content: flex-start;
+        padding-top: 0.3rem;
       }
 
       .hero-grid,
@@ -1275,11 +1279,7 @@
       .nav-actions {
         width: 100%;
         justify-content: flex-start;
-      }
-
-      .nav-links a {
-        padding: 0.38rem 0.42rem;
-        font-size: 0.9rem;
+        flex-wrap: wrap;
       }
 
       .hero {
@@ -1317,7 +1317,7 @@
       }
 
       .theme-toggle {
-        width: 38px;
+        width: 34px;
         padding: 0.35rem;
       }
     }
@@ -1343,58 +1343,59 @@
       display: inline-flex;
       align-items: center;
       gap: 0.48rem;
-      min-height: 36px;
-      padding: 0.55rem 0.75rem;
+      min-height: 34px;
+      padding: 0.45rem 0.65rem;
       border: 1px solid rgba(255, 255, 255, 0.44);
       border-radius: 9px;
       background: rgba(255, 255, 255, 0.1);
       color: white;
       cursor: pointer;
       font-family: "Rajdhani", Arial, sans-serif;
-      font-size: 0.97rem;
+      font-size: 0.88rem;
       font-weight: 700;
+      white-space: nowrap;
     }
 
     .google-g {
       display: grid;
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       place-items: center;
       border-radius: 50%;
       background: white;
       color: #4285f4;
       font-family: Arial, sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 800;
     }
 
     .auth-user {
-      padding: 0.34rem 0.42rem 0.34rem 0.5rem;
+      padding: 0.3rem 0.38rem 0.3rem 0.45rem;
       border: 1px solid var(--border);
       border-radius: 10px;
       background: rgba(4, 20, 39, 0.55);
     }
 
     .auth-user-name {
-      max-width: 105px;
+      max-width: 95px;
       overflow: hidden;
       color: var(--blue-soft);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 700;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
     .auth-user-avatar {
-      width: 27px;
-      height: 27px;
+      width: 24px;
+      height: 24px;
       border: 1px solid rgba(47, 215, 255, 0.65);
       border-radius: 50%;
       object-fit: cover;
     }
 
     .logout-button {
-      padding: 0.32rem 0.45rem;
+      padding: 0.28rem 0.4rem;
       border: 1px solid rgba(255, 118, 118, 0.42);
       border-radius: 6px;
       background: rgba(255, 89, 89, 0.09);
@@ -1439,6 +1440,11 @@
       </div>
 
       <div class="nav-actions">
+        <!-- BOTÓN DINÁMICO DE RETOMAR UNIDAD -->
+        <a href="pages/unit-1.html" class="button button-outline button-small" id="resume-unit-btn">
+          ⚡ Retomar unidad
+        </a>
+
         <div class="auth-guest" id="auth-guest">
           <button
             class="google-login-button"
@@ -1895,6 +1901,35 @@
   </footer>
 
   <div class="auth-message" id="auth-message" aria-live="polite"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const resumeBtn = document.getElementById("resume-unit-btn");
+      if (!resumeBtn) return;
+
+      const unit3Done = localStorage.getItem("506EnglishExpress.unit3.completed") === "true";
+      const unit2Done = localStorage.getItem("506EnglishExpress.unit2.completed") === "true";
+      const unit1Done = localStorage.getItem("506EnglishExpress.unit1.completed") === "true";
+
+      let targetUrl = "pages/unit-1.html";
+      let unitName = "Unidad 1";
+
+      if (unit3Done) {
+        targetUrl = "pages/unit-4.html";
+        unitName = "Unidad 4";
+      } else if (unit2Done) {
+        targetUrl = "pages/unit-3.html";
+        unitName = "Unidad 3";
+      } else if (unit1Done) {
+        targetUrl = "pages/unit-2.html";
+        unitName = "Unidad 2";
+      }
+
+      resumeBtn.setAttribute("href", targetUrl);
+      resumeBtn.innerHTML = `⚡ Retomar ${unitName}`;
+    });
+  </script>
+
   <script type="module" src="./assets/js/supabase-auth.js?v=6"></script>
 </body>
 </html>

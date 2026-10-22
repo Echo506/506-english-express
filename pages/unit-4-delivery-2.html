@@ -33,36 +33,15 @@
       gap: 0.75rem;
       margin-top: 1.25rem;
     }
+
+    /* Estilo HUD avanzado */
+    .activity-card {
+      background: linear-gradient(135deg, rgba(8, 25, 48, 0.88), rgba(3, 11, 27, 0.96));
+      border: 1px solid rgba(47, 215, 255, 0.35);
+      box-shadow: 0 0 25px rgba(47, 215, 255, 0.08);
+      border-radius: 16px;
+    }
   </style>
-<style id="rewards-506-shared-style">
-.reward-avatar-badge {
-  display:grid;
-  grid-template-columns:78px minmax(0,1fr);
-  gap:.95rem;
-  align-items:center;
-  padding:.9rem 1rem;
-  border:1px solid rgba(47,215,255,.25);
-  border-radius:16px;
-  background:linear-gradient(145deg, rgba(6,22,42,.92), rgba(4,15,30,.78));
-  box-shadow:0 0 24px rgba(47,215,255,.08);
-}
-.reward-avatar-badge__media{display:flex;justify-content:center;align-items:center}
-.reward-avatar-badge__image{width:78px;height:78px;object-fit:cover;border-radius:18px;border:1px solid rgba(47,215,255,.46);box-shadow:0 0 18px rgba(47,215,255,.2)}
-.reward-avatar-badge__eyebrow,.reward-avatar-collection__eyebrow{margin:0 0 .35rem;color:#ffc43d;font-family:Orbitron,sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.reward-avatar-badge__title,.reward-avatar-card__body h3,.reward-avatar-collection__header h2{margin:0 0 .3rem;font-family:Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.04em}
-.reward-avatar-badge__meta,.reward-avatar-badge__progress,.reward-avatar-card__body p,.reward-avatar-collection__header p:last-child{margin:0 0 .2rem;color:rgba(220,240,255,.78)}
-.reward-avatar-collection__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
-.reward-avatar-card{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(47,215,255,.16);background:rgba(3,11,27,.7);padding:.85rem;min-height:196px;display:flex;flex-direction:column;gap:.7rem}
-.reward-avatar-card__visual{position:relative;border-radius:14px;background:rgba(6,20,38,.9);padding:.75rem;display:grid;place-items:center;min-height:116px;border:1px solid rgba(255,255,255,.06)}
-.reward-avatar-card__image{width:100%;max-width:92px;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid rgba(47,215,255,.32);display:block}
-.reward-avatar-card__placeholder{display:grid;place-items:center;width:92px;height:92px;border-radius:14px;border:1px dashed rgba(255,255,255,.14);color:rgba(255,255,255,.45);font-size:2rem;background:rgba(255,255,255,.02)}
-.reward-avatar-card__number{position:absolute;top:.5rem;right:.5rem;min-width:34px;min-height:34px;padding:.2rem .45rem;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:rgba(3,11,27,.82);border:1px solid rgba(47,215,255,.3);color:#8cecff;font-family:Orbitron,sans-serif;font-size:.66rem;letter-spacing:.08em}
-.reward-avatar-card.is-current{border-color:rgba(255,196,61,.7);box-shadow:0 0 0 1px rgba(255,196,61,.18),0 18px 35px rgba(255,196,61,.12);background:linear-gradient(160deg, rgba(255,196,61,.14), rgba(3,11,27,.84))}
-.reward-avatar-card.is-unlocked .reward-avatar-card__body p{color:rgba(113,255,192,.88)}
-.reward-avatar-card.is-locked{opacity:.58;filter:grayscale(1)}
-@media (max-width:860px){.reward-avatar-collection__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:560px){.reward-avatar-badge{grid-template-columns:64px minmax(0,1fr)}.reward-avatar-badge__image{width:64px;height:64px}.reward-avatar-collection__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-</style>
 </head>
 
 <body>
@@ -107,14 +86,6 @@
   </header>
 
   <main class="lesson-page">
-<section class="activity-card" aria-labelledby="current-avatar-title" style="margin-top:1rem;">
-  <div style="padding:1rem;">
-    <p class="lesson-kicker">Sistema de recompensas</p>
-    <h2 id="current-avatar-title">Tu avatar actual</h2>
-    <div id="current-avatar-badge"></div>
-  </div>
-</section>
-
     <div class="container">
       <section class="lesson-banner">
         <p class="kicker">Unidad 04 · Entrega 02</p>
@@ -156,6 +127,8 @@
       </section>
 
       <section class="lesson-sections">
+        
+        <!-- ACTIVIDAD 01 -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
@@ -166,17 +139,34 @@
           </div>
 
           <p>
-            Jane está en una agencia de viajes de Los Ángeles. Quiere visitar
-            Estados Unidos, pero no sabe por dónde empezar.
+            Jane visita una agencia de viajes en Los Ángeles para explorar opciones de vacaciones por Estados Unidos y conocer los diferentes paquetes disponibles.
           </p>
 
-          <div class="audio-placeholder">
-            <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-4/travel-agency-dialogue.mp3</strong>
-            </span>
-          </div>
+          <section class="audio-player-card" aria-label="Audio del diálogo">
+            <div class="audio-player-info">
+              <span class="audio-player-icon" aria-hidden="true">🎧</span>
+              <div>
+                <p class="audio-player-label">Audio del diálogo</p>
+                <h2>Una agencia de viajes</h2>
+                <p>Escucha la conversación completa y practica la pronunciación.</p>
+              </div>
+            </div>
+
+            <audio id="work-audio" preload="metadata">
+              <source src="../assets/audio/unit-4/2-agencia-de-viajes.mp3" type="audio/mpeg">
+              Tu navegador no admite la reproducción de audio.
+            </audio>
+
+            <div class="audio-player-controls">
+              <button id="audio-play-button" class="audio-play-button" type="button" aria-label="Reproducir audio">
+                <span id="audio-play-icon" aria-hidden="true">▶</span>
+                <span id="audio-play-text">Reproducir audio</span>
+              </button>
+              <span id="audio-time" class="audio-time">0:00 / 0:00</span>
+            </div>
+
+            <input id="audio-progress" class="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
+          </section>
 
           <div class="dialogue-box">
             <p><strong>Jane:</strong> Good morning. Can you help me?</p>
@@ -200,9 +190,7 @@
           <div class="translation-box">
             <strong>Idea principal:</strong>
             <span>
-              Jane prefiere unas vacaciones lejos de las ciudades. Finalmente se
-              interesa por una aventura de rafting y campamento en Alaska, aunque
-              considera elevado su precio.
+              Jane prefiere unas vacaciones lejos de las ciudades. Finalmente se interesa por una aventura de rafting y campamento en Alaska, aunque considera elevado su precio.
             </span>
           </div>
 
@@ -214,6 +202,7 @@
           </div>
         </article>
 
+        <!-- ACTIVIDAD 02 -->
         <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
@@ -259,6 +248,7 @@
           </div>
         </article>
 
+        <!-- ACTIVIDAD 03 -->
         <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
@@ -321,7 +311,6 @@
             <label for="vocabulary-answer">
               Complete: “Jane will spend a night in a __________ cabin.”
             </label>
-
             <input
               id="vocabulary-answer"
               type="text"
@@ -338,6 +327,7 @@
           </div>
         </article>
 
+        <!-- ACTIVIDAD 04 -->
         <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
@@ -389,7 +379,6 @@
             <label for="phrases-answer">
               Complete: “What kind of vacation would you __________?”
             </label>
-
             <input
               id="phrases-answer"
               type="text"
@@ -402,7 +391,6 @@
             <label for="phrases-writing">
               Escribe una frase en inglés para preguntar por una preferencia de viaje:
             </label>
-
             <textarea
               id="phrases-writing"
               placeholder="What kind of vacation would you like to take?"
@@ -417,6 +405,7 @@
           </div>
         </article>
 
+        <!-- ACTIVIDAD 05 -->
         <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
@@ -446,7 +435,6 @@
             <label for="if-answer-1">
               Complete: “If Jane goes to the United States, she __________ visit the Grand Canyon.”
             </label>
-
             <input
               id="if-answer-1"
               type="text"
@@ -459,7 +447,6 @@
             <label for="if-answer-2">
               Complete: “If Jane doesn't go to San Francisco, she __________ see the Golden Gate Bridge.”
             </label>
-
             <input
               id="if-answer-2"
               type="text"
@@ -476,6 +463,7 @@
           </div>
         </article>
 
+        <!-- ACTIVIDAD 06 -->
         <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
@@ -498,7 +486,6 @@
             <label for="after-answer-1">
               Complete: “__________ the movies, we went to see Jeff.”
             </label>
-
             <input
               id="after-answer-1"
               type="text"
@@ -511,7 +498,6 @@
             <label for="after-answer-2">
               Complete: “We went to the movies, and __________ we went to see Jeff.”
             </label>
-
             <input
               id="after-answer-2"
               type="text"
@@ -528,6 +514,7 @@
           </div>
         </article>
 
+        <!-- ACTIVIDAD 07 -->
         <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
@@ -562,7 +549,6 @@
             <label for="ability-answer-1">
               Complete: “Next year, I __________ speak English.”
             </label>
-
             <input
               id="ability-answer-1"
               type="text"
@@ -575,7 +561,6 @@
             <label for="ability-answer-2">
               Complete: “Last year, I __________ water-ski.”
             </label>
-
             <input
               id="ability-answer-2"
               type="text"
@@ -592,6 +577,7 @@
           </div>
         </article>
 
+        <!-- ACTIVIDAD 08 -->
         <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
@@ -615,7 +601,6 @@
             <label for="where-answer">
               Complete: “The log cabin, __________ you'll spend the night, is very nice.”
             </label>
-
             <input
               id="where-answer"
               type="text"
@@ -628,7 +613,6 @@
             <label for="where-writing">
               Escribe una oración en inglés usando <strong>where</strong> y un lugar de vacaciones:
             </label>
-
             <textarea
               id="where-writing"
               placeholder="The national park where we camp is beautiful."
@@ -643,6 +627,7 @@
           </div>
         </article>
 
+        <!-- ACTIVIDAD 09 -->
         <article class="lesson-section activity-card is-locked" data-activity="9">
           <div class="activity-heading">
             <div>
@@ -698,7 +683,6 @@
             <label for="culture-writing">
               Escribe una oración en inglés sobre unas vacaciones o un parque nacional:
             </label>
-
             <textarea
               id="culture-writing"
               placeholder="I would like to visit Yellowstone National Park."
@@ -713,6 +697,7 @@
           </div>
         </article>
 
+        <!-- ACTIVIDAD 10 -->
         <article class="lesson-section activity-card is-locked" data-activity="10">
           <div class="activity-heading">
             <div>
@@ -722,29 +707,10 @@
             <span class="activity-icon" aria-hidden="true">✨</span>
           </div>
 
-          <section class="oral-practice-block">
-            <h3>De todo un poco</h3>
-            <p>
-              La entrega original incluye una canción tradicional en la sección
-              “De todo un poco”. Para el sitio, utiliza un audio con licencia o una
-              grabación propia y realiza una breve actividad de escucha sin
-              reproducir la letra completa.
-            </p>
-
-            <div class="audio-placeholder">
-              <span aria-hidden="true">🎵</span>
-              <span>
-                Audio sugerido:
-                <strong>assets/audio/unit-4/traditional-song-listening.mp3</strong>
-              </span>
-            </div>
-          </section>
-
           <div class="question-block">
             <label for="review-answer-1">
               Complete: “If I go to Alaska, I __________ go rafting.”
             </label>
-
             <input
               id="review-answer-1"
               type="text"
@@ -757,7 +723,6 @@
             <label for="review-answer-2">
               Complete: “The Grand Canyon is a place __________ visitors can hike.”
             </label>
-
             <input
               id="review-answer-2"
               type="text"
@@ -773,7 +738,6 @@
               secuencia con <strong>first</strong>, <strong>then</strong>,
               <strong>afterwards</strong> o <strong>after that</strong>.
             </label>
-
             <textarea
               id="final-writing"
               placeholder="I would like an outdoor vacation. First, I will fly to Anchorage. Then, I will go rafting with a local guide. If the weather is good, I will camp in a national park. The trip comes to $900."
@@ -1193,22 +1157,67 @@
       });
 
       updateInterface();
+
+      // --- Control de Reproductor de Audio Personalizado ---
+      const audio = document.getElementById("work-audio");
+      const playButton = document.getElementById("audio-play-button");
+      const playIcon = document.getElementById("audio-play-icon");
+      const playText = document.getElementById("audio-play-text");
+      const audioProgress = document.getElementById("audio-progress");
+      const audioTime = document.getElementById("audio-time");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) return "0:00";
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = String(Math.floor(seconds % 60)).padStart(2, "0");
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      function updateAudioPlayer() {
+        if (!audio || !audioProgress || !audioTime) return;
+        const currentTime = audio.currentTime || 0;
+        const duration = audio.duration || 0;
+        audioTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        if (duration > 0) {
+          audioProgress.value = String((currentTime / duration) * 100);
+        }
+      }
+
+      function setAudioButton(isPlaying) {
+        if (!playButton || !playIcon || !playText) return;
+        playIcon.textContent = isPlaying ? "⏸" : "▶";
+        playText.textContent = isPlaying ? "Pausar audio" : "Reproducir audio";
+        playButton.setAttribute("aria-label", isPlaying ? "Pausar audio" : "Reproducir audio");
+      }
+
+      if (audio && playButton) {
+        playButton.addEventListener("click", async () => {
+          if (audio.paused) {
+            try {
+              await audio.play();
+            } catch (e) {
+              console.warn(e);
+            }
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("loadedmetadata", updateAudioPlayer);
+        audio.addEventListener("timeupdate", updateAudioPlayer);
+        audio.addEventListener("play", () => setAudioButton(true));
+        audio.addEventListener("pause", () => setAudioButton(false));
+
+        if (audioProgress) {
+          audioProgress.addEventListener("input", () => {
+            if (audio.duration) {
+              audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
+              updateAudioPlayer();
+            }
+          });
+        }
+      }
     });
   </script>
-<script src="../assets/js/rewards.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.RewardsSystem) {
-      window.RewardsSystem.checkForReward();
-    }
-  });
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.Rewards506 && typeof window.Rewards506.renderCurrentAvatarBadge === 'function') {
-    window.Rewards506.renderCurrentAvatarBadge('#current-avatar-badge');
-  }
-});
-</script>
 </body>
 </html>

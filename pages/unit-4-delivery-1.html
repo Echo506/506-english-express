@@ -33,36 +33,15 @@
       gap: 0.75rem;
       margin-top: 1.25rem;
     }
+
+    /* Estilo HUD avanzado */
+    .activity-card {
+      background: linear-gradient(135deg, rgba(8, 25, 48, 0.88), rgba(3, 11, 27, 0.96));
+      border: 1px solid rgba(47, 215, 255, 0.35);
+      box-shadow: 0 0 25px rgba(47, 215, 255, 0.08);
+      border-radius: 16px;
+    }
   </style>
-<style id="rewards-506-shared-style">
-.reward-avatar-badge {
-  display:grid;
-  grid-template-columns:78px minmax(0,1fr);
-  gap:.95rem;
-  align-items:center;
-  padding:.9rem 1rem;
-  border:1px solid rgba(47,215,255,.25);
-  border-radius:16px;
-  background:linear-gradient(145deg, rgba(6,22,42,.92), rgba(4,15,30,.78));
-  box-shadow:0 0 24px rgba(47,215,255,.08);
-}
-.reward-avatar-badge__media{display:flex;justify-content:center;align-items:center}
-.reward-avatar-badge__image{width:78px;height:78px;object-fit:cover;border-radius:18px;border:1px solid rgba(47,215,255,.46);box-shadow:0 0 18px rgba(47,215,255,.2)}
-.reward-avatar-badge__eyebrow,.reward-avatar-collection__eyebrow{margin:0 0 .35rem;color:#ffc43d;font-family:Orbitron,sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.reward-avatar-badge__title,.reward-avatar-card__body h3,.reward-avatar-collection__header h2{margin:0 0 .3rem;font-family:Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.04em}
-.reward-avatar-badge__meta,.reward-avatar-badge__progress,.reward-avatar-card__body p,.reward-avatar-collection__header p:last-child{margin:0 0 .2rem;color:rgba(220,240,255,.78)}
-.reward-avatar-collection__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
-.reward-avatar-card{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(47,215,255,.16);background:rgba(3,11,27,.7);padding:.85rem;min-height:196px;display:flex;flex-direction:column;gap:.7rem}
-.reward-avatar-card__visual{position:relative;border-radius:14px;background:rgba(6,20,38,.9);padding:.75rem;display:grid;place-items:center;min-height:116px;border:1px solid rgba(255,255,255,.06)}
-.reward-avatar-card__image{width:100%;max-width:92px;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid rgba(47,215,255,.32);display:block}
-.reward-avatar-card__placeholder{display:grid;place-items:center;width:92px;height:92px;border-radius:14px;border:1px dashed rgba(255,255,255,.14);color:rgba(255,255,255,.45);font-size:2rem;background:rgba(255,255,255,.02)}
-.reward-avatar-card__number{position:absolute;top:.5rem;right:.5rem;min-width:34px;min-height:34px;padding:.2rem .45rem;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:rgba(3,11,27,.82);border:1px solid rgba(47,215,255,.3);color:#8cecff;font-family:Orbitron,sans-serif;font-size:.66rem;letter-spacing:.08em}
-.reward-avatar-card.is-current{border-color:rgba(255,196,61,.7);box-shadow:0 0 0 1px rgba(255,196,61,.18),0 18px 35px rgba(255,196,61,.12);background:linear-gradient(160deg, rgba(255,196,61,.14), rgba(3,11,27,.84))}
-.reward-avatar-card.is-unlocked .reward-avatar-card__body p{color:rgba(113,255,192,.88)}
-.reward-avatar-card.is-locked{opacity:.58;filter:grayscale(1)}
-@media (max-width:860px){.reward-avatar-collection__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:560px){.reward-avatar-badge{grid-template-columns:64px minmax(0,1fr)}.reward-avatar-badge__image{width:64px;height:64px}.reward-avatar-collection__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-</style>
 </head>
 
 <body>
@@ -104,14 +83,6 @@
   </header>
 
   <main class="lesson-page">
-<section class="activity-card" aria-labelledby="current-avatar-title" style="margin-top:1rem;">
-  <div style="padding:1rem;">
-    <p class="lesson-kicker">Sistema de recompensas</p>
-    <h2 id="current-avatar-title">Tu avatar actual</h2>
-    <div id="current-avatar-badge"></div>
-  </div>
-</section>
-
     <div class="container">
       <section class="lesson-banner">
         <p class="kicker">Unidad 04 · Entrega 01</p>
@@ -127,7 +98,7 @@
           <div>
             <div class="lesson-progress-label">
               <span>Progreso de la entrega</span>
-              <span id="progress-text">0 de 10 secciones completadas</span>
+              <span id="progress-text">0 de 8 secciones completadas</span>
             </div>
 
             <div
@@ -153,104 +124,63 @@
       </section>
 
       <section class="lesson-sections">
+        
+        <!-- ACTIVIDAD 01 (Diálogos fusionados) -->
         <article class="lesson-section activity-card" data-activity="1">
           <div class="activity-heading">
             <div>
               <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
-              <h2>Los primeros mensajes</h2>
+              <h2>Mensajes en el contestador</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">☎️</span>
           </div>
 
           <p>
-            Tom está nuevamente en casa y escucha los primeros mensajes de su
-            contestador automático.
+            Tom regresa a su casa tras su viaje y se encuentra con varios recados en su contestador automático: Bernie, Sherry, Jane, un amigo de Marie-Thérèse y su propia madre le dejan mensajes.
           </p>
 
-          <div class="audio-placeholder">
-            <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-4/telephone-messages-part-1.mp3</strong>
-            </span>
-          </div>
+          <section class="audio-player-card" aria-label="Audio del diálogo">
+            <div class="audio-player-info">
+              <span class="audio-player-icon" aria-hidden="true">🎧</span>
+              <div>
+                <p class="audio-player-label">Audio del diálogo</p>
+                <h2>Mensajes telefónicos</h2>
+                <p>Escucha los mensajes completos y practica la comprensión auditiva.</p>
+              </div>
+            </div>
+
+            <audio id="work-audio" preload="metadata">
+              <source src="../assets/audio/unit-4/1-mensajes-telefonicos.mp3" type="audio/mpeg">
+              Tu navegador no admite la reproducción de audio.
+            </audio>
+
+            <div class="audio-player-controls">
+              <button id="audio-play-button" class="audio-play-button" type="button" aria-label="Reproducir audio">
+                <span id="audio-play-icon" aria-hidden="true">▶</span>
+                <span id="audio-play-text">Reproducir audio</span>
+              </button>
+              <span id="audio-time" class="audio-time">0:00 / 0:00</span>
+            </div>
+
+            <input id="audio-progress" class="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
+          </section>
 
           <div class="dialogue-box">
-            <p><strong>Man:</strong> Hi, Tom. This is Bernie. I'm going away for two weeks, and I'll call you when I get back. Bye.</p>
-            <p><strong>Woman:</strong> Hi, Tom. This is Sherry. John and I are giving a barbecue on Saturday. You must come. All the guests are bringing a bottle and something to eat. Can you bring the potato salad? Call me back and confirm. See you soon!</p>
+            <p><strong>Man (Bernie):</strong> Hi, Tom. This is Bernie. I'm going away for two weeks, and I'll call you when I get back. Bye.</p>
+            <p><strong>Woman (Sherry):</strong> Hi, Tom. This is Sherry. John and I are giving a barbecue on Saturday. You must come. All the guests are bringing a bottle and something to eat. Can you bring the potato salad? Call me back and confirm. See you soon!</p>
             <p><strong>Tom:</strong> Boy! I'm glad I missed that!</p>
             <p><strong>Jane:</strong> Hello, Tom. Jane here. It's Friday afternoon. I suppose you're not back yet. I hope you had a good time in New Orleans. Give me a call soon. Bye.</p>
-            <p><strong>Man:</strong> Hello. Um... this is Michael Cannon... um, Oh God! I hate these machines.</p>
-          </div>
+            <p><strong>Man (Michael Cannon):</strong> Hello. Um... this is Michael Cannon... um, Oh God! I hate these machines.</p>
 
-          <div class="translation-box">
-            <strong>Idea principal:</strong>
-            <span>
-              Bernie se va por dos semanas; Sherry invita a Tom a una barbacoa y
-              le pide ensalada de papa; Jane quiere saber si Tom ya regresó de
-              Nueva Orleans.
-            </span>
-          </div>
+            <hr style="border: none; border-top: 1px dashed rgba(47, 215, 255, 0.3); margin: 1.5rem 0;">
 
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="2">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 02 · DIÁLOGO</p>
-              <h2>El amigo de Marie-Thérèse</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">📞</span>
-          </div>
-
-          <div class="audio-placeholder">
-            <span aria-hidden="true">🔊</span>
-            <span>
-              Audio sugerido:
-              <strong>assets/audio/unit-4/telephone-messages-part-2.mp3</strong>
-            </span>
-          </div>
-
-          <div class="dialogue-box">
             <p><strong>Frenchman:</strong> Hello. I am a friend of Marie-Thérèse. She said I could telephone you. I have just arrived at the Greyhound bus station in Los Angeles.</p>
             <p><strong>Frenchman:</strong> Er... Marie-Thérèse said that you had a beautiful big house, and er... maybe I could stay with you...</p>
             <p><strong>Tom:</strong> Who the hell is Marie-Thérèse!?</p>
             <p><strong>Jane:</strong> Hello, Tom, this is Jane again. Where are you? It seems that you really like New Orleans! Bye.</p>
-          </div>
 
-          <div class="translation-box">
-            <strong>Idea principal:</strong>
-            <span>
-              Un francés, amigo de Marie-Thérèse, acaba de llegar a Los Ángeles
-              y pregunta si puede quedarse en la casa de Tom. Tom no sabe quién
-              es Marie-Thérèse.
-            </span>
-          </div>
+            <hr style="border: none; border-top: 1px dashed rgba(47, 215, 255, 0.3); margin: 1.5rem 0;">
 
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="3">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 03 · DIÁLOGO</p>
-              <h2>El mensaje de mamá</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">👪</span>
-          </div>
-
-          <div class="dialogue-box">
             <p><strong>Tom's mother:</strong> Hello, Tom. Are you there?... No, I guess not. Annie has just called me: she's been seeing Ronnie for the last two weeks. Isn't that wonderful?</p>
             <p><strong>Tom's mother:</strong> I hope they stay together. You should call her sometime: she says she never hears from you and she is your sister, after all.</p>
             <p><strong>Tom's mother:</strong> Your father's fine, but he's been overworking as usual. Well, Tom, that's the news. I hope you're eating properly. Take care!</p>
@@ -262,9 +192,7 @@
           <div class="translation-box">
             <strong>Idea principal:</strong>
             <span>
-              La mamá de Tom le cuenta que Annie está saliendo con Ronnie desde
-              hace dos semanas. También le aconseja llamar a su hermana y cuidar
-              su alimentación.
+              Tom escucha los múltiples mensajes de sus amigos y familiares en su contestador, incluyendo invitaciones a barbacoas, llamadas insistentes de Jane, la llegada inesperada del amigo de Marie-Thérèse y los consejos de su madre.
             </span>
           </div>
 
@@ -276,10 +204,11 @@
           </div>
         </article>
 
-        <article class="lesson-section activity-card is-locked" data-activity="4">
+        <!-- ACTIVIDAD 02 -->
+        <article class="lesson-section activity-card is-locked" data-activity="2">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 04 · COMPRENSIÓN</p>
+              <p class="activity-number">ACTIVIDAD 02 · COMPRENSIÓN</p>
               <h2>Compruebe su comprensión</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">🧠</span>
@@ -321,10 +250,11 @@
           </div>
         </article>
 
-        <article class="lesson-section activity-card is-locked" data-activity="5">
+        <!-- ACTIVIDAD 03 -->
+        <article class="lesson-section activity-card is-locked" data-activity="3">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 05 · VOCABULARIO</p>
+              <p class="activity-number">ACTIVIDAD 03 · VOCABULARIO</p>
               <h2>Llamadas, familia y fiestas</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">📚</span>
@@ -405,10 +335,11 @@
           </div>
         </article>
 
-        <article class="lesson-section activity-card is-locked" data-activity="6">
+        <!-- ACTIVIDAD 04 -->
+        <article class="lesson-section activity-card is-locked" data-activity="4">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 06 · CÓMO SE DICE</p>
+              <p class="activity-number">ACTIVIDAD 04 · CÓMO SE DICE</p>
               <h2>Peticiones, consejos y mensajes</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">💬</span>
@@ -485,10 +416,11 @@
           </div>
         </article>
 
-        <article class="lesson-section activity-card is-locked" data-activity="7">
+        <!-- ACTIVIDAD 05 -->
+        <article class="lesson-section activity-card is-locked" data-activity="5">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 07 · GRAMÁTICA</p>
+              <p class="activity-number">ACTIVIDAD 05 · GRAMÁTICA</p>
               <h2>Say that, could y would</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">🗣️</span>
@@ -546,10 +478,11 @@
           </div>
         </article>
 
-        <article class="lesson-section activity-card is-locked" data-activity="8">
+        <!-- ACTIVIDAD 06 -->
+        <article class="lesson-section activity-card is-locked" data-activity="6">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 08 · GRAMÁTICA</p>
+              <p class="activity-number">ACTIVIDAD 06 · GRAMÁTICA</p>
               <h2>When, just, for y since</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">⏱️</span>
@@ -621,10 +554,11 @@
           </div>
         </article>
 
-        <article class="lesson-section activity-card is-locked" data-activity="9">
+        <!-- ACTIVIDAD 07 -->
+        <article class="lesson-section activity-card is-locked" data-activity="7">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 09 · CULTURA</p>
+              <p class="activity-number">ACTIVIDAD 07 · CULTURA</p>
               <h2>Barbacoas, fiestas y cócteles</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">🍔</span>
@@ -688,10 +622,11 @@
           </div>
         </article>
 
-        <article class="lesson-section activity-card is-locked" data-activity="10">
+        <!-- ACTIVIDAD 08 -->
+        <article class="lesson-section activity-card is-locked" data-activity="8">
           <div class="activity-heading">
             <div>
-              <p class="activity-number">ACTIVIDAD 10 · HOLLYWOOD QUIZ</p>
+              <p class="activity-number">ACTIVIDAD 08 · HOLLYWOOD QUIZ</p>
               <h2>Hollywood Trivial Quiz 1</h2>
             </div>
             <span class="activity-icon" aria-hidden="true">🎬</span>
@@ -809,7 +744,7 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       const storageKey = "506EnglishExpress.unit4.delivery1.progress";
-      const totalActivities = 10;
+      const totalActivities = 8;
       const cards = [...document.querySelectorAll("[data-activity]")];
 
       const progressText = document.getElementById("progress-text");
@@ -959,11 +894,11 @@
             answer4 === "a"
           ) {
             completeActivity(
-              4,
+              2,
               "✓ ¡Correcto! Comprendiste los mensajes telefónicos."
             );
           } else {
-            setFeedback(4, "Revisa los diálogos e inténtalo otra vez.");
+            setFeedback(2, "Revisa los diálogos e inténtalo otra vez.");
           }
         });
 
@@ -976,11 +911,11 @@
 
           if (answer === "potato") {
             completeActivity(
-              5,
+              3,
               "✓ Correcto: Can you bring the potato salad?"
             );
           } else {
-            setFeedback(5, "Pista: potato salad.");
+            setFeedback(3, "Pista: potato salad.");
           }
         });
 
@@ -1002,10 +937,10 @@
             writing.includes("bye");
 
           if (answer === "should" && writing.length >= 15 && isPhoneMessage) {
-            completeActivity(6, "✓ Mensaje telefónico guardado.");
+            completeActivity(4, "✓ Mensaje telefónico guardado.");
           } else {
             setFeedback(
-              6,
+              4,
               "Completa should y escribe un mensaje breve en inglés."
             );
           }
@@ -1024,11 +959,11 @@
 
           if (answer1 === "loved" && answer2 === "could") {
             completeActivity(
-              7,
+              5,
               "✓ Correcto: Jane said that she loved L.A. Pat said she could come."
             );
           } else {
-            setFeedback(7, "Pista: loved / could.");
+            setFeedback(5, "Pista: loved / could.");
           }
         });
 
@@ -1059,10 +994,10 @@
             writing.length >= 12 &&
             hasTimeWord
           ) {
-            completeActivity(8, "✓ Práctica de tiempo guardada.");
+            completeActivity(6, "✓ Práctica de tiempo guardada.");
           } else {
             setFeedback(
-              8,
+              6,
               "Completa just y for, y escribe una oración con una expresión de tiempo."
             );
           }
@@ -1077,9 +1012,9 @@
             .trim();
 
           if (writing.length >= 12) {
-            completeActivity(9, "✓ Respuesta cultural guardada.");
+            completeActivity(7, "✓ Respuesta cultural guardada.");
           } else {
-            setFeedback(9, "Escribe una oración completa en inglés.");
+            setFeedback(7, "Escribe una oración completa en inglés.");
           }
         });
 
@@ -1104,10 +1039,10 @@
           });
 
           if (correct) {
-            completeActivity(10, "✓ ¡Entrega 4.1 completada!");
+            completeActivity(8, "✓ ¡Entrega 4.1 completada!");
           } else {
             setFeedback(
-              10,
+              8,
               "Revisa tus respuestas del Hollywood Trivial Quiz e inténtalo otra vez."
             );
           }
@@ -1125,22 +1060,67 @@
       });
 
       updateInterface();
+
+      // --- Control de Reproductor de Audio Personalizado ---
+      const audio = document.getElementById("work-audio");
+      const playButton = document.getElementById("audio-play-button");
+      const playIcon = document.getElementById("audio-play-icon");
+      const playText = document.getElementById("audio-play-text");
+      const audioProgress = document.getElementById("audio-progress");
+      const audioTime = document.getElementById("audio-time");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) return "0:00";
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = String(Math.floor(seconds % 60)).padStart(2, "0");
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      function updateAudioPlayer() {
+        if (!audio || !audioProgress || !audioTime) return;
+        const currentTime = audio.currentTime || 0;
+        const duration = audio.duration || 0;
+        audioTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        if (duration > 0) {
+          audioProgress.value = String((currentTime / duration) * 100);
+        }
+      }
+
+      function setAudioButton(isPlaying) {
+        if (!playButton || !playIcon || !playText) return;
+        playIcon.textContent = isPlaying ? "⏸" : "▶";
+        playText.textContent = isPlaying ? "Pausar audio" : "Reproducir audio";
+        playButton.setAttribute("aria-label", isPlaying ? "Pausar audio" : "Reproducir audio");
+      }
+
+      if (audio && playButton) {
+        playButton.addEventListener("click", async () => {
+          if (audio.paused) {
+            try {
+              await audio.play();
+            } catch (e) {
+              console.warn(e);
+            }
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("loadedmetadata", updateAudioPlayer);
+        audio.addEventListener("timeupdate", updateAudioPlayer);
+        audio.addEventListener("play", () => setAudioButton(true));
+        audio.addEventListener("pause", () => setAudioButton(false));
+
+        if (audioProgress) {
+          audioProgress.addEventListener("input", () => {
+            if (audio.duration) {
+              audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
+              updateAudioPlayer();
+            }
+          });
+        }
+      }
     });
   </script>
-<script src="../assets/js/rewards.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.RewardsSystem) {
-      window.RewardsSystem.checkForReward();
-    }
-  });
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.Rewards506 && typeof window.Rewards506.renderCurrentAvatarBadge === 'function') {
-    window.Rewards506.renderCurrentAvatarBadge('#current-avatar-badge');
-  }
-});
-</script>
 </body>
 </html>

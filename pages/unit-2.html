@@ -293,6 +293,12 @@
       border-radius: 14px;
       background: rgba(255, 196, 61, 0.1);
       backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+    }
+
+    .alert.is-unlocked {
+      border-color: rgba(113, 255, 192, 0.38);
+      background: rgba(113, 255, 192, 0.1);
     }
 
     .alert-icon {
@@ -306,6 +312,11 @@
       font-size: 1.35rem;
     }
 
+    .alert.is-unlocked .alert-icon {
+      border-color: rgba(113, 255, 192, 0.5);
+      color: var(--green);
+    }
+
     .alert h2 {
       margin: 0;
       color: #fff6d9;
@@ -314,11 +325,19 @@
       text-transform: uppercase;
     }
 
+    .alert.is-unlocked h2 {
+      color: #d1ffeb;
+    }
+
     .alert p {
       margin: 0.35rem 0 0;
       color: rgba(255, 246, 220, 0.8);
       font-size: 1rem;
       line-height: 1.35;
+    }
+
+    .alert.is-unlocked p {
+      color: rgba(209, 255, 235, 0.85);
     }
 
     .material-section {
@@ -368,6 +387,7 @@
       border-radius: inherit;
       background: linear-gradient(90deg, var(--purple), var(--blue));
       box-shadow: 0 0 12px rgba(182, 144, 255, 0.65);
+      transition: width 0.4s ease;
     }
 
     .delivery-list {
@@ -386,6 +406,7 @@
       background: var(--panel);
       backdrop-filter: blur(12px);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      transition: 0.3s ease;
     }
 
     .delivery-card.locked {
@@ -594,7 +615,7 @@
   <div class="topbar">
     <div class="container topbar-content">
       <span>506 English Express</span>
-      <span>Unidad 2 · Material y progreso</span>
+      <span id="topbar-status">Unidad 2 · Material y progreso</span>
     </div>
   </div>
 
@@ -632,12 +653,12 @@
           final.
         </p>
 
-        <aside class="alert">
-          <div class="alert-icon" aria-hidden="true">🔒</div>
+        <aside class="alert" id="unit-alert">
+          <div class="alert-icon" id="alert-icon" aria-hidden="true">🔒</div>
 
           <div>
-            <h2>Unidad con acceso progresivo</h2>
-            <p>
+            <h2 id="alert-title">Unidad con acceso progresivo</h2>
+            <p id="alert-desc">
               Debes completar la Unidad 1 y sus actividades anteriores para
               desbloquear los ejercicios de esta unidad.
             </p>
@@ -650,87 +671,67 @@
       <div class="container">
         <div class="unit-progress">
           <strong>Progreso de Unidad 2</strong>
-          <span class="progress-value">Bloqueada · 0%</span>
+          <span class="progress-value" id="unit-progress-text">Bloqueada · 0%</span>
 
           <div class="progress-track" aria-label="Progreso de Unidad 2">
-            <div class="progress-fill"></div>
+            <div class="progress-fill" id="unit-progress-fill"></div>
           </div>
         </div>
 
-        <div class="delivery-list">
-          <article class="delivery-card locked">
+        <div class="delivery-list" id="deliveries-container">
+          <!-- Entrega 2.1 -->
+          <article class="delivery-card locked" data-delivery="1">
             <div class="delivery-icon" aria-hidden="true">🏨</div>
-
             <div>
               <p class="delivery-number">Entrega 2.1</p>
               <h2>En el hotel</h2>
-              <p>
-                Reservas, tipos de habitaciones, pisos, ubicaciones y expresiones
-                para comunicarse en un hotel.
-              </p>
+              <p>Reservas, tipos de habitaciones, pisos, ubicaciones y expresiones para comunicarse en un hotel.</p>
             </div>
-
-            <span class="button locked-button">🔒 Requiere Unidad 1</span>
+            <a href="unit-2-delivery-1.html" class="button button-primary delivery-btn locked-button">🔒 Requiere Unidad 1</a>
           </article>
 
-          <article class="delivery-card locked">
+          <!-- Entrega 2.2 -->
+          <article class="delivery-card locked" data-delivery="2">
             <div class="delivery-icon" aria-hidden="true">🚗</div>
-
             <div>
               <p class="delivery-number">Entrega 2.2</p>
               <h2>Alquiler de autos y viajes</h2>
-              <p>
-                Precios, kilometraje, tarifas por semana, vehículos y vocabulario
-                necesario para viajar por carretera.
-              </p>
+              <p>Precios, kilometraje, tarifas por semana, vehículos y vocabulario necesario para viajar por carretera.</p>
             </div>
-
-            <span class="button locked-button">🔒 Bloqueada</span>
+            <a href="unit-2-delivery-2.html" class="button button-primary delivery-btn locked-button">🔒 Bloqueada</a>
           </article>
 
-          <article class="delivery-card locked">
+          <!-- Entrega 2.3 -->
+          <article class="delivery-card locked" data-delivery="3">
             <div class="delivery-icon" aria-hidden="true">🛢️</div>
-
             <div>
               <p class="delivery-number">Entrega 2.3</p>
               <h2>Negocios y comparaciones</h2>
-              <p>
-                Opiniones, cantidades, comparativos, superlativos, “how much”,
-                “how many”, “a few” y “a little”.
-              </p>
+              <p>Opiniones, cantidades, comparativos, superlativos, “how much”, “how many”, “a few” y “a little”.</p>
             </div>
-
-            <span class="button locked-button">🔒 Bloqueada</span>
+            <a href="unit-2-delivery-3.html" class="button button-primary delivery-btn locked-button">🔒 Bloqueada</a>
           </article>
 
-          <article class="delivery-card locked">
+          <!-- Entrega 2.4 -->
+          <article class="delivery-card locked" data-delivery="4">
             <div class="delivery-icon" aria-hidden="true">🍽️</div>
-
             <div>
               <p class="delivery-number">Entrega 2.4</p>
               <h2>En el restaurante</h2>
-              <p>
-                Pedir comida, solicitar recomendaciones, describir platos,
-                bebidas, carne, guarniciones y hacer un brindis.
-              </p>
+              <p>Pedir comida, solicitar recomendaciones, describir platos, bebidas, carne, guarniciones y hacer un brindis.</p>
             </div>
-
-            <span class="button locked-button">🔒 Bloqueada</span>
+            <a href="unit-2-delivery-4.html" class="button button-primary delivery-btn locked-button">🔒 Bloqueada</a>
           </article>
 
-          <article class="delivery-card locked">
+          <!-- Entrega 2.5 -->
+          <article class="delivery-card locked" data-delivery="5">
             <div class="delivery-icon" aria-hidden="true">🤠</div>
-
             <div>
               <p class="delivery-number">Entrega 2.5</p>
               <h2>Texas, cultura y repaso</h2>
-              <p>
-                Cultura de Texas, cuestionario, canción, pronunciación y
-                evaluación final de la unidad.
-              </p>
+              <p>Cultura de Texas, cuestionario, canción, pronunciación y evaluación final de la unidad.</p>
             </div>
-
-            <span class="button locked-button">🔒 Bloqueada</span>
+            <a href="unit-2-delivery-5.html" class="button button-primary delivery-btn locked-button">🔒 Bloqueada</a>
           </article>
         </div>
 
@@ -738,7 +739,7 @@
           <h2>Vista preliminar del material</h2>
 
           <p>
-            Aunque los ejercicios están bloqueados, puedes ver los temas que
+            Aunque los ejercicios estén bloqueados, puedes ver los temas que
             estudiarás cuando completes la Unidad 1.
           </p>
 
@@ -746,28 +747,19 @@
             <article class="preview-card">
               <span>VOCABULARIO</span>
               <h3>Hotel y transporte</h3>
-              <p>
-                Reservation, room, floor, key, car rental, mileage, highway y
-                directions.
-              </p>
+              <p>Reservation, room, floor, key, car rental, mileage, highway y directions.</p>
             </article>
 
             <article class="preview-card">
               <span>GRAMÁTICA</span>
               <h3>Cantidades y comparación</h3>
-              <p>
-                Have got, one/ones, ordinal numbers, comparatives, as...as,
-                much, many, few y little.
-              </p>
+              <p>Have got, one/ones, ordinal numbers, comparatives, as...as, much, many, few y little.</p>
             </article>
 
             <article class="preview-card">
               <span>COMUNICACIÓN</span>
               <h3>Situaciones reales</h3>
-              <p>
-                Reservar una habitación, alquilar un auto, ordenar comida y
-                hablar sobre negocios y viajes.
-              </p>
+              <p>Reservar una habitación, alquilar un auto, ordenar comida y hablar sobre negocios y viajes.</p>
             </article>
           </div>
         </section>
@@ -785,13 +777,81 @@
       </a>
     </div>
   </footer>
-<script src="../assets/js/rewards.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.RewardsSystem) {
-      window.RewardsSystem.checkForReward();
-    }
-  });
-</script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Clave que confirma si la Unidad 1 ha sido completada
+      // (Puedes asegurarte de guardar esto al finalizar la última actividad de la Unidad 1)
+      const unit1Completed = localStorage.getItem("506EnglishExpress.unit1.completed") === "true";
+
+      const alertBox = document.getElementById("unit-alert");
+      const alertIcon = document.getElementById("alert-icon");
+      const alertTitle = document.getElementById("alert-title");
+      const alertDesc = document.getElementById("alert-desc");
+      const progressText = document.getElementById("unit-progress-text");
+      const progressFill = document.getElementById("unit-progress-fill");
+      const cards = document.querySelectorAll(".delivery-card");
+
+      // Calcular el progreso individual de la Unidad 2 guardado localmente
+      const unit2ProgressKey = "506EnglishExpress.unit2.progress";
+      
+      function getUnit2CompletedCount() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(unit2ProgressKey));
+          return Array.isArray(stored) ? stored.length : 0;
+        } catch {
+          return 0;
+        }
+      }
+
+      if (unit1Completed) {
+        // --- CASO 1: LA UNIDAD 1 ESTÁ COMPLETADA (UNIDAD 2 DESBLOQUEADA) ---
+        alertBox.classList.add("is-unlocked");
+        alertIcon.textContent = "🔓";
+        alertTitle.textContent = "¡Unidad desbloqueada!";
+        alertDesc.textContent = "Has completado la Unidad 1 con éxito. Ya puedes iniciar con las entregas de la Unidad 2.";
+
+        const completedCount = getUnit2CompletedCount();
+        const percentage = Math.round((completedCount / cards.length) * 100);
+
+        progressText.textContent = `En progreso · ${percentage}%`;
+        progressFill.style.width = `${percentage}%`;
+
+        cards.forEach((card, index) => {
+          const deliveryNum = index + 1;
+          const button = card.querySelector(".delivery-btn");
+          
+          // Habilitar tarjeta
+          card.classList.remove("locked");
+          
+          // Habilitar botón de la entrega
+          if (button) {
+            button.classList.remove("locked-button");
+            button.textContent = `Iniciar Entrega 2.${deliveryNum} →`;
+          }
+        });
+
+      } else {
+        // --- CASO 2: LA UNIDAD 1 NO SE HA COMPLETADO (UNIDAD 2 BLOQUEADA) ---
+        alertBox.classList.remove("is-unlocked");
+        alertIcon.textContent = "🔒";
+        alertTitle.textContent = "Unidad con acceso progresivo";
+        alertDesc.textContent = "Debes completar la Unidad 1 y sus actividades anteriores para desbloquear los ejercicios de esta unidad.";
+
+        progressText.textContent = "Bloqueada · 0%";
+        progressFill.style.width = "0%";
+
+        cards.forEach((card, index) => {
+          const button = card.querySelector(".delivery-btn");
+          card.classList.add("locked");
+          
+          if (button) {
+            button.classList.add("locked-button");
+            button.textContent = index === 0 ? "🔒 Requiere Unidad 1" : "🔒 Bloqueada";
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

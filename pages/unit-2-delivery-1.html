@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07101f">
-  <meta
-    name="description"
-    content="Unidad 2, Entrega 1: En el hotel."
-  >
+  <meta name="description" content="Unidad 2, Entrega 1: En el hotel.">
 
   <title>En el hotel | 506 English Express</title>
 
@@ -17,34 +14,104 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-
   <link rel="stylesheet" href="../assets/css/styles.css">
-  <link rel="stylesheet" href="../assets/css/lesson.css">
 
   <style>
-    .lesson-complete-message[hidden] {
-      display: none;
+    .lesson-page {
+      padding: 3.5rem 0 5rem;
     }
 
-    .completion-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+    .lesson-hero,
+    .audio-player-card,
+    .activity-card {
+      border: 1px solid rgba(47, 215, 255, 0.32);
+      border-radius: 18px;
+      background: rgba(4, 20, 39, 0.76);
+      box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
+    }
+
+    .lesson-hero {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+
+    .lesson-hero h1,
+    .activity-card h2,
+    .completion-card h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .lesson-hero h1 {
+      font-size: clamp(1.65rem, 4vw, 3rem);
+      line-height: 1.2;
+    }
+
+    .lesson-hero > p:last-child,
+    .activity-card p,
+    .activity-card li,
+    .completion-card p {
+      color: rgba(225, 243, 255, 0.86);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .lesson-progress {
       margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(47, 215, 255, 0.2);
+    }
+
+    .lesson-progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .lesson-progress-header span,
+    .activity-label,
+    .audio-player-label {
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lesson-progress-header strong {
+      color: #8cecff;
+    }
+
+    .lesson-progress-track {
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(47, 215, 255, 0.26);
+      border-radius: 999px;
+      background: rgba(1, 11, 27, 0.75);
+    }
+
+    .lesson-progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2fd7ff, #71ffc0);
+      box-shadow: 0 0 14px rgba(47, 215, 255, 0.7);
+      transition: width 0.3s ease;
     }
 
     .audio-player-card {
-      margin: 1.25rem 0;
+      margin: 1.5rem 0 1rem;
       padding: 1.25rem;
-      border: 1px solid rgba(47, 215, 255, 0.35);
-      border-radius: 14px;
-      background: rgba(4, 20, 39, 0.72);
-      box-shadow: 0 0 24px rgba(47, 215, 255, 0.08);
     }
 
     .audio-player-info,
-    .audio-player-controls {
+    .audio-player-controls,
+    .activity-actions {
       display: flex;
       align-items: center;
       gap: 0.85rem;
@@ -68,19 +135,13 @@
 
     .audio-player-label {
       margin: 0 0 0.25rem;
-      color: #ffc43d;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
 
-    .audio-player-info h3 {
+    .audio-player-info h2 {
       margin: 0;
       color: #effaff;
       font-family: "Orbitron", sans-serif;
-      font-size: 1rem;
+      font-size: 1.05rem;
       text-transform: uppercase;
     }
 
@@ -93,7 +154,8 @@
       margin-top: 1rem;
     }
 
-    .audio-play-button {
+    .audio-play-button,
+    .activity-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -101,8 +163,8 @@
       padding: 0.65rem 0.9rem;
       border: 1px solid rgba(47, 215, 255, 0.65);
       border-radius: 8px;
-      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
-      color: #061321;
+      background: rgba(47, 215, 255, 0.12);
+      color: #b7f5ff;
       cursor: pointer;
       font-family: "Orbitron", sans-serif;
       font-size: 0.67rem;
@@ -111,12 +173,18 @@
       text-transform: uppercase;
     }
 
-    .audio-play-button:hover {
-      background: rgba(47, 215, 255, 0.25);
-      color: #b7f5ff;
+    .audio-play-button {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      color: #061321;
     }
 
-    .audio-time {
+    .audio-play-button:hover,
+    .activity-button:hover {
+      background: rgba(47, 215, 255, 0.25);
+    }
+
+    .audio-time,
+    .activity-status {
       color: #71ffc0;
       font-weight: 700;
     }
@@ -127,51 +195,223 @@
       accent-color: #2fd7ff;
     }
 
+    .activity-card {
+      margin: 1.25rem 0;
+      padding: clamp(1.15rem, 3vw, 1.7rem);
+    }
+
+    .activity-card h2 {
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 1.3;
+    }
+
+    .activity-label {
+      margin: 0 0 0.55rem;
+    }
+
+    .activity-card ul,
+    .activity-card ol {
+      padding-left: 1.3rem;
+    }
+
+    .activity-card.is-complete {
+      border-color: rgba(113, 255, 192, 0.7);
+    }
+
+    .activity-card.is-complete .activity-label {
+      color: #71ffc0;
+    }
+
+    .dialogue {
+      margin-top: 1.1rem;
+      padding: 1rem;
+      border-left: 3px solid #2fd7ff;
+      border-radius: 0 10px 10px 0;
+      background: rgba(47, 215, 255, 0.06);
+    }
+
+    .dialogue p {
+      margin: 0.65rem 0;
+    }
+
+    .dialogue strong {
+      color: #8cecff;
+    }
+
+    .answer-options {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .answer-option {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.24);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .answer-option input {
+      accent-color: #2fd7ff;
+    }
+
+    .student-input, select.student-input {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0.55rem 0 1rem;
+      padding: 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.35);
+      border-radius: 8px;
+      outline: none;
+      background: rgba(1, 11, 27, 0.62);
+      color: #effaff;
+      font: inherit;
+    }
+
+    .student-input:focus {
+      border-color: #2fd7ff;
+      box-shadow: 0 0 0 3px rgba(47, 215, 255, 0.12);
+    }
+
+    textarea.student-input {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .activity-actions {
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-box {
+      padding: 1rem;
+      border: 1px solid rgba(118, 226, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(1, 11, 27, 0.34);
+    }
+
+    .vocabulary-box h3 {
+      margin: 0 0 0.6rem;
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .vocabulary-box p {
+      margin: 0;
+    }
+
+    .reading-context-box {
+      background: rgba(6, 22, 42, 0.85);
+      border: 1px solid rgba(47, 215, 255, 0.3);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      color: rgba(230, 245, 255, 0.9);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .reading-context-box h4 {
+      color: #2fd7ff;
+      font-family: "Orbitron", sans-serif;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .completion-card {
+      margin-top: 2rem;
+      padding: 1.7rem;
+      border: 1px solid rgba(113, 255, 192, 0.5);
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        rgba(113, 255, 192, 0.13),
+        rgba(4, 20, 39, 0.78)
+      );
+      text-align: center;
+    }
+
+    .completion-card p {
+      max-width: 700px;
+      margin: 0.8rem auto 1.2rem;
+    }
+
+    .completion-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    
+    .map-figure {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    .map-figure img {
+      max-width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(47, 215, 255, 0.3);
+    }
+    .map-figure figcaption {
+      margin-top: 0.5rem;
+      color: #8cecff;
+      font-size: 0.85rem;
+    }
+
     @media (max-width: 650px) {
+      .lesson-page {
+        padding-top: 2.2rem;
+      }
+
+      .lesson-progress-header,
       .audio-player-controls {
         align-items: flex-start;
         flex-direction: column;
       }
+
+      .vocabulary-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
-<style id="rewards-506-shared-style">
-.reward-avatar-badge {
-  display:grid;
-  grid-template-columns:78px minmax(0,1fr);
-  gap:.95rem;
-  align-items:center;
-  padding:.9rem 1rem;
-  border:1px solid rgba(47,215,255,.25);
-  border-radius:16px;
-  background:linear-gradient(145deg, rgba(6,22,42,.92), rgba(4,15,30,.78));
-  box-shadow:0 0 24px rgba(47,215,255,.08);
-}
-.reward-avatar-badge__media{display:flex;justify-content:center;align-items:center}
-.reward-avatar-badge__image{width:78px;height:78px;object-fit:cover;border-radius:18px;border:1px solid rgba(47,215,255,.46);box-shadow:0 0 18px rgba(47,215,255,.2)}
-.reward-avatar-badge__eyebrow,.reward-avatar-collection__eyebrow{margin:0 0 .35rem;color:#ffc43d;font-family:Orbitron,sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.reward-avatar-badge__title,.reward-avatar-card__body h3,.reward-avatar-collection__header h2{margin:0 0 .3rem;font-family:Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.04em}
-.reward-avatar-badge__meta,.reward-avatar-badge__progress,.reward-avatar-card__body p,.reward-avatar-collection__header p:last-child{margin:0 0 .2rem;color:rgba(220,240,255,.78)}
-.reward-avatar-collection__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
-.reward-avatar-card{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(47,215,255,.16);background:rgba(3,11,27,.7);padding:.85rem;min-height:196px;display:flex;flex-direction:column;gap:.7rem}
-.reward-avatar-card__visual{position:relative;border-radius:14px;background:rgba(6,20,38,.9);padding:.75rem;display:grid;place-items:center;min-height:116px;border:1px solid rgba(255,255,255,.06)}
-.reward-avatar-card__image{width:100%;max-width:92px;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid rgba(47,215,255,.32);display:block}
-.reward-avatar-card__placeholder{display:grid;place-items:center;width:92px;height:92px;border-radius:14px;border:1px dashed rgba(255,255,255,.14);color:rgba(255,255,255,.45);font-size:2rem;background:rgba(255,255,255,.02)}
-.reward-avatar-card__number{position:absolute;top:.5rem;right:.5rem;min-width:34px;min-height:34px;padding:.2rem .45rem;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:rgba(3,11,27,.82);border:1px solid rgba(47,215,255,.3);color:#8cecff;font-family:Orbitron,sans-serif;font-size:.66rem;letter-spacing:.08em}
-.reward-avatar-card.is-current{border-color:rgba(255,196,61,.7);box-shadow:0 0 0 1px rgba(255,196,61,.18),0 18px 35px rgba(255,196,61,.12);background:linear-gradient(160deg, rgba(255,196,61,.14), rgba(3,11,27,.84))}
-.reward-avatar-card.is-unlocked .reward-avatar-card__body p{color:rgba(113,255,192,.88)}
-.reward-avatar-card.is-locked{opacity:.58;filter:grayscale(1)}
-@media (max-width:860px){.reward-avatar-collection__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:560px){.reward-avatar-badge{grid-template-columns:64px minmax(0,1fr)}.reward-avatar-badge__image{width:64px;height:64px}.reward-avatar-collection__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-</style>
+
+  <style id="rewards-506-shared-style">
+    .reward-avatar-badge {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: .95rem;
+      align-items: center;
+      padding: .9rem 1rem;
+      border: 1px solid rgba(47, 215, 255, .25);
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(6, 22, 42, .92), rgba(4, 15, 30, .78));
+      box-shadow: 0 0 24px rgba(47, 215, 255, .08);
+    }
+    .reward-avatar-badge__media { display: flex; justify-content: center; align-items: center; }
+    .reward-avatar-badge__image { width: 78px; height: 78px; object-fit: cover; border-radius: 18px; border: 1px solid rgba(47, 215, 255, .46); box-shadow: 0 0 18px rgba(47, 215, 255, .2); }
+    .reward-avatar-badge__eyebrow { margin: 0 0 .35rem; color: #ffc43d; font-family: Orbitron, sans-serif; font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .reward-avatar-badge__title { margin: 0 0 .3rem; font-family: Orbitron, sans-serif; text-transform: uppercase; letter-spacing: .04em; }
+    .reward-avatar-badge__meta, .reward-avatar-badge__progress { margin: 0 0 .2rem; color: rgba(220, 240, 255, .78); }
+  </style>
 </head>
 
 <body>
   <div class="video-bg" aria-hidden="true">
     <video autoplay muted loop playsinline>
-      <source
-        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
-        type="video/mp4"
-      >
+      <source src="../assets/video/crea_una_animacion_donde_la_ca.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -188,7 +428,7 @@
   <header>
     <nav class="container navbar" aria-label="Navegación principal">
       <a href="../index.html" class="brand" aria-label="Volver al inicio">
-        <span class="brand-mark" aria-hidden="true"><span>⚡</span></span>
+        <span class="brand-mark" aria-hidden="true">⚡</span>
         <span class="brand-text">English <strong>506</strong> Express</span>
       </a>
 
@@ -197,25 +437,27 @@
         <a href="unit-2.html">Unidad 2</a>
       </div>
 
-      <a href="unit-1.html" class="button button-outline button-small">
-        Unidad anterior
-      </a>
+      <div class="nav-actions">
+        <a href="unit-1.html" class="button button-outline button-small">
+          Unidad anterior
+        </a>
+      </div>
     </nav>
   </header>
 
   <main class="lesson-page">
-<section class="activity-card" aria-labelledby="current-avatar-title" style="margin-top:1rem;">
-  <div style="padding:1rem;">
-    <p class="lesson-kicker">Sistema de recompensas</p>
-    <h2 id="current-avatar-title">Tu avatar actual</h2>
-    <div id="current-avatar-badge"></div>
-  </div>
-</section>
-
     <div class="container">
-      <section class="lesson-banner">
-        <p class="kicker">Unidad 02 · Entrega 01</p>
+      
+      <section class="activity-card" aria-labelledby="current-avatar-title" style="margin-top:1rem;">
+        <div style="padding:0.5rem;">
+          <p class="activity-label">Sistema de recompensas</p>
+          <h2 id="current-avatar-title">Tu avatar actual</h2>
+          <div id="current-avatar-badge" style="margin-top: 0.75rem;"></div>
+        </div>
+      </section>
 
+      <section class="lesson-hero">
+        <p class="kicker">Unidad 02 · Entrega 01</p>
         <h1>En el hotel</h1>
 
         <p>
@@ -225,680 +467,491 @@
         </p>
 
         <div class="lesson-progress">
-          <div>
-            <div class="lesson-progress-label">
-              <span>Progreso de la entrega</span>
-              <span id="progress-text">0 de 10 secciones completadas</span>
-            </div>
-
-            <div
-              class="progress-track"
-              role="progressbar"
-              aria-label="Progreso de la entrega"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="0"
-            >
-              <div class="progress-fill" id="progress-fill"></div>
-            </div>
+          <div class="lesson-progress-header">
+            <span>Progreso de la entrega</span>
+            <strong id="lesson-progress-text">0 de 10 secciones completadas</strong>
           </div>
 
+          <div
+            class="lesson-progress-track"
+            role="progressbar"
+            aria-label="Progreso de la entrega"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
+          </div>
+          
           <button
-            class="button button-outline button-small"
+            class="activity-button"
             id="reset-progress"
             type="button"
+            style="margin-top: 1rem; width: auto;"
           >
-            Reiniciar
+            Reiniciar progreso
           </button>
         </div>
       </section>
 
-      <section class="lesson-sections">
-        <article class="lesson-section activity-card" data-activity="1">
-          <div class="activity-heading">
+      <!-- ACTIVIDAD 01 -->
+      <section class="activity-card" data-activity="1">
+        <p class="activity-label">Actividad 01 · Diálogo</p>
+        <h2>Jane llega al hotel</h2>
+
+        <p>Lea el diálogo. Jane llega a recepción, confirma su reserva y después intenta alquilar un coche. Tom necesita ayuda para llegar a otra agencia.</p>
+
+        <section class="audio-player-card" aria-label="Audio del diálogo">
+          <div class="audio-player-info">
+            <span class="audio-player-icon" aria-hidden="true">🔊</span>
             <div>
-              <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
+              <p class="audio-player-label">Audio del diálogo</p>
               <h2>Jane llega al hotel</h2>
+              <p>Escucha el diálogo y practica la pronunciación.</p>
             </div>
-
-            <span class="activity-icon" aria-hidden="true">🏨</span>
           </div>
 
-          <p>
-            Lea el diálogo. Jane llega a recepción, confirma su reserva y después
-            intenta alquilar un coche. Tom necesita ayuda para llegar a otra agencia.
-          </p>
+          <audio id="work-audio" preload="metadata">
+            <source src="../assets/audio/unit-2/1-en-el-hotel.mp3" type="audio/mpeg">
+            Tu navegador no admite la reproducción de audio.
+          </audio>
 
-          <section class="audio-player-card" aria-label="Audio del diálogo">
-            <div class="audio-player-info">
-              <span class="audio-player-icon" aria-hidden="true">🔊</span>
-
-              <div>
-                <p class="audio-player-label">Audio del diálogo</p>
-                <h3>Jane llega al hotel</h3>
-                <p>Escucha el diálogo y practica la pronunciación.</p>
-              </div>
-            </div>
-
-            <audio id="work-audio" preload="metadata">
-              <source
-                src="../assets/audio/unit-2/1-en-el-hotel.mp3"
-                type="audio/mpeg"
-              >
-              Tu navegador no admite la reproducción de audio.
-            </audio>
-
-            <div class="audio-player-controls">
-              <button
-                id="audio-play-button"
-                class="audio-play-button"
-                type="button"
-                aria-label="Reproducir audio"
-              >
-                <span id="audio-play-icon" aria-hidden="true">▶</span>
-                <span id="audio-play-text">Reproducir audio</span>
-              </button>
-
-              <span id="audio-time" class="audio-time">0:00 / 0:00</span>
-            </div>
-
-            <input
-              id="audio-progress"
-              class="audio-progress"
-              type="range"
-              min="0"
-              max="100"
-              value="0"
-              step="0.1"
-              aria-label="Progreso del audio"
-            >
-          </section>
-
-          <div class="dialogue-box">
-            <p><strong>Jane Saunders:</strong> Hello, do you have a reservation in my name? Jane Saunders.</p>
-            <p><strong>Receptionist:</strong> Yes. Here we are... a single room with bath. Room 1707, 17th floor.</p>
-            <p><strong>Jane:</strong> Thank you.</p>
-            <p><strong>Jane:</strong> Oh, yes, and I'd also like to rent a car, please.</p>
-            <p><strong>Receptionist:</strong> Yes, Ms. Saunders, the car rental desk is on the left, next to the newsstand.</p>
-            <p><strong>Car rental clerk:</strong> May I help you? Who's first?</p>
-            <p><strong>Jane:</strong> I'd like to rent a car, please, for five days.</p>
-            <p><strong>Car rental clerk:</strong> Yes, sure. We have a BMW for a flat fee of $70 per day, mileage included, and a full gas tank. It's a really fast car. Or, there's a Ford two-door convertible for $50 per day and, of course, we have a special weekly rate.</p>
-            <p><strong>Jane:</strong> I'll take the Ford... with this lovely weather, the convertible sounds nice.</p>
-            <p><strong>Car rental clerk:</strong> You're in luck — it's our last one.</p>
-            <p><strong>Tom:</strong> Oh, that's too bad!</p>
-            <p><strong>Jane:</strong> Oh, dear. I'm sorry. Um...</p>
-            <p><strong>Car rental clerk:</strong> Don't worry. I know our agency on Hollywood Boulevard has several. I can call and reserve one for you.</p>
-            <p><strong>Tom:</strong> Thanks. I really appreciate that.</p>
-            <p><strong>Car rental clerk:</strong> Your name, please?</p>
-            <p><strong>Tom:</strong> Tom Ryder. But how do I get there? I haven't got a car!</p>
-            <p><strong>Jane:</strong> Oh, well... Can I give you a lift?</p>
-            <p><strong>Tom:</strong> Thanks. Is that O.K.?</p>
-            <p><strong>Jane:</strong> Yes, that's fine. You can make sure I don't drive on the left!</p>
-          </div>
-
-          <div class="translation-box">
-            <strong>Idea principal:</strong>
-            <span>
-              Jane tiene una habitación reservada y alquila el último Ford
-              descapotable. Tom no consigue coche, así que Jane le ofrece llevarlo
-              a la agencia de Hollywood Boulevard.
-            </span>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
+          <div class="audio-player-controls">
+            <button id="audio-play-button" class="audio-play-button" type="button" aria-label="Reproducir audio">
+              <span id="audio-play-icon" aria-hidden="true">▶</span>
+              <span id="audio-play-text">Reproducir audio</span>
             </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="2">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 02 · COMPRENSIÓN</p>
-              <h2>Compruebe su comprensión</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🧠</span>
+            <span id="audio-time" class="audio-time">0:00 / 0:00</span>
           </div>
 
-          <div class="question-block">
-            <p><strong>1. ¿Qué habitación reserva Jane?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="question-1" value="a">
-              A double room with shower
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-1" value="b">
-              A single room with bath
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-1" value="c">
-              A room with a balcony
-            </label>
-          </div>
-
-          <div class="question-block">
-            <p><strong>2. ¿Cuál coche elige Jane?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="question-2" value="a">
-              A BMW
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-2" value="b">
-              A Ford two-door convertible
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-2" value="c">
-              A red limousine
-            </label>
-          </div>
-
-          <div class="question-block">
-            <p><strong>3. ¿Cómo ayuda Jane a Tom?</strong></p>
-
-            <label class="option-label">
-              <input type="radio" name="question-3" value="a">
-              She gives him a lift.
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-3" value="b">
-              She gives him a hotel room.
-            </label>
-
-            <label class="option-label">
-              <input type="radio" name="question-3" value="c">
-              She gives him a newspaper.
-            </label>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-comprehension" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="3">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 03 · VOCABULARIO</p>
-              <h2>Hotel y alquiler de coche</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">📚</span>
-          </div>
-
-          <div class="vocabulary-columns">
-            <section class="vocabulary-group">
-              <h3>Hotel y servicios</h3>
-              <dl class="vocabulary-list">
-                <div><dt>reservation</dt><dd>reserva</dd></div>
-                <div><dt>single room</dt><dd>habitación individual</dd></div>
-                <div><dt>double room</dt><dd>habitación doble</dd></div>
-                <div><dt>bath</dt><dd>baño, bañera</dd></div>
-                <div><dt>shower</dt><dd>ducha</dd></div>
-                <div><dt>floor</dt><dd>piso</dd></div>
-                <div><dt>desk</dt><dd>mostrador, escritorio</dd></div>
-                <div><dt>hotel</dt><dd>hotel</dd></div>
-                <div><dt>newsstand</dt><dd>kiosco de periódicos</dd></div>
-                <div><dt>newspaper</dt><dd>periódico</dd></div>
-                <div><dt>magazine</dt><dd>revista</dd></div>
-              </dl>
-            </section>
-
-            <section class="vocabulary-group">
-              <h3>Alquiler de automóvil</h3>
-              <dl class="vocabulary-list">
-                <div><dt>car rental</dt><dd>alquiler de coches</dd></div>
-                <div><dt>clerk</dt><dd>empleado/a</dd></div>
-                <div><dt>flat fee</dt><dd>precio global</dd></div>
-                <div><dt>mileage</dt><dd>kilometraje</dd></div>
-                <div><dt>two-door convertible</dt><dd>descapotable de dos puertas</dd></div>
-                <div><dt>gas tank</dt><dd>depósito de gasolina</dd></div>
-                <div><dt>weekly rate</dt><dd>tarifa semanal</dd></div>
-                <div><dt>agency</dt><dd>agencia</dd></div>
-                <div><dt>per day</dt><dd>por día</dd></div>
-                <div><dt>weekly</dt><dd>semanal</dd></div>
-                <div><dt>last one</dt><dd>el último</dd></div>
-                <div><dt>several</dt><dd>varios/as</dd></div>
-              </dl>
-            </section>
-
-            <section class="vocabulary-group">
-              <h3>Adjetivos, verbos y ubicación</h3>
-              <dl class="vocabulary-list">
-                <div><dt>full / empty</dt><dd>lleno / vacío</dd></div>
-                <div><dt>fast / slow</dt><dd>rápido / lento</dd></div>
-                <div><dt>lovely / nice</dt><dd>agradable</dd></div>
-                <div><dt>lucky / unlucky</dt><dd>con suerte / sin suerte</dd></div>
-                <div><dt>comfortable</dt><dd>cómodo/a</dd></div>
-                <div><dt>to rent</dt><dd>alquilar</dd></div>
-                <div><dt>to help</dt><dd>ayudar</dd></div>
-                <div><dt>to appreciate</dt><dd>apreciar, agradecer</dd></div>
-                <div><dt>to give a lift</dt><dd>llevar a alguien</dd></div>
-                <div><dt>to drive</dt><dd>conducir</dd></div>
-                <div><dt>to book / reserve</dt><dd>reservar</dd></div>
-                <div><dt>on the left / right</dt><dd>a la izquierda / derecha</dd></div>
-                <div><dt>next to / beside</dt><dd>al lado de</dd></div>
-                <div><dt>near</dt><dd>cerca de</dd></div>
-                <div><dt>behind</dt><dd>detrás de</dd></div>
-                <div><dt>under</dt><dd>debajo de</dd></div>
-                <div><dt>opposite</dt><dd>enfrente de</dd></div>
-                <div><dt>in front of</dt><dd>delante de</dd></div>
-                <div><dt>above / over</dt><dd>encima de</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <div class="question-block">
-            <label for="vocabulary-answer">
-              Complete: “Jane needs a __________ at the hotel.”
-            </label>
-            <input
-              id="vocabulary-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe una palabra en inglés"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-vocabulary" type="button">
-              Revisar respuesta
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="4">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 04 · CÓMO SE DICE</p>
-              <h2>Reservar, localizar y alquilar</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">💬</span>
-          </div>
-
-          <div class="phrase-groups">
-            <section class="phrase-group">
-              <h3>1. Hacer una reserva de hotel</h3>
-              <dl class="phrase-list">
-                <div><dt>I'd like to make a reservation for a single room with bath, please.</dt><dd>Quisiera reservar una habitación individual con baño.</dd></div>
-                <div><dt>I want to reserve a double room with shower.</dt><dd>Quiero reservar una habitación doble con ducha.</dd></div>
-                <div><dt>Can I have a room with a balcony, please?</dt><dd>¿Puede darme una habitación con balcón?</dd></div>
-                <div><dt>I'd like a room for two nights, please.</dt><dd>Quisiera una habitación para dos noches.</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>2. Localizar algo</h3>
-              <dl class="phrase-list">
-                <div><dt>It's on the left, next to the newsstand.</dt><dd>Está a la izquierda, al lado del kiosco.</dd></div>
-                <div><dt>It's on the right, near the reception.</dt><dd>Está a la derecha, cerca de recepción.</dd></div>
-                <div><dt>It's beside the door.</dt><dd>Está junto a la puerta.</dd></div>
-                <div><dt>It's opposite the elevator.</dt><dd>Está enfrente del ascensor.</dd></div>
-                <div><dt>It's in front of the hotel.</dt><dd>Está delante del hotel.</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>3. Alquilar un coche</h3>
-              <dl class="phrase-list">
-                <div><dt>I'd like to rent a car, please.</dt><dd>Quisiera alquilar un coche.</dd></div>
-                <div><dt>Is the mileage included?</dt><dd>¿Está incluido el kilometraje?</dd></div>
-                <div><dt>Do you have a special weekly rate?</dt><dd>¿Tiene una tarifa semanal especial?</dd></div>
-                <div><dt>Is there a flat fee?</dt><dd>¿Hay un precio global?</dd></div>
-                <div><dt>How much is it per day?</dt><dd>¿Cuánto cuesta al día?</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>4. Ofrecer ayuda</h3>
-              <dl class="phrase-list">
-                <div><dt>Can I give you a lift?</dt><dd>¿Puedo llevarte?</dd></div>
-                <div><dt>Would you like a lift?</dt><dd>¿Quieres que te lleve?</dd></div>
-                <div><dt>Can I help you?</dt><dd>¿Puedo ayudarte?</dd></div>
-                <div><dt>The convertible sounds nice.</dt><dd>El descapotable parece agradable.</dd></div>
-                <div><dt>The BMW must be fast.</dt><dd>El BMW debe ser rápido.</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <div class="sentence-practice">
-            <label for="hotel-answer">
-              Complete: “Quisiera reservar una habitación.” →
-              <strong>I'd like to __________ a room.</strong>
-            </label>
-            <input
-              id="hotel-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe el verbo que falta"
-            >
-          </div>
-
-          <div class="sentence-practice">
-            <label for="location-answer">
-              Complete: “Está enfrente del ascensor.” →
-              <strong>It's __________ the elevator.</strong>
-            </label>
-            <input
-              id="location-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe la preposición"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-expressions" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="5">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 05 · PRÁCTICA ORAL</p>
-              <h2>I'd like y have got</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🎤</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>1. I'd like</h3>
-            <p class="example-box"><strong>Ejemplo:</strong> Rent a car. → I'd like to rent a car.</p>
-            <p>Transforme: Go to the movies. / Go to a restaurant. / Have a drink. / Go for a walk. / Reserve a hotel room. / Drive to Los Angeles.</p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>2. Has / Have got</h3>
-            <p class="example-box"><strong>Ejemplo:</strong> John has a fast car. → John's got a fast car.</p>
-            <p>Transforme: We have a beautiful apartment. / She has a lovely little daughter. / They have good jobs. / I have a red convertible. / You have a black limousine.</p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>3. Hasn't / Haven't got</h3>
-            <p class="example-box"><strong>Ejemplo:</strong> She's got a brother in London, not a sister. → She hasn't got a sister in London.</p>
-            <p>Practique: He's got a Volkswagen, not a BMW. / They've got three daughters, not three sons. / She's got an apartment, not a house. / He's got a single room, not a double one. / It's got a bath, not a shower.</p>
-          </section>
-
-          <label for="have-got-answer">
-            Escriba tres oraciones: una con <strong>I'd like to</strong>, una con
-            <strong>has/have got</strong> y una negativa con
-            <strong>hasn't/haven't got</strong>.
-          </label>
-
-          <textarea
-            id="have-got-answer"
-            placeholder="I'd like to rent a car. Jane has got a room. Tom hasn't got a car."
-          ></textarea>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-have-got" type="button">
-              Guardar práctica oral
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="6">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 06 · GRAMÁTICA</p>
-              <h2>One y números ordinales</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🔢</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>1. One</h3>
-            <p class="example-box"><strong>Ejemplo:</strong> You can have a single room or a double room. → You can have a single room or a double one.</p>
-            <p>Sustituya el segundo sustantivo por <strong>one</strong>: You can have a green car or a blue car. / You can take the weekly rate or the monthly rate. / You can ask this doorman or that doorman. / You can go to this gas station or that gas station. / You can take a room with a shower or a room without a shower.</p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>2. Ordinales</h3>
-            <p class="example-box"><strong>Repita:</strong> first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth, thirteenth, fourteenth, fifteenth, sixteenth, seventeenth, eighteenth, nineteenth, twentieth, thirtieth, fortieth, fiftieth, hundredth, thousandth, millionth.</p>
-          </section>
-
-          <div class="question-block">
-            <label for="ordinal-answer">
-              Complete: “Room 1707, 17th floor.” →
-              <strong>Room 1707 is on the __________ floor.</strong>
-            </label>
-            <input
-              id="ordinal-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe el ordinal en inglés"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-ordinal" type="button">
-              Revisar respuesta
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="7">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 07 · PRONUNCIACIÓN</p>
-              <h2>Entonación en situaciones reales</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🗣️</span>
-          </div>
-
-          <p>Repita estas frases cuidando la entonación: disculpas, preguntas, decisiones y ofertas de ayuda.</p>
-
-          <div class="phrase-groups">
-            <section class="phrase-group">
-              <h3>Frases para repetir</h3>
-              <dl class="phrase-list">
-                <div><dt>Oh, dear, I'm sorry.</dt><dd>Disculpa y sorpresa.</dd></div>
-                <div><dt>Do you have a reservation in my name?</dt><dd>Pregunta de recepción.</dd></div>
-                <div><dt>I'll take the Ford.</dt><dd>Decisión.</dd></div>
-                <div><dt>The convertible sounds nice.</dt><dd>Opinión.</dd></div>
-                <div><dt>Oh, that's too bad.</dt><dd>Reacción negativa.</dd></div>
-                <div><dt>Don't worry.</dt><dd>Tranquilizar.</dd></div>
-                <div><dt>Can I give you a lift?</dt><dd>Oferta de ayuda.</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <label for="intonation-answer">
-            Escriba dos frases del listado que practicaría primero:
-          </label>
-
-          <textarea
-            id="intonation-answer"
-            placeholder="I'd like to rent a car. Can I give you a lift?"
-          ></textarea>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar pronunciación como completada
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="8">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 08 · CULTURA</p>
-              <h2>Hoteles y alquiler de coches</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🛣️</span>
-          </div>
-
-          <div class="reading-card">
-            <h3>Viajar y comparar opciones</h3>
-            <p>La lectura presenta hoteles, moteles y agencias de alquiler de automóviles como servicios comunes para quienes viajan por Estados Unidos. Recomienda comparar precios y servicios antes de elegir un alojamiento o un vehículo.</p>
-            <p>Las opciones pueden variar por ciudad, tipo de habitación, temporada, kilometraje, seguros y categoría del automóvil. La expresión <strong>shop around</strong> significa comparar distintas opciones antes de comprar o reservar.</p>
-            <p>Para una persona viajera, un hotel puede ofrecer recepción, desayuno, restaurante, información local y transporte. Una agencia de alquiler puede tener tarifas diarias o semanales, y condiciones diferentes para combustible y kilometraje.</p>
-          </div>
-
-          <div class="question-block">
-            <label for="culture-answer">
-              Escriba una oración en inglés usando <strong>hotel</strong>,
-              <strong>car rental</strong>, <strong>per day</strong> o
-              <strong>weekly rate</strong>:
-            </label>
-            <input
-              id="culture-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Ejemplo: The hotel has a special weekly rate."
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar lectura como completada
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="9">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 09 · ADIVINANZA</p>
-              <h2>El ascensor del décimo piso</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🛗</span>
-          </div>
-
-          <div class="reading-card">
-            <h3>Riddle</h3>
-            <p>A man lives on the tenth floor of an apartment building. Every day he takes the elevator from the tenth floor to the first floor and goes to work. When he comes home in the evening, he takes the elevator from the first floor to the ninth floor, and walks up from the ninth to the tenth floor. Why?</p>
-          </div>
-
-          <div class="question-block">
-            <label for="riddle-answer">
-              Escriba su respuesta en español o inglés:
-            </label>
-            <textarea
-              id="riddle-answer"
-              placeholder="He is short and cannot reach the button for the tenth floor."
-            ></textarea>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-riddle" type="button">
-              Revisar adivinanza
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="10">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 10 · REPASO VISUAL</p>
-              <h2>Partes del automóvil</h2>
-            </div>
-
-            <span class="activity-icon" aria-hidden="true">🚗</span>
-          </div>
-
-          <p>Observe los dibujos y encuentre las palabras en la sopa de letras. Las palabras pueden aparecer horizontal, vertical, diagonalmente o al revés.</p>
-
-          <figure class="map-figure">
-            <img
-              src="../assets/images/unit-2/car-parts-word-search.png"
-              alt="Dibujos de un automóvil y sopa de letras con vocabulario de partes del coche"
-            >
-            <figcaption>Vocabulario del coche y sopa de letras.</figcaption>
-          </figure>
-
-          <div class="vocabulary-columns">
-            <section class="vocabulary-group">
-              <h3>Palabras para encontrar</h3>
-              <dl class="vocabulary-list">
-                <div><dt>window</dt><dd>ventana</dd></div>
-                <div><dt>mirror</dt><dd>espejo</dd></div>
-                <div><dt>door</dt><dd>puerta</dd></div>
-                <div><dt>gas tank</dt><dd>tanque de gasolina</dd></div>
-                <div><dt>tire</dt><dd>llanta, neumático</dd></div>
-                <div><dt>engine</dt><dd>motor</dd></div>
-              </dl>
-            </section>
-
-            <section class="vocabulary-group">
-              <h3>Más partes</h3>
-              <dl class="vocabulary-list">
-                <div><dt>headlight</dt><dd>faro delantero</dd></div>
-                <div><dt>bumper</dt><dd>parachoques</dd></div>
-                <div><dt>accelerator</dt><dd>acelerador</dd></div>
-                <div><dt>brake</dt><dd>freno</dd></div>
-                <div><dt>dashboard</dt><dd>tablero</dd></div>
-                <div><dt>tail lights</dt><dd>luces traseras</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <div class="question-block">
-            <label for="car-answer">
-              Escriba al menos cinco partes del coche en inglés separadas por comas:
-            </label>
-            <textarea
-              id="car-answer"
-              placeholder="window, mirror, door, engine, tire"
-            ></textarea>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary finish-lesson" type="button">
-              Completar Entrega 2.1
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
+          <input id="audio-progress" class="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
+        </section>
+
+        <div class="dialogue">
+          <p><strong>Jane Saunders:</strong> Hello, do you have a reservation in my name? Jane Saunders.</p>
+          <p><strong>Receptionist:</strong> Yes. Here we are... a single room with bath. Room 1707, 17th floor.</p>
+          <p><strong>Jane:</strong> Thank you.</p>
+          <p><strong>Jane:</strong> Oh, yes, and I'd also like to rent a car, please.</p>
+          <p><strong>Receptionist:</strong> Yes, Ms. Saunders, the car rental desk is on the left, next to the newsstand.</p>
+          <p><strong>Car rental clerk:</strong> May I help you? Who's first?</p>
+          <p><strong>Jane:</strong> I'd like to rent a car, please, for five days.</p>
+          <p><strong>Car rental clerk:</strong> Yes, sure. We have a BMW for a flat fee of $70 per day, mileage included, and a full gas tank. It's a really fast car. Or, there's a Ford two-door convertible for $50 per day and, of course, we have a special weekly rate.</p>
+          <p><strong>Jane:</strong> I'll take the Ford... with this lovely weather, the convertible sounds nice.</p>
+          <p><strong>Car rental clerk:</strong> You're in luck — it's our last one.</p>
+          <p><strong>Tom:</strong> Oh, that's too bad!</p>
+          <p><strong>Jane:</strong> Oh, dear. I'm sorry. Um...</p>
+          <p><strong>Car rental clerk:</strong> Don't worry. I know our agency on Hollywood Boulevard has several. I can call and reserve one for you.</p>
+          <p><strong>Tom:</strong> Thanks. I really appreciate that.</p>
+          <p><strong>Car rental clerk:</strong> Your name, please?</p>
+          <p><strong>Tom:</strong> Tom Ryder. But how do I get there? I haven't got a car!</p>
+          <p><strong>Jane:</strong> Oh, well... Can I give you a lift?</p>
+          <p><strong>Tom:</strong> Thanks. Is that O.K.?</p>
+          <p><strong>Jane:</strong> Yes, that's fine. You can make sure I don't drive on the left!</p>
+        </div>
+
+        <p style="margin-top: 1rem;">
+          <strong>Idea principal:</strong> Jane tiene una habitación reservada y alquila el último Ford descapotable. Tom no consigue coche, así que Jane le ofrece llevarlo a la agencia de Hollywood Boulevard.
+        </p>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="1">
+            Marcar diálogo como completado
+          </button>
+          <span class="activity-status" id="activity-status-1"></span>
+        </div>
       </section>
 
-      <section
-        class="lesson-complete-message"
-        id="lesson-complete-message"
-        aria-live="polite"
-        hidden
-      >
+      <!-- ACTIVIDAD 02 -->
+      <section class="activity-card" data-activity="2">
+        <p class="activity-label">Actividad 02 · Comprensión</p>
+        <h2>Compruebe su comprensión</h2>
+
+        <p><strong>1. ¿Qué habitación reserva Jane?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="question-1" value="a"> A double room with shower</label>
+          <label class="answer-option"><input type="radio" name="question-1" value="b"> A single room with bath</label>
+          <label class="answer-option"><input type="radio" name="question-1" value="c"> A room with a balcony</label>
+        </div>
+
+        <p><strong>2. ¿Cuál coche elige Jane?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="question-2" value="a"> A BMW</label>
+          <label class="answer-option"><input type="radio" name="question-2" value="b"> A Ford two-door convertible</label>
+          <label class="answer-option"><input type="radio" name="question-2" value="c"> A red limousine</label>
+        </div>
+
+        <p><strong>3. ¿Cómo ayuda Jane a Tom?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="question-3" value="a"> She gives him a lift.</label>
+          <label class="answer-option"><input type="radio" name="question-3" value="b"> She gives him a hotel room.</label>
+          <label class="answer-option"><input type="radio" name="question-3" value="c"> She gives him a newspaper.</label>
+        </div>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-comprehension">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-2"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 03 -->
+      <section class="activity-card" data-activity="3">
+        <p class="activity-label">Actividad 03 · Vocabulario</p>
+        <h2>Hotel y alquiler de coche</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Hotel y servicios</h3>
+            <p>
+              reservation = reserva<br>
+              single room = habitación individual<br>
+              double room = habitación doble<br>
+              bath = baño, bañera<br>
+              shower = ducha<br>
+              floor = piso<br>
+              desk = mostrador, escritorio<br>
+              hotel = hotel<br>
+              newsstand = kiosco de periódicos<br>
+              newspaper = periódico<br>
+              magazine = revista
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>Alquiler de automóvil</h3>
+            <p>
+              car rental = alquiler de coches<br>
+              clerk = empleado/a<br>
+              flat fee = precio global<br>
+              mileage = kilometraje<br>
+              two-door convertible = descapotable de dos puertas<br>
+              gas tank = depósito de gasolina<br>
+              weekly rate = tarifa semanal<br>
+              agency = agencia<br>
+              per day = por día<br>
+              weekly = semanal<br>
+              last one = el último<br>
+              several = varios/as
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>Adjetivos, verbos y ubicación</h3>
+            <p>
+              full / empty = lleno / vacío<br>
+              fast / slow = rápido / lento<br>
+              lovely / nice = agradable<br>
+              lucky / unlucky = con suerte / sin suerte<br>
+              comfortable = cómodo/a<br>
+              to rent = alquilar<br>
+              to help = ayudar<br>
+              to appreciate = apreciar, agradecer<br>
+              to give a lift = llevar a alguien<br>
+              to drive = conducir<br>
+              to book / reserve = reservar<br>
+              on the left / right = a la izquierda / derecha<br>
+              next to / beside = al lado de<br>
+              near = cerca de<br>
+              behind = detrás de<br>
+              under = debajo de<br>
+              opposite = enfrente de<br>
+              in front of = delante de<br>
+              above / over = encima de
+            </p>
+          </div>
+        </div>
+
+        <label for="vocabulary-answer" style="display: block; margin-top: 1rem;">
+          Complete: “Jane needs a __________ at the hotel.”
+        </label>
+        <input class="student-input" id="vocabulary-answer" type="text" autocomplete="off" placeholder="Escribe una palabra en inglés">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-vocabulary">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-3"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 04 -->
+      <section class="activity-card" data-activity="4">
+        <p class="activity-label">Actividad 04 · Cómo se dice</p>
+        <h2>Reservar, localizar y alquilar</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>1. Hacer una reserva de hotel</h3>
+            <p>
+              I'd like to make a reservation for a single room with bath, please. = Quisiera reservar una habitación individual con baño.<br>
+              I want to reserve a double room with shower. = Quiero reservar una habitación doble con ducha.<br>
+              Can I have a room with a balcony, please? = ¿Puede darme una habitación con balcón?<br>
+              I'd like a room for two nights, please. = Quisiera una habitación para dos noches.
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>2. Localizar algo</h3>
+            <p>
+              It's on the left, next to the newsstand. = Está a la izquierda, al lado del kiosco.<br>
+              It's on the right, near the reception. = Está a la derecha, cerca de recepción.<br>
+              It's beside the door. = Está junto a la puerta.<br>
+              It's opposite the elevator. = Está enfrente del ascensor.<br>
+              It's in front of the hotel. = Está delante del hotel.
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>3. Alquilar un coche</h3>
+            <p>
+              I'd like to rent a car, please. = Quisiera alquilar un coche.<br>
+              Is the mileage included? = ¿Está incluido el kilometraje?<br>
+              Do you have a special weekly rate? = ¿Tiene una tarifa semanal especial?<br>
+              Is there a flat fee? = ¿Hay un precio global?<br>
+              How much is it per day? = ¿Cuánto cuesta al día?
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>4. Ofrecer ayuda</h3>
+            <p>
+              Can I give you a lift? = ¿Puedo llevarte?<br>
+              Would you like a lift? = ¿Quieres que te lleve?<br>
+              Can I help you? = ¿Puedo ayudarte?<br>
+              The convertible sounds nice. = El descapotable parece agradable.<br>
+              The BMW must be fast. = El BMW debe ser rápido.
+            </p>
+          </div>
+        </div>
+
+        <label for="hotel-answer" style="display: block; margin-top: 1rem;">
+          Complete: “Quisiera reservar una habitación.” → <strong>I'd like to __________ a room.</strong>
+        </label>
+        <input class="student-input" id="hotel-answer" type="text" autocomplete="off" placeholder="Escribe el verbo que falta">
+
+        <label for="location-answer">
+          Complete: “Está enfrente del ascensor.” → <strong>It's __________ the elevator.</strong>
+        </label>
+        <input class="student-input" id="location-answer" type="text" autocomplete="off" placeholder="Escribe la preposición">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-expressions">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-4"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 05 -->
+      <section class="activity-card" data-activity="5">
+        <p class="activity-label">Actividad 05 · Práctica oral</p>
+        <h2>I'd like y have got</h2>
+
+        <div class="reading-context-box">
+          <p><strong>1. I'd like</strong><br>
+          <em>Ejemplo:</em> Rent a car. → I'd like to rent a car.<br>
+          Transforme: Go to the movies. / Go to a restaurant. / Have a drink. / Go for a walk. / Reserve a hotel room. / Drive to Los Angeles.</p>
+          
+          <p style="margin-top: 1rem;"><strong>2. Has / Have got</strong><br>
+          <em>Ejemplo:</em> John has a fast car. → John's got a fast car.<br>
+          Transforme: We have a beautiful apartment. / She has a lovely little daughter. / They have good jobs. / I have a red convertible. / You have a black limousine.</p>
+
+          <p style="margin-top: 1rem;"><strong>3. Hasn't / Haven't got</strong><br>
+          <em>Ejemplo:</em> She's got a brother in London, not a sister. → She hasn't got a sister in London.<br>
+          Practique: He's got a Volkswagen, not a BMW. / They've got three daughters, not three sons. / She's got an apartment, not a house. / He's got a single room, not a double one. / It's got a bath, not a shower.</p>
+        </div>
+
+        <label for="have-got-answer">
+          Escriba tres oraciones: una con <strong>I'd like to</strong>, una con <strong>has/have got</strong> y una negativa con <strong>hasn't/haven't got</strong>.
+        </label>
+        <textarea class="student-input" id="have-got-answer" placeholder="I'd like to rent a car. Jane has got a room. Tom hasn't got a car."></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-oral">
+            Guardar práctica oral
+          </button>
+          <span class="activity-status" id="activity-status-5"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 06 -->
+      <section class="activity-card" data-activity="6">
+        <p class="activity-label">Actividad 06 · Gramática</p>
+        <h2>One y números ordinales</h2>
+
+        <div class="reading-context-box">
+          <p><strong>1. One</strong><br>
+          <em>Ejemplo:</em> You can have a single room or a double room. → You can have a single room or a double one.<br>
+          Sustituya el segundo sustantivo por <strong>one</strong>: You can have a green car or a blue car. / You can take the weekly rate or the monthly rate. / You can ask this doorman or that doorman. / You can go to this gas station or that gas station. / You can take a room with a shower or a room without a shower.</p>
+
+          <p style="margin-top: 1rem;"><strong>2. Ordinales</strong><br>
+          <em>Repita:</em> first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth, thirteenth, fourteenth, fifteenth, sixteenth, seventeenth, eighteenth, nineteenth, twentieth, thirtieth, fortieth, fiftieth, hundredth, thousandth, millionth.</p>
+        </div>
+
+        <label for="ordinal-answer">
+          Complete: “Room 1707, 17th floor.” → <strong>Room 1707 is on the __________ floor.</strong>
+        </label>
+        <input class="student-input" id="ordinal-answer" type="text" autocomplete="off" placeholder="Escribe el ordinal en inglés">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-grammar">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-6"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 07 -->
+      <section class="activity-card" data-activity="7">
+        <p class="activity-label">Actividad 07 · Pronunciación</p>
+        <h2>Entonación en situaciones reales</h2>
+
+        <p>Repita estas frases cuidando la entonación: disculpas, preguntas, decisiones y ofertas de ayuda.</p>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Frases para repetir</h3>
+            <p>
+              Oh, dear, I'm sorry. = Disculpa y sorpresa.<br>
+              Do you have a reservation in my name? = Pregunta de recepción.<br>
+              I'll take the Ford. = Decisión.<br>
+              The convertible sounds nice. = Opinión.<br>
+              Oh, that's too bad. = Reacción negativa.<br>
+              Don't worry. = Tranquilizar.<br>
+              Can I give you a lift? = Oferta de ayuda.
+            </p>
+          </div>
+        </div>
+
+        <label for="intonation-answer" style="display: block; margin-top: 1rem;">
+          Escriba dos frases del listado que practicaría primero:
+        </label>
+        <textarea class="student-input" id="intonation-answer" placeholder="I'd like to rent a car. Can I give you a lift?"></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-pronunciation">
+            Marcar pronunciación como completada
+          </button>
+          <span class="activity-status" id="activity-status-7"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 08 -->
+      <section class="activity-card" data-activity="8">
+        <p class="activity-label">Actividad 08 · Cultura</p>
+        <h2>Hoteles y alquiler de coches</h2>
+
+        <div class="reading-context-box">
+          <h4>Viajar y comparar opciones</h4>
+          <p>
+            La lectura presenta hoteles, moteles y agencias de alquiler de automóviles como servicios comunes para quienes viajan por Estados Unidos. Recomienda comparar precios y servicios antes de elegir un alojamiento o un vehículo.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Las opciones pueden variar por ciudad, tipo de habitación, temporada, kilometraje, seguros y categoría del automóvil. La expresión <strong>shop around</strong> significa comparar distintas opciones antes de comprar o reservar.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Para una persona viajera, un hotel puede ofrecer recepción, desayuno, restaurante, información local y transporte. Una agencia de alquiler puede tener tarifas diarias o semanales, y condiciones diferentes para combustible y kilometraje.
+          </p>
+        </div>
+
+        <label for="culture-answer">
+          Escriba una oración en inglés usando <strong>hotel</strong>, <strong>car rental</strong>, <strong>per day</strong> o <strong>weekly rate</strong>:
+        </label>
+        <input class="student-input" id="culture-answer" type="text" autocomplete="off" placeholder="Ejemplo: The hotel has a special weekly rate.">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-culture">
+            Marcar lectura como completada
+          </button>
+          <span class="activity-status" id="activity-status-8"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 09 -->
+      <section class="activity-card" data-activity="9">
+        <p class="activity-label">Actividad 09 · Adivinanza</p>
+        <h2>El ascensor del décimo piso</h2>
+
+        <div class="reading-context-box">
+          <h4>Riddle</h4>
+          <p>
+            A man lives on the tenth floor of an apartment building. Every day he takes the elevator from the tenth floor to the first floor and goes to work. When he comes home in the evening, he takes the elevator from the first floor to the ninth floor, and walks up from the ninth to the tenth floor. Why?
+          </p>
+        </div>
+
+        <label for="riddle-answer">
+          Escriba su respuesta en español o inglés:
+        </label>
+        <textarea class="student-input" id="riddle-answer" placeholder="He is short and cannot reach the button for the tenth floor."></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-riddle">
+            Revisar adivinanza
+          </button>
+          <span class="activity-status" id="activity-status-9"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 10 -->
+      <section class="activity-card" data-activity="10">
+        <p class="activity-label">Actividad 10 · Repaso visual</p>
+        <h2>Partes del automóvil</h2>
+
+        <p>Observe los dibujos y encuentre las palabras en la sopa de letras. Las palabras pueden aparecer horizontal, vertical, diagonalmente o al revés.</p>
+
+        <figure class="map-figure">
+          <img src="../assets/images/unit-2/car-parts-word-search.png" alt="Dibujos de un automóvil y sopa de letras con vocabulario de partes del coche">
+          <figcaption>Vocabulario del coche y sopa de letras.</figcaption>
+        </figure>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Palabras para encontrar</h3>
+            <p>
+              window = ventana<br>
+              mirror = espejo<br>
+              door = puerta<br>
+              gas tank = tanque de gasolina<br>
+              tire = llanta, neumático<br>
+              engine = motor
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>Más partes</h3>
+            <p>
+              headlight = faro delantero<br>
+              bumper = parachoques<br>
+              accelerator = acelerador<br>
+              brake = freno<br>
+              dashboard = tablero<br>
+              tail lights = luces traseras
+            </p>
+          </div>
+        </div>
+
+        <label for="car-answer" style="display: block; margin-top: 1rem;">
+          Escriba al menos cinco partes del coche en inglés separadas por comas:
+        </label>
+        <textarea class="student-input" id="car-answer" placeholder="window, mirror, door, engine, tire"></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="finish-lesson">
+            Completar Entrega 2.1
+          </button>
+          <span class="activity-status" id="activity-status-10"></span>
+        </div>
+      </section>
+
+      <section class="completion-card" id="completion-card" hidden>
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
 
         <p>
-          Completaste “En el hotel”. Ya puedes reservar una habitación, alquilar
-          un coche, localizar servicios y describir elementos básicos de un automóvil.
+          Completaste “En el hotel”. Ya puedes reservar una habitación, alquilar un coche, localizar servicios y describir elementos básicos de un automóvil.
         </p>
 
         <div class="completion-actions">
-          <a class="button button-primary" href="unit-2-delivery-2.html">
+          <a href="unit-2-delivery-2.html" class="button button-primary">
             Siguiente entrega →
           </a>
 
-          <a class="button button-outline" href="unit-2.html">
+          <a href="unit-2.html" class="button button-outline">
             Volver a Unidad 2
           </a>
         </div>
@@ -914,38 +967,25 @@
     </div>
   </footer>
 
+  <script type="module" src="../assets/js/supabase-auth.js?v=7"></script>
+
   <script>
     "use strict";
 
     document.addEventListener("DOMContentLoaded", () => {
       const storageKey = "506EnglishExpress.unit2.delivery1.progress";
       const totalActivities = 10;
-      const cards = [...document.querySelectorAll("[data-activity]")];
 
-      const progressText = document.getElementById("progress-text");
-      const progressFill = document.getElementById("progress-fill");
-      const progressTrack = document.querySelector(".progress-track");
+      const progressText = document.getElementById("lesson-progress-text");
+      const progressFill = document.getElementById("lesson-progress-fill");
+      const completionCard = document.getElementById("completion-card");
+      const progressTrack = document.querySelector(".lesson-progress-track");
       const resetButton = document.getElementById("reset-progress");
-      const completionMessage = document.getElementById("lesson-complete-message");
 
-      function normalize(value) {
-        return String(value || "")
-          .trim()
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/[.,!?;:¡¿'"“”]/g, "")
-          .replace(/\s+/g, " ");
-      }
-
-      function getProgress() {
+      function getCompletedActivities() {
         try {
           const saved = JSON.parse(localStorage.getItem(storageKey));
-
-          if (!Array.isArray(saved)) {
-            return [];
-          }
-
+          if (!Array.isArray(saved)) return [];
           return [...new Set(
             saved
               .map(Number)
@@ -961,263 +1001,283 @@
         }
       }
 
-      function saveProgress(progress) {
-        localStorage.setItem(storageKey, JSON.stringify(progress));
-      }
-
-      function setFeedback(activity, message) {
-        const feedback = document.querySelector(
-          `[data-activity="${activity}"] .activity-feedback`
-        );
-
-        if (feedback) {
-          feedback.textContent = message;
-        }
+      function saveCompletedActivities(completed) {
+        localStorage.setItem(storageKey, JSON.stringify(completed));
       }
 
       function updateInterface() {
-        const completed = getProgress();
-        const count = completed.length;
-        const percentage = Math.round((count / totalActivities) * 100);
+        const completed = getCompletedActivities();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
 
-        progressText.textContent =
-          `${count} de ${totalActivities} secciones completadas`;
+        if (progressText) {
+          progressText.textContent =
+            `${completedCount} de ${totalActivities} secciones completadas`;
+        }
 
-        progressFill.style.width = `${percentage}%`;
-        progressTrack.setAttribute("aria-valuenow", String(percentage));
+        if (progressFill) {
+          progressFill.style.width = `${percentage}%`;
+        }
 
-        cards.forEach((card) => {
-          const activity = Number(card.dataset.activity);
-          const completedActivity = completed.includes(activity);
-          const locked =
-            activity > 1 &&
-            !completed.includes(activity - 1) &&
-            !completedActivity;
+        if (progressTrack) {
+          progressTrack.setAttribute("aria-valuenow", String(percentage));
+        }
 
-          card.classList.toggle("is-complete", completedActivity);
-          card.classList.toggle("is-locked", locked);
+        document
+          .querySelectorAll(".activity-card[data-activity]")
+          .forEach((card) => {
+            const activity = Number(card.dataset.activity);
+            const status = document.getElementById(
+              `activity-status-${activity}`
+            );
+            const button = card.querySelector("[data-complete]");
 
-          const completeButton = card.querySelector(".complete-activity");
+            if (completed.includes(activity)) {
+              card.classList.add("is-complete");
 
-          if (completeButton && completedActivity) {
-            completeButton.textContent = "Actividad completada";
-          }
-        });
+              if (status) {
+                status.textContent = "✓ Actividad completada";
+              }
 
-        completionMessage.hidden = count !== totalActivities;
+              if (button) {
+                button.textContent = "Actividad completada";
+              }
+            } else {
+              card.classList.remove("is-complete");
+
+              if (status && !status.textContent.includes("✓")) {
+                status.textContent = "";
+              }
+            }
+          });
+
+        if (completionCard) {
+          completionCard.hidden = completedCount !== totalActivities;
+        }
       }
 
-      function completeActivity(activity, message = "✓ Actividad completada.") {
-        const completed = getProgress();
+      async function markActivityComplete(activity) {
+        const completed = getCompletedActivities();
 
         if (!completed.includes(activity)) {
           completed.push(activity);
           completed.sort((a, b) => a - b);
-          saveProgress(completed);
+          saveCompletedActivities(completed);
         }
 
-        setFeedback(activity, message);
         updateInterface();
 
-        if (activity === totalActivities) {
-          window.setTimeout(() => {
-            completionMessage.scrollIntoView({
-              behavior: "smooth",
-              block: "center"
+        if (
+          activity === totalActivities &&
+          typeof window.saveStudentProgress === "function"
+        ) {
+          try {
+            await window.saveStudentProgress({
+              unitNumber: 2,
+              activityId: "unit-2-delivery-1",
+              activityTitle: "En el hotel",
+              completed: true,
+              score: 100
             });
-          }, 250);
+          } catch (error) {
+            console.warn("El progreso local se guardó.", error);
+          }
         }
       }
 
-      document.querySelectorAll(".complete-activity").forEach((button) => {
-        button.addEventListener("click", () => {
-          const activity = Number(
-            button.closest("[data-activity]").dataset.activity
-          );
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
 
-          completeActivity(activity);
+      document.querySelectorAll("[data-complete]").forEach((button) => {
+        button.addEventListener("click", () => {
+          markActivityComplete(Number(button.dataset.complete));
         });
       });
 
-      document
-        .querySelector(".check-comprehension")
-        .addEventListener("click", () => {
-          const answer1 = document.querySelector(
-            'input[name="question-1"]:checked'
-          )?.value;
+      if (resetButton) {
+        resetButton.addEventListener("click", () => {
+          localStorage.removeItem(storageKey);
+          document.querySelectorAll(".activity-status").forEach((status) => {
+            status.textContent = "";
+          });
+          if (completionCard) completionCard.hidden = true;
+          updateInterface();
+        });
+      }
 
-          const answer2 = document.querySelector(
-            'input[name="question-2"]:checked'
-          )?.value;
+      // Actividad 2: Comprensión
+      const compBtn = document.getElementById("check-comprehension");
+      if (compBtn) {
+        compBtn.addEventListener("click", () => {
+          const a1 = document.querySelector('input[name="question-1"]:checked')?.value;
+          const a2 = document.querySelector('input[name="question-2"]:checked')?.value;
+          const a3 = document.querySelector('input[name="question-3"]:checked')?.value;
+          const status = document.getElementById("activity-status-2");
 
-          const answer3 = document.querySelector(
-            'input[name="question-3"]:checked'
-          )?.value;
-
-          if (answer1 === "b" && answer2 === "b" && answer3 === "a") {
-            completeActivity(
-              2,
-              "✓ ¡Correcto! Comprendiste los detalles del diálogo."
-            );
-          } else {
-            setFeedback(2, "Revisa el diálogo e inténtalo otra vez.");
+          if (a1 === "b" && a2 === "b" && a3 === "a") {
+            if (status) status.textContent = "✓ ¡Correcto! Comprendiste los detalles del diálogo.";
+            markActivityComplete(2);
+          } else if (status) {
+            status.textContent = "Revisa el diálogo e inténtalo otra vez.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-vocabulary")
-        .addEventListener("click", () => {
-          const answer = normalize(
-            document.getElementById("vocabulary-answer").value
-          );
+      // Actividad 3: Vocabulario
+      const vocBtn = document.getElementById("check-vocabulary");
+      if (vocBtn) {
+        vocBtn.addEventListener("click", () => {
+          const answer = normalize(document.getElementById("vocabulary-answer").value);
+          const status = document.getElementById("activity-status-3");
 
-          if (
-            answer === "reservation" ||
-            answer === "room" ||
-            answer === "single room"
-          ) {
-            completeActivity(
-              3,
-              "✓ Correcto. Jane needs a reservation or a room at the hotel."
-            );
-          } else {
-            setFeedback(3, "Pista: Jane tiene una reserva y una habitación.");
+          if (["reservation", "room", "single room"].includes(answer)) {
+            if (status) status.textContent = "✓ Correcto: Jane needs a reservation or a room at the hotel.";
+            markActivityComplete(3);
+          } else if (status) {
+            status.textContent = "Pista: Jane tiene una reserva y una habitación.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-expressions")
-        .addEventListener("click", () => {
-          const hotelAnswer = normalize(
-            document.getElementById("hotel-answer").value
-          );
+      // Actividad 4: Cómo se dice
+      const exprBtn = document.getElementById("check-expressions");
+      if (exprBtn) {
+        exprBtn.addEventListener("click", () => {
+          const hotelAnswer = normalize(document.getElementById("hotel-answer").value);
+          const locationAnswer = normalize(document.getElementById("location-answer").value);
+          const status = document.getElementById("activity-status-4");
 
-          const locationAnswer = normalize(
-            document.getElementById("location-answer").value
-          );
-
-          if (
-            ["reserve", "book"].includes(hotelAnswer) &&
-            locationAnswer === "opposite"
-          ) {
-            completeActivity(
-              4,
-              "✓ ¡Muy bien! I'd like to reserve a room. It's opposite the elevator."
-            );
-          } else {
-            setFeedback(
-              4,
-              "Pista: reserve o book / opposite."
-            );
+          if (["reserve", "book"].includes(hotelAnswer) && locationAnswer === "opposite") {
+            if (status) status.textContent = "✓ ¡Muy bien! I'd like to reserve a room. It's opposite the elevator.";
+            markActivityComplete(4);
+          } else if (status) {
+            status.textContent = "Pista: reserve o book / opposite.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-have-got")
-        .addEventListener("click", () => {
-          const answer = normalize(
-            document.getElementById("have-got-answer").value
-          );
+      // Actividad 5: Práctica oral
+      const oralBtn = document.getElementById("check-oral");
+      if (oralBtn) {
+        oralBtn.addEventListener("click", () => {
+          const answer = normalize(document.getElementById("have-got-answer").value);
+          const status = document.getElementById("activity-status-5");
 
           const hasLike = answer.includes("id like") || answer.includes("i'd like");
           const hasGot = answer.includes("has got") || answer.includes("have got");
-          const hasNegative =
-            answer.includes("hasnt got") ||
-            answer.includes("haven't got") ||
-            answer.includes("hasn't got") ||
-            answer.includes("havent got");
+          const hasNegative = answer.includes("hasnt got") || answer.includes("haven't got") || answer.includes("hasn't got") || answer.includes("havent got");
 
           if (answer.length >= 40 && hasLike && hasGot && hasNegative) {
-            completeActivity(5, "✓ Práctica oral guardada.");
-          } else {
-            setFeedback(
-              5,
-              "Incluye una frase con I'd like to, una con has/have got y una negativa."
-            );
+            if (status) status.textContent = "✓ Práctica oral guardada con éxito.";
+            markActivityComplete(5);
+          } else if (status) {
+            status.textContent = "Incluye una frase con I'd like to, una con has/have got y una negativa.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-ordinal")
-        .addEventListener("click", () => {
-          const answer = normalize(
-            document.getElementById("ordinal-answer").value
-          );
+      // Actividad 6: Gramática
+      const gramBtn = document.getElementById("check-grammar");
+      if (gramBtn) {
+        gramBtn.addEventListener("click", () => {
+          const answer = normalize(document.getElementById("ordinal-answer").value);
+          const status = document.getElementById("activity-status-6");
 
           if (answer === "seventeenth" || answer === "17th") {
-            completeActivity(
-              6,
-              "✓ Correcto: Room 1707 is on the seventeenth floor."
-            );
-          } else {
-            setFeedback(6, "Pista: 17th se escribe seventeenth.");
+            if (status) status.textContent = "✓ Correcto: Room 1707 is on the seventeenth floor.";
+            markActivityComplete(6);
+          } else if (status) {
+            status.textContent = "Pista: 17th se escribe seventeenth.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-riddle")
-        .addEventListener("click", () => {
-          const answer = normalize(
-            document.getElementById("riddle-answer").value
+      // Actividad 7: Pronunciación
+      const pronBtn = document.getElementById("check-pronunciation");
+      if (pronBtn) {
+        pronBtn.addEventListener("click", () => {
+          const answer = document.getElementById("intonation-answer").value.trim();
+          const status = document.getElementById("activity-status-7");
+
+          if (answer.length >= 15) {
+            if (status) status.textContent = "✓ Pronunciación marcada como completada.";
+            markActivityComplete(7);
+          } else if (status) {
+            status.textContent = "Escribe al menos dos frases del listado.";
+          }
+        });
+      }
+
+      // Actividad 8: Cultura
+      const cultureBtn = document.getElementById("check-culture");
+      if (cultureBtn) {
+        cultureBtn.addEventListener("click", () => {
+          const answer = document.getElementById("culture-answer").value.trim();
+          const status = document.getElementById("activity-status-8");
+
+          if (answer.length >= 10) {
+            if (status) status.textContent = "✓ Lectura cultural marcada como completada.";
+            markActivityComplete(8);
+          } else if (status) {
+            status.textContent = "Escribe una oración en inglés.";
+          }
+        });
+      }
+
+      // Actividad 9: Adivinanza
+      const riddleBtn = document.getElementById("check-riddle");
+      if (riddleBtn) {
+        riddleBtn.addEventListener("click", () => {
+          const answer = normalize(document.getElementById("riddle-answer").value);
+          const status = document.getElementById("activity-status-9");
+
+          const valid = answer.length >= 20 && (
+            answer.includes("short") || answer.includes("bajo") || answer.includes("pequeno") || answer.includes("pequena") || answer.includes("button") || answer.includes("boton")
           );
 
-          const valid =
-            answer.length >= 20 &&
-            (
-              answer.includes("short") ||
-              answer.includes("bajo") ||
-              answer.includes("pequeno") ||
-              answer.includes("pequena") ||
-              answer.includes("button") ||
-              answer.includes("boton")
-            );
-
           if (valid) {
-            completeActivity(
-              9,
-              "✓ Correcto. El hombre no alcanza el botón del décimo piso."
-            );
-          } else {
-            setFeedback(
-              9,
-              "Pista: piensa en la altura del hombre y en los botones del ascensor."
-            );
+            if (status) status.textContent = "✓ Correcto. El hombre no alcanza el botón del décimo piso.";
+            markActivityComplete(9);
+          } else if (status) {
+            status.textContent = "Pista: piensa en la altura del hombre y en los botones del ascensor.";
           }
         });
+      }
 
-      document
-        .querySelector(".finish-lesson")
-        .addEventListener("click", () => {
+      // Actividad 10: Repaso Visual y fin
+      const finishBtn = document.getElementById("finish-lesson");
+      if (finishBtn) {
+        finishBtn.addEventListener("click", () => {
           const answer = document.getElementById("car-answer").value;
-          const words = answer
-            .split(/[,\n;]+/)
-            .map(normalize)
-            .filter(Boolean);
+          const words = answer.split(/[,\n;]+/).map(normalize).filter(Boolean);
+          const status = document.getElementById("activity-status-10");
 
           if (words.length >= 5) {
-            completeActivity(
-              10,
-              "✓ ¡Entrega 2.1 completada!"
-            );
-          } else {
-            setFeedback(
-              10,
-              "Escribe al menos cinco partes del automóvil separadas por comas."
-            );
+            if (status) status.textContent = "✓ ¡Entrega 2.1 completada!";
+            markActivityComplete(10);
+
+            window.setTimeout(() => {
+              completionCard.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+            }, 250);
+          } else if (status) {
+            status.textContent = "Escribe al menos cinco partes del automóvil separadas por comas.";
           }
         });
+      }
 
-      resetButton.addEventListener("click", () => {
-        localStorage.removeItem(storageKey);
-
-        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
-          feedback.textContent = "";
-        });
-
-        completionMessage.hidden = true;
-        updateInterface();
-      });
-
+      // Reproductor de audio
       const audio = document.getElementById("work-audio");
       const playButton = document.getElementById("audio-play-button");
       const playIcon = document.getElementById("audio-play-icon");
@@ -1226,98 +1286,46 @@
       const audioTime = document.getElementById("audio-time");
 
       function formatTime(seconds) {
-        if (!Number.isFinite(seconds)) {
-          return "0:00";
-        }
-
+        if (!Number.isFinite(seconds)) return "0:00";
         const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = String(
-          Math.floor(seconds % 60)
-        ).padStart(2, "0");
-
+        const remainingSeconds = String(Math.floor(seconds % 60)).padStart(2, "0");
         return `${minutes}:${remainingSeconds}`;
       }
 
       function updateAudioPlayer() {
-        if (!audio || !audioProgress || !audioTime) {
-          return;
-        }
-
+        if (!audio || !audioProgress || !audioTime) return;
         const currentTime = audio.currentTime || 0;
         const duration = audio.duration || 0;
-
-        audioTime.textContent =
-          `${formatTime(currentTime)} / ${formatTime(duration)}`;
-
-        if (duration > 0) {
-          audioProgress.value = String((currentTime / duration) * 100);
-        }
+        audioTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        if (duration > 0) audioProgress.value = String((currentTime / duration) * 100);
       }
 
       function setAudioButton(isPlaying) {
-        if (!playButton || !playIcon || !playText) {
-          return;
-        }
-
+        if (!playButton || !playIcon || !playText) return;
         playIcon.textContent = isPlaying ? "❚❚" : "▶";
-        playText.textContent = isPlaying
-          ? "Pausar audio"
-          : "Reproducir audio";
-
-        playButton.setAttribute(
-          "aria-label",
-          isPlaying ? "Pausar audio" : "Reproducir audio"
-        );
+        playText.textContent = isPlaying ? "Pausar audio" : "Reproducir audio";
+        playButton.setAttribute("aria-label", isPlaying ? "Pausar audio" : "Reproducir audio");
       }
 
       if (audio && playButton) {
         playButton.addEventListener("click", async () => {
           if (audio.paused) {
-            try {
-              await audio.play();
-            } catch (error) {
-              console.warn("No se pudo reproducir el audio.", error);
-            }
+            try { await audio.play(); } catch (e) { console.warn(e); }
           } else {
             audio.pause();
           }
         });
 
         audio.addEventListener("loadedmetadata", updateAudioPlayer);
-        audio.addEventListener("durationchange", updateAudioPlayer);
         audio.addEventListener("timeupdate", updateAudioPlayer);
-
-        audio.addEventListener("play", () => {
-          setAudioButton(true);
-        });
-
-        audio.addEventListener("pause", () => {
-          setAudioButton(false);
-        });
-
-        audio.addEventListener("ended", () => {
-          audio.currentTime = 0;
-
-          if (audioProgress) {
-            audioProgress.value = "0";
-          }
-
-          updateAudioPlayer();
-          setAudioButton(false);
-        });
-
-        audio.addEventListener("error", () => {
-          if (audioTime) {
-            audioTime.textContent = "Audio no disponible";
-          }
-        });
+        audio.addEventListener("play", () => setAudioButton(true));
+        audio.addEventListener("pause", () => setAudioButton(false));
       }
 
-      if (audio && audioProgress) {
+      if (audioProgress && audio) {
         audioProgress.addEventListener("input", () => {
           if (audio.duration) {
-            audio.currentTime =
-              (Number(audioProgress.value) / 100) * audio.duration;
+            audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
           }
         });
       }
@@ -1326,26 +1334,18 @@
       updateInterface();
     });
   </script>
-<script src="../assets/js/rewards.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.RewardsSystem) {
-      window.RewardsSystem.checkForReward();
-    }
-  });
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.Rewards506 && typeof window.Rewards506.renderCurrentAvatarBadge === 'function') {
-    window.Rewards506.renderCurrentAvatarBadge('#current-avatar-badge');
-  }
-});
-</script>
+
+  <!-- Scripts de Recompensas -->
+  <script src="../assets/js/rewards.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.RewardsSystem) {
+        window.RewardsSystem.checkForReward();
+      }
+      if (window.Rewards506 && typeof window.Rewards506.renderCurrentAvatarBadge === 'function') {
+        window.Rewards506.renderCurrentAvatarBadge('#current-avatar-badge');
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-

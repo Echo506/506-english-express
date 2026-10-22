@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07101f">
-  <meta
-    name="description"
-    content="Unidad 2, Entrega 4: De compras."
-  >
+  <meta name="description" content="Unidad 2, Entrega 4: De compras.">
 
   <title>De compras | 506 English Express</title>
 
@@ -17,61 +14,371 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-
   <link rel="stylesheet" href="../assets/css/styles.css">
-  <link rel="stylesheet" href="../assets/css/lesson.css">
 
   <style>
-    .lesson-complete-message[hidden] {
-      display: none;
+    .lesson-page {
+      padding: 3.5rem 0 5rem;
+    }
+
+    .lesson-hero,
+    .audio-player-card,
+    .activity-card {
+      border: 1px solid rgba(47, 215, 255, 0.32);
+      border-radius: 18px;
+      background: rgba(4, 20, 39, 0.76);
+      box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
+    }
+
+    .lesson-hero {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+
+    .lesson-hero h1,
+    .activity-card h2,
+    .completion-card h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .lesson-hero h1 {
+      font-size: clamp(1.65rem, 4vw, 3rem);
+      line-height: 1.2;
+    }
+
+    .lesson-hero > p:last-child,
+    .activity-card p,
+    .activity-card li,
+    .completion-card p {
+      color: rgba(225, 243, 255, 0.86);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .lesson-progress {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(47, 215, 255, 0.2);
+    }
+
+    .lesson-progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .lesson-progress-header span,
+    .activity-label,
+    .audio-player-label {
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lesson-progress-header strong {
+      color: #8cecff;
+    }
+
+    .lesson-progress-track {
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(47, 215, 255, 0.26);
+      border-radius: 999px;
+      background: rgba(1, 11, 27, 0.75);
+    }
+
+    .lesson-progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2fd7ff, #71ffc0);
+      box-shadow: 0 0 14px rgba(47, 215, 255, 0.7);
+      transition: width 0.3s ease;
+    }
+
+    .audio-player-card {
+      margin: 1.5rem 0 1rem;
+      padding: 1.25rem;
+    }
+
+    .audio-player-info,
+    .audio-player-controls,
+    .activity-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .audio-player-info {
+      align-items: flex-start;
+    }
+
+    .audio-player-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      place-items: center;
+      border: 1px solid rgba(47, 215, 255, 0.58);
+      border-radius: 50%;
+      background: rgba(47, 215, 255, 0.1);
+      font-size: 1.25rem;
+    }
+
+    .audio-player-label {
+      margin: 0 0 0.25rem;
+    }
+
+    .audio-player-info h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+    }
+
+    .audio-player-info p:last-child {
+      margin: 0.35rem 0 0;
+      color: rgba(220, 240, 255, 0.78);
+    }
+
+    .audio-player-controls {
+      margin-top: 1rem;
+    }
+
+    .audio-play-button,
+    .activity-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid rgba(47, 215, 255, 0.65);
+      border-radius: 8px;
+      background: rgba(47, 215, 255, 0.12);
+      color: #b7f5ff;
+      cursor: pointer;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .audio-play-button {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      color: #061321;
+    }
+
+    .audio-play-button:hover,
+    .activity-button:hover {
+      background: rgba(47, 215, 255, 0.25);
+    }
+
+    .audio-time,
+    .activity-status {
+      color: #71ffc0;
+      font-weight: 700;
+    }
+
+    .audio-progress {
+      width: 100%;
+      margin-top: 1rem;
+      accent-color: #2fd7ff;
+    }
+
+    .activity-card {
+      margin: 1.25rem 0;
+      padding: clamp(1.15rem, 3vw, 1.7rem);
+      transition: opacity 0.3s ease, filter 0.3s ease;
+    }
+
+    .activity-card h2 {
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 1.3;
+    }
+
+    .activity-label {
+      margin: 0 0 0.55rem;
+    }
+
+    .activity-card.is-complete {
+      border-color: rgba(113, 255, 192, 0.7);
+    }
+
+    .activity-card.is-complete .activity-label {
+      color: #71ffc0;
+    }
+    
+    .activity-card.is-locked {
+      opacity: 0.6;
+      filter: grayscale(1);
+      pointer-events: none;
+    }
+
+    .dialogue {
+      margin-top: 1.1rem;
+      padding: 1rem;
+      border-left: 3px solid #2fd7ff;
+      border-radius: 0 10px 10px 0;
+      background: rgba(47, 215, 255, 0.06);
+    }
+
+    .dialogue p {
+      margin: 0.65rem 0;
+    }
+
+    .dialogue strong {
+      color: #8cecff;
+    }
+
+    .answer-options {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .answer-option {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.24);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .answer-option input {
+      accent-color: #2fd7ff;
+    }
+
+    .student-input, select.student-input {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0.55rem 0 1rem;
+      padding: 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.35);
+      border-radius: 8px;
+      outline: none;
+      background: rgba(1, 11, 27, 0.62);
+      color: #effaff;
+      font: inherit;
+    }
+
+    .student-input:focus {
+      border-color: #2fd7ff;
+      box-shadow: 0 0 0 3px rgba(47, 215, 255, 0.12);
+    }
+
+    textarea.student-input {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .activity-actions {
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-box {
+      padding: 1rem;
+      border: 1px solid rgba(118, 226, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(1, 11, 27, 0.34);
+    }
+
+    .vocabulary-box h3 {
+      margin: 0 0 0.6rem;
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .vocabulary-box p {
+      margin: 0;
+    }
+
+    .reading-context-box {
+      background: rgba(6, 22, 42, 0.85);
+      border: 1px solid rgba(47, 215, 255, 0.3);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      color: rgba(230, 245, 255, 0.9);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .reading-context-box h4,
+    .reading-context-box h3 {
+      color: #2fd7ff;
+      font-family: "Orbitron", sans-serif;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .completion-card {
+      margin-top: 2rem;
+      padding: 1.7rem;
+      border: 1px solid rgba(113, 255, 192, 0.5);
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        rgba(113, 255, 192, 0.13),
+        rgba(4, 20, 39, 0.78)
+      );
+      text-align: center;
+    }
+
+    .completion-card p {
+      max-width: 700px;
+      margin: 0.8rem auto 1.2rem;
     }
 
     .completion-actions {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 0.75rem;
-      margin-top: 1.25rem;
+    }
+
+    @media (max-width: 650px) {
+      .lesson-page {
+        padding-top: 2.2rem;
+      }
+      .lesson-progress-header,
+      .audio-player-controls {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .vocabulary-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
-<style id="rewards-506-shared-style">
-.reward-avatar-badge {
-  display:grid;
-  grid-template-columns:78px minmax(0,1fr);
-  gap:.95rem;
-  align-items:center;
-  padding:.9rem 1rem;
-  border:1px solid rgba(47,215,255,.25);
-  border-radius:16px;
-  background:linear-gradient(145deg, rgba(6,22,42,.92), rgba(4,15,30,.78));
-  box-shadow:0 0 24px rgba(47,215,255,.08);
-}
-.reward-avatar-badge__media{display:flex;justify-content:center;align-items:center}
-.reward-avatar-badge__image{width:78px;height:78px;object-fit:cover;border-radius:18px;border:1px solid rgba(47,215,255,.46);box-shadow:0 0 18px rgba(47,215,255,.2)}
-.reward-avatar-badge__eyebrow,.reward-avatar-collection__eyebrow{margin:0 0 .35rem;color:#ffc43d;font-family:Orbitron,sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.reward-avatar-badge__title,.reward-avatar-card__body h3,.reward-avatar-collection__header h2{margin:0 0 .3rem;font-family:Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.04em}
-.reward-avatar-badge__meta,.reward-avatar-badge__progress,.reward-avatar-card__body p,.reward-avatar-collection__header p:last-child{margin:0 0 .2rem;color:rgba(220,240,255,.78)}
-.reward-avatar-collection__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
-.reward-avatar-card{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(47,215,255,.16);background:rgba(3,11,27,.7);padding:.85rem;min-height:196px;display:flex;flex-direction:column;gap:.7rem}
-.reward-avatar-card__visual{position:relative;border-radius:14px;background:rgba(6,20,38,.9);padding:.75rem;display:grid;place-items:center;min-height:116px;border:1px solid rgba(255,255,255,.06)}
-.reward-avatar-card__image{width:100%;max-width:92px;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid rgba(47,215,255,.32);display:block}
-.reward-avatar-card__placeholder{display:grid;place-items:center;width:92px;height:92px;border-radius:14px;border:1px dashed rgba(255,255,255,.14);color:rgba(255,255,255,.45);font-size:2rem;background:rgba(255,255,255,.02)}
-.reward-avatar-card__number{position:absolute;top:.5rem;right:.5rem;min-width:34px;min-height:34px;padding:.2rem .45rem;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:rgba(3,11,27,.82);border:1px solid rgba(47,215,255,.3);color:#8cecff;font-family:Orbitron,sans-serif;font-size:.66rem;letter-spacing:.08em}
-.reward-avatar-card.is-current{border-color:rgba(255,196,61,.7);box-shadow:0 0 0 1px rgba(255,196,61,.18),0 18px 35px rgba(255,196,61,.12);background:linear-gradient(160deg, rgba(255,196,61,.14), rgba(3,11,27,.84))}
-.reward-avatar-card.is-unlocked .reward-avatar-card__body p{color:rgba(113,255,192,.88)}
-.reward-avatar-card.is-locked{opacity:.58;filter:grayscale(1)}
-@media (max-width:860px){.reward-avatar-collection__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:560px){.reward-avatar-badge{grid-template-columns:64px minmax(0,1fr)}.reward-avatar-badge__image{width:64px;height:64px}.reward-avatar-collection__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-</style>
 </head>
 
 <body>
   <div class="video-bg" aria-hidden="true">
     <video autoplay muted loop playsinline>
-      <source
-        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
-        type="video/mp4"
-      >
+      <source src="../assets/video/crea_una_animacion_donde_la_ca.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -88,7 +395,7 @@
   <header>
     <nav class="container navbar" aria-label="Navegación principal">
       <a href="../index.html" class="brand" aria-label="Volver al inicio">
-        <span class="brand-mark" aria-hidden="true"><span>⚡</span></span>
+        <span class="brand-mark" aria-hidden="true">⚡</span>
         <span class="brand-text">English <strong>506</strong> Express</span>
       </a>
 
@@ -97,732 +404,509 @@
         <a href="unit-2.html">Unidad 2</a>
       </div>
 
-      <a href="unit-2-delivery-3.html" class="button button-outline button-small">
-        Entrega anterior
-      </a>
+      <div class="nav-actions">
+        <a href="unit-2-delivery-3.html" class="button button-outline button-small">
+          Entrega anterior
+        </a>
+      </div>
     </nav>
   </header>
 
   <main class="lesson-page">
-<section class="activity-card" aria-labelledby="current-avatar-title" style="margin-top:1rem;">
-  <div style="padding:1rem;">
-    <p class="lesson-kicker">Sistema de recompensas</p>
-    <h2 id="current-avatar-title">Tu avatar actual</h2>
-    <div id="current-avatar-badge"></div>
-  </div>
-</section>
-
     <div class="container">
-      <section class="lesson-banner">
+      
+      <section class="lesson-hero">
         <p class="kicker">Unidad 02 · Entrega 04</p>
         <h1>De compras</h1>
 
         <p>
-          Barbara se encuentra con Cindy, una antigua amiga, y ambas van de compras
-          para conseguir un vestido para una fiesta. Aprenderás a hablar de ropa,
-          tallas, colores, apariencia, precios, necesidades y planes futuros.
+          Barbara se encuentra con Cindy, una antigua amiga, y ambas van de compras para conseguir un vestido para una fiesta. Aprenderás a hablar de ropa, tallas, colores, apariencia, precios, necesidades y planes futuros.
         </p>
 
         <div class="lesson-progress">
-          <div>
-            <div class="lesson-progress-label">
-              <span>Progreso de la entrega</span>
-              <span id="progress-text">0 de 10 secciones completadas</span>
-            </div>
-
-            <div
-              class="progress-track"
-              role="progressbar"
-              aria-label="Progreso de la entrega"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="0"
-            >
-              <div class="progress-fill" id="progress-fill"></div>
-            </div>
+          <div class="lesson-progress-header">
+            <span>Progreso de la entrega</span>
+            <strong id="lesson-progress-text">0 de 9 secciones completadas</strong>
           </div>
 
+          <div
+            class="lesson-progress-track"
+            role="progressbar"
+            aria-label="Progreso de la entrega"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
+          </div>
+          
           <button
-            class="button button-outline button-small"
+            class="activity-button"
             id="reset-progress"
             type="button"
+            style="margin-top: 1rem; width: auto;"
           >
-            Reiniciar
+            Reiniciar progreso
           </button>
         </div>
       </section>
 
-      <section class="lesson-sections">
-        <article class="lesson-section activity-card" data-activity="1">
-          <div class="activity-heading">
+      <!-- ACTIVIDAD 01 -->
+      <section class="activity-card" data-activity="1">
+        <p class="activity-label">Actividad 01 · Diálogo</p>
+        <h2>De compras en una boutique</h2>
+
+        <p>Barbara se encuentra con Cindy en una cafetería y luego ambas van a una boutique a probarse ropa.</p>
+
+        <section class="audio-player-card" aria-label="Audio del diálogo">
+          <div class="audio-player-info">
+            <span class="audio-player-icon" aria-hidden="true">🎧</span>
             <div>
-              <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
-              <h2>En una cafetería</h2>
+              <p class="audio-player-label">Audio del diálogo</p>
+              <h2>De compras</h2>
+              <p>Escucha el diálogo completo y practica la pronunciación.</p>
             </div>
-            <span class="activity-icon" aria-hidden="true">☕</span>
           </div>
 
-          <p>
-            Barbara se encuentra con Cindy, una antigua amiga de high school, en una
-            cafetería de Houston.
-          </p>
+          <audio id="work-audio" preload="metadata">
+            <source src="../assets/audio/unit-2/4-de-compras.mp3" type="audio/mpeg">
+            Tu navegador no admite la reproducción de audio.
+          </audio>
 
-                    <section class="audio-player-card" aria-label="Audio del diálogo">
-            <div class="audio-player-info">
-              <span class="audio-player-icon" aria-hidden="true">🎧</span>
-              <div>
-                <p class="audio-player-label">Audio del diálogo</p>
-                <h2>De compras</h2>
-                <p>Escucha el diálogo y practica la pronunciación.</p>
-              </div>
-            </div>
-
-            <audio id="work-audio" preload="metadata">
-              <source src="../assets/audio/unit-2/4-de-compras.mp3" type="audio/mpeg">
-              Tu navegador no admite la reproducción de audio.
-            </audio>
-
-            <div class="audio-player-controls">
-              <button id="audio-play-button" class="audio-play-button" type="button" aria-label="Reproducir audio">
-                <span id="audio-play-icon" aria-hidden="true">▶</span>
-                <span id="audio-play-text">Reproducir audio</span>
-              </button>
-              <span id="audio-time" class="audio-time">0:00 / 0:00</span>
-            </div>
-
-            <input id="audio-progress" class="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
-          </section>
-
-          <div class="dialogue-box">
-            <p><strong>Barbara:</strong> It's so nice to see you again, Cindy. You look exactly the same!</p>
-            <p><strong>Cindy:</strong> So do you! And I love your TV show! I'm so proud of you! Your life in New York must be so exciting! I'd love to come and visit you with Jake and the twins.</p>
-            <p><strong>Barbara:</strong> Oh, yes...</p>
-            <p><strong>Cindy:</strong> Well, we won't come this summer, but maybe in the new year...</p>
-            <p><strong>Barbara:</strong> Oh... great... Let's talk about that later.</p>
-            <p><strong>Barbara:</strong> Now, Cindy, please help me shop. I need a dress to wear to Ronald Jordan's party tomorrow.</p>
-            <p><strong>Cindy:</strong> I'll take you to Westheimer. I love shopping!</p>
-          </div>
-
-          <div class="translation-box">
-            <strong>Idea principal:</strong>
-            <span>
-              Cindy quiere visitar a Barbara en Nueva York con Jake y los gemelos.
-              Barbara necesita comprar un vestido para la fiesta de Ronald Jordan,
-              así que Cindy le ofrece llevarla de compras.
-            </span>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
+          <div class="audio-player-controls">
+            <button id="audio-play-button" class="audio-play-button" type="button" aria-label="Reproducir audio">
+              <span id="audio-play-icon" aria-hidden="true">▶</span>
+              <span id="audio-play-text">Reproducir audio</span>
             </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="2">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 02 · DIÁLOGO</p>
-              <h2>En una boutique</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">👗</span>
+            <span id="audio-time" class="audio-time">0:00 / 0:00</span>
           </div>
 
-          <p>
-            Barbara y Cindy llegan a una boutique. Barbara se prueba un vestido de
-            seda que está en rebaja.
-          </p>
+          <input id="audio-progress" class="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
+        </section>
 
-                    <section class="audio-player-card" aria-label="Audio del diálogo">
-            <div class="audio-player-info">
-              <span class="audio-player-icon" aria-hidden="true">🎧</span>
-              <div>
-                <p class="audio-player-label">Audio del diálogo</p>
-                <h2>De compras</h2>
-                <p>Escucha el diálogo y practica la pronunciación.</p>
-              </div>
-            </div>
+        <div class="dialogue">
+          <p><strong>Barbara:</strong> It's so nice to see you again, Cindy. You look exactly the same!</p>
+          <p><strong>Cindy:</strong> So do you! And I love your TV show! I'm so proud of you! Your life in New York must be so exciting! I'd love to come and visit you with Jake and the twins.</p>
+          <p><strong>Barbara:</strong> Oh, yes...</p>
+          <p><strong>Cindy:</strong> Well, we won't come this summer, but maybe in the new year...</p>
+          <p><strong>Barbara:</strong> Oh... great... Let's talk about that later.</p>
+          <p><strong>Barbara:</strong> Now, Cindy, please help me shop. I need a dress to wear to Ronald Jordan's party tomorrow.</p>
+          <p><strong>Cindy:</strong> I'll take you to Westheimer. I love shopping!</p>
+          
+          <hr style="border: none; border-top: 1px dashed rgba(47, 215, 255, 0.3); margin: 1.5rem 0;">
+          
+          <p><strong>Salesperson:</strong> Can I help you, Ma'am?</p>
+          <p><strong>Barbara:</strong> I'm just looking around, thanks.</p>
+          <p><strong>Salesperson:</strong> Certainly, Ma'am. Please go ahead.</p>
+          <p><strong>Cindy:</strong> Look at this dress, Barbara.</p>
+          <p><strong>Barbara:</strong> Yes, that one's nice. What size is it?</p>
+          <p><strong>Salesperson:</strong> It's size 12. You probably need a size 8.</p>
+          <p><strong>Barbara:</strong> Do you have it in other colors?</p>
+          <p><strong>Salesperson:</strong> Yes. It comes in apple green, mustard, bordeaux and navy blue.</p>
+          <p><strong>Barbara:</strong> Can I try the green one?</p>
+          <p><strong>Salesperson:</strong> Certainly, Ma'am. I'll get it for you. The changing-room is right over there.</p>
+          <p><strong>Barbara:</strong> It's too tight.</p>
+          <p><strong>Cindy:</strong> No, it isn't.</p>
+          <p><strong>Salesperson:</strong> It fits her beautifully. It's the fashion. And she has the perfect figure for it.</p>
+          <p><strong>Cindy:</strong> It isn't too tight, Barbara. It's just sexy!</p>
+          <p><strong>Barbara:</strong> Well, I'm not sure... How much is it?</p>
+          <p><strong>Salesperson:</strong> Normally, that dress is $450. It's pure silk. But it's on sale now. It's only $299.98, plus tax.</p>
+          <p><strong>Cindy:</strong> Take it, Barbara. It looks great on you.</p>
+          <p><strong>Barbara:</strong> Oh, what the hell! I don't have anything to wear tomorrow. Can I charge it?</p>
+          <p><strong>Salesperson:</strong> Of course, Ma'am.</p>
+          <p><strong>Cindy:</strong> Now, you come with me, Barbara, and help me choose a winter coat for my trip to New York. I can't wait to come and see you there! Jake and the twins will be so happy! And we can all go shopping together at Bloomingdale's...</p>
+        </div>
 
-            <audio id="work-audio" preload="metadata">
-              <source src="../assets/audio/unit-2/4-de-compras.mp3" type="audio/mpeg">
-              Tu navegador no admite la reproducción de audio.
-            </audio>
+        <p style="margin-top: 1rem;">
+          <strong>Idea principal:</strong> Cindy quiere visitar a Barbara en Nueva York. Barbara necesita comprar un vestido para la fiesta de Ronald Jordan y ambas van a una boutique. Allí, Barbara se prueba un vestido verde de seda talla 8 que está rebajado a $299.98 y decide comprarlo.
+        </p>
 
-            <div class="audio-player-controls">
-              <button id="audio-play-button" class="audio-play-button" type="button" aria-label="Reproducir audio">
-                <span id="audio-play-icon" aria-hidden="true">▶</span>
-                <span id="audio-play-text">Reproducir audio</span>
-              </button>
-              <span id="audio-time" class="audio-time">0:00 / 0:00</span>
-            </div>
-
-            <input id="audio-progress" class="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
-          </section>
-
-          <div class="dialogue-box">
-            <p><strong>Salesperson:</strong> Can I help you, Ma'am?</p>
-            <p><strong>Barbara:</strong> I'm just looking around, thanks.</p>
-            <p><strong>Salesperson:</strong> Certainly, Ma'am. Please go ahead.</p>
-            <p><strong>Cindy:</strong> Look at this dress, Barbara.</p>
-            <p><strong>Barbara:</strong> Yes, that one's nice. What size is it?</p>
-            <p><strong>Salesperson:</strong> It's size 12. You probably need a size 8.</p>
-            <p><strong>Barbara:</strong> Do you have it in other colors?</p>
-            <p><strong>Salesperson:</strong> Yes. It comes in apple green, mustard, bordeaux and navy blue.</p>
-            <p><strong>Barbara:</strong> Can I try the green one?</p>
-            <p><strong>Salesperson:</strong> Certainly, Ma'am. I'll get it for you. The changing-room is right over there.</p>
-            <p><strong>Barbara:</strong> It's too tight.</p>
-            <p><strong>Cindy:</strong> No, it isn't.</p>
-            <p><strong>Salesperson:</strong> It fits her beautifully. It's the fashion. And she has the perfect figure for it.</p>
-            <p><strong>Cindy:</strong> It isn't too tight, Barbara. It's just sexy!</p>
-            <p><strong>Barbara:</strong> Well, I'm not sure... How much is it?</p>
-            <p><strong>Salesperson:</strong> Normally, that dress is $450. It's pure silk. But it's on sale now. It's only $299.98, plus tax.</p>
-            <p><strong>Cindy:</strong> Take it, Barbara. It looks great on you.</p>
-            <p><strong>Barbara:</strong> Oh, what the hell! I don't have anything to wear tomorrow. Can I charge it?</p>
-            <p><strong>Salesperson:</strong> Of course, Ma'am.</p>
-            <p><strong>Cindy:</strong> Now, you come with me, Barbara, and help me choose a winter coat for my trip to New York. I can't wait to come and see you there! Jake and the twins will be so happy! And we can all go shopping together at Bloomingdale's...</p>
-          </div>
-
-          <div class="translation-box">
-            <strong>Idea principal:</strong>
-            <span>
-              Barbara se prueba un vestido verde de seda talla 8. Aunque piensa que
-              está apretado, Cindy y la dependienta dicen que le queda muy bien.
-              Está rebajado de $450 a $299.98, más impuestos.
-            </span>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="3">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 03 · COMPRENSIÓN</p>
-              <h2>Compruebe su comprensión</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🧠</span>
-          </div>
-
-          <div class="question-block">
-            <p><strong>1. ¿Para qué necesita Barbara un vestido?</strong></p>
-            <label class="option-label"><input type="radio" name="shopping-q1" value="a"> For a trip to London</label>
-            <label class="option-label"><input type="radio" name="shopping-q1" value="b"> For Ronald Jordan's party</label>
-            <label class="option-label"><input type="radio" name="shopping-q1" value="c"> For a TV show</label>
-          </div>
-
-          <div class="question-block">
-            <p><strong>2. ¿Qué talla cree la dependienta que necesita Barbara?</strong></p>
-            <label class="option-label"><input type="radio" name="shopping-q2" value="a"> Size 8</label>
-            <label class="option-label"><input type="radio" name="shopping-q2" value="b"> Size 12</label>
-            <label class="option-label"><input type="radio" name="shopping-q2" value="c"> Size 18</label>
-          </div>
-
-          <div class="question-block">
-            <p><strong>3. ¿De qué material es el vestido?</strong></p>
-            <label class="option-label"><input type="radio" name="shopping-q3" value="a"> Pure cotton</label>
-            <label class="option-label"><input type="radio" name="shopping-q3" value="b"> Pure silk</label>
-            <label class="option-label"><input type="radio" name="shopping-q3" value="c"> Leather</label>
-          </div>
-
-          <div class="question-block">
-            <p><strong>4. ¿Cuál es el precio del vestido en rebaja, sin incluir impuesto?</strong></p>
-            <label class="option-label"><input type="radio" name="shopping-q4" value="a"> $450</label>
-            <label class="option-label"><input type="radio" name="shopping-q4" value="b"> $299.98</label>
-            <label class="option-label"><input type="radio" name="shopping-q4" value="c"> $98.29</label>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-comprehension" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="4">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 04 · VOCABULARIO</p>
-              <h2>Ropa, compras, colores y tallas</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🛍️</span>
-          </div>
-
-          <div class="vocabulary-columns">
-            <section class="vocabulary-group">
-              <h3>Compras y tienda</h3>
-              <dl class="vocabulary-list">
-                <div><dt>coffee shop</dt><dd>cafetería</dd></div>
-                <div><dt>boutique</dt><dd>tienda de lujo</dd></div>
-                <div><dt>salesperson</dt><dd>dependiente/a</dd></div>
-                <div><dt>size</dt><dd>talla</dd></div>
-                <div><dt>color</dt><dd>color</dd></div>
-                <div><dt>changing-room</dt><dd>probador</dd></div>
-                <div><dt>fashion</dt><dd>moda</dd></div>
-                <div><dt>sale</dt><dd>rebaja</dd></div>
-                <div><dt>tax</dt><dd>impuesto</dd></div>
-                <div><dt>to shop</dt><dd>ir de compras</dd></div>
-                <div><dt>to look around</dt><dd>mirar sin comprar</dd></div>
-                <div><dt>to try on</dt><dd>probarse una prenda</dd></div>
-                <div><dt>to charge</dt><dd>pagar con tarjeta</dd></div>
-              </dl>
-            </section>
-
-            <section class="vocabulary-group">
-              <h3>Ropa</h3>
-              <dl class="vocabulary-list">
-                <div><dt>dress</dt><dd>vestido</dd></div>
-                <div><dt>blouse</dt><dd>blusa</dd></div>
-                <div><dt>sweater</dt><dd>suéter</dd></div>
-                <div><dt>trousers</dt><dd>pantalones</dd></div>
-                <div><dt>jacket</dt><dd>chaqueta</dd></div>
-                <div><dt>shirt</dt><dd>camisa</dd></div>
-                <div><dt>suit</dt><dd>traje</dd></div>
-                <div><dt>skirt</dt><dd>falda</dd></div>
-                <div><dt>tie</dt><dd>corbata</dd></div>
-                <div><dt>raincoat</dt><dd>gabardina</dd></div>
-                <div><dt>coat</dt><dd>abrigo</dd></div>
-              </dl>
-            </section>
-
-            <section class="vocabulary-group">
-              <h3>Colores y apariencia</h3>
-              <dl class="vocabulary-list">
-                <div><dt>apple green</dt><dd>verde manzana</dd></div>
-                <div><dt>mustard</dt><dd>mostaza</dd></div>
-                <div><dt>bordeaux</dt><dd>burdeos</dd></div>
-                <div><dt>navy blue</dt><dd>azul marino</dd></div>
-                <div><dt>tight</dt><dd>apretado/a</dd></div>
-                <div><dt>perfect</dt><dd>perfecto/a</dd></div>
-                <div><dt>pure</dt><dd>puro/a</dd></div>
-                <div><dt>cheap</dt><dd>barato/a</dd></div>
-                <div><dt>expensive</dt><dd>caro/a</dd></div>
-                <div><dt>proud</dt><dd>orgulloso/a</dd></div>
-                <div><dt>exciting</dt><dd>emocionante</dd></div>
-                <div><dt>to fit</dt><dd>quedar bien</dd></div>
-                <div><dt>to choose</dt><dd>elegir</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <div class="question-block">
-            <label for="vocabulary-answer">
-              Complete: “Barbara tries on a green __________.”
-            </label>
-            <input
-              id="vocabulary-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe una palabra en inglés"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-vocabulary" type="button">
-              Revisar respuesta
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="5">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 05 · CÓMO SE DICE</p>
-              <h2>Gustos, apariencia y necesidades</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">💬</span>
-          </div>
-
-          <div class="phrase-groups">
-            <section class="phrase-group">
-              <h3>1. Expresar gustos</h3>
-              <dl class="phrase-list">
-                <div><dt>I like shopping.</dt><dd>Me gusta ir de compras.</dd></div>
-                <div><dt>I love driving.</dt><dd>Me gusta mucho conducir.</dd></div>
-                <div><dt>I adore going to the movies.</dt><dd>Me encanta ir al cine.</dd></div>
-                <div><dt>I hate staying in hotels.</dt><dd>Odio alojarme en hoteles.</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>2. Hablar de apariencia</h3>
-              <dl class="phrase-list">
-                <div><dt>You look wonderful.</dt><dd>Tiene un aspecto fantástico.</dd></div>
-                <div><dt>This dress looks great on you.</dt><dd>Este vestido te queda muy bien.</dd></div>
-                <div><dt>She has a perfect figure.</dt><dd>Ella tiene una figura ideal.</dd></div>
-                <div><dt>It fits you beautifully.</dt><dd>Te queda de maravilla.</dd></div>
-                <div><dt>It's too tight.</dt><dd>Está demasiado apretado.</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>3. Situaciones hipotéticas</h3>
-              <dl class="phrase-list">
-                <div><dt>New York must be so exciting!</dt><dd>¡Nueva York debe ser tan emocionante!</dd></div>
-                <div><dt>Maybe we'll come in the new year.</dt><dd>Quizás vayamos en el nuevo año.</dd></div>
-                <div><dt>You're probably a size 8.</dt><dd>Probablemente eres talla 8.</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>4. Expresar necesidades</h3>
-              <dl class="phrase-list">
-                <div><dt>I need a dress for tomorrow.</dt><dd>Necesito un vestido para mañana.</dd></div>
-                <div><dt>You need a size 8.</dt><dd>Necesitas talla 8.</dd></div>
-                <div><dt>I must buy some new shoes.</dt><dd>Tengo que comprar zapatos nuevos.</dd></div>
-                <div><dt>I'll have to get a hat.</dt><dd>Tendré que comprar un sombrero.</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <div class="question-block">
-            <label for="appearance-answer">
-              Complete: “This dress looks great __________ you.”
-            </label>
-            <input
-              id="appearance-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: on"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="need-answer">
-              Complete: “I __________ a dress for tomorrow.”
-            </label>
-            <input
-              id="need-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: need"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-expressions" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="6">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 06 · PRONOMBRES</p>
-              <h2>Me, you, him, her, it, them y us</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">👥</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>Pronombres objeto</h3>
-            <p class="example-box">
-              My friend will visit <strong>me</strong>.<br>
-              Your friend will visit <strong>you</strong>.<br>
-              His friend will visit <strong>him</strong>.<br>
-              Her friend will visit <strong>her</strong>.<br>
-              Our friend will visit <strong>us</strong>.<br>
-              Their friend will visit <strong>them</strong>.
-            </p>
-            <p>Ejemplo: I need some help. → <strong>Can you help me?</strong></p>
-            <p>Practique: We need some help. / He needs some help. / They need some help. / She needs some help.</p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>It fits her</h3>
-            <p class="example-box">
-              This dress fits Barbara beautifully. →
-              <strong>This dress fits her beautifully.</strong>
-            </p>
-            <p>Practique: Anne is visiting Margie and Mike. / She will give Sam some money. / Can you please get Jane a glass of water?</p>
-          </section>
-
-          <div class="question-block">
-            <label for="pronoun-answer-1">
-              Complete: “I need some help. Can you help __________?”
-            </label>
-            <input
-              id="pronoun-answer-1"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe el pronombre"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="pronoun-answer-2">
-              Transforme: “This dress fits Barbara beautifully.” →
-              “This dress fits __________ beautifully.”
-            </label>
-            <input
-              id="pronoun-answer-2"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe el pronombre"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-pronouns" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="7">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 07 · FUTURO</p>
-              <h2>Will y respuestas negativas</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">📅</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>Futuro con will</h3>
-            <p class="example-box">
-              He's calling Mr. Weinberg now. On Wednesday →
-              <strong>He'll call Mr. Weinberg on Wednesday.</strong>
-            </p>
-            <p>Practique: They're making an appointment now. Next week. / She's visiting her mother now. This weekend. / We're driving to Missouri now. On Saturday. / I'm on the plane to Cleveland now. At 4:30.</p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>Will she? No, she won't!</h3>
-            <p class="example-box">
-              Will she get a new dress for the party? →
-              <strong>No, she won't get a new dress for the party.</strong>
-            </p>
-            <p>Respuestas negativas: No, it isn't. / No, she won't. / No, they aren't. / No, I don't. / No, he doesn't.</p>
-          </section>
-
-          <div class="question-block">
-            <label for="will-answer-1">
-              Complete: “She's visiting her mother this weekend.” →
-              “She __________ visit her mother this weekend.”
-            </label>
-            <input
-              id="will-answer-1"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: will"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="will-answer-2">
-              Answer negatively: “Will she get a new dress?” →
-              “No, she __________.”
-            </label>
-            <input
-              id="will-answer-2"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: won't"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-will" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="8">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 08 · LET'S Y ENTONACIÓN</p>
-              <h2>Hacer propuestas</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🗣️</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>Let's...</h3>
-            <p class="example-box">
-              We'll talk about that later. →
-              <strong>Let's talk about that now!</strong>
-            </p>
-            <p>Practique: We'll look at that later. / We'll order dinner later. / We'll have dessert later. / We'll do our work later. / We'll go and visit him later.</p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>Entonación</h3>
-            <p>Repita cuidando la musicalidad:</p>
-            <p class="example-box">
-              We're so proud of you!<br>
-              I'm so happy to see you!<br>
-              It's so nice to see you!<br>
-              New York must be so exciting!<br>
-              Paris is so beautiful!<br>
-              They're so busy!<br>
-              You must be so proud of them!
-            </p>
-          </section>
-
-          <div class="question-block">
-            <label for="lets-answer">
-              Transforme: “We'll order dinner later.” →
-              “__________ order dinner now!”
-            </label>
-            <input
-              id="lets-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: Let's"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="intonation-writing">
-              Escriba una frase usando <strong>Let's...</strong>:
-            </label>
-            <textarea
-              id="intonation-writing"
-              placeholder="Let's go shopping together."
-            ></textarea>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-lets" type="button">
-              Guardar práctica
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="9">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 09 · CULTURA</p>
-              <h2>Compras y rebajas</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🏷️</span>
-          </div>
-
-          <div class="reading-card">
-            <h3>Sales y good deals</h3>
-            <p>
-              En las tiendas de Estados Unidos es frecuente ver letreros que dicen
-              <strong>Sale</strong>. Esta palabra significa que hay productos en
-              rebaja o con descuento.
-            </p>
-            <p>
-              La lectura explica que los anuncios, los periódicos y la televisión
-              suelen promocionar descuentos durante fechas especiales y fines de
-              semana largos. Una expresión común es <strong>good deal</strong>,
-              que significa una buena oferta o una ganga.
-            </p>
-            <p>
-              El texto también presenta la idea de que el servicio al cliente tiene
-              mucha importancia. Un vendedor amable, atento y dispuesto a ayudar
-              puede hacer que la experiencia de compra sea mejor.
-            </p>
-            <p>
-              En una tienda, es útil preguntar por tallas, colores, precios,
-              impuestos, cambios, descuentos y métodos de pago antes de comprar.
-            </p>
-          </div>
-
-          <div class="question-block">
-            <label for="culture-answer">
-              Escriba una oración en inglés usando <strong>sale</strong>,
-              <strong>cheap</strong>, <strong>expensive</strong>,
-              <strong>good deal</strong> o <strong>shop</strong>:
-            </label>
-            <textarea
-              id="culture-answer"
-              placeholder="This coat is on sale, so it is a good deal."
-            ></textarea>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-culture" type="button">
-              Guardar respuesta
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="10">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 10 · REPASO FINAL</p>
-              <h2>Mi experiencia de compras</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">✨</span>
-          </div>
-
-          <div class="reading-card">
-            <h3>Repaso de la entrega</h3>
-            <p>
-              En esta entrega aprendiste a saludar a una amistad, expresar gustos,
-              hablar de necesidades, describir ropa, preguntar por tallas y colores,
-              usar pronombres objeto, formar frases con <strong>will</strong> y
-              proponer actividades con <strong>Let's...</strong>.
-            </p>
-            <p>
-              También se menciona una canción tradicional titulada
-              <strong>You're a Flower in the Wildwood</strong>. La actividad de
-              audio puede usarse para practicar escucha, ritmo y pronunciación sin
-              necesidad de copiar o memorizar su letra.
-            </p>
-          </div>
-
-          <div class="question-block">
-            <label for="final-writing">
-              Escriba al menos cuatro oraciones en inglés sobre una compra. Incluya:
-              una prenda de ropa, una talla o color, una opinión sobre cómo queda y
-              una frase con <strong>will</strong> o <strong>Let's</strong>.
-            </label>
-            <textarea
-              id="final-writing"
-              placeholder="I need a new jacket. It is navy blue and size 8. It fits me beautifully. I will wear it tomorrow."
-            ></textarea>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary finish-lesson" type="button">
-              Completar Entrega 2.4
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="1">
+            Marcar diálogo como completado
+          </button>
+          <span class="activity-status" id="activity-status-1"></span>
+        </div>
       </section>
 
-      <section
-        class="lesson-complete-message"
-        id="lesson-complete-message"
-        aria-live="polite"
-        hidden
-      >
+      <!-- ACTIVIDAD 02 -->
+      <section class="activity-card is-locked" data-activity="2">
+        <p class="activity-label">Actividad 02 · Comprensión</p>
+        <h2>Compruebe su comprensión</h2>
+
+        <p><strong>1. ¿Para qué necesita Barbara un vestido?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="shopping-q1" value="a"> For a trip to London</label>
+          <label class="answer-option"><input type="radio" name="shopping-q1" value="b"> For Ronald Jordan's party</label>
+          <label class="answer-option"><input type="radio" name="shopping-q1" value="c"> For a TV show</label>
+        </div>
+
+        <p><strong>2. ¿Qué talla cree la dependienta que necesita Barbara?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="shopping-q2" value="a"> Size 8</label>
+          <label class="answer-option"><input type="radio" name="shopping-q2" value="b"> Size 12</label>
+          <label class="answer-option"><input type="radio" name="shopping-q2" value="c"> Size 18</label>
+        </div>
+
+        <p><strong>3. ¿De qué material es el vestido?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="shopping-q3" value="a"> Pure cotton</label>
+          <label class="answer-option"><input type="radio" name="shopping-q3" value="b"> Pure silk</label>
+          <label class="answer-option"><input type="radio" name="shopping-q3" value="c"> Leather</label>
+        </div>
+
+        <p><strong>4. ¿Cuál es el precio del vestido en rebaja, sin incluir impuesto?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="shopping-q4" value="a"> $450</label>
+          <label class="answer-option"><input type="radio" name="shopping-q4" value="b"> $299.98</label>
+          <label class="answer-option"><input type="radio" name="shopping-q4" value="c"> $98.29</label>
+        </div>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-comprehension">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-2"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 03 -->
+      <section class="activity-card is-locked" data-activity="3">
+        <p class="activity-label">Actividad 03 · Vocabulario</p>
+        <h2>Ropa, compras, colores y tallas</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Compras y tienda</h3>
+            <p>
+              coffee shop = cafetería<br>
+              boutique = tienda de lujo<br>
+              salesperson = dependiente/a<br>
+              size = talla<br>
+              color = color<br>
+              changing-room = probador<br>
+              fashion = moda<br>
+              sale = rebaja<br>
+              tax = impuesto<br>
+              to shop = ir de compras<br>
+              to look around = mirar sin comprar<br>
+              to try on = probarse una prenda<br>
+              to charge = pagar con tarjeta
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>Ropa</h3>
+            <p>
+              dress = vestido<br>
+              blouse = blusa<br>
+              sweater = suéter<br>
+              trousers = pantalones<br>
+              jacket = chaqueta<br>
+              shirt = camisa<br>
+              suit = traje<br>
+              skirt = falda<br>
+              tie = corbata<br>
+              raincoat = gabardina<br>
+              coat = abrigo
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>Colores y apariencia</h3>
+            <p>
+              apple green = verde manzana<br>
+              mustard = mostaza<br>
+              bordeaux = burdeos<br>
+              navy blue = azul marino<br>
+              tight = apretado/a<br>
+              perfect = perfecto/a<br>
+              pure = puro/a<br>
+              cheap = barato/a<br>
+              expensive = caro/a<br>
+              proud = orgulloso/a<br>
+              exciting = emocionante<br>
+              to fit = quedar bien<br>
+              to choose = elegir
+            </p>
+          </div>
+        </div>
+
+        <label for="vocabulary-answer" style="display: block; margin-top: 1rem;">
+          Complete: “Barbara tries on a green __________.”
+        </label>
+        <input class="student-input" id="vocabulary-answer" type="text" autocomplete="off" placeholder="Escribe una palabra en inglés">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-vocabulary">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-3"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 04 -->
+      <section class="activity-card is-locked" data-activity="4">
+        <p class="activity-label">Actividad 04 · Cómo se dice</p>
+        <h2>Gustos, apariencia y necesidades</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>1. Expresar gustos</h3>
+            <p>
+              I like shopping. = Me gusta ir de compras.<br>
+              I love driving. = Me gusta mucho conducir.<br>
+              I adore going to the movies. = Me encanta ir al cine.<br>
+              I hate staying in hotels. = Odio alojarme en hoteles.
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>2. Hablar de apariencia</h3>
+            <p>
+              You look wonderful. = Tiene un aspecto fantástico.<br>
+              This dress looks great on you. = Este vestido te queda muy bien.<br>
+              She has a perfect figure. = Ella tiene una figura ideal.<br>
+              It fits you beautifully. = Te queda de maravilla.<br>
+              It's too tight. = Está demasiado apretado.
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>3. Situaciones hipotéticas</h3>
+            <p>
+              New York must be so exciting! = ¡Nueva York debe ser tan emocionante!<br>
+              Maybe we'll come in the new year. = Quizás vayamos en el nuevo año.<br>
+              You're probably a size 8. = Probablemente eres talla 8.
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>4. Expresar necesidades</h3>
+            <p>
+              I need a dress for tomorrow. = Necesito un vestido para mañana.<br>
+              You need a size 8. = Necesitas talla 8.<br>
+              I must buy some new shoes. = Tengo que comprar zapatos nuevos.<br>
+              I'll have to get a hat. = Tendré que comprar un sombrero.
+            </p>
+          </div>
+        </div>
+
+        <label for="appearance-answer" style="display: block; margin-top: 1rem;">
+          Complete: “This dress looks great __________ you.”
+        </label>
+        <input class="student-input" id="appearance-answer" type="text" autocomplete="off" placeholder="Escribe: on">
+
+        <label for="need-answer">
+          Complete: “I __________ a dress for tomorrow.”
+        </label>
+        <input class="student-input" id="need-answer" type="text" autocomplete="off" placeholder="Escribe: need">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-expressions">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-4"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 05 -->
+      <section class="activity-card is-locked" data-activity="5">
+        <p class="activity-label">Actividad 05 · Pronombres</p>
+        <h2>Me, you, him, her, it, them y us</h2>
+
+        <div class="reading-context-box">
+          <h4>Pronombres objeto</h4>
+          <p>
+            My friend will visit <strong>me</strong>.<br>
+            Your friend will visit <strong>you</strong>.<br>
+            His friend will visit <strong>him</strong>.<br>
+            Her friend will visit <strong>her</strong>.<br>
+            Our friend will visit <strong>us</strong>.<br>
+            Their friend will visit <strong>them</strong>.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Ejemplo: I need some help. → <strong>Can you help me?</strong>
+          </p>
+          
+          <h4 style="margin-top: 1rem;">It fits her</h4>
+          <p>
+            This dress fits Barbara beautifully. → <strong>This dress fits her beautifully.</strong>
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Practique: Anne is visiting Margie and Mike. / She will give Sam some money. / Can you please get Jane a glass of water?
+          </p>
+        </div>
+
+        <label for="pronoun-answer-1">
+          Complete: “I need some help. Can you help __________?”
+        </label>
+        <input class="student-input" id="pronoun-answer-1" type="text" autocomplete="off" placeholder="Escribe el pronombre">
+
+        <label for="pronoun-answer-2">
+          Transforme: “This dress fits Barbara beautifully.” → “This dress fits __________ beautifully.”
+        </label>
+        <input class="student-input" id="pronoun-answer-2" type="text" autocomplete="off" placeholder="Escribe el pronombre">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-pronouns">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-5"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 06 -->
+      <section class="activity-card is-locked" data-activity="6">
+        <p class="activity-label">Actividad 06 · Futuro</p>
+        <h2>Will y respuestas negativas</h2>
+
+        <div class="reading-context-box">
+          <h4>Futuro con will</h4>
+          <p>
+            He's calling Mr. Weinberg now. On Wednesday → <strong>He'll call Mr. Weinberg on Wednesday.</strong>
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Practique: They're making an appointment now. Next week. / She's visiting her mother now. This weekend. / We're driving to Missouri now. On Saturday.
+          </p>
+
+          <h4 style="margin-top: 1rem;">Will she? No, she won't!</h4>
+          <p>
+            Will she get a new dress for the party? → <strong>No, she won't get a new dress for the party.</strong>
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Respuestas negativas: No, it isn't. / No, she won't. / No, they aren't. / No, I don't. / No, he doesn't.
+          </p>
+        </div>
+
+        <label for="will-answer-1">
+          Complete: “She's visiting her mother this weekend.” → “She __________ visit her mother this weekend.”
+        </label>
+        <input class="student-input" id="will-answer-1" type="text" autocomplete="off" placeholder="Escribe: will">
+
+        <label for="will-answer-2">
+          Answer negatively: “Will she get a new dress?” → “No, she __________.”
+        </label>
+        <input class="student-input" id="will-answer-2" type="text" autocomplete="off" placeholder="Escribe: won't">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-will">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-6"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 07 -->
+      <section class="activity-card is-locked" data-activity="7">
+        <p class="activity-label">Actividad 07 · Let's y entonación</p>
+        <h2>Hacer propuestas</h2>
+
+        <div class="reading-context-box">
+          <h4>Let's...</h4>
+          <p>
+            We'll talk about that later. → <strong>Let's talk about that now!</strong>
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Practique: We'll look at that later. / We'll order dinner later. / We'll have dessert later. / We'll go and visit him later.
+          </p>
+
+          <h4 style="margin-top: 1rem;">Entonación</h4>
+          <p>Repita cuidando la musicalidad:</p>
+          <p style="margin-top: 0.5rem;">
+            We're so proud of you! / I'm so happy to see you! / It's so nice to see you! / New York must be so exciting! / Paris is so beautiful!
+          </p>
+        </div>
+
+        <label for="lets-answer">
+          Transforme: “We'll order dinner later.” → “__________ order dinner now!”
+        </label>
+        <input class="student-input" id="lets-answer" type="text" autocomplete="off" placeholder="Escribe: Let's">
+
+        <label for="intonation-writing">
+          Escriba una frase usando <strong>Let's...</strong>:
+        </label>
+        <textarea class="student-input" id="intonation-writing" placeholder="Let's go shopping together."></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-lets">
+            Guardar práctica
+          </button>
+          <span class="activity-status" id="activity-status-7"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 08 -->
+      <section class="activity-card is-locked" data-activity="8">
+        <p class="activity-label">Actividad 08 · Cultura</p>
+        <h2>Compras y rebajas</h2>
+
+        <div class="reading-context-box">
+          <h4>Sales y good deals</h4>
+          <p>
+            En las tiendas de Estados Unidos es frecuente ver letreros que dicen <strong>Sale</strong>. Esta palabra significa que hay productos en rebaja o con descuento.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            La lectura explica que los anuncios, los periódicos y la televisión suelen promocionar descuentos durante fechas especiales y fines de semana largos. Una expresión común es <strong>good deal</strong>, que significa una buena oferta o una ganga.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            El texto también presenta la idea de que el servicio al cliente tiene mucha importancia. Un vendedor amable, atento y dispuesto a ayudar puede hacer que la experiencia de compra sea mejor.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            En una tienda, es útil preguntar por tallas, colores, precios, impuestos, cambios, descuentos y métodos de pago antes de comprar.
+          </p>
+        </div>
+
+        <label for="culture-answer">
+          Escriba una oración en inglés usando <strong>sale</strong>, <strong>cheap</strong>, <strong>expensive</strong>, <strong>good deal</strong> o <strong>shop</strong>:
+        </label>
+        <textarea class="student-input" id="culture-answer" placeholder="This coat is on sale, so it is a good deal."></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-culture">
+            Guardar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-8"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 09 -->
+      <section class="activity-card is-locked" data-activity="9">
+        <p class="activity-label">Actividad 09 · Repaso final</p>
+        <h2>Mi experiencia de compras</h2>
+
+        <div class="reading-context-box">
+          <h4>Repaso de la entrega</h4>
+          <p>
+            En esta entrega aprendiste a saludar a una amistad, expresar gustos, hablar de necesidades, describir ropa, preguntar por tallas y colores, usar pronombres objeto, formar frases con <strong>will</strong> y proponer actividades con <strong>Let's...</strong>.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            También se menciona una canción tradicional titulada <strong>You're a Flower in the Wildwood</strong>. La actividad de audio puede usarse para practicar escucha, ritmo y pronunciación sin necesidad de copiar o memorizar su letra.
+          </p>
+        </div>
+
+        <label for="final-writing">
+          Escriba al menos cuatro oraciones en inglés sobre una compra. Incluya: una prenda de ropa, una talla o color, una opinión sobre cómo queda y una frase con <strong>will</strong> o <strong>Let's</strong>.
+        </label>
+        <textarea class="student-input" id="final-writing" placeholder="I need a new jacket. It is navy blue and size 8. It fits me beautifully. I will wear it tomorrow."></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="finish-lesson">
+            Completar Entrega 2.4
+          </button>
+          <span class="activity-status" id="activity-status-9"></span>
+        </div>
+      </section>
+
+      <section class="completion-card" id="completion-card" hidden>
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
 
         <p>
-          Completaste “De compras”. Ahora puedes pedir ayuda en una tienda, hablar
-          de ropa, tallas y colores, usar pronombres objeto, expresar planes futuros
-          y hacer propuestas con <em>Let's...</em>.
+          Completaste “De compras”. Ahora puedes pedir ayuda en una tienda, hablar de ropa, tallas y colores, usar pronombres objeto, expresar planes futuros y hacer propuestas con <em>Let's...</em>.
         </p>
 
         <div class="completion-actions">
-          <a class="button button-primary" href="unit-2-delivery-5.html">
+          <a href="unit-2-delivery-5.html" class="button button-primary">
             Siguiente entrega →
           </a>
 
-          <a class="button button-outline" href="unit-2.html">
+          <a href="unit-2.html" class="button button-outline">
             Volver a Unidad 2
           </a>
         </div>
@@ -838,38 +922,25 @@
     </div>
   </footer>
 
+  <script type="module" src="../assets/js/supabase-auth.js?v=7"></script>
+
   <script>
     "use strict";
 
     document.addEventListener("DOMContentLoaded", () => {
       const storageKey = "506EnglishExpress.unit2.delivery4.progress";
-      const totalActivities = 10;
-      const cards = [...document.querySelectorAll("[data-activity]")];
+      const totalActivities = 9;
 
-      const progressText = document.getElementById("progress-text");
-      const progressFill = document.getElementById("progress-fill");
-      const progressTrack = document.querySelector(".progress-track");
+      const progressText = document.getElementById("lesson-progress-text");
+      const progressFill = document.getElementById("lesson-progress-fill");
+      const completionCard = document.getElementById("completion-card");
+      const progressTrack = document.querySelector(".lesson-progress-track");
       const resetButton = document.getElementById("reset-progress");
-      const completionMessage = document.getElementById("lesson-complete-message");
 
-      function normalize(value) {
-        return String(value || "")
-          .trim()
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/[.,!?;:¡¿'"“”]/g, "")
-          .replace(/\s+/g, " ");
-      }
-
-      function getProgress() {
+      function getCompletedActivities() {
         try {
           const saved = JSON.parse(localStorage.getItem(storageKey));
-
-          if (!Array.isArray(saved)) {
-            return [];
-          }
-
+          if (!Array.isArray(saved)) return [];
           return [...new Set(
             saved
               .map(Number)
@@ -885,262 +956,266 @@
         }
       }
 
-      function saveProgress(progress) {
-        localStorage.setItem(storageKey, JSON.stringify(progress));
-      }
-
-      function setFeedback(activity, message) {
-        const feedback = document.querySelector(
-          `[data-activity="${activity}"] .activity-feedback`
-        );
-
-        if (feedback) {
-          feedback.textContent = message;
-        }
+      function saveCompletedActivities(completed) {
+        localStorage.setItem(storageKey, JSON.stringify(completed));
       }
 
       function updateInterface() {
-        const completed = getProgress();
-        const count = completed.length;
-        const percentage = Math.round((count / totalActivities) * 100);
+        const completed = getCompletedActivities();
+        const completedCount = completed.length;
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
 
-        progressText.textContent =
-          `${count} de ${totalActivities} secciones completadas`;
+        if (progressText) {
+          progressText.textContent =
+            `${completedCount} de ${totalActivities} secciones completadas`;
+        }
 
-        progressFill.style.width = `${percentage}%`;
-        progressTrack.setAttribute("aria-valuenow", String(percentage));
+        if (progressFill) {
+          progressFill.style.width = `${percentage}%`;
+        }
 
-        cards.forEach((card) => {
-          const activity = Number(card.dataset.activity);
-          const isComplete = completed.includes(activity);
-          const isLocked =
-            activity > 1 &&
-            !completed.includes(activity - 1) &&
-            !isComplete;
+        if (progressTrack) {
+          progressTrack.setAttribute("aria-valuenow", String(percentage));
+        }
 
-          card.classList.toggle("is-complete", isComplete);
-          card.classList.toggle("is-locked", isLocked);
+        document
+          .querySelectorAll(".activity-card[data-activity]")
+          .forEach((card) => {
+            const activity = Number(card.dataset.activity);
+            const status = document.getElementById(
+              `activity-status-${activity}`
+            );
+            const button = card.querySelector("[data-complete]");
+            
+            const isComplete = completed.includes(activity);
+            const isLocked =
+              activity > 1 &&
+              !completed.includes(activity - 1) &&
+              !isComplete;
 
-          const completeButton = card.querySelector(".complete-activity");
+            card.classList.toggle("is-complete", isComplete);
+            card.classList.toggle("is-locked", isLocked);
 
-          if (completeButton && isComplete) {
-            completeButton.textContent = "Actividad completada";
-          }
-        });
+            if (isComplete) {
+              if (status) {
+                status.textContent = "✓ Actividad completada";
+              }
+              if (button) {
+                button.textContent = "Actividad completada";
+              }
+            } else {
+              if (status && !status.textContent.includes("✓")) {
+                status.textContent = "";
+              }
+            }
+          });
 
-        completionMessage.hidden = count !== totalActivities;
+        if (completionCard) {
+          completionCard.hidden = completedCount !== totalActivities;
+        }
       }
 
-      function completeActivity(activity, message = "✓ Actividad completada.") {
-        const completed = getProgress();
+      async function markActivityComplete(activity) {
+        const completed = getCompletedActivities();
 
         if (!completed.includes(activity)) {
           completed.push(activity);
           completed.sort((a, b) => a - b);
-          saveProgress(completed);
+          saveCompletedActivities(completed);
         }
 
-        setFeedback(activity, message);
         updateInterface();
 
-        if (activity === totalActivities) {
-          window.setTimeout(() => {
-            completionMessage.scrollIntoView({
-              behavior: "smooth",
-              block: "center"
+        if (
+          activity === totalActivities &&
+          typeof window.saveStudentProgress === "function"
+        ) {
+          try {
+            await window.saveStudentProgress({
+              unitNumber: 2,
+              activityId: "unit-2-delivery-4",
+              activityTitle: "De compras",
+              completed: true,
+              score: 100
             });
-          }, 250);
+          } catch (error) {
+            console.warn("El progreso local se guardó.", error);
+          }
         }
       }
 
-      document.querySelectorAll(".complete-activity").forEach((button) => {
-        button.addEventListener("click", () => {
-          const activity = Number(
-            button.closest("[data-activity]").dataset.activity
-          );
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
 
-          completeActivity(activity);
+      document.querySelectorAll("[data-complete]").forEach((button) => {
+        button.addEventListener("click", () => {
+          markActivityComplete(Number(button.dataset.complete));
         });
       });
 
-      document
-        .querySelector(".check-comprehension")
-        .addEventListener("click", () => {
-          const answer1 = document.querySelector(
-            'input[name="shopping-q1"]:checked'
-          )?.value;
+      if (resetButton) {
+        resetButton.addEventListener("click", () => {
+          localStorage.removeItem(storageKey);
+          document.querySelectorAll(".activity-status").forEach((status) => {
+            status.textContent = "";
+          });
+          if (completionCard) completionCard.hidden = true;
+          updateInterface();
+        });
+      }
 
-          const answer2 = document.querySelector(
-            'input[name="shopping-q2"]:checked'
-          )?.value;
+      // Actividad 2: Comprensión
+      const compBtn = document.getElementById("check-comprehension");
+      if (compBtn) {
+        compBtn.addEventListener("click", () => {
+          const a1 = document.querySelector('input[name="shopping-q1"]:checked')?.value;
+          const a2 = document.querySelector('input[name="shopping-q2"]:checked')?.value;
+          const a3 = document.querySelector('input[name="shopping-q3"]:checked')?.value;
+          const a4 = document.querySelector('input[name="shopping-q4"]:checked')?.value;
+          const status = document.getElementById("activity-status-2");
 
-          const answer3 = document.querySelector(
-            'input[name="shopping-q3"]:checked'
-          )?.value;
-
-          const answer4 = document.querySelector(
-            'input[name="shopping-q4"]:checked'
-          )?.value;
-
-          if (
-            answer1 === "b" &&
-            answer2 === "a" &&
-            answer3 === "b" &&
-            answer4 === "b"
-          ) {
-            completeActivity(3, "✓ ¡Correcto! Comprendiste los diálogos.");
-          } else {
-            setFeedback(3, "Revisa los diálogos e inténtalo otra vez.");
+          if (a1 === "b" && a2 === "a" && a3 === "b" && a4 === "b") {
+            if (status) status.textContent = "✓ ¡Correcto! Comprendiste los diálogos.";
+            markActivityComplete(2);
+          } else if (status) {
+            status.textContent = "Revisa el diálogo e inténtalo otra vez.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-vocabulary")
-        .addEventListener("click", () => {
-          const answer = normalize(
-            document.getElementById("vocabulary-answer").value
-          );
+      // Actividad 3: Vocabulario
+      const vocBtn = document.getElementById("check-vocabulary");
+      if (vocBtn) {
+        vocBtn.addEventListener("click", () => {
+          const answer = normalize(document.getElementById("vocabulary-answer").value);
+          const status = document.getElementById("activity-status-3");
 
           if (answer === "dress") {
-            completeActivity(
-              4,
-              "✓ Correcto: Barbara tries on a green dress."
-            );
-          } else {
-            setFeedback(4, "Pista: Barbara necesita un vestido.");
+            if (status) status.textContent = "✓ Correcto: Barbara tries on a green dress.";
+            markActivityComplete(3);
+          } else if (status) {
+            status.textContent = "Pista: Barbara necesita un vestido.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-expressions")
-        .addEventListener("click", () => {
-          const appearance = normalize(
-            document.getElementById("appearance-answer").value
-          );
-
-          const need = normalize(
-            document.getElementById("need-answer").value
-          );
+      // Actividad 4: Cómo se dice
+      const exprBtn = document.getElementById("check-expressions");
+      if (exprBtn) {
+        exprBtn.addEventListener("click", () => {
+          const appearance = normalize(document.getElementById("appearance-answer").value);
+          const need = normalize(document.getElementById("need-answer").value);
+          const status = document.getElementById("activity-status-4");
 
           if (appearance === "on" && need === "need") {
-            completeActivity(
-              5,
-              "✓ Correcto: This dress looks great on you. I need a dress."
-            );
-          } else {
-            setFeedback(5, "Pista: on / need.");
+            if (status) status.textContent = "✓ Correcto: This dress looks great on you. I need a dress.";
+            markActivityComplete(4);
+          } else if (status) {
+            status.textContent = "Pista: on / need.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-pronouns")
-        .addEventListener("click", () => {
-          const answer1 = normalize(
-            document.getElementById("pronoun-answer-1").value
-          );
-
-          const answer2 = normalize(
-            document.getElementById("pronoun-answer-2").value
-          );
+      // Actividad 5: Pronombres
+      const proBtn = document.getElementById("check-pronouns");
+      if (proBtn) {
+        proBtn.addEventListener("click", () => {
+          const answer1 = normalize(document.getElementById("pronoun-answer-1").value);
+          const answer2 = normalize(document.getElementById("pronoun-answer-2").value);
+          const status = document.getElementById("activity-status-5");
 
           if (answer1 === "me" && answer2 === "her") {
-            completeActivity(
-              6,
-              "✓ Correcto: Can you help me? This dress fits her beautifully."
-            );
-          } else {
-            setFeedback(6, "Pista: me / her.");
+            if (status) status.textContent = "✓ Correcto: Can you help me? This dress fits her beautifully.";
+            markActivityComplete(5);
+          } else if (status) {
+            status.textContent = "Pista: me / her.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-will")
-        .addEventListener("click", () => {
-          const answer1 = normalize(
-            document.getElementById("will-answer-1").value
-          );
-
-          const answer2 = normalize(
-            document.getElementById("will-answer-2").value
-          );
+      // Actividad 6: Futuro
+      const willBtn = document.getElementById("check-will");
+      if (willBtn) {
+        willBtn.addEventListener("click", () => {
+          const answer1 = normalize(document.getElementById("will-answer-1").value);
+          const answer2 = normalize(document.getElementById("will-answer-2").value);
+          const status = document.getElementById("activity-status-6");
 
           if (answer1 === "will" && (answer2 === "wont" || answer2 === "won't")) {
-            completeActivity(
-              7,
-              "✓ Correcto: She will visit her mother. No, she won't."
-            );
-          } else {
-            setFeedback(7, "Pista: will / won't.");
+            if (status) status.textContent = "✓ Correcto: She will visit her mother. No, she won't.";
+            markActivityComplete(6);
+          } else if (status) {
+            status.textContent = "Pista: will / won't.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-lets")
-        .addEventListener("click", () => {
-          const answer = normalize(
-            document.getElementById("lets-answer").value
-          );
+      // Actividad 7: Let's y Entonación
+      const letsBtn = document.getElementById("check-lets");
+      if (letsBtn) {
+        letsBtn.addEventListener("click", () => {
+          const answer = normalize(document.getElementById("lets-answer").value);
+          const writing = normalize(document.getElementById("intonation-writing").value);
+          const status = document.getElementById("activity-status-7");
 
-          const writing = normalize(
-            document.getElementById("intonation-writing").value
-          );
-
-          if (
-            (answer === "lets" || answer === "let's") &&
-            writing.length >= 10 &&
-            (writing.startsWith("lets") || writing.startsWith("let's"))
-          ) {
-            completeActivity(8, "✓ Práctica con Let's guardada.");
-          } else {
-            setFeedback(
-              8,
-              "Completa Let's y escribe una frase que empiece con Let's."
-            );
+          if ((answer === "lets" || answer === "let's") && writing.length >= 10 && (writing.startsWith("lets") || writing.startsWith("let's"))) {
+            if (status) status.textContent = "✓ Práctica con Let's guardada.";
+            markActivityComplete(7);
+          } else if (status) {
+            status.textContent = "Completa Let's y escribe una frase que empiece con Let's.";
           }
         });
+      }
 
-      document
-        .querySelector(".check-culture")
-        .addEventListener("click", () => {
-          const writing = document
-            .getElementById("culture-answer")
-            .value.trim();
+      // Actividad 8: Cultura
+      const cultureBtn = document.getElementById("check-culture");
+      if (cultureBtn) {
+        cultureBtn.addEventListener("click", () => {
+          const answer = document.getElementById("culture-answer").value.trim();
+          const status = document.getElementById("activity-status-8");
 
-          if (writing.length >= 12) {
-            completeActivity(9, "✓ Respuesta cultural guardada.");
-          } else {
-            setFeedback(9, "Escribe una oración completa en inglés.");
+          if (answer.length >= 12) {
+            if (status) status.textContent = "✓ Respuesta cultural guardada.";
+            markActivityComplete(8);
+          } else if (status) {
+            status.textContent = "Escribe una oración completa en inglés.";
           }
         });
+      }
 
-      document
-        .querySelector(".finish-lesson")
-        .addEventListener("click", () => {
-          const writing = document
-            .getElementById("final-writing")
-            .value.trim();
+      // Actividad 9: Repaso Final
+      const finishBtn = document.getElementById("finish-lesson");
+      if (finishBtn) {
+        finishBtn.addEventListener("click", () => {
+          const writing = document.getElementById("final-writing").value.trim();
+          const status = document.getElementById("activity-status-9");
 
           if (writing.length >= 80) {
-            completeActivity(10, "✓ ¡Entrega 2.4 completada!");
-          } else {
-            setFeedback(
-              10,
-              "Escribe al menos cuatro oraciones completas en inglés."
-            );
+            if (status) status.textContent = "✓ ¡Entrega 2.4 completada!";
+            markActivityComplete(9);
+
+            window.setTimeout(() => {
+              completionCard.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+            }, 250);
+          } else if (status) {
+            status.textContent = "Escribe al menos cuatro oraciones completas en inglés.";
           }
         });
+      }
 
-      resetButton.addEventListener("click", () => {
-        localStorage.removeItem(storageKey);
-
-        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
-          feedback.textContent = "";
-        });
-
-        completionMessage.hidden = true;
-        updateInterface();
-
-      // --- Control de Reproductor de Audio Personalizado ---
+      // Reproductor de audio
       const audio = document.getElementById("work-audio");
       const playButton = document.getElementById("audio-play-button");
       const playIcon = document.getElementById("audio-play-icon");
@@ -1160,14 +1235,12 @@
         const currentTime = audio.currentTime || 0;
         const duration = audio.duration || 0;
         audioTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
-        if (duration > 0) {
-          audioProgress.value = String((currentTime / duration) * 100);
-        }
+        if (duration > 0) audioProgress.value = String((currentTime / duration) * 100);
       }
 
       function setAudioButton(isPlaying) {
         if (!playButton || !playIcon || !playText) return;
-        playIcon.textContent = isPlaying ? "⏸" : "▶";
+        playIcon.textContent = isPlaying ? "❚❚" : "▶";
         playText.textContent = isPlaying ? "Pausar audio" : "Reproducir audio";
         playButton.setAttribute("aria-label", isPlaying ? "Pausar audio" : "Reproducir audio");
       }
@@ -1175,11 +1248,7 @@
       if (audio && playButton) {
         playButton.addEventListener("click", async () => {
           if (audio.paused) {
-            try {
-              await audio.play();
-            } catch (e) {
-              console.warn(e);
-            }
+            try { await audio.play(); } catch (e) { console.warn(e); }
           } else {
             audio.pause();
           }
@@ -1189,104 +1258,19 @@
         audio.addEventListener("timeupdate", updateAudioPlayer);
         audio.addEventListener("play", () => setAudioButton(true));
         audio.addEventListener("pause", () => setAudioButton(false));
-
-        if (audioProgress) {
-          audioProgress.addEventListener("input", () => {
-            if (audio.duration) {
-              audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
-              updateAudioPlayer();
-            }
-          });
-        }
       }
-    });
 
+      if (audioProgress && audio) {
+        audioProgress.addEventListener("input", () => {
+          if (audio.duration) {
+            audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
+          }
+        });
+      }
+
+      updateAudioPlayer();
       updateInterface();
-
-      // --- Control de Reproductor de Audio Personalizado ---
-      const audio = document.getElementById("work-audio");
-      const playButton = document.getElementById("audio-play-button");
-      const playIcon = document.getElementById("audio-play-icon");
-      const playText = document.getElementById("audio-play-text");
-      const audioProgress = document.getElementById("audio-progress");
-      const audioTime = document.getElementById("audio-time");
-
-      function formatTime(seconds) {
-        if (!Number.isFinite(seconds)) return "0:00";
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = String(Math.floor(seconds % 60)).padStart(2, "0");
-        return `${minutes}:${remainingSeconds}`;
-      }
-
-      function updateAudioPlayer() {
-        if (!audio || !audioProgress || !audioTime) return;
-        const currentTime = audio.currentTime || 0;
-        const duration = audio.duration || 0;
-        audioTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
-        if (duration > 0) {
-          audioProgress.value = String((currentTime / duration) * 100);
-        }
-      }
-
-      function setAudioButton(isPlaying) {
-        if (!playButton || !playIcon || !playText) return;
-        playIcon.textContent = isPlaying ? "⏸" : "▶";
-        playText.textContent = isPlaying ? "Pausar audio" : "Reproducir audio";
-        playButton.setAttribute("aria-label", isPlaying ? "Pausar audio" : "Reproducir audio");
-      }
-
-      if (audio && playButton) {
-        playButton.addEventListener("click", async () => {
-          if (audio.paused) {
-            try {
-              await audio.play();
-            } catch (e) {
-              console.warn(e);
-            }
-          } else {
-            audio.pause();
-          }
-        });
-
-        audio.addEventListener("loadedmetadata", updateAudioPlayer);
-        audio.addEventListener("timeupdate", updateAudioPlayer);
-        audio.addEventListener("play", () => setAudioButton(true));
-        audio.addEventListener("pause", () => setAudioButton(false));
-
-        if (audioProgress) {
-          audioProgress.addEventListener("input", () => {
-            if (audio.duration) {
-              audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
-              updateAudioPlayer();
-            }
-          });
-        }
-      }
     });
   </script>
-<script src="../assets/js/rewards.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.RewardsSystem) {
-      window.RewardsSystem.checkForReward();
-    }
-  });
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.Rewards506 && typeof window.Rewards506.renderCurrentAvatarBadge === 'function') {
-    window.Rewards506.renderCurrentAvatarBadge('#current-avatar-badge');
-  }
-});
-</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

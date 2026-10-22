@@ -184,6 +184,17 @@
       letter-spacing: 0.04em;
       text-decoration: none;
       text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      box-shadow: 0 0 18px rgba(79, 255, 163, 0.32);
+      color: #061321;
     }
 
     .button-outline {
@@ -239,6 +250,12 @@
       border-radius: 15px;
       background: rgba(255, 196, 61, 0.1);
       backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+    }
+
+    .notice.is-unlocked {
+      border-color: rgba(113, 255, 192, 0.42);
+      background: rgba(113, 255, 192, 0.1);
     }
 
     .notice-icon {
@@ -252,6 +269,11 @@
       font-size: 1.35rem;
     }
 
+    .notice.is-unlocked .notice-icon {
+      border-color: rgba(113, 255, 192, 0.55);
+      color: var(--green);
+    }
+
     .notice h2 {
       margin: 0;
       color: #fff4d2;
@@ -260,10 +282,18 @@
       text-transform: uppercase;
     }
 
+    .notice.is-unlocked h2 {
+      color: #d1ffeb;
+    }
+
     .notice p {
       margin: 0.35rem 0 0;
       color: rgba(255, 246, 220, 0.82);
       line-height: 1.38;
+    }
+
+    .notice.is-unlocked p {
+      color: rgba(209, 255, 235, 0.85);
     }
 
     main section.material {
@@ -310,6 +340,7 @@
       height: 100%;
       border-radius: inherit;
       background: linear-gradient(90deg, var(--green), var(--blue));
+      transition: width 0.4s ease;
     }
 
     .lesson-list {
@@ -328,6 +359,13 @@
       background: var(--panel);
       backdrop-filter: blur(12px);
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+      transition: 0.3s ease;
+    }
+
+    .lesson.locked {
+      border-color: rgba(255, 255, 255, 0.13);
+      background: rgba(4, 12, 29, 0.6);
+      opacity: 0.72;
     }
 
     .lesson-icon {
@@ -342,6 +380,12 @@
       font-size: 1.5rem;
     }
 
+    .lesson.locked .lesson-icon {
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(225, 240, 255, 0.58);
+    }
+
     .lesson-number {
       margin: 0;
       color: var(--green);
@@ -350,6 +394,10 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+    }
+
+    .lesson.locked .lesson-number {
+      color: rgba(225, 240, 255, 0.56);
     }
 
     .lesson h2 {
@@ -366,7 +414,7 @@
       line-height: 1.42;
     }
 
-    .locked {
+    .locked-badge {
       padding: 0.7rem 0.8rem;
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 9px;
@@ -378,6 +426,8 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       white-space: nowrap;
+      pointer-events: none;
+      cursor: not-allowed;
     }
 
     .preview {
@@ -470,7 +520,8 @@
         grid-template-columns: auto 1fr;
       }
 
-      .locked {
+      .locked-badge,
+      .lesson > .button {
         grid-column: 1 / -1;
         width: fit-content;
       }
@@ -513,7 +564,7 @@
   <div class="topbar">
     <div class="container">
       <span>506 English Express</span>
-      <span>Unidad 4 · Vista de material</span>
+      <span id="topbar-status">Unidad 4 · Vista de material</span>
     </div>
   </div>
 
@@ -530,7 +581,7 @@
         <a href="unit-4.html" class="active">Unidad 4</a>
       </div>
 
-      <a href="unit-1.html" class="button button-outline">
+      <a href="unit-3.html" class="button button-outline">
         Unidad anterior
       </a>
     </nav>
@@ -542,7 +593,7 @@
         <p class="tag">Unidad 04 · Situaciones reales y cultura</p>
 
         <h1>
-          Comunícate en <span>situaciones reales</span>
+          Comuícate en <span>situaciones reales</span>
         </h1>
 
         <p class="intro">
@@ -551,14 +602,14 @@
           de comunicación.
         </p>
 
-        <aside class="notice">
-          <div class="notice-icon">🔒</div>
+        <aside class="notice" id="unit-notice">
+          <div class="notice-icon" id="notice-icon">🔒</div>
 
           <div>
-            <h2>Acceso por progreso</h2>
-            <p>
-              Para habilitar los ejercicios de la Unidad 4, debes completar las
-              actividades requeridas de las Unidades 1, 2 y 3.
+            <h2 id="notice-title">Acceso por progreso</h2>
+            <p id="notice-desc">
+              Para habilitar los ejercicios de la Unidad 4, debes completar la
+              Unidad 3 y sus entregas anteriores.
             </p>
           </div>
         </aside>
@@ -569,87 +620,67 @@
       <div class="container">
         <div class="progress">
           <strong>Progreso de Unidad 4</strong>
-          <span class="progress-value">Bloqueada · 0%</span>
+          <span class="progress-value" id="progress-value-text">Bloqueada · 0%</span>
 
           <div class="track">
-            <div class="fill"></div>
+            <div class="fill" id="progress-fill-bar"></div>
           </div>
         </div>
 
-        <div class="lesson-list">
-          <article class="lesson">
+        <div class="lesson-list" id="lessons-container">
+          <!-- Entrega 4.1 -->
+          <article class="lesson locked" data-lesson="1">
             <div class="lesson-icon">☎️</div>
-
             <div>
               <p class="lesson-number">Entrega 4.1</p>
               <h2>Llamadas y comunicación</h2>
-              <p>
-                Vocabulario y expresiones para hablar por teléfono, pedir
-                información, dejar mensajes y responder preguntas.
-              </p>
+              <p>Vocabulario y expresiones para hablar por teléfono, pedir información, dejar mensajes y responder preguntas.</p>
             </div>
-
-            <span class="locked">🔒 Requiere Unidad 3</span>
+            <a href="unit-4-delivery-1.html" class="button button-primary lesson-action locked-badge">🔒 Requiere Unidad 3</a>
           </article>
 
-          <article class="lesson">
+          <!-- Entrega 4.2 -->
+          <article class="lesson locked" data-lesson="2">
             <div class="lesson-icon">✈️</div>
-
             <div>
               <p class="lesson-number">Entrega 4.2</p>
               <h2>Agencia de viajes</h2>
-              <p>
-                Viajes, reservas, destinos, fechas, horarios y comunicación
-                práctica para organizar un viaje.
-              </p>
+              <p>Viajes, reservas, destinos, fechas, horarios y comunicación práctica para organizar un viaje.</p>
             </div>
-
-            <span class="locked">🔒 Bloqueada</span>
+            <a href="unit-4-delivery-2.html" class="button button-primary lesson-action locked-badge">🔒 Bloqueada</a>
           </article>
 
-          <article class="lesson">
+          <!-- Entrega 4.3 -->
+          <article class="lesson locked" data-lesson="3">
             <div class="lesson-icon">📰</div>
-
             <div>
               <p class="lesson-number">Entrega 4.3</p>
               <h2>Noticias y actualidad</h2>
-              <p>
-                Comprensión de información, vocabulario de noticias y práctica
-                para describir hechos y acontecimientos.
-              </p>
+              <p>Comprensión de información, vocabulario de noticias y práctica para describir hechos y acontecimientos.</p>
             </div>
-
-            <span class="locked">🔒 Bloqueada</span>
+            <a href="unit-4-delivery-3.html" class="button button-primary lesson-action locked-badge">🔒 Bloqueada</a>
           </article>
 
-          <article class="lesson">
+          <!-- Entrega 4.4 -->
+          <article class="lesson locked" data-lesson="4">
             <div class="lesson-icon">🛣️</div>
-
             <div>
               <p class="lesson-number">Entrega 4.4</p>
               <h2>Carretera y favores</h2>
-              <p>
-                Indicaciones, situaciones en carretera, solicitudes, favores y
-                estructuras para resolver situaciones cotidianas.
-              </p>
+              <p>Indicaciones, situaciones en carretera, solicitudes, favores y estructuras para resolver situaciones cotidianas.</p>
             </div>
-
-            <span class="locked">🔒 Bloqueada</span>
+            <a href="unit-4-delivery-4.html" class="button button-primary lesson-action locked-badge">🔒 Bloqueada</a>
           </article>
 
-          <article class="lesson">
+          <!-- Entrega 4.5 -->
+          <article class="lesson locked" data-lesson="5">
             <div class="lesson-icon">🎆</div>
-
             <div>
               <p class="lesson-number">Entrega 4.5</p>
               <h2>Celebraciones y cultura</h2>
-              <p>
-                Publicidad, celebraciones, el 4 de Julio, cultura y evaluación
-                final de la Unidad 4.
-              </p>
+              <p>Publicidad, celebraciones, el 4 de Julio, cultura y evaluación final de la Unidad 4.</p>
             </div>
-
-            <span class="locked">🔒 Bloqueada</span>
+            <a href="unit-4-delivery-5.html" class="button button-primary lesson-action locked-badge">🔒 Bloqueada</a>
           </article>
         </div>
 
@@ -665,28 +696,19 @@
             <article class="topic">
               <span>COMUNICACIÓN</span>
               <h3>Teléfono y viajes</h3>
-              <p>
-                Llamadas, reservas, itinerarios, agencias de viaje y expresiones
-                útiles para pedir o dar información.
-              </p>
+              <p>Llamadas, reservas, itinerarios, agencias de viaje y expresiones útiles para pedir o dar información.</p>
             </article>
 
             <article class="topic">
               <span>VIDA DIARIA</span>
               <h3>Noticias y carretera</h3>
-              <p>
-                Situaciones cotidianas, hechos, direcciones, ayuda y favores en
-                contextos reales.
-              </p>
+              <p>Situaciones cotidianas, hechos, direcciones, ayuda y favores en contextos reales.</p>
             </article>
 
             <article class="topic">
               <span>CULTURA</span>
               <h3>Celebraciones y repaso</h3>
-              <p>
-                Publicidad, festividades, cultura estadounidense y repaso final
-                del recorrido de aprendizaje.
-              </p>
+              <p>Publicidad, festividades, cultura estadounidense y repaso final del recorrido de aprendizaje.</p>
             </article>
           </div>
         </section>
@@ -704,14 +726,78 @@
       </a>
     </div>
   </footer>
-<script src="../assets/js/rewards.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.RewardsSystem) {
-      window.RewardsSystem.checkForReward();
-    }
-  });
-</script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Clave que confirma si la Unidad 3 ha sido completada
+      const unit3Completed = localStorage.getItem("506EnglishExpress.unit3.completed") === "true";
+
+      const noticeBox = document.getElementById("unit-notice");
+      const noticeIcon = document.getElementById("notice-icon");
+      const noticeTitle = document.getElementById("notice-title");
+      const noticeDesc = document.getElementById("notice-desc");
+      const progressValueText = document.getElementById("progress-value-text");
+      const progressFillBar = document.getElementById("progress-fill-bar");
+      const lessons = document.querySelectorAll(".lesson");
+
+      // Progreso individual de la Unidad 4 guardado en localStorage
+      const unit4ProgressKey = "506EnglishExpress.unit4.progress";
+
+      function getUnit4CompletedCount() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(unit4ProgressKey));
+          return Array.isArray(stored) ? stored.length : 0;
+        } catch {
+          return 0;
+        }
+      }
+
+      if (unit3Completed) {
+        // --- CASO 1: UNIDAD 3 COMPLETADA (UNIDAD 4 DESBLOQUEADA) ---
+        noticeBox.classList.add("is-unlocked");
+        noticeIcon.textContent = "🔓";
+        noticeTitle.textContent = "¡Unidad desbloqueada!";
+        noticeDesc.textContent = "Has completado la Unidad 3 con éxito. Ya puedes iniciar con las entregas de la Unidad 4.";
+
+        const completedCount = getUnit4CompletedCount();
+        const percentage = Math.round((completedCount / lessons.length) * 100);
+
+        progressValueText.textContent = `En progreso · ${percentage}%`;
+        progressFillBar.style.width = `${percentage}%`;
+
+        lessons.forEach((lesson, index) => {
+          const lessonNum = index + 1;
+          const actionBtn = lesson.querySelector(".lesson-action");
+
+          lesson.classList.remove("locked");
+
+          if (actionBtn) {
+            actionBtn.classList.remove("locked-badge");
+            actionBtn.textContent = `Iniciar Entrega 4.${lessonNum} →`;
+          }
+        });
+
+      } else {
+        // --- CASO 2: UNIDAD 3 PENDIENTE (UNIDAD 4 BLOQUEADA) ---
+        noticeBox.classList.remove("is-unlocked");
+        noticeIcon.textContent = "🔒";
+        noticeTitle.textContent = "Acceso por progreso";
+        noticeDesc.textContent = "Para habilitar los ejercicios de la Unidad 4, debes completar la Unidad 3 y sus entregas anteriores.";
+
+        progressValueText.textContent = "Bloqueada · 0%";
+        progressFillBar.style.width = "0%";
+
+        lessons.forEach((lesson, index) => {
+          const actionBtn = lesson.querySelector(".lesson-action");
+          lesson.classList.add("locked");
+
+          if (actionBtn) {
+            actionBtn.classList.add("locked-badge");
+            actionBtn.textContent = index === 0 ? "🔒 Requiere Unidad 3" : "🔒 Bloqueada";
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-

@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07101f">
-  <meta
-    name="description"
-    content="Unidad 2, Entrega 3: En el restaurante."
-  >
+  <meta name="description" content="Unidad 2, Entrega 3: En el restaurante.">
 
   <title>En el restaurante | 506 English Express</title>
 
@@ -17,61 +14,415 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-
   <link rel="stylesheet" href="../assets/css/styles.css">
-  <link rel="stylesheet" href="../assets/css/lesson.css">
 
   <style>
-    .lesson-complete-message[hidden] {
-      display: none;
+    .lesson-page {
+      padding: 3.5rem 0 5rem;
+    }
+
+    .lesson-hero,
+    .audio-player-card,
+    .activity-card {
+      border: 1px solid rgba(47, 215, 255, 0.32);
+      border-radius: 18px;
+      background: rgba(4, 20, 39, 0.76);
+      box-shadow: 0 0 30px rgba(47, 215, 255, 0.1);
+    }
+
+    .lesson-hero {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+
+    .lesson-hero h1,
+    .activity-card h2,
+    .completion-card h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .lesson-hero h1 {
+      font-size: clamp(1.65rem, 4vw, 3rem);
+      line-height: 1.2;
+    }
+
+    .lesson-hero > p:last-child,
+    .activity-card p,
+    .activity-card li,
+    .completion-card p {
+      color: rgba(225, 243, 255, 0.86);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .lesson-progress {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(47, 215, 255, 0.2);
+    }
+
+    .lesson-progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .lesson-progress-header span,
+    .activity-label,
+    .audio-player-label {
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lesson-progress-header strong {
+      color: #8cecff;
+    }
+
+    .lesson-progress-track {
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(47, 215, 255, 0.26);
+      border-radius: 999px;
+      background: rgba(1, 11, 27, 0.75);
+    }
+
+    .lesson-progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2fd7ff, #71ffc0);
+      box-shadow: 0 0 14px rgba(47, 215, 255, 0.7);
+      transition: width 0.3s ease;
+    }
+
+    .audio-player-card {
+      margin: 1.5rem 0 1rem;
+      padding: 1.25rem;
+    }
+
+    .audio-player-info,
+    .audio-player-controls,
+    .activity-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .audio-player-info {
+      align-items: flex-start;
+    }
+
+    .audio-player-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      place-items: center;
+      border: 1px solid rgba(47, 215, 255, 0.58);
+      border-radius: 50%;
+      background: rgba(47, 215, 255, 0.1);
+      font-size: 1.25rem;
+    }
+
+    .audio-player-label {
+      margin: 0 0 0.25rem;
+    }
+
+    .audio-player-info h2 {
+      margin: 0;
+      color: #effaff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+    }
+
+    .audio-player-info p:last-child {
+      margin: 0.35rem 0 0;
+      color: rgba(220, 240, 255, 0.78);
+    }
+
+    .audio-player-controls {
+      margin-top: 1rem;
+    }
+
+    .audio-play-button,
+    .activity-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid rgba(47, 215, 255, 0.65);
+      border-radius: 8px;
+      background: rgba(47, 215, 255, 0.12);
+      color: #b7f5ff;
+      cursor: pointer;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .audio-play-button {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      color: #061321;
+    }
+
+    .audio-play-button:hover,
+    .activity-button:hover {
+      background: rgba(47, 215, 255, 0.25);
+    }
+
+    .audio-time,
+    .activity-status {
+      color: #71ffc0;
+      font-weight: 700;
+    }
+
+    .audio-progress {
+      width: 100%;
+      margin-top: 1rem;
+      accent-color: #2fd7ff;
+    }
+
+    .activity-card {
+      margin: 1.25rem 0;
+      padding: clamp(1.15rem, 3vw, 1.7rem);
+      transition: opacity 0.3s ease, filter 0.3s ease;
+    }
+
+    .activity-card h2 {
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 1.3;
+    }
+
+    .activity-label {
+      margin: 0 0 0.55rem;
+    }
+
+    .activity-card ul,
+    .activity-card ol {
+      padding-left: 1.3rem;
+    }
+
+    .activity-card.is-complete {
+      border-color: rgba(113, 255, 192, 0.7);
+    }
+
+    .activity-card.is-complete .activity-label {
+      color: #71ffc0;
+    }
+    
+    .activity-card.is-locked {
+      opacity: 0.6;
+      filter: grayscale(1);
+      pointer-events: none;
+    }
+
+    .dialogue {
+      margin-top: 1.1rem;
+      padding: 1rem;
+      border-left: 3px solid #2fd7ff;
+      border-radius: 0 10px 10px 0;
+      background: rgba(47, 215, 255, 0.06);
+    }
+
+    .dialogue p {
+      margin: 0.65rem 0;
+    }
+
+    .dialogue strong {
+      color: #8cecff;
+    }
+
+    .answer-options {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .answer-option {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.24);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .answer-option input {
+      accent-color: #2fd7ff;
+    }
+
+    .student-input, select.student-input {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0.55rem 0 1rem;
+      padding: 0.75rem;
+      border: 1px solid rgba(118, 226, 255, 0.35);
+      border-radius: 8px;
+      outline: none;
+      background: rgba(1, 11, 27, 0.62);
+      color: #effaff;
+      font: inherit;
+    }
+
+    .student-input:focus {
+      border-color: #2fd7ff;
+      box-shadow: 0 0 0 3px rgba(47, 215, 255, 0.12);
+    }
+
+    textarea.student-input {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .activity-actions {
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .vocabulary-box {
+      padding: 1rem;
+      border: 1px solid rgba(118, 226, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(1, 11, 27, 0.34);
+    }
+
+    .vocabulary-box h3 {
+      margin: 0 0 0.6rem;
+      color: #ffc43d;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .vocabulary-box p {
+      margin: 0;
+    }
+
+    .reading-context-box {
+      background: rgba(6, 22, 42, 0.85);
+      border: 1px solid rgba(47, 215, 255, 0.3);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      color: rgba(230, 245, 255, 0.9);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .reading-context-box h4,
+    .reading-context-box h3 {
+      color: #2fd7ff;
+      font-family: "Orbitron", sans-serif;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .map-figure {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    .map-figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(47, 215, 255, 0.3);
+    }
+
+    .map-figure figcaption {
+      margin-top: 0.5rem;
+      color: rgba(225, 243, 255, 0.7);
+      font-size: 0.85rem;
+    }
+
+    .completion-card {
+      margin-top: 2rem;
+      padding: 1.7rem;
+      border: 1px solid rgba(113, 255, 192, 0.5);
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        rgba(113, 255, 192, 0.13),
+        rgba(4, 20, 39, 0.78)
+      );
+      text-align: center;
+    }
+
+    .completion-card p {
+      max-width: 700px;
+      margin: 0.8rem auto 1.2rem;
     }
 
     .completion-actions {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 0.75rem;
-      margin-top: 1.25rem;
+    }
+
+    @media (max-width: 650px) {
+      .lesson-page {
+        padding-top: 2.2rem;
+      }
+
+      .lesson-progress-header,
+      .audio-player-controls {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .vocabulary-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
-<style id="rewards-506-shared-style">
-.reward-avatar-badge {
-  display:grid;
-  grid-template-columns:78px minmax(0,1fr);
-  gap:.95rem;
-  align-items:center;
-  padding:.9rem 1rem;
-  border:1px solid rgba(47,215,255,.25);
-  border-radius:16px;
-  background:linear-gradient(145deg, rgba(6,22,42,.92), rgba(4,15,30,.78));
-  box-shadow:0 0 24px rgba(47,215,255,.08);
-}
-.reward-avatar-badge__media{display:flex;justify-content:center;align-items:center}
-.reward-avatar-badge__image{width:78px;height:78px;object-fit:cover;border-radius:18px;border:1px solid rgba(47,215,255,.46);box-shadow:0 0 18px rgba(47,215,255,.2)}
-.reward-avatar-badge__eyebrow,.reward-avatar-collection__eyebrow{margin:0 0 .35rem;color:#ffc43d;font-family:Orbitron,sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transformuppercase}
-.reward-avatar-badge__title,.reward-avatar-card__body h3,.reward-avatar-collection__header h2{margin:0 0 .3rem;font-family:Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.04em}
-.reward-avatar-badge__meta,.reward-avatar-badge__progress,.reward-avatar-card__body p,.reward-avatar-collection__header p:last-child{margin:0 0 .2rem;color:rgba(220,240,255,.78)}
-.reward-avatar-collection__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
-.reward-avatar-card{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(47,215,255,.16);background:rgba(3,11,27,.7);padding:.85rem;min-height:196px;display:flex;flex-direction:column;gap:.7rem}
-.reward-avatar-card__visual{position:relative;border-radius:14px;background:rgba(6,20,38,.9);padding:.75rem;display:grid;place-items:center;min-height:116px;border:1px solid rgba(255,255,255,.06)}
-.reward-avatar-card__image{width:100%;max-width:92px;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid rgba(47,215,255,.32);display:block}
-.reward-avatar-card__placeholder{display:grid;place-items:center;width:92px;height:92px;border-radius:14px;border:1px dashed rgba(255,255,255,.14);color:rgba(255,255,255,.45);font-size:2rem;background:rgba(255,255,255,.02)}
-.reward-avatar-card__number{position:absolute;top:.5rem;right:.5rem;min-width:34px;min-height:34px;padding:.2rem .45rem;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:rgba(3,11,27,.82);border:1px solid rgba(47,215,255,.3);color:#8cecff;font-family:Orbitron,sans-serif;font-size:.66rem;letter-spacing:.08em}
-.reward-avatar-card.is-current{border-color:rgba(255,196,61,.7);box-shadow:0 0 0 1px rgba(255,196,61,.18),0 18px 35px rgba(255,196,61,.12);background:linear-gradient(160deg, rgba(255,196,61,.14), rgba(3,11,27,.84))}
-.reward-avatar-card.is-unlocked .reward-avatar-card__body p{color:rgba(113,255,192,.88)}
-.reward-avatar-card.is-locked{opacity:.58;filter:grayscale(1)}
-@media (max-width:860px){.reward-avatar-collection__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:560px){.reward-avatar-badge{grid-template-columns:64px minmax(0,1fr)}.reward-avatar-badge__image{width:64px;height:64px}.reward-avatar-collection__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-</style>
+
+  <style id="rewards-506-shared-style">
+    .reward-avatar-badge {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: .95rem;
+      align-items: center;
+      padding: .9rem 1rem;
+      border: 1px solid rgba(47, 215, 255, .25);
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(6, 22, 42, .92), rgba(4, 15, 30, .78));
+      box-shadow: 0 0 24px rgba(47, 215, 255, .08);
+    }
+    .reward-avatar-badge__media { display: flex; justify-content: center; align-items: center; }
+    .reward-avatar-badge__image { width: 78px; height: 78px; object-fit: cover; border-radius: 18px; border: 1px solid rgba(47, 215, 255, .46); box-shadow: 0 0 18px rgba(47, 215, 255, .2); }
+    .reward-avatar-badge__eyebrow { margin: 0 0 .35rem; color: #ffc43d; font-family: Orbitron, sans-serif; font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .reward-avatar-badge__title { margin: 0 0 .3rem; font-family: Orbitron, sans-serif; text-transform: uppercase; letter-spacing: .04em; }
+    .reward-avatar-badge__meta, .reward-avatar-badge__progress { margin: 0 0 .2rem; color: rgba(220, 240, 255, .78); }
+  </style>
 </head>
 
 <body>
   <div class="video-bg" aria-hidden="true">
     <video autoplay muted loop playsinline>
-      <source
-        src="../assets/video/crea_una_animacion_donde_la_ca.mp4"
-        type="video/mp4"
-      >
+      <source src="../assets/video/crea_una_animacion_donde_la_ca.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -88,7 +439,7 @@
   <header>
     <nav class="container navbar" aria-label="Navegación principal">
       <a href="../index.html" class="brand" aria-label="Volver al inicio">
-        <span class="brand-mark" aria-hidden="true"><span>⚡</span></span>
+        <span class="brand-mark" aria-hidden="true">⚡</span>
         <span class="brand-text">English <strong>506</strong> Express</span>
       </a>
 
@@ -97,23 +448,26 @@
         <a href="unit-2.html">Unidad 2</a>
       </div>
 
-      <a href="unit-2-delivery-2.html" class="button button-outline button-small">
-        Entrega anterior
-      </a>
+      <div class="nav-actions">
+        <a href="unit-2-delivery-2.html" class="button button-outline button-small">
+          Entrega anterior
+        </a>
+      </div>
     </nav>
   </header>
 
   <main class="lesson-page">
-<section class="activity-card" aria-labelledby="current-avatar-title" style="margin-top:1rem;">
-  <div style="padding:1rem;">
-    <p class="lesson-kicker">Sistema de recompensas</p>
-    <h2 id="current-avatar-title">Tu avatar actual</h2>
-    <div id="current-avatar-badge"></div>
-  </div>
-</section>
-
     <div class="container">
-      <section class="lesson-banner">
+      
+      <section class="activity-card" aria-labelledby="current-avatar-title" style="margin-top:1rem;">
+        <div style="padding:0.5rem;">
+          <p class="activity-label">Sistema de recompensas</p>
+          <h2 id="current-avatar-title">Tu avatar actual</h2>
+          <div id="current-avatar-badge" style="margin-top: 0.75rem;"></div>
+        </div>
+      </section>
+
+      <section class="lesson-hero">
         <p class="kicker">Unidad 02 · Entrega 03</p>
         <h1>En el restaurante</h1>
 
@@ -124,791 +478,591 @@
         </p>
 
         <div class="lesson-progress">
-          <div>
-            <div class="lesson-progress-label">
-              <span>Progreso de la entrega</span>
-              <span id="progress-text">0 de 10 secciones completadas</span>
-            </div>
-
-            <div
-              class="progress-track"
-              role="progressbar"
-              aria-label="Progreso de la entrega"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="0"
-            >
-              <div class="progress-fill" id="progress-fill"></div>
-            </div>
+          <div class="lesson-progress-header">
+            <span>Progreso de la entrega</span>
+            <strong id="lesson-progress-text">0 de 10 secciones completadas</strong>
           </div>
 
+          <div
+            class="lesson-progress-track"
+            role="progressbar"
+            aria-label="Progreso de la entrega"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
+          </div>
+          
           <button
-            class="button button-outline button-small"
+            class="activity-button"
             id="reset-progress"
             type="button"
+            style="margin-top: 1rem; width: auto;"
           >
-            Reiniciar
+            Reiniciar progreso
           </button>
         </div>
       </section>
 
-      <section class="lesson-sections">
-        <article class="lesson-section activity-card" data-activity="1">
-          <div class="activity-heading">
+      <!-- ACTIVIDAD 01 -->
+      <section class="activity-card" data-activity="1">
+        <p class="activity-label">Actividad 01 · Diálogo</p>
+        <h2>Jane y Tom en un restaurante mexicano</h2>
+
+        <p>Lee el diálogo. Jane y Tom hablan sobre el restaurante, el menú, el chili con carne, el vino y la comida que van a ordenar.</p>
+
+        <section class="audio-player-card" aria-label="Audio del diálogo">
+          <div class="audio-player-info">
+            <span class="audio-player-icon" aria-hidden="true">🔊</span>
             <div>
-              <p class="activity-number">ACTIVIDAD 01 · DIÁLOGO</p>
-              <h2>Jane y Tom en un restaurante mexicano</h2>
+              <p class="audio-player-label">Audio del diálogo</p>
+              <h2>En el restaurante</h2>
+              <p>Escucha el diálogo y practica la pronunciación.</p>
             </div>
-            <span class="activity-icon" aria-hidden="true">🍽️</span>
           </div>
 
-          <p>
-            Lee el diálogo. Jane y Tom hablan sobre el restaurante, el menú, el
-            chili con carne, el vino y la comida que van a ordenar.
-          </p>
+          <audio id="work-audio" preload="metadata">
+            <source src="../assets/audio/unit-2/3-en-el-restaurante.mp3" type="audio/mpeg">
+            Tu navegador no admite la reproducción de audio.
+          </audio>
 
-          <section class="audio-player-card" aria-label="Audio del diálogo">
-            <div class="audio-player-info">
-              <span class="audio-player-icon" aria-hidden="true">🎧</span>
-              <div>
-                <p class="audio-player-label">Audio del diálogo</p>
-                <h2>En el restaurante</h2>
-                <p>Escucha el diálogo y practica la pronunciación.</p>
-              </div>
-            </div>
-
-            <audio id="work-audio" preload="metadata">
-              <source src="../assets/audio/unit-2/3-en-el-restaurante.mp3" type="audio/mpeg">
-              Tu navegador no admite la reproducción de audio.
-            </audio>
-
-            <div class="audio-player-controls">
-              <button id="audio-play-button" class="audio-play-button" type="button" aria-label="Reproducir audio">
-                <span id="audio-play-icon" aria-hidden="true">▶</span>
-                <span id="audio-play-text">Reproducir audio</span>
-              </button>
-              <span id="audio-time" class="audio-time">0:00 / 0:00</span>
-            </div>
-
-            <input id="audio-progress" class="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
-          </section>
-
-          <div class="dialogue-box">
-            <p><strong>Jane:</strong> What a lovely place! I love the music.</p>
-            <p><strong>Tom:</strong> And the food's excellent. It's the best Mexican restaurant in L.A.</p>
-            <p><strong>Jane:</strong> This cocktail's fantastic! What's in it?</p>
-            <p><strong>Tom:</strong> Tequila and lemon juice. It's called a Margarita. But be careful — it's the strongest drink in the house.</p>
-            <p><strong>Jane:</strong> Mmmmmm... it's delicious.</p>
-            <p><strong>Tom:</strong> Waiter, can we have the menu, please?</p>
-            <p><strong>Waiter:</strong> Here you are, sir.</p>
-            <p><strong>Jane:</strong> What a huge choice! What do you recommend?</p>
-            <p><strong>Tom:</strong> The chili con carne is very good here.</p>
-            <p><strong>Jane:</strong> What's it like?</p>
-            <p><strong>Tom:</strong> It's a dish made with meat, red beans, tomato sauce, oh — and spices. It's the hottest dish on the menu!</p>
-            <p><strong>Jane:</strong> That sounds good. Yes, I'll have that.</p>
-            <p><strong>Tom:</strong> And to start, why don't you try the shrimp cocktail? They make it very well here.</p>
-            <p><strong>Jane:</strong> No, thanks. I'm not terribly hungry. I'll just have a main dish.</p>
-            <p><strong>Waiter:</strong> Are you ready to order? What would you like as an appetizer?</p>
-            <p><strong>Tom:</strong> We don't want any appetizers, thank you. As a main dish, the lady will have the chili con carne, and I'll have the... let's see... I'll just have a steak.</p>
-            <p><strong>Waiter:</strong> How do you want your steak cooked?</p>
-            <p><strong>Tom:</strong> Medium rare.</p>
-            <p><strong>Waiter:</strong> And what vegetable would you like with your steak? We have green beans, carrots and broccoli.</p>
-            <p><strong>Tom:</strong> I'll have broccoli.</p>
-            <p><strong>Waiter:</strong> And what would you like to drink?</p>
-            <p><strong>Tom:</strong> How about some French Beaujolais, Jane?</p>
-            <p><strong>Jane:</strong> Oh yes, please. It's much better than Californian wine.</p>
-            <p><strong>Tom:</strong> Red or white?</p>
-            <p><strong>Jane:</strong> Red, please.</p>
-            <p><strong>Tom:</strong> We'll have a Beaujolais.</p>
-            <p><strong>Waiter:</strong> Thank you, señor, señorita.</p>
-            <p><strong>Tom:</strong> Well, cheers, Jane! Here's to your stay in L.A. And here's to chance meetings!</p>
-            <p><strong>Jane:</strong> Cheers, Tom! Don't drink too much of that Tequila. Don't forget: this time you're driving!</p>
-          </div>
-
-          <div class="translation-box">
-            <strong>Idea principal:</strong>
-            <span>
-              Jane ordena chili con carne y Tom pide un filete medio poco hecho con
-              brócoli. Ambos toman vino tinto Beaujolais; Jane recuerda a Tom que
-              no beba demasiado tequila porque él conducirá.
-            </span>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary complete-activity" type="button">
-              Marcar diálogo como completado
+          <div class="audio-player-controls">
+            <button id="audio-play-button" class="audio-play-button" type="button" aria-label="Reproducir audio">
+              <span id="audio-play-icon" aria-hidden="true">▶</span>
+              <span id="audio-play-text">Reproducir audio</span>
             </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="2">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 02 · COMPRENSIÓN</p>
-              <h2>Compruebe su comprensión</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🧠</span>
+            <span id="audio-time" class="audio-time">0:00 / 0:00</span>
           </div>
 
-          <div class="question-block">
-            <p><strong>1. ¿Qué bebida toma Jane al inicio?</strong></p>
-            <label class="option-label"><input type="radio" name="restaurant-q1" value="a"> A Margarita</label>
-            <label class="option-label"><input type="radio" name="restaurant-q1" value="b"> A coffee</label>
-            <label class="option-label"><input type="radio" name="restaurant-q1" value="c"> A beer</label>
-          </div>
+          <input id="audio-progress" class="audio-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
+        </section>
 
-          <div class="question-block">
-            <p><strong>2. ¿Qué plato principal ordena Jane?</strong></p>
-            <label class="option-label"><input type="radio" name="restaurant-q2" value="a"> A shrimp cocktail</label>
-            <label class="option-label"><input type="radio" name="restaurant-q2" value="b"> Chili con carne</label>
-            <label class="option-label"><input type="radio" name="restaurant-q2" value="c"> A steak</label>
-          </div>
+        <div class="dialogue">
+          <p><strong>Jane:</strong> What a lovely place! I love the music.</p>
+          <p><strong>Tom:</strong> And the food's excellent. It's the best Mexican restaurant in L.A.</p>
+          <p><strong>Jane:</strong> This cocktail's fantastic! What's in it?</p>
+          <p><strong>Tom:</strong> Tequila and lemon juice. It's called a Margarita. But be careful — it's the strongest drink in the house.</p>
+          <p><strong>Jane:</strong> Mmmmmm... it's delicious.</p>
+          <p><strong>Tom:</strong> Waiter, can we have the menu, please?</p>
+          <p><strong>Waiter:</strong> Here you are, sir.</p>
+          <p><strong>Jane:</strong> What a huge choice! What do you recommend?</p>
+          <p><strong>Tom:</strong> The chili con carne is very good here.</p>
+          <p><strong>Jane:</strong> What's it like?</p>
+          <p><strong>Tom:</strong> It's a dish made with meat, red beans, tomato sauce, oh — and spices. It's the hottest dish on the menu!</p>
+          <p><strong>Jane:</strong> That sounds good. Yes, I'll have that.</p>
+          <p><strong>Tom:</strong> And to start, why don't you try the shrimp cocktail? They make it very well here.</p>
+          <p><strong>Jane:</strong> No, thanks. I'm not terribly hungry. I'll just have a main dish.</p>
+          <p><strong>Waiter:</strong> Are you ready to order? What would you like as an appetizer?</p>
+          <p><strong>Tom:</strong> We don't want any appetizers, thank you. As a main dish, the lady will have the chili con carne, and I'll have the... let's see... I'll just have a steak.</p>
+          <p><strong>Waiter:</strong> How do you want your steak cooked?</p>
+          <p><strong>Tom:</strong> Medium rare.</p>
+          <p><strong>Waiter:</strong> And what vegetable would you like with your steak? We have green beans, carrots and broccoli.</p>
+          <p><strong>Tom:</strong> I'll have broccoli.</p>
+          <p><strong>Waiter:</strong> And what would you like to drink?</p>
+          <p><strong>Tom:</strong> How about some French Beaujolais, Jane?</p>
+          <p><strong>Jane:</strong> Oh yes, please. It's much better than Californian wine.</p>
+          <p><strong>Tom:</strong> Red or white?</p>
+          <p><strong>Jane:</strong> Red, please.</p>
+          <p><strong>Tom:</strong> We'll have a Beaujolais.</p>
+          <p><strong>Waiter:</strong> Thank you, señor, señorita.</p>
+          <p><strong>Tom:</strong> Well, cheers, Jane! Here's to your stay in L.A. And here's to chance meetings!</p>
+          <p><strong>Jane:</strong> Cheers, Tom! Don't drink too much of that Tequila. Don't forget: this time you're driving!</p>
+        </div>
 
-          <div class="question-block">
-            <p><strong>3. ¿Cómo quiere Tom su filete?</strong></p>
-            <label class="option-label"><input type="radio" name="restaurant-q3" value="a"> Well done</label>
-            <label class="option-label"><input type="radio" name="restaurant-q3" value="b"> Medium rare</label>
-            <label class="option-label"><input type="radio" name="restaurant-q3" value="c"> Fried</label>
-          </div>
+        <p style="margin-top: 1rem;">
+          <strong>Idea principal:</strong> Jane ordena chili con carne y Tom pide un filete medio poco hecho con brócoli. Ambos toman vino tinto Beaujolais; Jane recuerda a Tom que no beba demasiado tequila porque él conducirá.
+        </p>
 
-          <div class="question-block">
-            <p><strong>4. ¿Qué vino eligen?</strong></p>
-            <label class="option-label"><input type="radio" name="restaurant-q4" value="a"> White Californian wine</label>
-            <label class="option-label"><input type="radio" name="restaurant-q4" value="b"> Red French Beaujolais</label>
-            <label class="option-label"><input type="radio" name="restaurant-q4" value="c"> House wine</label>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-dialogue" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="3">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 03 · VOCABULARIO</p>
-              <h2>Comida, bebidas y restaurante</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">📚</span>
-          </div>
-
-          <div class="vocabulary-columns">
-            <section class="vocabulary-group">
-              <h3>Restaurante y comidas</h3>
-              <dl class="vocabulary-list">
-                <div><dt>place</dt><dd>sitio, lugar</dd></div>
-                <div><dt>music</dt><dd>música</dd></div>
-                <div><dt>food</dt><dd>comida, alimentos</dd></div>
-                <div><dt>restaurant</dt><dd>restaurante</dd></div>
-                <div><dt>menu</dt><dd>menú</dd></div>
-                <div><dt>choice</dt><dd>elección</dd></div>
-                <div><dt>dish</dt><dd>plato</dd></div>
-                <div><dt>appetizer</dt><dd>aperitivo, primer plato</dd></div>
-                <div><dt>main dish</dt><dd>plato principal, segundo plato</dd></div>
-                <div><dt>dessert</dt><dd>postre</dd></div>
-                <div><dt>set menu</dt><dd>menú a precio fijo</dd></div>
-                <div><dt>meal</dt><dd>comida</dd></div>
-                <div><dt>breakfast</dt><dd>desayuno</dd></div>
-                <div><dt>lunch</dt><dd>almuerzo</dd></div>
-                <div><dt>dinner</dt><dd>cena</dd></div>
-                <div><dt>bill / check</dt><dd>cuenta</dd></div>
-              </dl>
-            </section>
-
-            <section class="vocabulary-group">
-              <h3>Alimentos y bebidas</h3>
-              <dl class="vocabulary-list">
-                <div><dt>cocktail</dt><dd>cóctel</dd></div>
-                <div><dt>lemon juice</dt><dd>jugo de limón</dd></div>
-                <div><dt>drink</dt><dd>bebida</dd></div>
-                <div><dt>meat</dt><dd>carne</dd></div>
-                <div><dt>beans</dt><dd>frijoles, judías</dd></div>
-                <div><dt>tomato sauce</dt><dd>salsa de tomate</dd></div>
-                <div><dt>shrimp cocktail</dt><dd>cóctel de camarones</dd></div>
-                <div><dt>steak</dt><dd>filete</dd></div>
-                <div><dt>vegetables</dt><dd>verduras</dd></div>
-                <div><dt>green beans</dt><dd>judías verdes</dd></div>
-                <div><dt>carrots</dt><dd>zanahorias</dd></div>
-                <div><dt>broccoli</dt><dd>brócoli</dd></div>
-                <div><dt>wine</dt><dd>vino</dd></div>
-                <div><dt>fish</dt><dd>pescado</dd></div>
-                <div><dt>pork</dt><dd>cerdo</dd></div>
-                <div><dt>chicken</dt><dd>pollo</dd></div>
-                <div><dt>fries</dt><dd>papas fritas</dd></div>
-                <div><dt>chef's special</dt><dd>especialidad de la casa</dd></div>
-              </dl>
-            </section>
-
-            <section class="vocabulary-group">
-              <h3>Describir y pedir</h3>
-              <dl class="vocabulary-list">
-                <div><dt>good</dt><dd>bueno/a</dd></div>
-                <div><dt>strong / weak</dt><dd>fuerte / débil</dd></div>
-                <div><dt>delicious</dt><dd>delicioso/a</dd></div>
-                <div><dt>huge / enormous</dt><dd>enorme</dd></div>
-                <div><dt>hot / cold</dt><dd>caliente, picante / frío</dd></div>
-                <div><dt>rare</dt><dd>poco hecho</dd></div>
-                <div><dt>medium</dt><dd>medio</dd></div>
-                <div><dt>well done</dt><dd>muy hecho</dd></div>
-                <div><dt>tasteless</dt><dd>soso/a</dd></div>
-                <div><dt>tough / tender</dt><dd>duro/a / tierno/a</dd></div>
-                <div><dt>baked</dt><dd>al horno</dd></div>
-                <div><dt>fried</dt><dd>frito/a</dd></div>
-                <div><dt>to recommend</dt><dd>recomendar</dd></div>
-                <div><dt>to try</dt><dd>probar</dd></div>
-                <div><dt>to order</dt><dd>pedir, encargar</dd></div>
-                <div><dt>to cook</dt><dd>cocinar</dd></div>
-                <div><dt>to eat / drink</dt><dd>comer / beber</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <div class="question-block">
-            <label for="vocabulary-answer">
-              Complete: “Tom orders a __________ with broccoli.”
-            </label>
-            <input
-              id="vocabulary-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe una palabra en inglés"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-vocabulary" type="button">
-              Revisar respuesta
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="4">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 04 · CÓMO SE DICE</p>
-              <h2>Hablar con el camarero</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🧑‍🍳</span>
-          </div>
-
-          <div class="phrase-groups">
-            <section class="phrase-group">
-              <h3>1. Hablar con el camarero</h3>
-              <dl class="phrase-list">
-                <div><dt>Waiter, can we have a table for two, please?</dt><dd>¿Nos puede dar una mesa para dos?</dd></div>
-                <div><dt>Waiter, we're ready to order.</dt><dd>Ya podemos pedir.</dd></div>
-                <div><dt>Waiter, the check please.</dt><dd>La cuenta, por favor.</dd></div>
-                <div><dt>Is the service included?</dt><dd>¿Está incluido el servicio?</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>2. Pedir recomendaciones</h3>
-              <dl class="phrase-list">
-                <div><dt>What do you recommend?</dt><dd>¿Qué nos recomienda?</dd></div>
-                <div><dt>What do you suggest?</dt><dd>¿Qué nos sugiere?</dd></div>
-                <div><dt>What shall we have?</dt><dd>¿Qué vamos a tomar?</dd></div>
-                <div><dt>How about some fish?</dt><dd>¿Qué tal un poco de pescado?</dd></div>
-                <div><dt>Why don't you try the roast pork?</dt><dd>¿Por qué no prueba el cerdo asado?</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>3. Encargar comida y bebida</h3>
-              <dl class="phrase-list">
-                <div><dt>I'll have a steak and broccoli.</dt><dd>Tomaré un filete con brócoli.</dd></div>
-                <div><dt>We'll just have the main dish.</dt><dd>Solo tomaremos el plato principal.</dd></div>
-                <div><dt>We'll try the house wine.</dt><dd>Vamos a probar el vino de la casa.</dd></div>
-                <div><dt>What would you like as an appetizer?</dt><dd>¿Qué quiere como aperitivo?</dd></div>
-              </dl>
-            </section>
-
-            <section class="phrase-group">
-              <h3>4. Opinar sobre comida</h3>
-              <dl class="phrase-list">
-                <div><dt>This is delicious.</dt><dd>Esto es delicioso.</dd></div>
-                <div><dt>This is very good.</dt><dd>Esto está muy bueno.</dd></div>
-                <div><dt>The meat's overcooked.</dt><dd>La carne está demasiado cocida.</dd></div>
-                <div><dt>The fish is cold.</dt><dd>El pescado está frío.</dd></div>
-                <div><dt>What a delicious meal!</dt><dd>¡Qué comida tan sabrosa!</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <div class="question-block">
-            <label for="waiter-answer">
-              Complete: “Waiter, the __________ please.”
-            </label>
-            <input
-              id="waiter-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: check"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="recommend-answer">
-              Complete: “What do you __________?”
-            </label>
-            <input
-              id="recommend-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: recommend"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-expressions" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="5">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 05 · GRAMÁTICA</p>
-              <h2>I'll have... y some / any</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🥗</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>I'll have...</h3>
-            <p class="example-box">
-              I want a steak and French fries. →
-              <strong>I'll have a steak and French fries.</strong>
-            </p>
-            <p>
-              Practique: I want the roast chicken and green beans. / The lady wants
-              a chef's salad. / I want a medium rare steak. / They want the set menu.
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>Some / any</h3>
-            <p class="example-box">
-              Do you want <strong>some</strong> cheese? Yes, please, I'd love
-              <strong>some</strong>.<br><br>
-              Do you want <strong>some</strong> beer? No, thanks, I don't want
-              <strong>any</strong>.
-            </p>
-            <p>
-              En ofertas y preguntas amables se suele usar <strong>some</strong>.
-              En respuestas negativas se usa normalmente <strong>any</strong>.
-            </p>
-          </section>
-
-          <div class="question-block">
-            <label for="ill-have-answer">
-              Transforme: “I want a medium rare steak.” →
-              <strong>I'll __________ a medium rare steak.</strong>
-            </label>
-            <input
-              id="ill-have-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: have"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="some-any-answer">
-              Complete: “No, thanks. I don't want __________ wine.”
-            </label>
-            <input
-              id="some-any-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: any"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-some-any" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="6">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 06 · COMPARATIVOS</p>
-              <h2>Better, worse, the best y the worst</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🏆</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>Better / worse</h3>
-            <p class="example-box">
-              The Beaujolais is good. The Californian wine →
-              The Californian wine is <strong>better than</strong> the Beaujolais.<br><br>
-              The chili con carne is bad. The steak →
-              The steak is <strong>worse than</strong> the chili con carne.
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>The best / The worst</h3>
-            <p class="example-box">
-              This restaurant is really good. →
-              It's <strong>the best restaurant</strong> in L.A.<br><br>
-              This bar is really bad. →
-              It's <strong>the worst bar</strong> in L.A.
-            </p>
-          </section>
-
-          <section class="oral-practice-block">
-            <h3>Superlativos</h3>
-            <p class="example-box">
-              That restaurant is cheaper than all the other restaurants. →
-              It's <strong>the cheapest restaurant</strong>.<br><br>
-              That drink is stronger than all the other drinks. →
-              It's <strong>the strongest drink</strong>.
-            </p>
-          </section>
-
-          <div class="question-block">
-            <label for="better-answer">
-              Complete: “The Californian wine is __________ than the Beaujolais.”
-            </label>
-            <input
-              id="better-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: better"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="best-answer">
-              Complete: “It's __________ Mexican restaurant in L.A.”
-            </label>
-            <input
-              id="best-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: the best"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="strongest-answer">
-              Complete: “The Margarita is __________ drink in the house.”
-            </label>
-            <input
-              id="strongest-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: the strongest"
-            >
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-comparatives" type="button">
-              Revisar respuestas
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="7">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 07 · IMPERATIVOS</p>
-              <h2>Don't...</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">⚠️</span>
-          </div>
-
-          <section class="oral-practice-block">
-            <h3>Órdenes e instrucciones negativas</h3>
-            <p class="example-box">
-              Go to New York, not to San Francisco. →
-              <strong>Don't go to San Francisco.</strong>
-            </p>
-            <p>
-              Jane dice: <strong>Don't drink too much of that Tequila.</strong>
-              y <strong>Don't forget: this time you're driving!</strong>
-            </p>
-            <p>
-              Practique: Have a Bordeaux, not the house wine. / Have the chef's
-              speciality, not the set menu. / Go to a Chinese restaurant, not a
-              McDonald's.
-            </p>
-          </section>
-
-          <div class="question-block">
-            <label for="dont-answer">
-              Transforme: “Drink water, not too much Tequila.” →
-              <strong>Don't __________ too much Tequila.</strong>
-            </label>
-            <input
-              id="dont-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe: drink"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="dont-writing">
-              Escriba una instrucción negativa sobre comida, bebida o conducción:
-            </label>
-            <textarea
-              id="dont-writing"
-              placeholder="Don't drink and drive."
-            ></textarea>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-dont" type="button">
-              Guardar práctica
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="8">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 08 · CULTURA</p>
-              <h2>Restaurantes en Estados Unidos</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🌎</span>
-          </div>
-
-          <div class="reading-card">
-            <h3>Variedad gastronómica</h3>
-            <p>
-              La lectura presenta la evolución de los restaurantes en Estados
-              Unidos. Durante mucho tiempo, un tipo de comida tradicional se asoció
-              con carne y papas, pero los restaurantes de diferentes culturas fueron
-              ganando popularidad.
-            </p>
-            <p>
-              Restaurantes italianos, griegos, mexicanos, chinos, tailandeses y de
-              muchas otras tradiciones ampliaron las opciones para quienes buscaban
-              sabores nuevos. En las grandes ciudades, es común encontrar platos de
-              diversos países en un mismo vecindario.
-            </p>
-            <p>
-              El texto también menciona la presencia de restaurantes de comida
-              rápida, valorados por ser prácticos y de precio accesible. La
-              variedad, la adaptación y la competencia ayudan a explicar la gran
-              diversidad de opciones gastronómicas.
-            </p>
-          </div>
-
-          <div class="question-block">
-            <label for="culture-writing">
-              Escriba una oración en inglés sobre un restaurante o comida que le guste:
-            </label>
-            <textarea
-              id="culture-writing"
-              placeholder="I like Mexican food because it is delicious."
-            ></textarea>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-culture" type="button">
-              Guardar respuesta
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="9">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 09 · MENÚ</p>
-              <h2>De todo un poco: Restaurant menu</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">📋</span>
-          </div>
-
-          <p>
-            Observe el menú. Lea los ingredientes de cada plato y relacione la
-            descripción con el nombre correcto.
-          </p>
-
-          <figure class="map-figure">
-            <img
-              src="../assets/images/unit-2/restaurant-menu-exercise.png"
-              alt="Menú de restaurante con Texas Burger, Chef Salad, The Williamsburg, Triple Decker Sandwich y B.L.T."
-            >
-            <figcaption>
-              Menú de restaurante: Texas Burger, Chef Salad, The Williamsburg,
-              Triple Decker Sandwich y B.L.T.
-            </figcaption>
-          </figure>
-
-          <div class="question-block">
-            <p><strong>1. Which dish has bacon, lettuce, tomato and mayonnaise on toast?</strong></p>
-            <label class="option-label"><input type="radio" name="menu-q1" value="a"> Texas Burger</label>
-            <label class="option-label"><input type="radio" name="menu-q1" value="b"> B.L.T.</label>
-            <label class="option-label"><input type="radio" name="menu-q1" value="c"> Chef Salad</label>
-          </div>
-
-          <div class="question-block">
-            <p><strong>2. Which dish has roast beef, brown gravy, mashed potatoes and vegetables?</strong></p>
-            <label class="option-label"><input type="radio" name="menu-q2" value="a"> The Williamsburg</label>
-            <label class="option-label"><input type="radio" name="menu-q2" value="b"> Texas Burger</label>
-            <label class="option-label"><input type="radio" name="menu-q2" value="c"> Triple Decker Sandwich</label>
-          </div>
-
-          <div class="question-block">
-            <p><strong>3. Which dish includes lettuce, tomato, cucumber, celery, cheeses, green peppers and tuna fish?</strong></p>
-            <label class="option-label"><input type="radio" name="menu-q3" value="a"> Chef Salad</label>
-            <label class="option-label"><input type="radio" name="menu-q3" value="b"> B.L.T.</label>
-            <label class="option-label"><input type="radio" name="menu-q3" value="c"> The Williamsburg</label>
-          </div>
-
-          <div class="question-block">
-            <p><strong>4. Which item costs $2.75?</strong></p>
-            <label class="option-label"><input type="radio" name="menu-q4" value="a"> Texas Burger</label>
-            <label class="option-label"><input type="radio" name="menu-q4" value="b"> B.L.T.</label>
-            <label class="option-label"><input type="radio" name="menu-q4" value="c"> The Williamsburg</label>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary check-menu" type="button">
-              Revisar menú
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
-
-        <article class="lesson-section activity-card is-locked" data-activity="10">
-          <div class="activity-heading">
-            <div>
-              <p class="activity-number">ACTIVIDAD 10 · RECETA Y REPASO</p>
-              <h2>Brownies</h2>
-            </div>
-            <span class="activity-icon" aria-hidden="true">🍫</span>
-          </div>
-
-          <p>
-            Observe los ingredientes de los brownies y lea una versión adaptada de
-            la receta para practicar vocabulario de cocina y medidas.
-          </p>
-
-          <figure class="map-figure">
-            <img
-              src="../assets/images/unit-2/brownies-ingredients.png"
-              alt="Ilustración de ingredientes para preparar brownies: eggs, vanilla, flour, chocolate, walnuts, butter, salt, sugar y baking powder"
-            >
-            <figcaption>Ingredientes para brownies.</figcaption>
-          </figure>
-
-          <div class="vocabulary-columns">
-            <section class="vocabulary-group">
-              <h3>Ingredientes</h3>
-              <dl class="vocabulary-list">
-                <div><dt>butter / margarine</dt><dd>mantequilla / margarina</dd></div>
-                <div><dt>unsweetened chocolate</dt><dd>chocolate sin azúcar</dd></div>
-                <div><dt>sugar</dt><dd>azúcar</dd></div>
-                <div><dt>eggs</dt><dd>huevos</dd></div>
-                <div><dt>vanilla</dt><dd>vainilla</dd></div>
-                <div><dt>flour</dt><dd>harina</dd></div>
-                <div><dt>baking powder</dt><dd>polvo de hornear</dd></div>
-                <div><dt>salt</dt><dd>sal</dd></div>
-                <div><dt>walnuts</dt><dd>nueces</dd></div>
-              </dl>
-            </section>
-
-            <section class="vocabulary-group">
-              <h3>Acciones de cocina</h3>
-              <dl class="vocabulary-list">
-                <div><dt>melt</dt><dd>derretir</dd></div>
-                <div><dt>stir</dt><dd>revolver</dd></div>
-                <div><dt>cool</dt><dd>enfriar</dd></div>
-                <div><dt>beat eggs</dt><dd>batir huevos</dd></div>
-                <div><dt>add</dt><dd>agregar</dd></div>
-                <div><dt>mix well</dt><dd>mezclar bien</dd></div>
-                <div><dt>bake</dt><dd>hornear</dd></div>
-                <div><dt>cut into squares</dt><dd>cortar en cuadrados</dd></div>
-              </dl>
-            </section>
-          </div>
-
-          <div class="reading-card">
-            <h3>Brownies: procedimiento simplificado</h3>
-            <p>
-              Primero, derrite la mantequilla y el chocolate a fuego bajo.
-              Después, bate los huevos y mezcla con azúcar, vainilla y chocolate.
-              Agrega harina, polvo de hornear, sal y nueces.
-            </p>
-            <p>
-              Hornea la mezcla en un molde engrasado hasta que esté lista. Déjala
-              enfriar y córtala en porciones cuadradas.
-            </p>
-          </div>
-
-          <div class="question-block">
-            <label for="brownies-answer">
-              Complete: “Add flour, baking powder, salt and __________.”
-            </label>
-            <input
-              id="brownies-answer"
-              type="text"
-              autocomplete="off"
-              placeholder="Escribe el ingrediente en inglés"
-            >
-          </div>
-
-          <div class="question-block">
-            <label for="final-writing">
-              Escriba al menos cuatro oraciones en inglés sobre una comida, un pedido
-              de restaurante o una receta. Use vocabulario de esta entrega.
-            </label>
-            <textarea
-              id="final-writing"
-              placeholder="I'd like a steak and broccoli. The food is delicious. I don't want any cold fish. First, melt the butter and chocolate."
-            ></textarea>
-          </div>
-
-          <div class="activity-actions">
-            <button class="button button-primary finish-lesson" type="button">
-              Completar Entrega 2.3
-            </button>
-            <span class="activity-feedback" aria-live="polite"></span>
-          </div>
-        </article>
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-complete="1">
+            Marcar diálogo como completado
+          </button>
+          <span class="activity-status" id="activity-status-1"></span>
+        </div>
       </section>
 
-      <section
-        class="lesson-complete-message"
-        id="lesson-complete-message"
-        aria-live="polite"
-        hidden
-      >
+      <!-- ACTIVIDAD 02 -->
+      <section class="activity-card is-locked" data-activity="2">
+        <p class="activity-label">Actividad 02 · Comprensión</p>
+        <h2>Compruebe su comprensión</h2>
+
+        <p><strong>1. ¿Qué bebida toma Jane al inicio?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="question-1" value="a"> A Margarita</label>
+          <label class="answer-option"><input type="radio" name="question-1" value="b"> A coffee</label>
+          <label class="answer-option"><input type="radio" name="question-1" value="c"> A beer</label>
+        </div>
+
+        <p><strong>2. ¿Qué plato principal ordena Jane?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="question-2" value="a"> A shrimp cocktail</label>
+          <label class="answer-option"><input type="radio" name="question-2" value="b"> Chili con carne</label>
+          <label class="answer-option"><input type="radio" name="question-2" value="c"> A steak</label>
+        </div>
+
+        <p><strong>3. ¿Cómo quiere Tom su filete?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="question-3" value="a"> Well done</label>
+          <label class="answer-option"><input type="radio" name="question-3" value="b"> Medium rare</label>
+          <label class="answer-option"><input type="radio" name="question-3" value="c"> Fried</label>
+        </div>
+
+        <p><strong>4. ¿Qué vino eligen?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="question-4" value="a"> White Californian wine</label>
+          <label class="answer-option"><input type="radio" name="question-4" value="b"> Red French Beaujolais</label>
+          <label class="answer-option"><input type="radio" name="question-4" value="c"> House wine</label>
+        </div>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-comprehension">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-2"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 03 -->
+      <section class="activity-card is-locked" data-activity="3">
+        <p class="activity-label">Actividad 03 · Vocabulario</p>
+        <h2>Comida, bebidas y restaurante</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Restaurante y comidas</h3>
+            <p>
+              place = sitio, lugar<br>
+              music = música<br>
+              food = comida, alimentos<br>
+              restaurant = restaurante<br>
+              menu = menú<br>
+              choice = elección<br>
+              dish = plato<br>
+              appetizer = aperitivo, primer plato<br>
+              main dish = plato principal, segundo plato<br>
+              dessert = postre<br>
+              set menu = menú a precio fijo<br>
+              meal = comida<br>
+              breakfast = desayuno<br>
+              lunch = almuerzo<br>
+              dinner = cena<br>
+              bill / check = cuenta
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>Alimentos y bebidas</h3>
+            <p>
+              cocktail = cóctel<br>
+              lemon juice = jugo de limón<br>
+              drink = bebida<br>
+              meat = carne<br>
+              beans = frijoles, judías<br>
+              tomato sauce = salsa de tomate<br>
+              shrimp cocktail = cóctel de camarones<br>
+              steak = filete<br>
+              vegetables = verduras<br>
+              green beans = judías verdes<br>
+              carrots = zanahorias<br>
+              broccoli = brócoli<br>
+              wine = vino<br>
+              fish = pescado<br>
+              pork = cerdo<br>
+              chicken = pollo<br>
+              fries = papas fritas<br>
+              chef's special = especialidad de la casa
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>Describir y pedir</h3>
+            <p>
+              good = bueno/a<br>
+              strong / weak = fuerte / débil<br>
+              delicious = delicioso/a<br>
+              huge / enormous = enorme<br>
+              hot / cold = caliente, picante / frío<br>
+              rare = poco hecho<br>
+              medium = medio<br>
+              well done = muy hecho<br>
+              tasteless = soso/a<br>
+              tough / tender = duro/a / tierno/a<br>
+              baked = al horno<br>
+              fried = frito/a<br>
+              to recommend = recomendar<br>
+              to try = probar<br>
+              to order = pedir, encargar<br>
+              to cook = cocinar<br>
+              to eat / drink = comer / beber
+            </p>
+          </div>
+        </div>
+
+        <label for="vocabulary-answer" style="display: block; margin-top: 1rem;">
+          Complete: “Tom orders a __________ with broccoli.”
+        </label>
+        <input class="student-input" id="vocabulary-answer" type="text" autocomplete="off" placeholder="Escribe una palabra en inglés">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-vocabulary">
+            Revisar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-3"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 04 -->
+      <section class="activity-card is-locked" data-activity="4">
+        <p class="activity-label">Actividad 04 · Cómo se dice</p>
+        <h2>Hablar con el camarero</h2>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>1. Hablar con el camarero</h3>
+            <p>
+              Waiter, can we have a table for two, please? = ¿Nos puede dar una mesa para dos?<br>
+              Waiter, we're ready to order. = Ya podemos pedir.<br>
+              Waiter, the check please. = La cuenta, por favor.<br>
+              Is the service included? = ¿Está incluido el servicio?
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>2. Pedir recomendaciones</h3>
+            <p>
+              What do you recommend? = ¿Qué nos recomienda?<br>
+              What do you suggest? = ¿Qué nos sugiere?<br>
+              What shall we have? = ¿Qué vamos a tomar?<br>
+              How about some fish? = ¿Qué tal un poco de pescado?<br>
+              Why don't you try the roast pork? = ¿Por qué no prueba el cerdo asado?
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>3. Encargar comida y bebida</h3>
+            <p>
+              I'll have a steak and broccoli. = Tomaré un filete con brócoli.<br>
+              We'll just have the main dish. = Solo tomaremos el plato principal.<br>
+              We'll try the house wine. = Vamos a probar el vino de la casa.<br>
+              What would you like as an appetizer? = ¿Qué quiere como aperitivo?
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>4. Opinar sobre comida</h3>
+            <p>
+              This is delicious. = Esto es delicioso.<br>
+              This is very good. = Esto está muy bueno.<br>
+              The meat's overcooked. = La carne está demasiado cocida.<br>
+              The fish is cold. = El pescado está frío.<br>
+              What a delicious meal! = ¡Qué comida tan sabrosa!
+            </p>
+          </div>
+        </div>
+
+        <label for="waiter-answer" style="display: block; margin-top: 1rem;">
+          Complete: “Waiter, the __________ please.”
+        </label>
+        <input class="student-input" id="waiter-answer" type="text" autocomplete="off" placeholder="Escribe: check">
+
+        <label for="recommend-answer">
+          Complete: “What do you __________?”
+        </label>
+        <input class="student-input" id="recommend-answer" type="text" autocomplete="off" placeholder="Escribe: recommend">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-expressions">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-4"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 05 -->
+      <section class="activity-card is-locked" data-activity="5">
+        <p class="activity-label">Actividad 05 · Gramática</p>
+        <h2>I'll have... y some / any</h2>
+
+        <div class="reading-context-box">
+          <h4>I'll have...</h4>
+          <p>
+            I want a steak and French fries. → <strong>I'll have a steak and French fries.</strong>
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Practique: I want the roast chicken and green beans. / The lady wants a chef's salad. / I want a medium rare steak. / They want the set menu.
+          </p>
+
+          <h4 style="margin-top: 1rem;">Some / any</h4>
+          <p>
+            Do you want <strong>some</strong> cheese? Yes, please, I'd love <strong>some</strong>.<br>
+            Do you want <strong>some</strong> beer? No, thanks, I don't want <strong>any</strong>.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            En ofertas y preguntas amables se suele usar <strong>some</strong>. En respuestas negativas se usa normalmente <strong>any</strong>.
+          </p>
+        </div>
+
+        <label for="ill-have-answer">
+          Transforme: “I want a medium rare steak.” → <strong>I'll __________ a medium rare steak.</strong>
+        </label>
+        <input class="student-input" id="ill-have-answer" type="text" autocomplete="off" placeholder="Escribe: have">
+
+        <label for="some-any-answer">
+          Complete: “No, thanks. I don't want __________ wine.”
+        </label>
+        <input class="student-input" id="some-any-answer" type="text" autocomplete="off" placeholder="Escribe: any">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-some-any">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-5"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 06 -->
+      <section class="activity-card is-locked" data-activity="6">
+        <p class="activity-label">Actividad 06 · Comparativos</p>
+        <h2>Better, worse, the best y the worst</h2>
+
+        <div class="reading-context-box">
+          <h4>Better / worse</h4>
+          <p>
+            The Beaujolais is good. The Californian wine → The Californian wine is <strong>better than</strong> the Beaujolais.<br>
+            The chili con carne is bad. The steak → The steak is <strong>worse than</strong> the chili con carne.
+          </p>
+
+          <h4 style="margin-top: 1rem;">The best / The worst</h4>
+          <p>
+            This restaurant is really good. → It's <strong>the best restaurant</strong> in L.A.<br>
+            This bar is really bad. → It's <strong>the worst bar</strong> in L.A.
+          </p>
+
+          <h4 style="margin-top: 1rem;">Superlativos</h4>
+          <p>
+            That restaurant is cheaper than all the other restaurants. → It's <strong>the cheapest restaurant</strong>.<br>
+            That drink is stronger than all the other drinks. → It's <strong>the strongest drink</strong>.
+          </p>
+        </div>
+
+        <label for="better-answer">
+          Complete: “The Californian wine is __________ than the Beaujolais.”
+        </label>
+        <input class="student-input" id="better-answer" type="text" autocomplete="off" placeholder="Escribe: better">
+
+        <label for="best-answer">
+          Complete: “It's __________ Mexican restaurant in L.A.”
+        </label>
+        <input class="student-input" id="best-answer" type="text" autocomplete="off" placeholder="Escribe: the best">
+
+        <label for="strongest-answer">
+          Complete: “The Margarita is __________ drink in the house.”
+        </label>
+        <input class="student-input" id="strongest-answer" type="text" autocomplete="off" placeholder="Escribe: the strongest">
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-comparatives">
+            Revisar respuestas
+          </button>
+          <span class="activity-status" id="activity-status-6"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 07 -->
+      <section class="activity-card is-locked" data-activity="7">
+        <p class="activity-label">Actividad 07 · Imperativos</p>
+        <h2>Don't...</h2>
+
+        <div class="reading-context-box">
+          <h4>Órdenes e instrucciones negativas</h4>
+          <p>
+            Go to New York, not to San Francisco. → <strong>Don't go to San Francisco.</strong>
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Jane dice: <strong>Don't drink too much of that Tequila.</strong> y <strong>Don't forget: this time you're driving!</strong>
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Practique: Have a Bordeaux, not the house wine. / Have the chef's speciality, not the set menu. / Go to a Chinese restaurant, not a McDonald's.
+          </p>
+        </div>
+
+        <label for="dont-answer">
+          Transforme: “Drink water, not too much Tequila.” → <strong>Don't __________ too much Tequila.</strong>
+        </label>
+        <input class="student-input" id="dont-answer" type="text" autocomplete="off" placeholder="Escribe: drink">
+
+        <label for="dont-writing">
+          Escriba una instrucción negativa sobre comida, bebida o conducción:
+        </label>
+        <textarea class="student-input" id="dont-writing" placeholder="Don't drink and drive."></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-dont">
+            Guardar práctica
+          </button>
+          <span class="activity-status" id="activity-status-7"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 08 -->
+      <section class="activity-card is-locked" data-activity="8">
+        <p class="activity-label">Actividad 08 · Cultura</p>
+        <h2>Restaurantes en Estados Unidos</h2>
+
+        <div class="reading-context-box">
+          <h4>Variedad gastronómica</h4>
+          <p>
+            La lectura presenta la evolución de los restaurantes en Estados Unidos. Durante mucho tiempo, un tipo de comida tradicional se asoció con carne y papas, pero los restaurantes de diferentes culturas fueron ganando popularidad.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Restaurantes italianos, griegos, mexicanos, chinos, tailandeses y de muchas otras tradiciones ampliaron las opciones para quienes buscaban sabores nuevos. En las grandes ciudades, es común encontrar platos de diversos países en un mismo vecindario.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            El texto también menciona la presencia de restaurantes de comida rápida, valorados por ser prácticos y de precio accesible. La variedad, la adaptación y la competencia ayudan a explicar la gran diversidad de opciones gastronómicas.
+          </p>
+        </div>
+
+        <label for="culture-writing">
+          Escriba una oración en inglés sobre un restaurante o comida que le guste:
+        </label>
+        <textarea class="student-input" id="culture-writing" placeholder="I like Mexican food because it is delicious."></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-culture">
+            Guardar respuesta
+          </button>
+          <span class="activity-status" id="activity-status-8"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 09 -->
+      <section class="activity-card is-locked" data-activity="9">
+        <p class="activity-label">Actividad 09 · Menú</p>
+        <h2>De todo un poco: Restaurant menu</h2>
+
+        <p>Observe el menú. Lea los ingredientes de cada plato y relacione la descripción con el nombre correcto.</p>
+
+        <figure class="map-figure">
+          <img src="../assets/images/unit-2/restaurant-menu-exercise.png" alt="Menú de restaurante con Texas Burger, Chef Salad, The Williamsburg, Triple Decker Sandwich y B.L.T.">
+          <figcaption>Menú de restaurante: Texas Burger, Chef Salad, The Williamsburg, Triple Decker Sandwich y B.L.T.</figcaption>
+        </figure>
+
+        <p><strong>1. Which dish has bacon, lettuce, tomato and mayonnaise on toast?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="menu-q1" value="a"> Texas Burger</label>
+          <label class="answer-option"><input type="radio" name="menu-q1" value="b"> B.L.T.</label>
+          <label class="answer-option"><input type="radio" name="menu-q1" value="c"> Chef Salad</label>
+        </div>
+
+        <p><strong>2. Which dish has roast beef, brown gravy, mashed potatoes and vegetables?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="menu-q2" value="a"> The Williamsburg</label>
+          <label class="answer-option"><input type="radio" name="menu-q2" value="b"> Texas Burger</label>
+          <label class="answer-option"><input type="radio" name="menu-q2" value="c"> Triple Decker Sandwich</label>
+        </div>
+
+        <p><strong>3. Which dish includes lettuce, tomato, cucumber, celery, cheeses, green peppers and tuna fish?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="menu-q3" value="a"> Chef Salad</label>
+          <label class="answer-option"><input type="radio" name="menu-q3" value="b"> B.L.T.</label>
+          <label class="answer-option"><input type="radio" name="menu-q3" value="c"> The Williamsburg</label>
+        </div>
+
+        <p><strong>4. Which item costs $2.75?</strong></p>
+        <div class="answer-options">
+          <label class="answer-option"><input type="radio" name="menu-q4" value="a"> Texas Burger</label>
+          <label class="answer-option"><input type="radio" name="menu-q4" value="b"> B.L.T.</label>
+          <label class="answer-option"><input type="radio" name="menu-q4" value="c"> The Williamsburg</label>
+        </div>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="check-menu">
+            Revisar menú
+          </button>
+          <span class="activity-status" id="activity-status-9"></span>
+        </div>
+      </section>
+
+      <!-- ACTIVIDAD 10 -->
+      <section class="activity-card is-locked" data-activity="10">
+        <p class="activity-label">Actividad 10 · Receta y repaso</p>
+        <h2>Brownies</h2>
+
+        <p>Observe los ingredientes de los brownies y lea una versión adaptada de la receta para practicar vocabulario de cocina y medidas.</p>
+
+        <figure class="map-figure">
+          <img src="../assets/images/unit-2/brownies-ingredients.png" alt="Ilustración de ingredientes para preparar brownies: eggs, vanilla, flour, chocolate, walnuts, butter, salt, sugar y baking powder">
+          <figcaption>Ingredientes para brownies.</figcaption>
+        </figure>
+
+        <div class="vocabulary-grid">
+          <div class="vocabulary-box">
+            <h3>Ingredientes</h3>
+            <p>
+              butter / margarine = mantequilla / margarina<br>
+              unsweetened chocolate = chocolate sin azúcar<br>
+              sugar = azúcar<br>
+              eggs = huevos<br>
+              vanilla = vainilla<br>
+              flour = harina<br>
+              baking powder = polvo de hornear<br>
+              salt = sal<br>
+              walnuts = nueces
+            </p>
+          </div>
+          <div class="vocabulary-box">
+            <h3>Acciones de cocina</h3>
+            <p>
+              melt = derretir<br>
+              stir = revolver<br>
+              cool = enfriar<br>
+              beat eggs = batir huevos<br>
+              add = agregar<br>
+              mix well = mezclar bien<br>
+              bake = hornear<br>
+              cut into squares = cortar en cuadrados
+            </p>
+          </div>
+        </div>
+
+        <div class="reading-context-box" style="margin-top: 1rem;">
+          <h4>Brownies: procedimiento simplificado</h4>
+          <p>
+            Primero, derrite la mantequilla y el chocolate a fuego bajo. Después, bate los huevos y mezcla con azúcar, vainilla y chocolate. Agrega harina, polvo de hornear, sal y nueces.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Hornea la mezcla en un molde engrasado hasta que esté lista. Déjala enfriar y córtala en porciones cuadradas.
+          </p>
+        </div>
+
+        <label for="brownies-answer">
+          Complete: “Add flour, baking powder, salt and __________.”
+        </label>
+        <input class="student-input" id="brownies-answer" type="text" autocomplete="off" placeholder="Escribe el ingrediente en inglés">
+
+        <label for="final-writing">
+          Escriba al menos cuatro oraciones en inglés sobre una comida, un pedido de restaurante o una receta. Use vocabulario de esta entrega.
+        </label>
+        <textarea class="student-input" id="final-writing" placeholder="I'd like a steak and broccoli. The food is delicious. I don't want any cold fish. First, melt the butter and chocolate."></textarea>
+
+        <div class="activity-actions">
+          <button class="activity-button" type="button" id="finish-lesson">
+            Completar Entrega 2.3
+          </button>
+          <span class="activity-status" id="activity-status-10"></span>
+        </div>
+      </section>
+
+      <section class="completion-card" id="completion-card" hidden>
         <p class="kicker">¡Entrega completada!</p>
         <h2>Excelente trabajo</h2>
 
         <p>
-          Completaste “En el restaurante”. Ahora puedes hablar con un camarero,
-          pedir comida y bebidas, usar <em>some</em> y <em>any</em>, hacer
-          comparaciones y comprender vocabulario básico de recetas.
+          Completaste “En el restaurante”. Ahora puedes hablar con un camarero, pedir comida y bebidas, usar <em>some</em> y <em>any</em>, hacer comparaciones y comprender vocabulario básico de recetas.
         </p>
 
         <div class="completion-actions">
-          <a class="button button-primary" href="unit-2-delivery-4.html">
+          <a href="unit-2-delivery-4.html" class="button button-primary">
             Siguiente entrega →
           </a>
 
-          <a class="button button-outline" href="unit-2.html">
+          <a href="unit-2.html" class="button button-outline">
             Volver a Unidad 2
           </a>
         </div>
@@ -924,38 +1078,25 @@
     </div>
   </footer>
 
+  <script type="module" src="../assets/js/supabase-auth.js?v=7"></script>
+
   <script>
     "use strict";
 
     document.addEventListener("DOMContentLoaded", () => {
       const storageKey = "506EnglishExpress.unit2.delivery3.progress";
       const totalActivities = 10;
-      const cards = [...document.querySelectorAll("[data-activity]")];
 
-      const progressText = document.getElementById("progress-text");
-      const progressFill = document.getElementById("progress-fill");
-      const progressTrack = document.querySelector(".progress-track");
+      const progressText = document.getElementById("lesson-progress-text");
+      const progressFill = document.getElementById("lesson-progress-fill");
+      const completionCard = document.getElementById("completion-card");
+      const progressTrack = document.querySelector(".lesson-progress-track");
       const resetButton = document.getElementById("reset-progress");
-      const completionMessage = document.getElementById("lesson-complete-message");
 
-      function normalize(value) {
-        return String(value || "")
-          .trim()
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/[.,!?;:¡¿'\"“”]/g, "")
-          .replace(/\s+/g, " ");
-      }
-
-      function getProgress() {
+      function getCompletedActivities() {
         try {
           const saved = JSON.parse(localStorage.getItem(storageKey));
-
-          if (!Array.isArray(saved)) {
-            return [];
-          }
-
+          if (!Array.isArray(saved)) return [];
           return [...new Set(
             saved
               .map(Number)
@@ -971,285 +1112,287 @@
         }
       }
 
-      function saveProgress(progress) {
-        localStorage.setItem(storageKey, JSON.stringify(progress));
-      }
-
-      function setFeedback(activity, message) {
-        const feedback = document.querySelector(
-          `[data-activity="${activity}"] .activity-feedback`
-        );
-
-        if (feedback) {
-          feedback.textContent = message;
-        }
+      function saveCompletedActivities(completed) {
+        localStorage.setItem(storageKey, JSON.stringify(completed));
       }
 
       function updateInterface() {
-        const completed = getProgress();
+        const completed = getCompletedActivities();
         const completedCount = completed.length;
-        const percentage = Math.round((completedCount / totalActivities) * 100);
+        const percentage = Math.round(
+          (completedCount / totalActivities) * 100
+        );
 
-        progressText.textContent =
-          `${completedCount} de ${totalActivities} secciones completadas`;
+        if (progressText) {
+          progressText.textContent =
+            `${completedCount} de ${totalActivities} secciones completadas`;
+        }
 
-        progressFill.style.width = `${percentage}%`;
-        progressTrack.setAttribute("aria-valuenow", String(percentage));
+        if (progressFill) {
+          progressFill.style.width = `${percentage}%`;
+        }
 
-        cards.forEach((card) => {
-          const activity = Number(card.dataset.activity);
-          const isComplete = completed.includes(activity);
-          const isLocked =
-            activity > 1 &&
-            !completed.includes(activity - 1) &&
-            !isComplete;
+        if (progressTrack) {
+          progressTrack.setAttribute("aria-valuenow", String(percentage));
+        }
 
-          card.classList.toggle("is-complete", isComplete);
-          card.classList.toggle("is-locked", isLocked);
+        document
+          .querySelectorAll(".activity-card[data-activity]")
+          .forEach((card) => {
+            const activity = Number(card.dataset.activity);
+            const status = document.getElementById(
+              `activity-status-${activity}`
+            );
+            const button = card.querySelector("[data-complete]");
+            
+            const isComplete = completed.includes(activity);
+            const isLocked =
+              activity > 1 &&
+              !completed.includes(activity - 1) &&
+              !isComplete;
 
-          const completeButton = card.querySelector(".complete-activity");
+            card.classList.toggle("is-complete", isComplete);
+            card.classList.toggle("is-locked", isLocked);
 
-          if (completeButton && isComplete) {
-            completeButton.textContent = "Actividad completada";
-          }
-        });
+            if (isComplete) {
+              if (status) {
+                status.textContent = "✓ Actividad completada";
+              }
+              if (button) {
+                button.textContent = "Actividad completada";
+              }
+            } else {
+              if (status && !status.textContent.includes("✓")) {
+                status.textContent = "";
+              }
+            }
+          });
 
-        completionMessage.hidden = completedCount !== totalActivities;
+        if (completionCard) {
+          completionCard.hidden = completedCount !== totalActivities;
+        }
       }
 
-      function completeActivity(activity, message = "✓ Actividad completada.") {
-        const completed = getProgress();
+      async function markActivityComplete(activity) {
+        const completed = getCompletedActivities();
 
         if (!completed.includes(activity)) {
           completed.push(activity);
           completed.sort((a, b) => a - b);
-          saveProgress(completed);
+          saveCompletedActivities(completed);
         }
 
-        setFeedback(activity, message);
         updateInterface();
 
-        if (activity === totalActivities) {
-          window.setTimeout(() => {
-            completionMessage.scrollIntoView({
-              behavior: "smooth",
-              block: "center"
+        if (
+          activity === totalActivities &&
+          typeof window.saveStudentProgress === "function"
+        ) {
+          try {
+            await window.saveStudentProgress({
+              unitNumber: 2,
+              activityId: "unit-2-delivery-3",
+              activityTitle: "En el restaurante",
+              completed: true,
+              score: 100
             });
-          }, 250);
+          } catch (error) {
+            console.warn("El progreso local se guardó.", error);
+          }
         }
       }
 
-      document.querySelectorAll(".complete-activity").forEach((button) => {
+      function normalize(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?;:¡¿'"“”]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      document.querySelectorAll("[data-complete]").forEach((button) => {
         button.addEventListener("click", () => {
-          const activity = Number(
-            button.closest("[data-activity]").dataset.activity
-          );
-
-          completeActivity(activity);
+          markActivityComplete(Number(button.dataset.complete));
         });
       });
 
-      document.querySelector(".check-dialogue").addEventListener("click", () => {
-        const answer1 = document.querySelector(
-          'input[name="restaurant-q1"]:checked'
-        )?.value;
-
-        const answer2 = document.querySelector(
-          'input[name="restaurant-q2"]:checked'
-        )?.value;
-
-        const answer3 = document.querySelector(
-          'input[name="restaurant-q3"]:checked'
-        )?.value;
-
-        const answer4 = document.querySelector(
-          'input[name="restaurant-q4"]:checked'
-        )?.value;
-
-        if (
-          answer1 === "a" &&
-          answer2 === "b" &&
-          answer3 === "b" &&
-          answer4 === "b"
-        ) {
-          completeActivity(2, "✓ ¡Correcto! Comprendiste el diálogo.");
-        } else {
-          setFeedback(2, "Revisa el diálogo e inténtalo otra vez.");
-        }
-      });
-
-      document.querySelector(".check-vocabulary").addEventListener("click", () => {
-        const answer = normalize(
-          document.getElementById("vocabulary-answer").value
-        );
-
-        if (answer === "steak") {
-          completeActivity(
-            3,
-            "✓ Correcto: Tom orders a steak with broccoli."
-          );
-        } else {
-          setFeedback(3, "Pista: Tom pide un filete.");
-        }
-      });
-
-      document.querySelector(".check-expressions").addEventListener("click", () => {
-        const waiterAnswer = normalize(
-          document.getElementById("waiter-answer").value
-        );
-
-        const recommendAnswer = normalize(
-          document.getElementById("recommend-answer").value
-        );
-
-        if (
-          (waiterAnswer === "check" || waiterAnswer === "bill") &&
-          recommendAnswer === "recommend"
-        ) {
-          completeActivity(
-            4,
-            "✓ Correcto: Waiter, the check please. What do you recommend?"
-          );
-        } else {
-          setFeedback(4, "Pista: check o bill / recommend.");
-        }
-      });
-
-      document.querySelector(".check-some-any").addEventListener("click", () => {
-        const illHaveAnswer = normalize(
-          document.getElementById("ill-have-answer").value
-        );
-
-        const someAnyAnswer = normalize(
-          document.getElementById("some-any-answer").value
-        );
-
-        if (illHaveAnswer === "have" && someAnyAnswer === "any") {
-          completeActivity(5, "✓ Correcto: I'll have... / I don't want any...");
-        } else {
-          setFeedback(5, "Pista: have / any.");
-        }
-      });
-
-      document.querySelector(".check-comparatives").addEventListener("click", () => {
-        const betterAnswer = normalize(
-          document.getElementById("better-answer").value
-        );
-
-        const bestAnswer = normalize(
-          document.getElementById("best-answer").value
-        );
-
-        const strongestAnswer = normalize(
-          document.getElementById("strongest-answer").value
-        );
-
-        if (
-          betterAnswer === "better" &&
-          bestAnswer === "the best" &&
-          strongestAnswer === "the strongest"
-        ) {
-          completeActivity(
-            6,
-            "✓ ¡Muy bien! Better than, the best y the strongest."
-          );
-        } else {
-          setFeedback(6, "Pista: better / the best / the strongest.");
-        }
-      });
-
-      document.querySelector(".check-dont").addEventListener("click", () => {
-        const answer = normalize(
-          document.getElementById("dont-answer").value
-        );
-
-        const writing = document.getElementById("dont-writing").value.trim();
-
-        if (
-          answer === "drink" &&
-          writing.length >= 10 &&
-          normalize(writing).startsWith("dont")
-        ) {
-          completeActivity(7, "✓ Práctica de imperativos guardada.");
-        } else {
-          setFeedback(
-            7,
-            "Completa drink y escribe una instrucción que empiece con Don't."
-          );
-        }
-      });
-
-      document.querySelector(".check-culture").addEventListener("click", () => {
-        const answer = document.getElementById("culture-writing").value.trim();
-
-        if (answer.length >= 12) {
-          completeActivity(8, "✓ Respuesta cultural guardada.");
-        } else {
-          setFeedback(8, "Escribe una oración completa en inglés.");
-        }
-      });
-
-      document.querySelector(".check-menu").addEventListener("click", () => {
-        const answer1 = document.querySelector(
-          'input[name="menu-q1"]:checked'
-        )?.value;
-
-        const answer2 = document.querySelector(
-          'input[name="menu-q2"]:checked'
-        )?.value;
-
-        const answer3 = document.querySelector(
-          'input[name="menu-q3"]:checked'
-        )?.value;
-
-        const answer4 = document.querySelector(
-          'input[name="menu-q4"]:checked'
-        )?.value;
-
-        if (
-          answer1 === "b" &&
-          answer2 === "a" &&
-          answer3 === "a" &&
-          answer4 === "b"
-        ) {
-          completeActivity(9, "✓ ¡Excelente! Completaste el ejercicio del menú.");
-        } else {
-          setFeedback(9, "Revisa el menú y vuelve a intentarlo.");
-        }
-      });
-
-      document.querySelector(".finish-lesson").addEventListener("click", () => {
-        const browniesAnswer = normalize(
-          document.getElementById("brownies-answer").value
-        );
-
-        const writing = document.getElementById("final-writing").value.trim();
-
-        if (
-          (browniesAnswer === "walnuts" || browniesAnswer === "nuts") &&
-          writing.length >= 80
-        ) {
-          completeActivity(10, "✓ ¡Entrega 2.3 completada!");
-        } else {
-          setFeedback(
-            10,
-            "Completa walnuts y escribe al menos cuatro oraciones en inglés."
-          );
-        }
-      });
-
-      resetButton.addEventListener("click", () => {
-        localStorage.removeItem(storageKey);
-
-        document.querySelectorAll(".activity-feedback").forEach((feedback) => {
-          feedback.textContent = "";
+      if (resetButton) {
+        resetButton.addEventListener("click", () => {
+          localStorage.removeItem(storageKey);
+          document.querySelectorAll(".activity-status").forEach((status) => {
+            status.textContent = "";
+          });
+          if (completionCard) completionCard.hidden = true;
+          updateInterface();
         });
+      }
 
-        completionMessage.hidden = true;
-        updateInterface();
-      });
+      // Actividad 2: Comprensión
+      const compBtn = document.getElementById("check-comprehension");
+      if (compBtn) {
+        compBtn.addEventListener("click", () => {
+          const a1 = document.querySelector('input[name="question-1"]:checked')?.value;
+          const a2 = document.querySelector('input[name="question-2"]:checked')?.value;
+          const a3 = document.querySelector('input[name="question-3"]:checked')?.value;
+          const a4 = document.querySelector('input[name="question-4"]:checked')?.value;
+          const status = document.getElementById("activity-status-2");
 
-      // --- Control de Reproductor de Audio Personalizado ---
+          if (a1 === "a" && a2 === "b" && a3 === "b" && a4 === "b") {
+            if (status) status.textContent = "✓ ¡Correcto! Comprendiste el diálogo.";
+            markActivityComplete(2);
+          } else if (status) {
+            status.textContent = "Revisa el diálogo e inténtalo otra vez.";
+          }
+        });
+      }
+
+      // Actividad 3: Vocabulario
+      const vocBtn = document.getElementById("check-vocabulary");
+      if (vocBtn) {
+        vocBtn.addEventListener("click", () => {
+          const answer = normalize(document.getElementById("vocabulary-answer").value);
+          const status = document.getElementById("activity-status-3");
+
+          if (answer === "steak") {
+            if (status) status.textContent = "✓ Correcto: Tom orders a steak with broccoli.";
+            markActivityComplete(3);
+          } else if (status) {
+            status.textContent = "Pista: Tom pide un filete.";
+          }
+        });
+      }
+
+      // Actividad 4: Cómo se dice
+      const exprBtn = document.getElementById("check-expressions");
+      if (exprBtn) {
+        exprBtn.addEventListener("click", () => {
+          const waiterAnswer = normalize(document.getElementById("waiter-answer").value);
+          const recommendAnswer = normalize(document.getElementById("recommend-answer").value);
+          const status = document.getElementById("activity-status-4");
+
+          if ((waiterAnswer === "check" || waiterAnswer === "bill") && recommendAnswer === "recommend") {
+            if (status) status.textContent = "✓ Correcto: Waiter, the check please. What do you recommend?";
+            markActivityComplete(4);
+          } else if (status) {
+            status.textContent = "Pista: check o bill / recommend.";
+          }
+        });
+      }
+
+      // Actividad 5: Gramática
+      const someAnyBtn = document.getElementById("check-some-any");
+      if (someAnyBtn) {
+        someAnyBtn.addEventListener("click", () => {
+          const illHaveAnswer = normalize(document.getElementById("ill-have-answer").value);
+          const someAnyAnswer = normalize(document.getElementById("some-any-answer").value);
+          const status = document.getElementById("activity-status-5");
+
+          if (illHaveAnswer === "have" && someAnyAnswer === "any") {
+            if (status) status.textContent = "✓ Correcto: I'll have... / I don't want any...";
+            markActivityComplete(5);
+          } else if (status) {
+            status.textContent = "Pista: have / any.";
+          }
+        });
+      }
+
+      // Actividad 6: Comparativos
+      const compaBtn = document.getElementById("check-comparatives");
+      if (compaBtn) {
+        compaBtn.addEventListener("click", () => {
+          const betterAnswer = normalize(document.getElementById("better-answer").value);
+          const bestAnswer = normalize(document.getElementById("best-answer").value);
+          const strongestAnswer = normalize(document.getElementById("strongest-answer").value);
+          const status = document.getElementById("activity-status-6");
+
+          if (betterAnswer === "better" && bestAnswer === "the best" && strongestAnswer === "the strongest") {
+            if (status) status.textContent = "✓ ¡Muy bien! Better than, the best y the strongest.";
+            markActivityComplete(6);
+          } else if (status) {
+            status.textContent = "Pista: better / the best / the strongest.";
+          }
+        });
+      }
+
+      // Actividad 7: Imperativos
+      const dontBtn = document.getElementById("check-dont");
+      if (dontBtn) {
+        dontBtn.addEventListener("click", () => {
+          const answer = normalize(document.getElementById("dont-answer").value);
+          const writing = document.getElementById("dont-writing").value.trim();
+          const status = document.getElementById("activity-status-7");
+
+          if (answer === "drink" && writing.length >= 10 && normalize(writing).startsWith("dont")) {
+            if (status) status.textContent = "✓ Práctica de imperativos guardada.";
+            markActivityComplete(7);
+          } else if (status) {
+            status.textContent = "Completa drink y escribe una instrucción que empiece con Don't.";
+          }
+        });
+      }
+
+      // Actividad 8: Cultura
+      const cultureBtn = document.getElementById("check-culture");
+      if (cultureBtn) {
+        cultureBtn.addEventListener("click", () => {
+          const answer = document.getElementById("culture-writing").value.trim();
+          const status = document.getElementById("activity-status-8");
+
+          if (answer.length >= 12) {
+            if (status) status.textContent = "✓ Respuesta cultural guardada.";
+            markActivityComplete(8);
+          } else if (status) {
+            status.textContent = "Escribe una oración completa en inglés.";
+          }
+        });
+      }
+
+      // Actividad 9: Menú
+      const menuBtn = document.getElementById("check-menu");
+      if (menuBtn) {
+        menuBtn.addEventListener("click", () => {
+          const a1 = document.querySelector('input[name="menu-q1"]:checked')?.value;
+          const a2 = document.querySelector('input[name="menu-q2"]:checked')?.value;
+          const a3 = document.querySelector('input[name="menu-q3"]:checked')?.value;
+          const a4 = document.querySelector('input[name="menu-q4"]:checked')?.value;
+          const status = document.getElementById("activity-status-9");
+
+          if (a1 === "b" && a2 === "a" && a3 === "a" && a4 === "b") {
+            if (status) status.textContent = "✓ ¡Excelente! Completaste el ejercicio del menú.";
+            markActivityComplete(9);
+          } else if (status) {
+            status.textContent = "Revisa el menú y vuelve a intentarlo.";
+          }
+        });
+      }
+
+      // Actividad 10: Receta y Repaso
+      const finishBtn = document.getElementById("finish-lesson");
+      if (finishBtn) {
+        finishBtn.addEventListener("click", () => {
+          const browniesAnswer = normalize(document.getElementById("brownies-answer").value);
+          const writing = document.getElementById("final-writing").value.trim();
+          const status = document.getElementById("activity-status-10");
+
+          if ((browniesAnswer === "walnuts" || browniesAnswer === "nuts") && writing.length >= 80) {
+            if (status) status.textContent = "✓ ¡Entrega 2.3 completada!";
+            markActivityComplete(10);
+
+            window.setTimeout(() => {
+              completionCard.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+            }, 250);
+          } else if (status) {
+            status.textContent = "Completa walnuts y escribe al menos cuatro oraciones completas en inglés.";
+          }
+        });
+      }
+
+      // Reproductor de audio
       const audio = document.getElementById("work-audio");
       const playButton = document.getElementById("audio-play-button");
       const playIcon = document.getElementById("audio-play-icon");
@@ -1269,14 +1412,12 @@
         const currentTime = audio.currentTime || 0;
         const duration = audio.duration || 0;
         audioTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
-        if (duration > 0) {
-          audioProgress.value = String((currentTime / duration) * 100);
-        }
+        if (duration > 0) audioProgress.value = String((currentTime / duration) * 100);
       }
 
       function setAudioButton(isPlaying) {
         if (!playButton || !playIcon || !playText) return;
-        playIcon.textContent = isPlaying ? "⏸" : "▶";
+        playIcon.textContent = isPlaying ? "❚❚" : "▶";
         playText.textContent = isPlaying ? "Pausar audio" : "Reproducir audio";
         playButton.setAttribute("aria-label", isPlaying ? "Pausar audio" : "Reproducir audio");
       }
@@ -1284,11 +1425,7 @@
       if (audio && playButton) {
         playButton.addEventListener("click", async () => {
           if (audio.paused) {
-            try {
-              await audio.play();
-            } catch (e) {
-              console.warn(e);
-            }
+            try { await audio.play(); } catch (e) { console.warn(e); }
           } else {
             audio.pause();
           }
@@ -1298,35 +1435,32 @@
         audio.addEventListener("timeupdate", updateAudioPlayer);
         audio.addEventListener("play", () => setAudioButton(true));
         audio.addEventListener("pause", () => setAudioButton(false));
-
-        if (audioProgress) {
-          audioProgress.addEventListener("input", () => {
-            if (audio.duration) {
-              audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
-              updateAudioPlayer();
-            }
-          });
-        }
       }
 
+      if (audioProgress && audio) {
+        audioProgress.addEventListener("input", () => {
+          if (audio.duration) {
+            audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
+          }
+        });
+      }
+
+      updateAudioPlayer();
       updateInterface();
     });
   </script>
-<script src="../assets/js/rewards.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.RewardsSystem) {
-      window.RewardsSystem.checkForReward();
-    }
-  });
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.Rewards506 && typeof window.Rewards506.renderCurrentAvatarBadge === 'function') {
-    window.Rewards506.renderCurrentAvatarBadge('#current-avatar-badge');
-  }
-});
-</script>
+
+  <!-- Scripts de Recompensas -->
+  <script src="../assets/js/rewards.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.RewardsSystem) {
+        window.RewardsSystem.checkForReward();
+      }
+      if (window.Rewards506 && typeof window.Rewards506.renderCurrentAvatarBadge === 'function') {
+        window.Rewards506.renderCurrentAvatarBadge('#current-avatar-badge');
+      }
+    });
+  </script>
 </body>
 </html>
-

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07101f">
 
-  <title>Unidad 1 · Entrega 3 | 506 English Express</title>
+  <title>Unidad 3 | 506 English Express</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,6 +184,17 @@
       letter-spacing: 0.04em;
       text-decoration: none;
       text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #2fd7ff, #69e8ff);
+      box-shadow: 0 0 18px rgba(47, 215, 255, 0.32);
+      color: #061321;
     }
 
     .button-outline {
@@ -239,6 +250,12 @@
       border-radius: 15px;
       background: rgba(255, 196, 61, 0.1);
       backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+    }
+
+    .notice.is-unlocked {
+      border-color: rgba(113, 255, 192, 0.42);
+      background: rgba(113, 255, 192, 0.1);
     }
 
     .notice-icon {
@@ -252,6 +269,11 @@
       font-size: 1.35rem;
     }
 
+    .notice.is-unlocked .notice-icon {
+      border-color: rgba(113, 255, 192, 0.55);
+      color: var(--green);
+    }
+
     .notice h2 {
       margin: 0;
       color: #fff4d2;
@@ -260,10 +282,18 @@
       text-transform: uppercase;
     }
 
+    .notice.is-unlocked h2 {
+      color: #d1ffeb;
+    }
+
     .notice p {
       margin: 0.35rem 0 0;
       color: rgba(255, 246, 220, 0.82);
       line-height: 1.38;
+    }
+
+    .notice.is-unlocked p {
+      color: rgba(209, 255, 235, 0.85);
     }
 
     main section.material {
@@ -310,6 +340,7 @@
       height: 100%;
       border-radius: inherit;
       background: linear-gradient(90deg, var(--gold), var(--green));
+      transition: width 0.4s ease;
     }
 
     .lesson-list {
@@ -328,6 +359,13 @@
       background: var(--panel);
       backdrop-filter: blur(12px);
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+      transition: 0.3s ease;
+    }
+
+    .lesson.locked {
+      border-color: rgba(255, 255, 255, 0.13);
+      background: rgba(4, 12, 29, 0.6);
+      opacity: 0.72;
     }
 
     .lesson-icon {
@@ -342,6 +380,12 @@
       font-size: 1.5rem;
     }
 
+    .lesson.locked .lesson-icon {
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(225, 240, 255, 0.58);
+    }
+
     .lesson-number {
       margin: 0;
       color: var(--gold);
@@ -350,6 +394,10 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+    }
+
+    .lesson.locked .lesson-number {
+      color: rgba(225, 240, 255, 0.56);
     }
 
     .lesson h2 {
@@ -366,7 +414,7 @@
       line-height: 1.42;
     }
 
-    .locked {
+    .locked-badge {
       padding: 0.7rem 0.8rem;
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 9px;
@@ -378,6 +426,8 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       white-space: nowrap;
+      pointer-events: none;
+      cursor: not-allowed;
     }
 
     .preview {
@@ -439,7 +489,7 @@
       line-height: 1.35;
     }
 
-    footer {
+    <footer>
       border-top: 1px solid rgba(47, 215, 255, 0.16);
       background: rgba(1, 8, 20, 0.72);
       backdrop-filter: blur(12px);
@@ -470,7 +520,8 @@
         grid-template-columns: auto 1fr;
       }
 
-      .locked {
+      .locked-badge,
+      .lesson > .button {
         grid-column: 1 / -1;
         width: fit-content;
       }
@@ -513,7 +564,7 @@
   <div class="topbar">
     <div class="container">
       <span>506 English Express</span>
-      <span>Unidad 3 · Vista de material</span>
+      <span id="topbar-status">Unidad 3 · Vista de material</span>
     </div>
   </div>
 
@@ -527,7 +578,7 @@
       <div class="links">
         <a href="../index.html">Inicio</a>
         <a href="units.html">Unidades</a>
-        <a href="unit-1.html" class="active">Unidad 3</a>
+        <a href="unit-3.html" class="active">Unidad 3</a>
       </div>
 
       <a href="unit-2.html" class="button button-outline">
@@ -539,7 +590,7 @@
   <main>
     <section class="hero">
       <div class="container">
-        <p class="tag">UNIDAD 01 · Experiencias y comunicación</p>
+        <p class="tag">UNIDAD 03 · Experiencias y comunicación</p>
 
         <h1>
           Amplía tu <span>comunicación en inglés</span>
@@ -551,14 +602,14 @@
           mayor seguridad.
         </p>
 
-        <aside class="notice">
-          <div class="notice-icon">🔒</div>
+        <aside class="notice" id="unit-notice">
+          <div class="notice-icon" id="notice-icon">🔒</div>
 
           <div>
-            <h2>Acceso por progreso</h2>
-            <p>
+            <h2 id="notice-title">Acceso por progreso</h2>
+            <p id="notice-desc">
               Para realizar los ejercicios de la Unidad 3, primero debes
-              completar las actividades requeridas de las Unidades 1 y 2.
+              completar la Unidad 2 y sus entregas anteriores.
             </p>
           </div>
         </aside>
@@ -569,87 +620,67 @@
       <div class="container">
         <div class="progress">
           <strong>Progreso de Unidad 3</strong>
-          <span class="progress-value">Bloqueada · 0%</span>
+          <span class="progress-value" id="progress-value-text">Bloqueada · 0%</span>
 
           <div class="track">
-            <div class="fill"></div>
+            <div class="fill" id="progress-fill-bar"></div>
           </div>
         </div>
 
-        <div class="lesson-list">
-          <article class="lesson">
+        <div class="lesson-list" id="lessons-container">
+          <!-- Entrega 3.1 -->
+          <article class="lesson locked" data-lesson="1">
             <div class="lesson-icon">💬</div>
-
             <div>
               <p class="lesson-number">Entrega 3.1</p>
               <h2>Diálogos y experiencias</h2>
-              <p>
-                Conversaciones cotidianas para expresar experiencias, opiniones
-                e información personal.
-              </p>
+              <p>Conversaciones cotidianas para expresar experiencias, opiniones e información personal.</p>
             </div>
-
-            <span class="locked">🔒 Requiere Unidad 2</span>
+            <a href="unit-3-delivery-1.html" class="button button-primary lesson-action locked-badge">🔒 Requiere Unidad 2</a>
           </article>
 
-          <article class="lesson">
+          <!-- Entrega 3.2 -->
+          <article class="lesson locked" data-lesson="2">
             <div class="lesson-icon">📚</div>
-
             <div>
               <p class="lesson-number">Entrega 3.2</p>
               <h2>Vocabulario en contexto</h2>
-              <p>
-                Palabras, expresiones y estructuras útiles para entender y
-                participar en conversaciones reales.
-              </p>
+              <p>Palabras, expresiones y estructuras útiles para entender y participar en conversaciones reales.</p>
             </div>
-
-            <span class="locked">🔒 Bloqueada</span>
+            <a href="unit-3-delivery-2.html" class="button button-primary lesson-action locked-badge">🔒 Bloqueada</a>
           </article>
 
-          <article class="lesson">
+          <!-- Entrega 3.3 -->
+          <article class="lesson locked" data-lesson="3">
             <div class="lesson-icon">🎧</div>
-
             <div>
               <p class="lesson-number">Entrega 3.3</p>
               <h2>Comprensión y pronunciación</h2>
-              <p>
-                Actividades para escuchar, identificar ideas principales,
-                practicar ritmo, entonación y pronunciación.
-              </p>
+              <p>Actividades para escuchar, identificar ideas principales, practicar ritmo, entonación y pronunciación.</p>
             </div>
-
-            <span class="locked">🔒 Bloqueada</span>
+            <a href="unit-3-delivery-3.html" class="button button-primary lesson-action locked-badge">🔒 Bloqueada</a>
           </article>
 
-          <article class="lesson">
+          <!-- Entrega 3.4 -->
+          <article class="lesson locked" data-lesson="4">
             <div class="lesson-icon">✍️</div>
-
             <div>
               <p class="lesson-number">Entrega 3.4</p>
               <h2>Gramática y escritura</h2>
-              <p>
-                Estructuras necesarias para crear respuestas, preguntas,
-                descripciones y textos breves en inglés.
-              </p>
+              <p>Estructuras necesarias para crear respuestas, preguntas, descripciones y textos breves en inglés.</p>
             </div>
-
-            <span class="locked">🔒 Bloqueada</span>
+            <a href="unit-3-delivery-4.html" class="button button-primary lesson-action locked-badge">🔒 Bloqueada</a>
           </article>
 
-          <article class="lesson">
+          <!-- Entrega 3.5 -->
+          <article class="lesson locked" data-lesson="5">
             <div class="lesson-icon">🏆</div>
-
             <div>
               <p class="lesson-number">Entrega 3.5</p>
               <h2>Práctica y repaso final</h2>
-              <p>
-                Ejercicios integrados de comunicación, comprensión y evaluación
-                para cerrar la Unidad 3.
-              </p>
+              <p>Ejercicios integrados de comunicación, comprensión y evaluación para cerrar la Unidad 3.</p>
             </div>
-
-            <span class="locked">🔒 Bloqueada</span>
+            <a href="unit-3-delivery-5.html" class="button button-primary lesson-action locked-badge">🔒 Bloqueada</a>
           </article>
         </div>
 
@@ -665,28 +696,19 @@
             <article class="topic">
               <span>COMUNICACIÓN</span>
               <h3>Situaciones cotidianas</h3>
-              <p>
-                Conversaciones para compartir experiencias, necesidades,
-                decisiones y opiniones.
-              </p>
+              <p>Conversaciones para compartir experiencias, necesidades, decisiones y opiniones.</p>
             </article>
 
             <article class="topic">
               <span>PRÁCTICA</span>
               <h3>Escuchar y hablar</h3>
-              <p>
-                Comprensión auditiva, respuestas orales y pronunciación en
-                contextos reales.
-              </p>
+              <p>Comprensión auditiva, respuestas orales y pronunciación en contextos reales.</p>
             </article>
 
             <article class="topic">
               <span>REPASO</span>
               <h3>Progreso integral</h3>
-              <p>
-                Actividades que reúnen vocabulario, gramática y comunicación
-                para preparar la Unidad 4.
-              </p>
+              <p>Actividades que reúnen vocabulario, gramática y comunicación para preparar la Unidad 4.</p>
             </article>
           </div>
         </section>
@@ -704,14 +726,78 @@
       </a>
     </div>
   </footer>
-<script src="../assets/js/rewards.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.RewardsSystem) {
-      window.RewardsSystem.checkForReward();
-    }
-  });
-</script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Clave que confirma si la Unidad 2 ha sido completada
+      const unit2Completed = localStorage.getItem("506EnglishExpress.unit2.completed") === "true";
+
+      const noticeBox = document.getElementById("unit-notice");
+      const noticeIcon = document.getElementById("notice-icon");
+      const noticeTitle = document.getElementById("notice-title");
+      const noticeDesc = document.getElementById("notice-desc");
+      const progressValueText = document.getElementById("progress-value-text");
+      const progressFillBar = document.getElementById("progress-fill-bar");
+      const lessons = document.querySelectorAll(".lesson");
+
+      // Progreso individual de la Unidad 3 guardado en localStorage
+      const unit3ProgressKey = "506EnglishExpress.unit3.progress";
+
+      function getUnit3CompletedCount() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(unit3ProgressKey));
+          return Array.isArray(stored) ? stored.length : 0;
+        } catch {
+          return 0;
+        }
+      }
+
+      if (unit2Completed) {
+        // --- CASO 1: UNIDAD 2 COMPLETADA (UNIDAD 3 DESBLOQUEADA) ---
+        noticeBox.classList.add("is-unlocked");
+        noticeIcon.textContent = "🔓";
+        noticeTitle.textContent = "¡Unidad desbloqueada!";
+        noticeDesc.textContent = "Has completado la Unidad 2 con éxito. Ya puedes iniciar con las entregas de la Unidad 3.";
+
+        const completedCount = getUnit3CompletedCount();
+        const percentage = Math.round((completedCount / lessons.length) * 100);
+
+        progressValueText.textContent = `En progreso · ${percentage}%`;
+        progressFillBar.style.width = `${percentage}%`;
+
+        lessons.forEach((lesson, index) => {
+          const lessonNum = index + 1;
+          const actionBtn = lesson.querySelector(".lesson-action");
+
+          lesson.classList.remove("locked");
+
+          if (actionBtn) {
+            actionBtn.classList.remove("locked-badge");
+            actionBtn.textContent = `Iniciar Entrega 3.${lessonNum} →`;
+          }
+        });
+
+      } else {
+        // --- CASO 2: UNIDAD 2 PENDIENTE (UNIDAD 3 BLOQUEADA) ---
+        noticeBox.classList.remove("is-unlocked");
+        noticeIcon.textContent = "🔒";
+        noticeTitle.textContent = "Acceso por progreso";
+        noticeDesc.textContent = "Para realizar los ejercicios de la Unidad 3, primero debes completar la Unidad 2 y sus entregas anteriores.";
+
+        progressValueText.textContent = "Bloqueada · 0%";
+        progressFillBar.style.width = "0%";
+
+        lessons.forEach((lesson, index) => {
+          const actionBtn = lesson.querySelector(".lesson-action");
+          lesson.classList.add("locked");
+
+          if (actionBtn) {
+            actionBtn.classList.add("locked-badge");
+            actionBtn.textContent = index === 0 ? "🔒 Requiere Unidad 2" : "🔒 Bloqueada";
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-
