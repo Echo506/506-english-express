@@ -1441,7 +1441,7 @@
 
       <div class="nav-actions">
         <!-- BOTÓN DINÁMICO DE RETOMAR ÚLTIMA UNIDAD -->
-        <a href="pages/unit-1.html" class="button button-outline button-small" id="resume-unit-btn">
+        <a href="pages/unit-1.html" class="button button-outline button-small" id="btn-continuar-curso">
           ⚡ Retomar última unidad
         </a>
 
@@ -1904,25 +1904,30 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const resumeBtn = document.getElementById("resume-unit-btn");
-      if (!resumeBtn) return;
+      // 1. Capturamos el NUEVO botón
+      const btnContinuar = document.getElementById("btn-continuar-curso");
+      if (!btnContinuar) return;
 
-      const unit3Done = localStorage.getItem("506EnglishExpress.unit3.completed") === "true";
-      const unit2Done = localStorage.getItem("506EnglishExpress.unit2.completed") === "true";
-      const unit1Done = localStorage.getItem("506EnglishExpress.unit1.completed") === "true";
+      // 2. Leemos el progreso de localStorage
+      const u1Terminada = localStorage.getItem("506EnglishExpress.unit1.completed") === "true";
+      const u2Terminada = localStorage.getItem("506EnglishExpress.unit2.completed") === "true";
+      const u3Terminada = localStorage.getItem("506EnglishExpress.unit3.completed") === "true";
 
-      let targetUrl = "pages/unit-1.html";
+      // 3. Ruta por defecto (si es un usuario nuevo)
+      let rutaDestino = "pages/unit-1.html";
 
-      if (unit3Done) {
-        targetUrl = "pages/unit-4.html";
-      } else if (unit2Done) {
-        targetUrl = "pages/unit-3.html";
-      } else if (unit1Done) {
-        targetUrl = "pages/unit-2.html";
+      // 4. Lógica de redirección en cascada
+      if (u3Terminada) {
+        rutaDestino = "pages/unit-4.html";
+      } else if (u2Terminada) {
+        rutaDestino = "pages/unit-3.html";
+      } else if (u1Terminada) {
+        rutaDestino = "pages/unit-2.html";
       }
 
-      resumeBtn.setAttribute("href", targetUrl);
-      resumeBtn.textContent = "⚡ Retomar última unidad";
+      // 5. Aplicamos los cambios (siempre dirá lo mismo, solo cambia el href)
+      btnContinuar.href = rutaDestino;
+      btnContinuar.textContent = "⚡ Retomar última unidad";
     });
   </script>
 
