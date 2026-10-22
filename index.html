@@ -1440,9 +1440,9 @@
       </div>
 
       <div class="nav-actions">
-        <!-- BOTÓN DINÁMICO DE RETOMAR UNIDAD -->
+        <!-- BOTÓN DINÁMICO DE RETOMAR ÚLTIMA UNIDAD -->
         <a href="pages/unit-1.html" class="button button-outline button-small" id="resume-unit-btn">
-          ⚡ Retomar unidad
+          ⚡ Retomar última unidad
         </a>
 
         <div class="auth-guest" id="auth-guest">
@@ -1881,7 +1881,7 @@
           <p>
             Inicia con presentaciones, saludos, nacionalidades y conversaciones
             básicas. Completa las actividades para habilitar progresivamente las
-            siguientes lecciones.
+            siguiente lecciones.
           </p>
         </div>
 
@@ -1912,21 +1912,17 @@
       const unit1Done = localStorage.getItem("506EnglishExpress.unit1.completed") === "true";
 
       let targetUrl = "pages/unit-1.html";
-      let unitName = "Unidad 1";
 
       if (unit3Done) {
         targetUrl = "pages/unit-4.html";
-        unitName = "Unidad 4";
       } else if (unit2Done) {
         targetUrl = "pages/unit-3.html";
-        unitName = "Unidad 3";
       } else if (unit1Done) {
         targetUrl = "pages/unit-2.html";
-        unitName = "Unidad 2";
       }
 
       resumeBtn.setAttribute("href", targetUrl);
-      resumeBtn.innerHTML = `⚡ Retomar ${unitName}`;
+      resumeBtn.textContent = "⚡ Retomar última unidad";
     });
   </script>
 
