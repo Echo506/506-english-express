@@ -1178,5 +1178,126 @@
       </a>
     </div>
   </footer>
+<script type="module">
+  try {
+    await import("../assets/js/supabase-auth.js?v=12");
+  } catch (error) {
+    console.error("No se pudo cargar supabase-auth.js:", error);
+  }
+
+  if (typeof window.getStudentProgress !== "function") {
+    console.error("getStudentProgress no está disponible.");
+  } else {
+    const progress = await window.getStudentProgress();
+    const records = Array.isArray(progress) ? progress : [];
+
+    const units = [1, 2, 3, 4];
+    const totalDeliveries = 5;
+
+    const getUnitRecords = (unitNumber) =>
+      records.filter((item) => Number(item.unit_number) === unitNumber);
+
+    const getCompletedDeliveryIds = (unitNumber) =>
+      new Set(
+        getUnitRecords(unitNumber)
+          .filter(
+            (item) =>
+              item.completed === true &&
+              String(item.activity_id).startsWith(`unit-${unitNumber}-delivery-`)
+          )
+          .map((item) => String(item.activity_id))
+      );
+
+    const hasFinalMarker = (unitNumber) =>
+      getUnitRecords(unitNumber).some(
+        (item) =>
+          item.completed === true &&
+          String(item.activity_id) === `unit-${unitNumber}`
+      );
+
+    const isUnitCompleted = (unitNumber) =>
+      hasFinalMarker(unitNumber) ||
+      getCompletedDeliveryIds(unitNumber).size >= totalDeliveries;
+
+    const getUnitPercent = (unitNumber) => {
+      if (isUnitCompleted(unitNumber)) return 100;
+
+      return Math.round(
+        (getCompletedDeliveryIds(unitNumber).size / totalDeliveries) * 100
+      );
+    };
+
+    units.forEach((unitNumber) => {
+      const card = document.querySelector(`.unit-card.unit-${unitNumber}`);
+
+      if (!card) return;
+
+      const completedIds = getCompletedDeliveryIds(unitNumber);
+      const percent = getUnitPercent(unitNumber);
+
+      const previousCompleted =
+        unitNumber === 1 ? true : isUnitCompleted(unitNumber - 1);
+      const isUnitUnlocked = previousCompleted || percent > 0;
+
+      const progressValue = card.querySelector(".unit-progress-value");
+      const progressFill = card.querySelector(".progress-fill");
+      const status = card.querySelector(".unit-status");
+      const action = card.querySelector(".unit-actions .button");
+
+      if (progressValue) {
+        progressValue.textContent = `${percent}%`;
+      }
+
+      if (progressFill) {
+        progressFill.style.width = `${percent}%`;
+      }
+
+      if (status) {
+        if (percent === 100) {
+          status.className = "unit-status status-open";
+          status.innerHTML = `<span class="lock-dot"></span> Completada`;
+        } else if (isUnitUnlocked) {
+          status.className = "unit-status status-open";
+          status.innerHTML = `<span class="lock-dot"></span> Disponible`;
+        } else {
+          status.className = "unit-status status-locked";
+          status.innerHTML = `<span class="lock-dot"></span> Bloqueada`;
+        }
+      }
+
+      if (action && action.tagName === "SPAN" && isUnitUnlocked) {
+        const link = document.createElement("a");
+        link.href = `unit-${unitNumber}.html`;
+        link.className = "button button-primary";
+        link.textContent = `Abrir Unidad ${unitNumber}`;
+
+        action.replaceWith(link);
+      }
+
+      card.querySelectorAll(".delivery-card").forEach((deliveryCard, index) => {
+        const deliveryNumber = index + 1;
+        const activityId = `unit-${unitNumber}-delivery-${deliveryNumber}`;
+        const isCompleted = completedIds.has(activityId);
+
+        const isUnlocked =
+          deliveryNumber === 1
+            ? isUnitUnlocked
+            : completedIds.has(
+                `unit-${unitNumber}-delivery-${deliveryNumber - 1}`
+              );
+
+        deliveryCard.classList.toggle("completed", isCompleted);
+        deliveryCard.classList.toggle("current", isUnlocked && !isCompleted);
+        deliveryCard.classList.toggle("locked", !isUnlocked);
+
+        const lock = deliveryCard.querySelector(".delivery-lock");
+
+        if (lock) {
+          lock.hidden = isUnlocked;
+        }
+      });
+    });
+  }
+</script>
 </body>
 </html>
