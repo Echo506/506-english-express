@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -605,142 +605,205 @@
 
   <script src="../assets/js/rewards.js"></script>
 
-  <script>
-    "use strict";
+  <script type="module">
+  try {
+    await import("../assets/js/supabase-auth.js?v=13");
+  } catch (error) {
+    console.error("No se pudo cargar supabase-auth.js:", error);
+  }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      if (!window.RewardsSystem || !window.Rewards506) return;
+  document.addEventListener("DOMContentLoaded", async () => {
+    if (!window.RewardsSystem || !window.Rewards506) return;
 
-      const state = window.RewardsSystem.getState();
-      const rewards506State = window.Rewards506.getState();
+    const state = window.RewardsSystem.getState();
+    const rewards506State = window.Rewards506.getState();
 
-      const unit1Completed = window.RewardsSystem.getProgressSources().filter(s => s.key.includes("unit1")).reduce((acc, s) => acc + s.completed, 0);
-      const unit2Completed = window.RewardsSystem.getProgressSources().filter(s => s.key.includes("unit2")).reduce((acc, s) => acc + s.completed, 0);
-      const unit3Completed = window.RewardsSystem.getProgressSources().filter(s => s.key.includes("unit3")).reduce((acc, s) => acc + s.completed, 0);
-      const unit4Completed = window.RewardsSystem.getProgressSources().filter(s => s.key.includes("unit4")).reduce((acc, s) => acc + s.completed, 0);
+    let supabaseRecords = [];
 
-      const unit1Total = 60;
-      const unit2Total = 65;
-      const unit3Total = 65;
-      const unit4Total = 65;
+    if (typeof window.getStudentProgress === "function") {
+      const progress = await window.getStudentProgress();
+      supabaseRecords = Array.isArray(progress) ? progress : [];
+    } else {
+      console.error("getStudentProgress no está disponible.");
+    }
 
-      const unit1Complete = unit1Completed >= unit1Total;
-      const unit2Complete = unit2Completed >= unit2Total;
-      const unit3Complete = unit3Completed >= unit3Total;
-      const unit4Complete = unit4Completed >= unit4Total;
+    const unitTotals = {
+      1: 60,
+      2: 65,
+      3: 65,
+      4: 65
+    };
 
-      function setUnitCard(unitNumber, completed, total, unlocked, lockedMessage) {
-        const percentage = total === 0 ? 0 : Math.round((completed / total) * 100);
-        const card = document.getElementById(`unit-${unitNumber}-card`);
-        const progress = document.getElementById(`unit-${unitNumber}-progress`);
-        const fill = document.getElementById(`unit-${unitNumber}-fill`);
-        const status = document.getElementById(`unit-${unitNumber}-status`);
-        const link = document.getElementById(`unit-${unitNumber}-link`);
+    const getUnitRecords = (unitNumber) =>
+      supabaseRecords.filter(
+        (item) => Number(item.unit_number) === unitNumber
+      );
 
-        if (!card) return;
+    const getCompletedDeliveryIds = (unitNumber) =>
+      new Set(
+        getUnitRecords(unitNumber)
+          .filter(
+            (item) =>
+              item.completed === true &&
+              String(item.activity_id).startsWith(
+                `unit-${unitNumber}-delivery-`
+              )
+          )
+          .map((item) => String(item.activity_id))
+      );
 
-        progress.textContent = `${completed} / ${total}`;
-        fill.style.width = `${percentage}%`;
+    const hasFinalMarker = (unitNumber) =>
+      getUnitRecords(unitNumber).some(
+        (item) =>
+          item.completed === true &&
+          String(item.activity_id) === `unit-${unitNumber}`
+      );
 
-        if (unitNumber === 1 || unlocked) {
-          card.classList.remove("is-locked");
-          card.classList.add("is-unlocked");
-          status.classList.add("available");
-          status.textContent = completed >= total ? "✓ Completada" : "Disponible";
+    const isUnitCompleted = (unitNumber) =>
+      hasFinalMarker(unitNumber) ||
+      getCompletedDeliveryIds(unitNumber).size >= 5;
 
-          if (link) {
-            link.classList.remove("button-outline");
-            link.classList.add("button-primary");
-            link.textContent = `Abrir Unidad ${unitNumber}`;
-            link.removeAttribute("aria-disabled");
-          }
-          return;
-        }
+    const getSupabaseCompletedCount = (unitNumber) => {
+      if (isUnitCompleted(unitNumber)) {
+        return unitTotals[unitNumber];
+      }
 
-        card.classList.add("is-locked");
-        card.classList.remove("is-unlocked");
-        status.classList.remove("available");
-        status.textContent = lockedMessage;
+      const completedDeliveries = getCompletedDeliveryIds(unitNumber).size;
+
+      return Math.round((completedDeliveries / 5) * unitTotals[unitNumber]);
+    };
+
+    const unit1Completed = getSupabaseCompletedCount(1);
+    const unit2Completed = getSupabaseCompletedCount(2);
+    const unit3Completed = getSupabaseCompletedCount(3);
+    const unit4Completed = getSupabaseCompletedCount(4);
+
+    const unit1Total = unitTotals[1];
+    const unit2Total = unitTotals[2];
+    const unit3Total = unitTotals[3];
+    const unit4Total = unitTotals[4];
+
+    const unit1Complete = isUnitCompleted(1);
+    const unit2Complete = isUnitCompleted(2);
+    const unit3Complete = isUnitCompleted(3);
+    const unit4Complete = isUnitCompleted(4);
+
+    function setUnitCard(unitNumber, completed, total, unlocked, lockedMessage) {
+      const percentage = total === 0 ? 0 : Math.round((completed / total) * 100);
+      const card = document.getElementById(`unit-${unitNumber}-card`);
+      const progress = document.getElementById(`unit-${unitNumber}-progress`);
+      const fill = document.getElementById(`unit-${unitNumber}-fill`);
+      const status = document.getElementById(`unit-${unitNumber}-status`);
+      const link = document.getElementById(`unit-${unitNumber}-link`);
+
+      if (!card) return;
+
+      progress.textContent = `${completed} / ${total}`;
+      fill.style.width = `${percentage}%`;
+
+      if (unitNumber === 1 || unlocked) {
+        card.classList.remove("is-locked");
+        card.classList.add("is-unlocked");
+        status.classList.add("available");
+        status.textContent = completed >= total ? "✓ Completada" : "Disponible";
 
         if (link) {
-          link.classList.add("button-outline");
-          link.classList.remove("button-primary");
-          link.textContent = `Ver Unidad ${unitNumber}`;
+          link.classList.remove("button-outline");
+          link.classList.add("button-primary");
+          link.textContent = `Abrir Unidad ${unitNumber}`;
+          link.removeAttribute("aria-disabled");
         }
+        return;
       }
 
-      setUnitCard(1, unit1Completed, unit1Total, true, "");
-      setUnitCard(2, unit2Completed, unit2Total, unit1Complete, "🔒 Completa Unidad 1");
-      setUnitCard(3, unit3Completed, unit3Total, unit2Complete, "🔒 Completa Unidad 2");
-      setUnitCard(4, unit4Completed, unit4Total, unit3Complete, "🔒 Completa Unidad 3");
+      card.classList.add("is-locked");
+      card.classList.remove("is-unlocked");
+      status.classList.remove("available");
+      status.textContent = lockedMessage;
 
-      const image = document.getElementById("reward-image");
-      const title = document.getElementById("reward-title");
-      const copy = document.getElementById("reward-copy");
-      const avatarPill = document.getElementById("reward-avatar-pill");
-      const xpPill = document.getElementById("reward-xp-pill");
-      const activitiesPill = document.getElementById("reward-activities-pill");
-
-      if (image) {
-        image.src = window.RewardsSystem.getAvatarPath(state.avatar);
-        image.alt = `Avatar ${String(state.avatar).padStart(2, "0")} desbloqueado`;
+      if (link) {
+        link.classList.add("button-outline");
+        link.classList.remove("button-primary");
+        link.textContent = `Ver Unidad ${unitNumber}`;
       }
-      if (title) title.textContent = `Nivel ${state.level} · ${state.levelTitle}`;
-      if (copy) copy.textContent = "Tu avatar actual refleja el avance logrado en el curso.";
-      if (avatarPill) avatarPill.textContent = `Avatar ${String(state.avatar).padStart(2, "0")}`;
-      if (xpPill) xpPill.textContent = `${state.xp} / 1000 XP`;
-      if (activitiesPill) activitiesPill.textContent = `${state.totalCompleted} / ${state.totalActivities} actividades`;
+    }
 
-      const navImg = document.getElementById("nav-avatar-img");
-      if (navImg) {
-        navImg.src = window.RewardsSystem.getAvatarPath(state.avatar);
+    setUnitCard(1, unit1Completed, unit1Total, true, "");
+    setUnitCard(2, unit2Completed, unit2Total, unit1Complete, "🔒 Completa Unidad 1");
+    setUnitCard(3, unit3Completed, unit3Total, unit2Complete, "🔒 Completa Unidad 2");
+    setUnitCard(4, unit4Completed, unit4Total, unit3Complete, "🔒 Completa Unidad 3");
+
+    const image = document.getElementById("reward-image");
+    const title = document.getElementById("reward-title");
+    const copy = document.getElementById("reward-copy");
+    const avatarPill = document.getElementById("reward-avatar-pill");
+    const xpPill = document.getElementById("reward-xp-pill");
+    const activitiesPill = document.getElementById("reward-activities-pill");
+
+    if (image) {
+      image.src = window.RewardsSystem.getAvatarPath(state.avatar);
+      image.alt = `Avatar ${String(state.avatar).padStart(2, "0")} desbloqueado`;
+    }
+
+    if (title) title.textContent = `Nivel ${state.level} · ${state.levelTitle}`;
+    if (copy) copy.textContent = "Tu avatar actual refleja el avance logrado en el curso.";
+    if (avatarPill) avatarPill.textContent = `Avatar ${String(state.avatar).padStart(2, "0")}`;
+    if (xpPill) xpPill.textContent = `${state.xp} / 1000 XP`;
+    if (activitiesPill) activitiesPill.textContent = `${state.totalCompleted} / ${state.totalActivities} actividades`;
+
+    const navImg = document.getElementById("nav-avatar-img");
+
+    if (navImg) {
+      navImg.src = window.RewardsSystem.getAvatarPath(state.avatar);
+    }
+
+    document.getElementById("total-percent").textContent = `${state.totalPercent}%`;
+    document.getElementById("total-fill").style.width = `${state.totalPercent}%`;
+
+    const totalDescription = document.getElementById("total-description");
+
+    if (totalDescription) {
+      if (state.totalCompleted === 0) {
+        totalDescription.textContent = "Completa las actividades para iniciar tu recorrido.";
+      } else {
+        totalDescription.textContent = `Has completado ${state.totalCompleted} de ${state.totalActivities} actividades del curso. Avatar actual: ${String(state.avatar).padStart(2, "0")}.`;
       }
+    }
 
-      document.getElementById("total-percent").textContent = `${state.totalPercent}%`;
-      document.getElementById("total-fill").style.width = `${state.totalPercent}%`;
+    const learningPath = window.RewardsSystem.getCurrentLearningPath();
+    const continueLink = document.getElementById("continue-link");
+    const currentUnitLink = document.getElementById("current-unit-link");
 
-      const totalDescription = document.getElementById("total-description");
-      if (totalDescription) {
-        if (state.totalCompleted === 0) {
-          totalDescription.textContent = "Completa las actividades para iniciar tu recorrido.";
-        } else {
-          totalDescription.textContent = `Has completado ${state.totalCompleted} de ${state.totalActivities} actividades del curso. Avatar actual: ${String(state.avatar).padStart(2, "0")}.`;
-        }
-      }
+    if (continueLink) {
+      continueLink.href = learningPath.continuePage;
+      continueLink.textContent = state.totalCompleted === 0 ? "Comenzar" : "Continuar";
+    }
 
-      const learningPath = window.RewardsSystem.getCurrentLearningPath();
-      const continueLink = document.getElementById("continue-link");
-      const currentUnitLink = document.getElementById("current-unit-link");
+    if (currentUnitLink) {
+      currentUnitLink.href = learningPath.unitPage;
+    }
 
-      if (continueLink) {
-        continueLink.href = learningPath.continuePage;
-        if (state.totalCompleted === 0) {
-          continueLink.textContent = "Comenzar";
-        } else {
-          continueLink.textContent = "Continuar";
-        }
-      }
+    window.Rewards506.renderAvatarCollection(
+      "#avatar-collection-container",
+      rewards506State.currentAvatar
+    );
 
-      if (currentUnitLink) {
-        currentUnitLink.href = learningPath.unitPage;
-      }
+    document.getElementById("reset-progress").addEventListener("click", () => {
+      const confirmReset = confirm("¿Deseas borrar el progreso de prueba guardado en este navegador?");
 
-      window.Rewards506.renderAvatarCollection("#avatar-collection-container", rewards506State.currentAvatar);
+      if (!confirmReset) return;
 
-      document.getElementById("reset-progress").addEventListener("click", () => {
-        const confirmReset = confirm("¿Deseas borrar el progreso de prueba guardado en este navegador?");
-        if (!confirmReset) return;
-
-        window.RewardsSystem.getProgressSources().forEach(source => {
-          localStorage.removeItem(source.key);
-        });
-        localStorage.removeItem("506EnglishExpress.rewardState");
-
-        location.reload();
+      window.RewardsSystem.getProgressSources().forEach((source) => {
+        localStorage.removeItem(source.key);
       });
 
-      window.RewardsSystem.checkForReward();
+      localStorage.removeItem("506EnglishExpress.rewardState");
+
+      location.reload();
     });
-  </script>
+
+    window.RewardsSystem.checkForReward();
+  });
+</script>
 </body>
 </html>
