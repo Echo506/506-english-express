@@ -229,4 +229,40 @@ supabase.auth.onAuthStateChange((_event, session) => {
 
 refreshUserInterface();
 
+window.getLastStudentUnit = async function () {
+  const {
+    data: { user },
+    error: userError
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    return null;
+  }
+
+  const { data, error } = await supabase
+    .from("student_progress")
+    .select("unit_number, updated_at")
+    .eq("user_id", user.id)
+    .eq("completed", true)
+    .order("unit_number", { ascending: false })
+    .order("updated_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Error obteniendo la última unidad:", error);
+    return null;
+  }
+
+  return data?.unit_number ?? null;
+};
+
+window.resumeLastUnit = async function () {
+  const lastUnit = await window.getLastStudentUnit();
+
+  const unitNumber = lastUnit && lastUnit >= 1 ? lastUnit : 1;
+
+  window.location.href = `pages/unit-${unitNumber}.html`;
+};
+
 window.supabaseClient = supabase;

@@ -1902,35 +1902,40 @@
 
   <div class="auth-message" id="auth-message" aria-live="polite"></div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // 1. Capturamos el NUEVO botón
-      const btnContinuar = document.getElementById("btn-continuar-curso");
-      if (!btnContinuar) return;
-
-      // 2. Leemos el progreso de localStorage
-      const u1Terminada = localStorage.getItem("506EnglishExpress.unit1.completed") === "true";
-      const u2Terminada = localStorage.getItem("506EnglishExpress.unit2.completed") === "true";
-      const u3Terminada = localStorage.getItem("506EnglishExpress.unit3.completed") === "true";
-
-      // 3. Ruta por defecto (si es un usuario nuevo)
-      let rutaDestino = "pages/unit-1.html";
-
-      // 4. Lógica de redirección en cascada
-      if (u3Terminada) {
-        rutaDestino = "pages/unit-4.html";
-      } else if (u2Terminada) {
-        rutaDestino = "pages/unit-3.html";
-      } else if (u1Terminada) {
-        rutaDestino = "pages/unit-2.html";
-      }
-
-      // 5. Aplicamos los cambios (siempre dirá lo mismo, solo cambia el href)
-      btnContinuar.href = rutaDestino;
-      btnContinuar.textContent = "⚡ Retomar última unidad";
-    });
-  </script>
-
   <script type="module" src="./assets/js/supabase-auth.js?v=6"></script>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", async () => {
+    const btnContinuar = document.getElementById("btn-continuar-curso");
+
+    if (!btnContinuar) return;
+
+    btnContinuar.href = "pages/unit-1.html";
+
+    if (typeof window.getStudentProgress !== "function") {
+      console.error("getStudentProgress no está disponible.");
+      return;
+    }
+
+    const progress = await window.getStudentProgress();
+
+    if (!Array.isArray(progress) || progress.length === 0) {
+      return;
+    }
+
+    const completedUnits = progress
+      .filter((item) => item.completed === true)
+      .map((item) => Number(item.unit_number))
+      .filter((unitNumber) => Number.isFinite(unitNumber) && unitNumber >= 1);
+
+    if (completedUnits.length === 0) {
+      return;
+    }
+
+    const lastCompletedUnit = Math.max(...completedUnits);
+
+    btnContinuar.href = `pages/unit-${lastCompletedUnit}.html`;
+  });
+</script>
 </body>
 </html>
