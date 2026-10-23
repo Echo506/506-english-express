@@ -604,14 +604,7 @@
   </main>
 
   <script src="../assets/js/rewards.js"></script>
-
-  <script type="module">
-  try {
-    await import("../assets/js/supabase-auth.js?v=13");
-  } catch (error) {
-    console.error("No se pudo cargar supabase-auth.js:", error);
-  }
-
+<script type="module">
   document.addEventListener("DOMContentLoaded", async () => {
     if (!window.RewardsSystem || !window.Rewards506) return;
 
@@ -620,12 +613,21 @@
 
     let supabaseRecords = [];
 
-    if (typeof window.getStudentProgress === "function") {
-      const progress = await window.getStudentProgress();
-      supabaseRecords = Array.isArray(progress) ? progress : [];
-    } else {
-      console.error("getStudentProgress no está disponible.");
+    try {
+      await import("../assets/js/supabase-auth.js?v=17");
+    } catch (error) {
+      console.error("No se pudo cargar supabase-auth.js:", error);
     }
+
+    if (typeof window.getStudentProgress !== "function") {
+      console.error("getStudentProgress no está disponible.");
+      return;
+    }
+
+    const progress = await window.getStudentProgress();
+    supabaseRecords = Array.isArray(progress) ? progress : [];
+
+    console.log("Registros recibidos:", supabaseRecords);
 
     const unitTotals = {
       1: 60,
@@ -634,16 +636,12 @@
       4: 65
     };
 
-    const getUnitRecords = (unitNumber) =>
-      supabaseRecords.filter(
-        (item) => Number(item.unit_number) === unitNumber
-      );
-
     const getCompletedDeliveryIds = (unitNumber) =>
       new Set(
-        getUnitRecords(unitNumber)
+        supabaseRecords
           .filter(
             (item) =>
+              Number(item.unit_number) === unitNumber &&
               item.completed === true &&
               String(item.activity_id).startsWith(
                 `unit-${unitNumber}-delivery-`
@@ -652,18 +650,10 @@
           .map((item) => String(item.activity_id))
       );
 
-    const hasFinalMarker = (unitNumber) =>
-      getUnitRecords(unitNumber).some(
-        (item) =>
-          item.completed === true &&
-          String(item.activity_id) === `unit-${unitNumber}`
-      );
-
     const isUnitCompleted = (unitNumber) =>
-      hasFinalMarker(unitNumber) ||
       getCompletedDeliveryIds(unitNumber).size >= 5;
 
-    const getSupabaseCompletedCount = (unitNumber) => {
+    const getCompletedCount = (unitNumber) => {
       if (isUnitCompleted(unitNumber)) {
         return unitTotals[unitNumber];
       }
@@ -673,20 +663,14 @@
       return Math.round((completedDeliveries / 5) * unitTotals[unitNumber]);
     };
 
-    const unit1Completed = getSupabaseCompletedCount(1);
-    const unit2Completed = getSupabaseCompletedCount(2);
-    const unit3Completed = getSupabaseCompletedCount(3);
-    const unit4Completed = getSupabaseCompletedCount(4);
-
-    const unit1Total = unitTotals[1];
-    const unit2Total = unitTotals[2];
-    const unit3Total = unitTotals[3];
-    const unit4Total = unitTotals[4];
+    const unit1Completed = getCompletedCount(1);
+    const unit2Completed = getCompletedCount(2);
+    const unit3Completed = getCompletedCount(3);
+    const unit4Completed = getCompletedCount(4);
 
     const unit1Complete = isUnitCompleted(1);
     const unit2Complete = isUnitCompleted(2);
     const unit3Complete = isUnitCompleted(3);
-    const unit4Complete = isUnitCompleted(4);
 
     function setUnitCard(unitNumber, completed, total, unlocked, lockedMessage) {
       const percentage = total === 0 ? 0 : Math.round((completed / total) * 100);
@@ -711,7 +695,6 @@
           link.classList.remove("button-outline");
           link.classList.add("button-primary");
           link.textContent = `Abrir Unidad ${unitNumber}`;
-          link.removeAttribute("aria-disabled");
         }
         return;
       }
@@ -728,10 +711,10 @@
       }
     }
 
-    setUnitCard(1, unit1Completed, unit1Total, true, "");
-    setUnitCard(2, unit2Completed, unit2Total, unit1Complete, "🔒 Completa Unidad 1");
-    setUnitCard(3, unit3Completed, unit3Total, unit2Complete, "🔒 Completa Unidad 2");
-    setUnitCard(4, unit4Completed, unit4Total, unit3Complete, "🔒 Completa Unidad 3");
+    setUnitCard(1, unit1Completed, unitTotals[1], true, "");
+    setUnitCard(2, unit2Completed, unitTotals[2], unit1Complete, "🔒 Completa Unidad 1");
+    setUnitCard(3, unit3Completed, unitTotals[3], unit2Complete, "🔒 Completa Unidad 2");
+    setUnitCard(4, unit4Completed, unitTotals[4], unit3Complete, "🔒 Completa Unidad 3");
 
     const image = document.getElementById("reward-image");
     const title = document.getElementById("reward-title");
@@ -804,6 +787,7 @@
 
     window.RewardsSystem.checkForReward();
   });
+
 </script>
 </body>
 </html>
